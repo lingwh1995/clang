@@ -76,7 +76,6 @@ int main()
 	/**
 	 * 不同数据类型占据的空间大小
 	 */
-
 	// short就是short int
     printf("short类型所占字节大小: %d\n", sizeof(short));
     printf("int类型所占字节大小: %d\n", sizeof(int));
@@ -100,7 +99,6 @@ int main()
     /**
      * 定义不同的数据类型的数据
      */
-
     // short类型
     short s_signed = -100;
     unsigned short s_unsigned = 100;

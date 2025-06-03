@@ -263,6 +263,7 @@ void CalcAreaofTriangle()
 
 
 #if 0
+#endif
 // 标准输入输出的基本测试
 int main()
 {
@@ -282,4 +283,3 @@ int main()
 	CalcAreaofTriangle();
 	return 0;
 }
-#endif

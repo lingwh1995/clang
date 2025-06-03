@@ -131,7 +131,7 @@ void StdinAndEOFTest7()
 	printf("%-2d\n", 20);
 }
 
-
+#if 0
 int main()
 {
     //StdinAndEOFTest1();
@@ -142,3 +142,4 @@ int main()
 	//StdinAndEOFTest6();
 	StdinAndEOFTest7();
 }
+#endif
