@@ -3,7 +3,7 @@
 #define ARSIZE 100
 
 /*
- * 使用函数实现模块化设计 V3.0：使用多文件结构,将工具函数提取到mylib_2.h和mylib_2.c中(去除数组中重复元素版本)
+ * 使用函数实现模块化设计 V3.0：使用多文件结构，将工具函数提取到mylib_2.h和mylib_2.c中(去除数组中重复元素版本)
  * 使用断言校验参数
  *	断言和if else区别: 断言不通过会弹出窗口，if else不会弹出窗口
  * 函数设计原则
@@ -12,7 +12,6 @@
  */
 
 #if 0
-#endif
 int main()
 {
 	int arr[ARSIZE] = { 0 };
@@ -27,3 +26,4 @@ int main()
 	PrintArrV3(pArr, ARSIZE);
 	return 0;
 }
+#endif

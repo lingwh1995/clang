@@ -87,6 +87,7 @@ void PrintArrV1(int* arr, int length)
 }
 
 #if 0
+#endif
 int main()
 {
 	int arr[ARSIZE] = { 0 };
@@ -101,4 +102,3 @@ int main()
 	PrintArrV1(pArr, ARSIZE);
 	return 0;
 }
-#endif
