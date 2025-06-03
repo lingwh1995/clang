@@ -1,0 +1,2 @@
+1.Project -> Properties -> C/C++ build -> Setting -> Binary Parsers -> 选中ELF Parser + Gun ELF Parser -> Apply
+2.看到项目下显示出Binaries文件夹说明设置成功
