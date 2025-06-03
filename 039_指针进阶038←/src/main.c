@@ -48,7 +48,6 @@ void PointerSeniorTest2() {
     	printf("a的地址比b的地址低\n");
     }
 
-
     if (*ap > *bp)
     {
     	printf("a的值比b的值大\n");
@@ -70,7 +69,7 @@ void fun(int* p) {
  * 调用方法修改指针指向的值
  */
 void PointerSeniorTest3() {
-    int a = 10;
+    int a = 1main0;
     int* p = &a;
     fun(p);
     printf("a = %d, %p => *p %d\n", a, p, *p);
@@ -82,6 +81,11 @@ void PointerSeniorTest3() {
  * 防止出现野指针的两种方法:
  *  1.定义指针时就对指针进行初始化(定义指针变量时一定要初始化)，使用合法的地址值进行初始化或者赋值为NULL
  *  2.定义指针时赋值为NULL，使用前先判断是否为NULL
+ *
+ * 特别说明：
+ *  1.野指针不允许出现，一定不能出现野指针，很危险
+ *  2.野指针一般可以通过参数校验，即使通过了参数校验，依然是一个不合法的参数，所以不允许出现野指针
+ *  3.指针类型变量如果没有初始值，定义为空指针即可
  */
 void PointerSeniorTest4() {
     int a; //随机值
