@@ -5,6 +5,7 @@ int gi_1;
 extern int gi_2;
 
 #if 0
+#endif
 int main()
 {
 	// 在局部位置出声明
@@ -15,7 +16,6 @@ int main()
 	printf("gi_3 = %d\n", gi_3);
 	return 0;
 }
-#endif
 
 int gi_1 = 10;
 int gi_2 = 20;

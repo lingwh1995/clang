@@ -94,7 +94,6 @@ void C99BoolTest()
 }
 
 #if 0
-#endif
 int main()
 {
 	//JudgeTrueOrFalseTest();
@@ -102,3 +101,4 @@ int main()
     C99BoolTest();
     return 0;
 }
+#endif

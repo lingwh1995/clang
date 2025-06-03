@@ -69,10 +69,10 @@ void ForLoopTest()
 }
 
 #if 0
+#endif
 int main()
 {
 	//WhileLoopTest();
 	//DoWhileLoopTest();
     ForLoopTest();
 }
-#endif

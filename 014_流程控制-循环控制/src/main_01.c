@@ -68,7 +68,6 @@ void DeadLoopTest2()
 }
 
 #if 0
-#endif
 int main()
 {
     PrintAToG1();
@@ -77,3 +76,4 @@ int main()
     //DeadLoopTest2();
     return 0;
 }
+#endif

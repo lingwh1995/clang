@@ -92,6 +92,7 @@ void DoublePointerPlusOne()
 }
 
 #if 0
+#endif
 int main() {
 	IntPointerToCharPointer();
 	//IntPointerPlusOne();
@@ -99,4 +100,3 @@ int main() {
 	//DoublePointerPlusOne();
     return 0;
 }
-#endif

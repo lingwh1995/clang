@@ -54,7 +54,6 @@ void ExternCurrentFileVariableAndConstAndFunctionTest()
 }
 
 #if 0
-#endif
 int main()
 {
 	ExternOtherFileVariableAndConstAndFunctionTest();
@@ -62,6 +61,7 @@ int main()
 	ExternCurrentFileVariableAndConstAndFunctionTest();
 	return 0;
 }
+#endif
 
 // 定义一个全局变量
 int gi_in_current_file = 10;

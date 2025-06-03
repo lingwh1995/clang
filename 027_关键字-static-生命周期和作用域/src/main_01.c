@@ -2,7 +2,6 @@
 #include "mylib.h"
 
 #if 0
-#endif
 int main()
 {
     //下面三行代码放开会报错
@@ -17,4 +16,4 @@ int main()
     AddInOtherFileOrdinary(0, 0);
 	return 0;
 }
-
+#endif

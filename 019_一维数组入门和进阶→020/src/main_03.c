@@ -49,6 +49,8 @@ int* CopyArray_2(int* src,int length)
 	return dest;
 }
 
+#if 0
+#endif
 int main()
 {
 	int arr[] = { 1,3,5,7,9 };
