@@ -11,7 +11,7 @@ void InitArrV2(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;
-	//使用断言判断参数是否合法,表达式为真,继续向下执行,表达式为假,弹出窗提示
+	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(NULL != arr && length >= 1);
 	srand((unsigned)time(NULL));
 	for (int i = 0; i < length; i++)
@@ -29,7 +29,7 @@ void SwapV2(int* ap, int* bp)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == ap || NULL == bp) return;
-	//使用断言判断参数是否合法,表达式为真,继续向下执行,表达式为假,弹出窗提示
+	//使用断言判断参数是否合法,表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(NULL != ap && NULL != bp);
 	int temp = *ap;
 	*ap = *bp;
@@ -45,7 +45,7 @@ void BubbleSortV2(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;
-	//使用断言判断参数是否合法,表达式为真,继续向下执行,表达式为假,弹出窗提示
+	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(NULL != arr && length >= 1);
 	for (int i = 0; i < length - 1; i++)
 	{
@@ -68,7 +68,7 @@ void PrintArrV2(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;
-	//使用断言判断参数是否合法,表达式为真,继续向下执行,表达式为假,弹出窗提示
+	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(NULL != arr && length >= 1);
 	for (int i = 0; i < length; i++)
 	{

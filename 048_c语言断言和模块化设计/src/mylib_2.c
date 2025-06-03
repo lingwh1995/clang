@@ -3,7 +3,7 @@
 #include <assert.h>
 
 /*
- * 从数组中查找当前值,查找到返回数组索引,查找不到返回-1
+ * 从数组中查找当前值，查找到返回数组索引，查找不到返回-1
  * @param *arr 代表数组的指针
  * @param n 当前元素在目标数组中的索引
  * @param val 要确定是否存在于当前数组中的值
@@ -43,7 +43,7 @@ void InitArrV3(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;
-	//使用断言判断参数是否合法,表达式为真,继续向下执行,表达式为假,弹出窗提示
+	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(NULL != arr && length >= 1);
 	srand((unsigned)time(NULL));
 	int i = 0;
@@ -68,7 +68,7 @@ void SwapV3(int* ap, int* bp)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == ap || NULL == bp) return;
-	//使用断言判断参数是否合法,表达式为真,继续向下执行,表达式为假,弹出窗提示
+	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(NULL != ap && NULL != bp);
 	int temp = *ap;
 	*ap = *bp;
@@ -84,7 +84,7 @@ void BubbleSortV3(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;
-	//使用断言判断参数是否合法,表达式为真,继续向下执行,表达式为假,弹出窗提示
+	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(NULL != arr && length >= 1);
 	for (int i = 0; i < length - 1; i++)
 	{
@@ -107,7 +107,7 @@ void PrintArrV3(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;
-	//使用断言判断参数是否合法,表达式为真,继续向下执行,表达式为假,弹出窗提示
+	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(NULL != arr && length >= 1);
 	for (int i = 0; i < length; i++)
 	{
