@@ -3,6 +3,13 @@
 #include <stdio.h>
 #include "calculator.h"
 
+//声明本文件中的函数
+int Add_Int(int a, int b);
+int Sub_Int(int a, int b);
+int Mul_Int(int a, int b);
+int Div_Int(int a, int b);
+void Show(int a, int b, char op, int result);
+
 /*
  * 进行计算的方法,不能使用static修饰,因为这是本程序唯一对外暴露的接口
  * @param a 计算参数1
