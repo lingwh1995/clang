@@ -124,6 +124,11 @@ void PointerAndArrayTest5()
  */
 void PrintArrayByWhileLoop(int* start, int* end)
 {
+    // 判断指针是否为空
+    if(NULL == p || NULL == end)
+    {
+        return;
+    }
 	while(start < end)
 	{
 		printf("%d\n", *start);

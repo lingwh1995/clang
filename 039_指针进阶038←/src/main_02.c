@@ -39,6 +39,10 @@ void PrintArr1(int* nums)	  // 写法三	推荐
  */
 void PrintArr2(int* nums, int n)
 {
+    if(NULL == nums)
+    {
+        return;
+    }
     for (int i = 0; i < n; i++)
     {
         printf("%d\n", nums[i]);
@@ -51,6 +55,10 @@ void PrintArr2(int* nums, int n)
  */
 void PrintArrayByWhileLoop(int* start, int* end)
 {
+    if(NULL == start || NULL == end)
+    {
+        return;
+    }
 	while(start < end)
 	{
 		// 可以观察到int类型指针每次+1，内存空间便宜的值为4
