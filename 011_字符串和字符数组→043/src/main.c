@@ -105,11 +105,36 @@ void ForeachString2()
     }
 }
 
+/**
+ * 计算字符串长度
+ */
+int CalcStrlen(char* str)
+{
+    if(NULL == str)
+    {
+        return;
+    }
+    int l = 0;
+    while (str[l] != '\0')
+    {
+        l++;
+    }
+    return l;
+}
+
 int main()
 {
 	StringBasic();
 	//StringAndCharArray();
 	//ForeachString1();
 	//ForeachString2();
+
+    // 计算字符串长度，方式一：使用string.h中的strlen(str)函数
+    char* str = "hello world";
+    int l = strlen(str);
+    printf("l = %d\n", l);
+    // 计算字符串长度，方式二：根据字符串以'\0'结尾的特点，自己编写计算字符串长度算法
+    l = CalcStrlen(str);
+    printf("l = %d\n", l);
 	return 0;
 }
