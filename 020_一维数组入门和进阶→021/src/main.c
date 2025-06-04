@@ -20,23 +20,28 @@ void DefineOneDimensionalArray()
 	 int arr_1[n] = { 1,2,3 };
 	 */
 
-	// 错误的定义数组 演示二： c语言规定，数组变量一旦声明，就不得修改变量指向的地址，修改会报错，重新为数组名赋值，改变原来的内存地址，就会报错
+	// 错误的定义数组 演示二：c语言规定，数组变量一旦声明，就不能修改变量指向的地址，修改会报错，重新为数组变量赋值，改变原来的内存地址，就会报错
 	/*
-	 int arr_2 = { 1,2,3 };
-	 arr_2 = { 4,5,6 };
-	 */
+	 int arr_2[] = { 1,2,3 };
+	 // 数组变量一旦定义好，就是一个常量，再去改变常量的值，会报错
+	 //arr_2 = { 4,5,6 };
+	 // 如果要给定义好的数组重新赋值，使用string.h中的memcpy()函数实现这个需求
+     */
 
-    // 正确定义数组方式一
+    // 错误的定义数组 演示三：像这种数组的长度为5，但却初始化了10个元素，后面的五个元素是无法访问到的
+    //int arr_2[5] = { 1,2,3,4,5,6,7,8,9,10 };
+
+    // 正确定义数组演示一
     int arr_3[3];
-    // 正确定义数组方式二
+    // 正确定义数组演示二：使用宏来定义数组的长度
     int arr_4[LEN] = { 1,2,3 };
-    // 正确定义数组方式三
+    // 正确定义数组演示三
     int arr_5[3] = { 1,2,3 };
-    // 正确定义数组方式四
+    // 正确定义数组演示四
     int arr_6[3] = { 5 }; // 等同于 int arr_6[3] = { 5,0,0 };
-    // 正确定义数组方式五
+    // 正确定义数组演示五
     int arr_7[3] = { 0 }; // 等同于 arr_7[3] = { 0,0,0 };
-    // 正确定义数组方式六
+    // 正确定义数组演示六
     // 指定为哪些位置的成员赋值
     int arr_8[6] = { [1] = 1, [3] = 3, [5] = 5 };
     // 指定位置的赋值可以不按照顺序，下面的写法与上面的例子是等价的
@@ -46,11 +51,11 @@ void DefineOneDimensionalArray()
 
     // 省略成员数量时，如果同时采用指定位置的赋值，那么数组长度将是最大的指定位置再加1
     int arr_11[] = { [2] = 2, [9] = 9 };
-    printf("arr_11的长度 = %d\n", sizeof(arr_11)/sizeof(arr_11[0]));
+    printf("arr_11的长度 = %llu\n", sizeof(arr_11)/sizeof(arr_11[0]));
     int arr_12[] = { [9] = 9, [2] = 2 };
-    printf("arr_12的长度 = %d\n", sizeof(arr_12)/sizeof(arr_12[0]));
+    printf("arr_12的长度 = %llu\n", sizeof(arr_12)/sizeof(arr_12[0]));
 
-    // 正确定义数组方式七
+    // 正确定义数组演示七
     //c语言允许省略方括号里面的数组成员数量，这时将根据大括号里面的值的数量，自动确定数组的长度
     int arr_13[3] = { 1,2,3 }; // 等同于 int arr_13[] = { 1,2,3 };
 
@@ -83,11 +88,6 @@ void DefineOneDimensionalArray()
         printf("%d\n", nums_3[i]);
     }
     printf("--------------------------------\n");
-
-
-    // 错误定义
-    // 像这种数组的长度为5,但却初始化了10个元素,后面的五个元素是无法访问到的
-    //int nums_4[5] = { 1,2,3,4,5,6,7,8,9,10 };
 }
 
 /**
@@ -110,7 +110,6 @@ void LengthOfOneDimensionalArray()
     printf("数组arr_1的长度 len1 = %d\n", len1);
     printf("数组arr_2的长度 len2 = %d\n", len2);
     printf("数组arr_3的长度 len3 = %d\n", len3);
-
 
     /**
      * strlen()方法深入探究
@@ -148,7 +147,6 @@ void TwoAttributeOfOneDimensionalArray()
     // 注意size3和size4的大小
     int size4 = sizeof(str2);
     printf("字符串str2所占空间大小 size4 = %d\n", size4);
-
 
     // 计算数组长度大小
     int len1 = sizeof(arr) / sizeof(arr[0]);
@@ -195,9 +193,9 @@ void VariableLengthArray()
 	int arr_2[n];
 	int arr_3[n + 5];
 	int arr_4[n + 10];
-	printf("arr_2的长度 = %d\n", sizeof(arr_2)/sizeof(arr_2[0]));
-	printf("arr_3的长度 = %d\n", sizeof(arr_3)/sizeof(arr_3[0]));
-	printf("arr_4的长度 = %d\n", sizeof(arr_4)/sizeof(arr_4[0]));
+	printf("arr_2的长度 = %llu\n", sizeof(arr_2)/sizeof(arr_2[0]));
+	printf("arr_3的长度 = %llu\n", sizeof(arr_3)/sizeof(arr_3[0]));
+	printf("arr_4的长度 = %llu\n", sizeof(arr_4)/sizeof(arr_4[0]));
 }
 
 /**
@@ -219,6 +217,7 @@ void PointIsConst()
 }
 
 #if 0
+#endif
 int main()
 {
 	//DefineOneDimensionalArray();
@@ -228,4 +227,3 @@ int main()
 	VariableLengthArray();
     return 0;
 }
-#endif

@@ -50,7 +50,6 @@ int* CopyArray_2(int* src,int length)
 }
 
 #if 0
-#endif
 int main()
 {
 	int arr[] = { 1,3,5,7,9 };
@@ -67,3 +66,4 @@ int main()
 	PrintArray(arr_copy, length);
 	return 0;
 }
+#endif
