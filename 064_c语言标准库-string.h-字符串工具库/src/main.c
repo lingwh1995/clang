@@ -16,7 +16,12 @@ void StrlenTest()
 }
 
 /**
- * char * strcpy ( char * destination, const char * source )：字符串拷贝函数
+ * @desc 字符串拷贝函数
+ * @param destination 目的字符串数组
+ * @param source 源字符串数组
+ * @return 返回指向目标字符串destination的指针
+ * @tips 1.必须要保证第一个参数的长度不小于第二个参数，否则虽然不会报错，但会溢出第一个字符串变量的边界，发生难以预料的结果。 2.第二个参数被const修饰，表示这个函数不会修改第二个字符串。
+ * char * strcpy ( char * destination, const char * source )
  */
 void StrcpyTest()
 {
@@ -36,23 +41,42 @@ void StrcpyTest()
     s2 = s1;
     */
 
+    char* p = NULL;
+
     // 使用strcpy()完成字符串赋值
-    char src[] = "Hello, world!";
-    char dest[100];
-    strcpy(dest, src);
-    dest[0] = 'O';
-    printf("src = %s\n", src);
-    printf("dest = %s\n", dest);
+    char src_1[] = "Hello, world!";
+    printf("sizeof(src_1) = %llu\n", sizeof(src_1));
+    // 特别注意：dest_1数组的长度要大于等于sizeof(src_1)，否则会出问题
+    char dest_1[100];
+    p = strcpy(dest_1, src_1);
+    dest_1[0] = 'O';
+    // 使用puts()输出字符串
+    /*
+    puts(src_1);
+    puts(dest_1);
+    puts(p);
+    */
+    // 使用printf()输出字符串
+    printf("src_1 = %s\n", src_1);
+    printf("dest_1 = %s\n", dest_1);
+    printf("p = %s\n", p);
+    printf("---------------------\n");
 
     // 使用strcpy()完成字符串赋值：从s2的第7个位置开始接收拷贝过来的字符串 BEST
-    char* s1 = "BEST";
-    char s2[40] = "Be the best that you can be.";
-    char* p;
+    char* src_2 = "BEST";
+    char dest_2[40] = "Be the best that you can be.";
     // strcpy()返回的是一个指针，指向拷贝开始的位置。
-    p = strcpy(s2 + 7, s1);
-    puts(s2); // Be the BEST
+    p = strcpy(dest_2 + 7, src_2);
+    // 使用puts()输出字符串
+    /*
+    puts(src_2); // BEST
+    puts(dest_2); // Be the BEST
     puts(p); // BEST
-    printf("c = %c\n", *p); // B
+    */
+    // 使用printf()输出字符串
+    printf("src_2 = %s\n", src_2);
+    printf("dest_2 = %s\n", dest_2);
+    printf("p = %s\n", p);
 
     /**
      * strcpy()的第一个参数最好是一个已经声明的数组，而不是声明后没有进行初始化的字符指针。
@@ -106,8 +130,8 @@ void MemcpyTest2()
 
 int main()
 {
-    StrlenTest();
-    //StrcpyTest();
+    //StrlenTest();
+    StrcpyTest();
 	//MemcpyTest1();
 	//MemcpyTest2();
 	return 0;

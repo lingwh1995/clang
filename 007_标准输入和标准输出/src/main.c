@@ -160,7 +160,7 @@ void GetsAndScanfTest2()
 }
 
 /*
- * 测试putchar()
+ * putchar()：输入单个字符
  */
 void PutCharTest()
 {
@@ -176,7 +176,7 @@ void PutCharTest()
 }
 
 /*
- * 测试puts()
+ * puts()：输出字符串并自动换行
  */
 void PutsTest()
 {
@@ -223,7 +223,6 @@ void AsciiPrintfAndEscapePrintfTest()
 	printf("原字符a = %c\n", c);
 	// 以ASCII码形式输出
 	printf("原字符a的ASCII码 = %d\n", c);
-
 
 	/**
 	 * 转义字符串输出
@@ -277,9 +276,9 @@ int main()
 	//GetsAndScanfTest1();
 	//GetsAndScanfTest2();
 	//PutCharTest();
-	//PutsTest();
+	PutsTest();
 	//PrintfTest();
 	//AsciiPrintfAndEscapePrintfTest();
-	CalcAreaofTriangle();
+    //CalcAreaofTriangle();
 	return 0;
 }
