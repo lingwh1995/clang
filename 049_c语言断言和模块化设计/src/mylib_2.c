@@ -9,7 +9,7 @@
  * @param val 要确定是否存在于当前数组中的值
  */
 /*
-int FindValueV3(const* arr, int n, int val)
+int FindValueV3(const int* arr, int n, int val)
 {
 	assert(NULL != arr);
 	if (n < 1) return -1;
@@ -22,7 +22,7 @@ int FindValueV3(const* arr, int n, int val)
 	return position;
 }
 */
-int FindValueV3(const* arr, int n, int val)
+int FindValueV3(const int* arr, int n, int val)
 {
 	assert(NULL != arr);
 	if (n < 1) return -1;

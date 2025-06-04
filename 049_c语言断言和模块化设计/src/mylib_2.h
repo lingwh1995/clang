@@ -6,7 +6,7 @@
  * @param n 当前元素在目标数组中的索引
  * @param num 要确定是否存在于当前数组中的值
  */
-int FindValueV3(const* arr, int n, int num);
+int FindValueV3(const int* arr, int n, int num);
 
 /*
  * 初始化数组
