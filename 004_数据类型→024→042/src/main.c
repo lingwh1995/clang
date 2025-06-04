@@ -139,6 +139,14 @@ int main()
     char c1 = 'A'; // 等同于 char a = 65;
     char c2 = 'B'; // 等同于 char b = 66;
     printf("c1 + c2 = %d\n", c1 + c2); // 输出 131
+    // 字符 '0'
+    char c3 = '0';
+    printf("c3 = %c\n", c3);
+    printf("c3 = %d\n", c3);
+    // 字符 '\0'，常用于标记字符串的结束位置
+    char c4 = '\0';
+    printf("c4 = %c\n", c4);
+    printf("c4 = %d\n", c4);
 
     // 使用转义字符输出单引号
     char t = '\'';
