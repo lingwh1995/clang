@@ -2,14 +2,14 @@
 #include <stdbool.h>
 
 /**
- * 章节内容:
+ * 章节内容：
  *   C语言数据类型
  *     1.基本数据类型：
  *       整型数据类型：short、int、long、long long
  *       	注意：short就是short int, long就是long int, long long就是long long int
  *       字符数据类型：char
  *       浮点型数据类型：float、double
- *       布尔类型：0/false、 1、true
+ *       布尔类型：false=0、 true=1/非0
  *     2.构造数据类型
  *		 数组(Array)：一组相同类型元素的集合，可以是一维或多维。
  *		 结构体(Struct)：允许将不同类型的数据组合在一起，每个成员拥有独立的内存空间。
@@ -19,7 +19,6 @@
  *	   	 指针(Pointer)：指向特定类型数据的指针，用于存储变量的内存地址，如int *p表示指向整数的指针。
  *	   4.空类型
  *	   	 void‌：表示没有类型，通常用于函数返回值、函数参数或通用指针。
- *
  */
 
 
@@ -194,9 +193,10 @@ int main()
     printf("-------------------------------------\n");
 
 
-    // 指针
     int a = 100;
-    printf("a的地址 = %p\n", &a);
+    // 指针
+    int* p = &a;
+    printf("a的地址 = %p\n", p);
     int arr[5] = { 1,2,3,4,5 };
     // 数组的地址
     printf("数组的地址 = %p\n", &arr);
