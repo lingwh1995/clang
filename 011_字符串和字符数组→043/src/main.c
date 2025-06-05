@@ -14,6 +14,7 @@
  *    {'H', 'e', 'l', 'l', 'o', '\0'}
  *    // 等价于
  *    "Hello"
+ *  5.特别补充：结尾标识 '\0' 的ASCII码值为0
  *
  * 字符数组: 由字符组成的数组
  */
@@ -106,13 +107,13 @@ void ForeachString2()
 }
 
 /**
- * 计算字符串长度
+ * 自定义方法计算字符串长度
  */
-int CalcStrlen(char* str)
+int Strlen(char* str)
 {
     if(NULL == str)
     {
-        return;
+        return -1;
     }
     int l = 0;
     while (str[l] != '\0')
@@ -122,19 +123,36 @@ int CalcStrlen(char* str)
     return l;
 }
 
+/**
+ * 计算字符串的长度
+ */
+void CalcStrlen()
+{
+    // 计算字符串长度，方式一：使用string.h中的strlen(str)函数
+    char* str = "hello world";
+    int length = strlen(str);
+    printf("c语言标准库 length = %d\n", length);
+    // 计算字符串长度，方式二：根据字符串以'\0'结尾的特点，自己编写计算字符串长度算法
+    length = Strlen(str);
+    printf("自定义函数 length = %d\n", length);
+}
+
+/**
+ * 结尾符 '\0' 的ASCII码是0
+ */
+void EndFlagAsciiCode()
+{
+    char end_flag = '\0';
+    printf("end_flag = %d\n", end_flag);
+}
+
 int main()
 {
 	StringBasic();
 	//StringAndCharArray();
 	//ForeachString1();
 	//ForeachString2();
-
-    // 计算字符串长度，方式一：使用string.h中的strlen(str)函数
-    char* str = "hello world";
-    int l = strlen(str);
-    printf("l = %d\n", l);
-    // 计算字符串长度，方式二：根据字符串以'\0'结尾的特点，自己编写计算字符串长度算法
-    l = CalcStrlen(str);
-    printf("l = %d\n", l);
+    //CalcStrlen();
+    EndFlagAsciiCode();
 	return 0;
 }
