@@ -16,6 +16,33 @@ void StrlenTest()
 }
 
 /**
+ * 自定义方法计算字符串长度
+ */
+int Strlen(const char* str)
+{
+    if(NULL == str)
+    {
+        return -1;
+    }
+    int l = 0;
+    while (str[l] != '\0')
+    {
+        l++;
+    }
+    return l;
+}
+
+/**
+ * 测试自定义方法计算字符串长度
+ */
+void MyStrlenTest()
+{
+    const char* str = "hello world";
+    int length = Strlen(str);
+    printf("自定义函数 length = %d\n", length);
+}
+
+/**
  * @desc 字符串拷贝函数
  * @param dest 目的字符串数组
  * @param src 源字符串数组
@@ -227,7 +254,7 @@ void StrncatTips2Test()
 }
 
 /**
- * 测试memcpy()函数
+ * memcpy()：数组复制
  */
 void MemcpyTest1()
 {
@@ -250,7 +277,7 @@ void MemcpyTest1()
 }
 
 /**
- * 测试memcpy()函数
+ * memcpy()：数组复制
  */
 void MemcpyTest2()
 {
@@ -267,9 +294,37 @@ void MemcpyTest2()
 	printf("dest = %s\n", dest);
 }
 
+/**
+ * strcmp()：字符串比较（实际上是按位比较字符的ASCII码）
+ */
+void StrCmpTest()
+{
+    const char* str1 = "abcde";
+    const char* str2 = "abcde";
+    int r = strcmp(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcde";
+    str2 = "abxde";
+    r = strcmp(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcde";
+    str2 = "abcdea";
+    r = strcmp(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abxde";
+    str2 = "abcde";
+    r = strcmp(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcdea";
+    str2 = "abcde";
+    r = strcmp(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+}
+
 int main()
 {
     //StrlenTest();
+    //MyStrlenTest();
     //StrcpyTest();
     //MyStrcpyTest();
     //StrncpyTest();
@@ -277,8 +332,9 @@ int main()
     //StrncpyTips2Test();
     //StrcatTest();
     //StrncatTest();
-    StrncatTips2Test();
+    //StrncatTips2Test();
 	//MemcpyTest1();
 	//MemcpyTest2();
+    StrCmpTest();
 	return 0;
 }
