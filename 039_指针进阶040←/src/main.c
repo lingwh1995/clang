@@ -227,7 +227,7 @@ void PointerSeniorTest9() {
     int* p = arr;
     int x = 0;//12
     int y = 0;//23
-    x = *p++; // p++先用后加，相当于 x = *p; p++;
+    x = *p++; // p++先用后加，相当于 x = *p; p++; 特别注意，不等同于：x = *p; (*p)++;
     y = *p;
     printf("x = %d, y = %d\n", x, y);
     x = ++*p;//24

@@ -297,7 +297,7 @@ void MemcpyTest2()
 /**
  * strcmp()：字符串比较（实际上是按位比较字符的ASCII码）
  */
-void StrCmpTest()
+void StrcmpTest()
 {
     const char* str1 = "abcde";
     const char* str2 = "abcde";
@@ -321,6 +321,119 @@ void StrCmpTest()
     printf("str1和str2比较结果： %d\n", r);
 }
 
+/**
+ * 自定义方法实现字符串比较
+ * @param str1 第一个字符串
+ * @param str2 第二个字符串
+ */
+int Strcmp(const char* str1, const char* str2)
+{
+    while (*str1 == *str2 && *str1 != '\0' && *str2 != '\0')
+    {
+        *str1++;
+        *str2++;
+    }
+    return *str1 - *str2;
+}
+
+/**
+ * 测试自定义方法实现字符串比较
+ */
+void MyStrcmpTest()
+{
+    const char* str1 = "abcde";
+    const char* str2 = "abcde";
+    int r = Strcmp(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcde";
+    str2 = "abxde";
+    r = Strcmp(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcde";
+    str2 = "abcdea";
+    r = Strcmp(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abxde";
+    str2 = "abcde";
+    r = Strcmp(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcdea";
+    str2 = "abcde";
+    r = Strcmp(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+}
+
+/**
+ * strncmp()：字符串比较（实际上是按位比较字符的ASCII码）
+ */
+void StrncmpTest()
+{
+    const char* str1 = "abcde";
+    const char* str2 = "abcde";
+    int r = strncmp(str1, str2, 3);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcde";
+    str2 = "abxde";
+    r = strncmp(str1, str2, 3);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcde";
+    str2 = "abcdea";
+    r = strncmp(str1, str2, 3);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abxde";
+    str2 = "abcde";
+    r = strncmp(str1, str2, 3);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcdea";
+    str2 = "abcde";
+    r = strncmp(str1, str2, 3);
+    printf("str1和str2比较结果： %d\n", r);
+}
+
+/**
+ * TODO 思考 n-- 这个逻辑是否正确
+ * 自定义方法实现字符串中前n个字符比较
+ * @param str1 第一个字符串
+ * @param str2 第二个字符串
+ * @param n 比较到第几个位置就结束比较
+ */
+int Strncmp(const char* str1, const char* str2, int n)
+{
+    while (*str1 == *str2 && *str1 != '\0' && *str2 != '\0' && --n > 0)
+    {
+        *str1++;
+        *str2++;
+    }
+    return *str1 - *str2;
+}
+
+/**
+ * 测试自定义方法实现字符串中前n个字符比较
+ */
+void MyStrncmpTest()
+{
+    const char* str1 = "abcde";
+    const char* str2 = "abcde";
+    int r = Strncmp(str1, str2, 3);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcde";
+    str2 = "abxde";
+    r = Strncmp(str1, str2, 3);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcde";
+    str2 = "abcdea";
+    r = Strncmp(str1, str2, 3);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abxde";
+    str2 = "abcde";
+    r = Strncmp(str1, str2, 3);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcdea";
+    str2 = "abcde";
+    r = Strncmp(str1, str2, 3);
+    printf("str1和str2比较结果： %d\n", r);
+}
+
 int main()
 {
     //StrlenTest();
@@ -335,6 +448,9 @@ int main()
     //StrncatTips2Test();
 	//MemcpyTest1();
 	//MemcpyTest2();
-    StrCmpTest();
+    //StrcmpTest();
+    //MyStrcmpTest();
+    //StrncmpTest();
+    MyStrncmpTest();
 	return 0;
 }
