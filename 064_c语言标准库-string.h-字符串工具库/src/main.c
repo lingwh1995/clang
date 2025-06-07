@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <assert.h>
 
 /**
  * size_t strlen(const char *_Str)：返回字符串的字节长度，不包括末尾的空字符'\0'
@@ -24,6 +25,8 @@ int Strlen(const char* str)
     {
         return -1;
     }
+    // 或
+    //assert(NULL != str);
     int l = 0;
     while (str[l] != '\0')
     {
@@ -120,6 +123,12 @@ void StrcpyTest()
  */
 char* Strcpy(char* dest, const char* src)
 {
+    if(NULL == dest || NULL == src)
+    {
+        return NULL;
+    }
+    // 或
+    //assert(NULL != str1 && NULL != str2);
     char* ptr = dest;
     while (*dest++ = *src++);
     return ptr;
@@ -326,12 +335,18 @@ void StrcmpTest()
  * @param str1 第一个字符串
  * @param str2 第二个字符串
  */
-int Strcmp(const char* str1, const char* str2)
+int Strcmp1(const char* str1, const char* str2)
 {
-    while (*str1 == *str2 && *str1 != '\0' && *str2 != '\0')
+    if(NULL == str1 || NULL == str2)
     {
-        *str1++;
-        *str2++;
+        return -1;
+    }
+    // 或
+    //assert(NULL != str1 && NULL != str2);
+    while (*str1 != '\0' && *str2 != '\0' && *str1 == *str2)
+    {
+        str1++;
+        str2++;
     }
     return *str1 - *str2;
 }
@@ -339,27 +354,72 @@ int Strcmp(const char* str1, const char* str2)
 /**
  * 测试自定义方法实现字符串比较
  */
-void MyStrcmpTest()
+void MyStrcmp1Test()
 {
     const char* str1 = "abcde";
     const char* str2 = "abcde";
-    int r = Strcmp(str1, str2);
+    int r = Strcmp1(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
     str2 = "abxde";
-    r = Strcmp(str1, str2);
+    r = Strcmp1(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
     str2 = "abcdea";
-    r = Strcmp(str1, str2);
+    r = Strcmp1(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abxde";
     str2 = "abcde";
-    r = Strcmp(str1, str2);
+    r = Strcmp1(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcdea";
     str2 = "abcde";
-    r = Strcmp(str1, str2);
+    r = Strcmp1(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+}
+
+/**
+ * 自定义方法实现字符串比较
+ * @param str1 第一个字符串
+ * @param str2 第二个字符串
+ */
+int Strcmp2(const char* str1, const char* str2)
+{
+    if(NULL == str1 || NULL == str2)
+    {
+        return -1;
+    }
+    // 或
+    //assert(NULL != str1 && NULL != str2);
+    int k = 0;
+    while (((k = *str1 -*str2) == 0) && *str1++ && *str2++);
+    return k;
+}
+
+/**
+ * 测试自定义方法实现字符串比较
+ */
+void MyStrcmp2Test()
+{
+    const char* str1 = "abcde";
+    const char* str2 = "abcde";
+    int r = Strcmp2(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcde";
+    str2 = "abxde";
+    r = Strcmp2(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcde";
+    str2 = "abcdea";
+    r = Strcmp2(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abxde";
+    str2 = "abcde";
+    r = Strcmp2(str1, str2);
+    printf("str1和str2比较结果： %d\n", r);
+    str1 = "abcdea";
+    str2 = "abcde";
+    r = Strcmp2(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
 }
 
@@ -391,18 +451,23 @@ void StrncmpTest()
 }
 
 /**
- * TODO 思考 n-- 这个逻辑是否正确
  * 自定义方法实现字符串中前n个字符比较
  * @param str1 第一个字符串
  * @param str2 第二个字符串
  * @param n 比较到第几个位置就结束比较
  */
-int Strncmp(const char* str1, const char* str2, int n)
+int Strncmp(const char* str1, const char* str2, size_t n)
 {
-    while (*str1 == *str2 && *str1 != '\0' && *str2 != '\0' && --n > 0)
+    if(NULL == str1 || NULL == str2 || 0 == n)
     {
-        *str1++;
-        *str2++;
+        return -1;
+    }
+    // 或
+    //assert(NULL != str1 && NULL != str2 && 0 != n);
+    while (--n > 0 && *str1 != '\0' && *str2 != '\0' && *str1 == *str2)
+    {
+        str1++;
+        str2++;
     }
     return *str1 - *str2;
 }
@@ -434,6 +499,313 @@ void MyStrncmpTest()
     printf("str1和str2比较结果： %d\n", r);
 }
 
+/**
+ * @desc 从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * @param str 给定字符串
+ * @param c 给定字符
+ * @return 如果找到字符c，则返回指向该字符在字符串中第一次出现位置的指针。如果未找到字符c，则返回NULL指针。
+ * char *strchr (const char *str, int c)
+ */
+void StrchrTest()
+{
+    const char* str = "abccde";
+    char* p = strchr(str, 'c');
+    printf("数组地址 = %p\n", str);
+    printf("字符地址 = %p\n", p);
+    if(NULL != p)
+    {
+        printf("%c\n", *p);
+    }
+    else
+    {
+        printf("字符串中没有这个字符...\n");
+    }
+}
+
+/**
+ * 自己实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * @param str
+ * @param c
+ * @return
+ */
+char* MyStrchr(const char *str, int c)
+{
+    if(NULL == str)
+    {
+        return NULL;
+    }
+    // 特别注意这个写法：需要把str做一个类型转化
+    char* p = (char*)str;
+    while ('\0' != *p && *p != c)
+    {
+        p++;
+    }
+    if('\0' == *p)
+    {
+        p = NULL;
+    }
+    return p;
+}
+
+/**
+ * 测试自己实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * @return
+ */
+void MyStrchrTest()
+{
+    const char* str = "abccde";
+    char* p = MyStrchr(str, 'c');
+    printf("数组地址 = %p\n", str);
+    printf("字符地址 = %p\n", p);
+    if(NULL != p)
+    {
+        printf("%c\n", *p);
+    }
+    else
+    {
+        printf("字符串中没有这个字符...\n");
+    }
+}
+
+/**
+ * @desc 从尾到头在一个字符串中查找给定字符的第一个匹配之处
+ * @param str 给定字符串
+ * @param c 给定字符
+ * @return 如果找到字符c，则返回指向该字符在字符串中第一次出现位置的指针。如果未找到字符c，则返回NULL指针。
+ * char *strchr (const char *str, int c)
+ */
+void StrrchrTest()
+{
+    const char* str = "abccde";
+    char* p = strrchr(str, 'c');
+    printf("数组地址 = %p\n", str);
+    printf("字符地址 = %p\n", p);
+    if(NULL != p)
+    {
+        printf("%c\n", *p);
+    }
+    else
+    {
+        printf("字符串中没有这个字符...\n");
+    }
+}
+
+/**
+ * 自己实现从尾到头在一个字符串中查找给定字符的第一个匹配之处
+ * @param str
+ * @param c
+ * @return
+ */
+char* MyStrrchr1(const char *str, int c)
+{
+    if(NULL == str)
+    {
+        return NULL;
+    }
+    // 特别注意这个写法：需要把str做一个类型转化
+    char* p = (char*)str;
+    p = p + strlen(str) - 1;
+    // 注意：字符串是以 '\0' 结尾的，所以最后一个字符 = *(str-1)
+    while ((str-1) != p)
+    {
+        if(*p == c)
+        {
+            return p;
+        }
+        p--;
+    }
+    return NULL;
+}
+
+/**
+ * 测试自己实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * @return
+ */
+void MyStrrchr1Test()
+{
+    const char* str = "abccde";
+    char* p = MyStrrchr1(str, 'c');
+    printf("数组地址 = %p\n", str);
+    printf("字符地址 = %p\n", p);
+    if(NULL != p)
+    {
+        printf("%c\n", *p);
+    }
+    else
+    {
+        printf("字符串中没有这个字符...\n");
+    }
+}
+
+/**
+ * 自己实现从尾到头在一个字符串中查找给定字符的第一个匹配之处
+ * @param str
+ * @param c
+ * @return
+ */
+char* MyStrrchr2(const char *str, int c)
+{
+    if(NULL == str)
+    {
+        return NULL;
+    }
+    // 特别注意这个写法：需要把str做一个类型转化
+    char* p = (char*)str;
+    p = p + strlen(str);
+    // 注意：字符串是以 '\0' 结尾的，所以最后一个字符 = *(str-1)
+    while (str != p)
+    {
+        if(*(p - 1) == c)
+        {
+            return p - 1;
+        }
+        p--;
+    }
+    return NULL;
+}
+
+/**
+ * 测试自己实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * @return
+ */
+void MyStrrchr2Test()
+{
+    const char* str = "abccde";
+    char* p = MyStrrchr2(str, 'c');
+    printf("数组地址 = %p\n", str);
+    printf("字符地址 = %p\n", p);
+    if(NULL != p)
+    {
+        printf("%c\n", *p);
+    }
+    else
+    {
+        printf("字符串中没有这个字符...\n");
+    }
+}
+
+/**
+ * @desc 从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ * @param str 给定字符串
+ * @param substr 给定子串
+ * @return 如果找到子符substr，则返回指向该子串在字符串中第一次出现位置的指针。如果未找到子串substr，则返回NULL指针。
+ * char *strchr (const char *str, const char *substr)
+ */
+void StrstrTest()
+{
+    const char *str = "onetwothree";
+    const char *substr = "two";
+    char* p = strstr(str,substr);
+    if(NULL != p)
+    {
+        printf("%s\n", p);
+    }
+    else
+    {
+        printf("不匹配\n");
+    }
+}
+
+/**
+ * 自己实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ */
+char* Strstr1(const char *str, const char *substr) {
+    if (NULL == str || NULL == substr) {
+        return NULL;
+    }
+    if(strlen(str) < strlen(substr))
+    {
+        return NULL;
+    }
+    char *sp = (char *) str;
+    char *subp = (char *) substr;
+    while ('\0' != *sp && '\0' != *subp) {
+        if (*sp == *subp) {
+            sp++;
+            subp++;
+        } else {
+            sp++;
+            subp = (char *) substr;
+        }
+    }
+    if(*subp != *((char *) substr + strlen(substr)))
+    {
+        return NULL;
+    }
+    return sp - strlen(substr);
+}
+
+/**
+ * 测试自己实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ */
+void MyStrstr1Test()
+{
+    const char *str = "onetwothreetwooabc";
+    const char *substr = "abcd";
+    char* p = Strstr1(str,substr);
+    if(NULL != p)
+    {
+        printf("%s\n", p);
+    }
+    else
+    {
+        printf("不匹配\n");
+    }
+}
+
+/**
+ * 自己实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ */
+char* Strstr2(const char *str, const char *substr) {
+    if (NULL == str || NULL == substr) {
+        return NULL;
+    }
+    if(strlen(str) < strlen(substr))
+    {
+        return NULL;
+    }
+    int m = strlen(str);
+    int n = strlen(substr);
+    int i, j;
+    for(i = 0; i < m - n + 1; i++)
+    {
+        j = 0;
+        int k = i;
+        while (j < n && str[k] == substr[j])
+        {
+            k++;
+            j++;
+        }
+        if(j == n)
+        {
+            break;
+        }
+    }
+    if(substr[j - 1] != substr[n - 1])
+    {
+        return NULL;
+    }
+    return (char *) str + i;
+}
+
+/**
+ * 测试自己实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ */
+void MyStrstr2Test()
+{
+    const char *str = "onetwothreetwooabc";
+    const char *substr = "abcd";
+    char* p = Strstr2(str,substr);
+    if(NULL != p)
+    {
+        printf("%s\n", p);
+    }
+    else
+    {
+        printf("不匹配\n");
+    }
+}
+
 int main()
 {
     //StrlenTest();
@@ -449,8 +821,17 @@ int main()
 	//MemcpyTest1();
 	//MemcpyTest2();
     //StrcmpTest();
-    //MyStrcmpTest();
+    //MyStrcmp1Test();
+    //MyStrcmp2Test();
     //StrncmpTest();
-    MyStrncmpTest();
+    //MyStrncmpTest();
+    //StrchrTest();
+    //MyStrchrTest();
+    //StrrchrTest();
+    //MyStrrchr1Test();
+    //MyStrrchr2Test();
+    //StrstrTest();
+    //MyStrstr1Test();
+    MyStrstr2Test();
 	return 0;
 }

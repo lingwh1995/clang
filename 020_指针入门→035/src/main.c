@@ -122,4 +122,11 @@ int main()
     int* np = &n;
     // 指针是一个常量，所以放开会报错
     //&m = &n;
+
+    // 打印数组类型字符串
+    char str1[] = "hello";
+    printf("str1 = %s\n", str1);
+    // 打印指针类型字符串
+    char* str2 = "world";
+    printf("str2 = %s\n", str2);
 }
