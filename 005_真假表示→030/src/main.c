@@ -5,6 +5,7 @@
 /**
  * 判断真假
  * 		C语言中0代表假，非0代表真，如1就代表真
+ * 		C语言中 '\0' 的ASCII码是 0，所以 '\0' 代表假
  */
 void JudgeTrueOrFalse(int i)
 {
@@ -30,7 +31,6 @@ void C99Bool()
 	printf("false = %d 代表 假\n",b);
 }
 
-
 int main()
 {
 	int i = 0;
@@ -39,6 +39,7 @@ int main()
 	JudgeTrueOrFalse(i);
 	i = -1;
 	JudgeTrueOrFalse(i);
-	
+    i = '\0';
+    JudgeTrueOrFalse(i);
 	C99Bool();
 }

@@ -11,6 +11,8 @@ int main()
 	printf("字符 A 对应的ASCII值 %d\n", 'A');
 	printf("字符 Z 对应的ASCII值 %d\n", 'Z');
 	printf("字符 0 对应的ASCII值 %d\n", '0');
+    // 特别注意
+	printf("字符 '\\0' 对应的ASCII值 %d\n", '\0');
 	printf("字符 空格 对应的ASCII值 %d\n", ' ');
 
 	int c = 'a';

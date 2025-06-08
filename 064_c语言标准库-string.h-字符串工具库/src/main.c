@@ -9,11 +9,11 @@
 void StrlenTest()
 {
     char* s1 = "hello";
-    printf("strlen(s1) = %llu\n", strlen(s1));
+    printf("strlen(s1) = %ld\n", strlen(s1));
 
     char s2[50] = "hello";
-    printf("strlen(s2) = %llu\n", strlen(s2));
-    printf("sizeof(s2) = %llu\n", sizeof(s2));
+    printf("strlen(s2) = %ld\n", strlen(s2));
+    printf("sizeof(s2) = %ld\n", sizeof(s2));
 }
 
 /**
@@ -113,6 +113,14 @@ void StrcpyTest()
     char* str;
     strcpy(str, "hello world"); // 错误
     */
+
+    // strcpy()的连续赋值
+    char s1[] = "a1";
+    char s2[] = "b2";
+    char s3[] = "c3";
+    strcpy(s1,strcpy(s2, s3));
+    puts(s1);
+    //printf("s1 = %s\n", s1);
 }
 
 /**
@@ -121,7 +129,7 @@ void StrcpyTest()
  * @param src  源字符串
  * @return
  */
-char* Strcpy(char* dest, const char* src)
+char* Strcpy1(char* dest, const char* src)
 {
     if(NULL == dest || NULL == src)
     {
@@ -129,7 +137,44 @@ char* Strcpy(char* dest, const char* src)
     }
     // 或
     //assert(NULL != str1 && NULL != str2);
-    char* ptr = dest;
+    int i = 0;
+    while (src[i] != '\0')
+    {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+    return dest;
+}
+
+/**
+ * 自己编写算法实现字符串拷贝
+ */
+void MyStrcpy1Test()
+{
+    char src[] = "hello world";
+    char dest[25];
+    Strcpy1(dest, src);
+    printf("dest = %s\n", dest);
+}
+
+/**
+ * 自定义的字符串拷贝函数
+ * @param dest 目标字符串
+ * @param src  源字符串
+ * @return
+ */
+char* Strcpy2(char* dest, const char* src)
+{
+    if(NULL == dest || NULL == src)
+    {
+        return NULL;
+    }
+    // 或
+    //assert(NULL != str1 && NULL != str2);
+    // 把const char*类型转为char*
+    char* ptr = (char*)dest;
+    // 当复制到结尾符 '\0' 的时候，代码相当于 while('\0')， '\0' 的ASCII码是0，所以为假
     while (*dest++ = *src++);
     return ptr;
 }
@@ -137,11 +182,11 @@ char* Strcpy(char* dest, const char* src)
 /**
  * 自己编写算法实现字符串拷贝
  */
-void MyStrcpyTest()
+void MyStrcpy2Test()
 {
     char src[] = "hello world";
     char dest[25];
-    Strcpy(dest, src);
+    Strcpy2(dest, src);
     printf("dest = %s\n", dest);
 }
 
@@ -534,7 +579,7 @@ char* MyStrchr(const char *str, int c)
     {
         return NULL;
     }
-    // 特别注意这个写法：需要把str做一个类型转化
+    // 特别注意这个写法：需要把str做一个类型转化，把const char*转成char*类型
     char* p = (char*)str;
     while ('\0' != *p && *p != c)
     {
@@ -602,7 +647,7 @@ char* MyStrrchr1(const char *str, int c)
     {
         return NULL;
     }
-    // 特别注意这个写法：需要把str做一个类型转化
+    // 特别注意这个写法：需要把str做一个类型转化，把const char*转成char*类型
     char* p = (char*)str;
     p = p + strlen(str) - 1;
     // 注意：字符串是以 '\0' 结尾的，所以最后一个字符 = *(str-1)
@@ -649,7 +694,7 @@ char* MyStrrchr2(const char *str, int c)
     {
         return NULL;
     }
-    // 特别注意这个写法：需要把str做一个类型转化
+    // 特别注意这个写法：需要把str做一个类型转化，把const char*转成char*类型
     char* p = (char*)str;
     p = p + strlen(str);
     // 注意：字符串是以 '\0' 结尾的，所以最后一个字符 = *(str-1)
@@ -717,22 +762,25 @@ char* Strstr1(const char *str, const char *substr) {
     {
         return NULL;
     }
-    char *sp = (char *) str;
-    char *subp = (char *) substr;
-    while ('\0' != *sp && '\0' != *subp) {
-        if (*sp == *subp) {
-            sp++;
-            subp++;
-        } else {
-            sp++;
-            subp = (char *) substr;
+    int m = strlen(str);
+    int n = strlen(substr);
+    for(int i = 0; i < m - n + 1; i++)
+    {
+        // 每次开始比较时j指针回退到0位置
+        int j = 0;
+        // 每次开始比较时k指针的值取i指针的之，且将k指针回退到0位置，
+        int k = i;
+        while (str[k] == substr[j] && j < n)
+        {
+            k++;
+            j++;
+        }
+        if(j == n)
+        {
+            return (char *) str + i;
         }
     }
-    if(*subp != *((char *) substr + strlen(substr)))
-    {
-        return NULL;
-    }
-    return sp - strlen(substr);
+    return NULL;
 }
 
 /**
@@ -740,8 +788,8 @@ char* Strstr1(const char *str, const char *substr) {
  */
 void MyStrstr1Test()
 {
-    const char *str = "onetwothreetwooabc";
-    const char *substr = "abcd";
+    const char *str = "abccabcabbc";
+    const char *substr = "abca";
     char* p = Strstr1(str,substr);
     if(NULL != p)
     {
@@ -766,26 +814,25 @@ char* Strstr2(const char *str, const char *substr) {
     }
     int m = strlen(str);
     int n = strlen(substr);
-    int i, j;
-    for(i = 0; i < m - n + 1; i++)
+    int i = 0, j = 0;
+    while (i < m && j < n)
     {
-        j = 0;
-        int k = i;
-        while (j < n && str[k] == substr[j])
+        if(str[i] == substr[j])
         {
-            k++;
+            i++;
             j++;
         }
-        if(j == n)
+        else
         {
-            break;
+            i = i - j + 1;
+            j = 0;
         }
     }
-    if(substr[j - 1] != substr[n - 1])
+    if(j == n)
     {
-        return NULL;
+        return (char *)str + i - j;
     }
-    return (char *) str + i;
+    return NULL;
 }
 
 /**
@@ -793,8 +840,8 @@ char* Strstr2(const char *str, const char *substr) {
  */
 void MyStrstr2Test()
 {
-    const char *str = "onetwothreetwooabc";
-    const char *substr = "abcd";
+    const char *str = "abccabcabbc";
+    const char *substr = "cca";
     char* p = Strstr2(str,substr);
     if(NULL != p)
     {
@@ -810,8 +857,9 @@ int main()
 {
     //StrlenTest();
     //MyStrlenTest();
-    //StrcpyTest();
-    //MyStrcpyTest();
+    StrcpyTest();
+    //MyStrcpy1Test();
+    //MyStrcpy2Test();
     //StrncpyTest();
     //StrncpyTips1Test();
     //StrncpyTips2Test();
@@ -832,6 +880,7 @@ int main()
     //MyStrrchr2Test();
     //StrstrTest();
     //MyStrstr1Test();
-    MyStrstr2Test();
+    //MyStrstr2Test();
+    //MyStrstr2Test();
 	return 0;
 }
