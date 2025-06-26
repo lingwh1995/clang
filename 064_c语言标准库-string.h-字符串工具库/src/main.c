@@ -275,6 +275,46 @@ void StrcatTest()
     char str2[6] = "world";
     strcat(str1, str2);
     puts(str1); // "helloworld"
+
+    char str3[12] = "hello";
+    char str4[6] = "world";
+    char str5[6] = "abc";
+    strcat(strcat(str3, str4), str5);
+    puts(str3); // "helloworldabc"
+}
+
+/**
+ *
+ */
+char* Strcat(const char* str1, const char* str2)
+{
+    if(NULL == str1 || NULL == str2)
+    {
+        return NULL;
+    }
+    char* pStr1 = str1;
+    pStr1 = pStr1 + strlen(str1);
+    const char* pStr2 = str2;
+    while(*pStr2 != '\0')
+    {
+        *pStr1 = *pStr2;
+        //printf("%c\n", *pStr2);
+        pStr2++;
+        pStr1++;
+    }
+    *pStr1 = '\0';
+    return pStr1;
+}
+
+/**
+ * 测试自定义方法实现字符串连接
+ */
+void MyStrcatTest()
+{
+    char str1[12] = "hello";
+    char str2[6] = "world";
+    Strcat(str1, str2);
+    puts(str1); // "helloworld"
 }
 
 /**
@@ -857,13 +897,14 @@ int main()
 {
     //StrlenTest();
     //MyStrlenTest();
-    StrcpyTest();
+    //StrcpyTest();
     //MyStrcpy1Test();
     //MyStrcpy2Test();
     //StrncpyTest();
     //StrncpyTips1Test();
     //StrncpyTips2Test();
     //StrcatTest();
+    MyStrcatTest();
     //StrncatTest();
     //StrncatTips2Test();
 	//MemcpyTest1();
