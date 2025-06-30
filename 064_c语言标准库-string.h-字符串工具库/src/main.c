@@ -286,24 +286,15 @@ void StrcatTest()
 /**
  * 自定义方法实现字符串拷贝
  */
-char* Strcat1(const char* str1, const char* str2)
+char* Strcat1(char* dest, const char* src)
 {
-    if(NULL == str1 || NULL == str2)
+    if(NULL == dest || NULL == src)
     {
         return NULL;
     }
-    char* pStr1 = str1;
-    pStr1 = pStr1 + strlen(str1);
-    const char* pStr2 = str2;
-    while(*pStr2 != '\0')
-    {
-        *pStr1 = *pStr2;
-        //printf("%c\n", *pStr2);
-        pStr2++;
-        pStr1++;
-    }
-    *pStr1 = '\0';
-    return pStr1;
+    char* cp = dest + strlen(dest);
+    strcpy(cp, src);
+    return dest;
 }
 
 /**
@@ -320,27 +311,22 @@ void MyStrcatTest1()
 /**
  * 自定义方法实现字符串拷贝
  */
-char* Strcat2(const char* str1, const char* str2)
+char* Strcat2(char* dest, const char* src)
 {
-    if(NULL == str1 || NULL == str2)
+    if(NULL == dest || NULL == src)
     {
         return NULL;
     }
-    char* pStr1 = str1;
-    while(*pStr1 != '\0')
+    while(*dest != '\0')
     {
-        pStr1++;
+        dest++;
     }
-    const char* pStr2 = str2;
-    while(*pStr2 != '\0')
+    while(*dest = *src)
     {
-        *pStr1 = *pStr2;
-        //printf("%c\n", *pStr2);
-        pStr2++;
-        pStr1++;
+        dest++;
+        src++;
     }
-    *pStr1 = '\0';
-    return pStr1;
+    return dest;
 }
 
 /**
@@ -941,8 +927,8 @@ int main()
     //StrncpyTips1Test();
     //StrncpyTips2Test();
     //StrcatTest();
-    //MyStrcatTest1();
-    MyStrcatTest2();
+    MyStrcatTest1();
+    //MyStrcatTest2();
     //StrncatTest();
     //StrncatTips2Test();
 	//MemcpyTest1();
