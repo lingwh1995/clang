@@ -284,9 +284,9 @@ void StrcatTest()
 }
 
 /**
- *
+ * 自定义方法实现字符串拷贝
  */
-char* Strcat(const char* str1, const char* str2)
+char* Strcat1(const char* str1, const char* str2)
 {
     if(NULL == str1 || NULL == str2)
     {
@@ -309,11 +309,48 @@ char* Strcat(const char* str1, const char* str2)
 /**
  * 测试自定义方法实现字符串连接
  */
-void MyStrcatTest()
+void MyStrcatTest1()
 {
     char str1[12] = "hello";
     char str2[6] = "world";
-    Strcat(str1, str2);
+    Strcat1(str1, str2);
+    puts(str1); // "helloworld"
+}
+
+/**
+ * 自定义方法实现字符串拷贝
+ */
+char* Strcat2(const char* str1, const char* str2)
+{
+    if(NULL == str1 || NULL == str2)
+    {
+        return NULL;
+    }
+    char* pStr1 = str1;
+    while(*pStr1 != '\0')
+    {
+        pStr1++;
+    }
+    const char* pStr2 = str2;
+    while(*pStr2 != '\0')
+    {
+        *pStr1 = *pStr2;
+        //printf("%c\n", *pStr2);
+        pStr2++;
+        pStr1++;
+    }
+    *pStr1 = '\0';
+    return pStr1;
+}
+
+/**
+ * 测试自定义方法实现字符串连接
+ */
+void MyStrcatTest2()
+{
+    char str1[12] = "hello";
+    char str2[6] = "world";
+    Strcat2(str1, str2);
     puts(str1); // "helloworld"
 }
 
@@ -904,7 +941,8 @@ int main()
     //StrncpyTips1Test();
     //StrncpyTips2Test();
     //StrcatTest();
-    MyStrcatTest();
+    //MyStrcatTest1();
+    MyStrcatTest2();
     //StrncatTest();
     //StrncatTips2Test();
 	//MemcpyTest1();
