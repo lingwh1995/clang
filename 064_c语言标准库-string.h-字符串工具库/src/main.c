@@ -69,6 +69,8 @@ void StrcpyTest()
     char* s2;
     s1 = "abc";
     s2 = s1;
+    printf("s1 = %s\n", s1);
+    printf("s2 = %s\n", s2);
     */
 
     char* p = NULL;
@@ -78,7 +80,7 @@ void StrcpyTest()
     // 特别注意：dest_1数组的长度要大于等于sizeof(src_1)，否则会出问题
     char dest_1[100];
     p = strcpy(dest_1, src_1);
-    dest_1[0] = 'O';
+    dest_1[0] = 'X';
     // 使用puts()输出字符串
     /*
     puts(src_1);
@@ -113,7 +115,7 @@ void StrcpyTest()
     char* str;
     strcpy(str, "hello world"); // 错误
     */
-
+    /**/
     // strcpy()的连续赋值
     char s1[] = "a1";
     char s2[] = "b2";
@@ -148,7 +150,7 @@ char* Strcpy1(char* dest, const char* src)
 }
 
 /**
- * 自己编写算法实现字符串拷贝
+ * 自定义方法编写算法实现字符串拷贝
  */
 void MyStrcpy1Test()
 {
@@ -180,7 +182,7 @@ char* Strcpy2(char* dest, const char* src)
 }
 
 /**
- * 自己编写算法实现字符串拷贝
+ * 自定义方法编写算法实现字符串拷贝
  */
 void MyStrcpy2Test()
 {
@@ -631,7 +633,7 @@ void StrchrTest()
 }
 
 /**
- * 自己实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * 自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
  * @param str
  * @param c
  * @return
@@ -656,7 +658,7 @@ char* MyStrchr(const char *str, int c)
 }
 
 /**
- * 测试自己实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
  * @return
  */
 void MyStrchrTest()
@@ -699,7 +701,7 @@ void StrrchrTest()
 }
 
 /**
- * 自己实现从尾到头在一个字符串中查找给定字符的第一个匹配之处
+ * 自定义方法实现从尾到头在一个字符串中查找给定字符的第一个匹配之处
  * @param str
  * @param c
  * @return
@@ -726,7 +728,7 @@ char* MyStrrchr1(const char *str, int c)
 }
 
 /**
- * 测试自己实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
  * @return
  */
 void MyStrrchr1Test()
@@ -746,7 +748,7 @@ void MyStrrchr1Test()
 }
 
 /**
- * 自己实现从尾到头在一个字符串中查找给定字符的第一个匹配之处
+ * 自定义方法实现从尾到头在一个字符串中查找给定字符的第一个匹配之处
  * @param str
  * @param c
  * @return
@@ -773,7 +775,7 @@ char* MyStrrchr2(const char *str, int c)
 }
 
 /**
- * 测试自己实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
  * @return
  */
 void MyStrrchr2Test()
@@ -815,7 +817,7 @@ void StrstrTest()
 }
 
 /**
- * 自己实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ * 自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
  */
 char* Strstr1(const char *str, const char *substr) {
     if (NULL == str || NULL == substr) {
@@ -847,7 +849,7 @@ char* Strstr1(const char *str, const char *substr) {
 }
 
 /**
- * 测试自己实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ * 测试自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
  */
 void MyStrstr1Test()
 {
@@ -865,7 +867,7 @@ void MyStrstr1Test()
 }
 
 /**
- * 自己实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ * 自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
  */
 char* Strstr2(const char *str, const char *substr) {
     if (NULL == str || NULL == substr) {
@@ -899,7 +901,7 @@ char* Strstr2(const char *str, const char *substr) {
 }
 
 /**
- * 测试自己实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ * 测试自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
  */
 void MyStrstr2Test()
 {
@@ -916,6 +918,79 @@ void MyStrstr2Test()
     }
 }
 
+/**
+ * 测试将字符串转换为小写格式
+ */
+void StrlwrTest()
+{
+    char s[] = "AbC";
+    printf("s = %s\n", strlwr(s));
+}
+
+/**
+ * 测试将字符串转换为大写格式
+ */
+void StruprTest()
+{
+    char s[] = "AbC";
+    printf("s = %s\n", strupr(s));
+}
+
+/**
+ * 测试字符串复制函数strdup
+ */
+void StrDupTest()
+{
+    const char* original = "Hello World!";
+    char *duplicate = strdup(original);
+    if(NULL != duplicate)
+    {
+        printf("original  = %s\n", original);
+        printf("duplicate = %s\n", duplicate);
+        // strdup使用malloc分配内存，因此要使用free函数来释放这块儿内存，以避免内存泄漏
+        free(duplicate);
+    }
+    else
+    {
+        printf("Memory allocate failed\n");
+    }
+}
+
+/**
+ * 自定义方法实现字符串复制
+ */
+char* MyStrDup(const char* str)
+{
+    if(NULL == str)
+    {
+        return NULL;
+    }
+    int len = strlen(str) + 1;
+    char* s = (char*)malloc(sizeof(char) * len);
+    strcpy(s, str);
+    return s;
+}
+
+/**
+ * 测试自定义方法实现字符串复制
+ */
+void MyStrDupTest()
+{
+    const char* original = "Hello World!";
+    char *duplicate = MyStrDup(original);
+    if(NULL != duplicate)
+    {
+        printf("original  = %s\n", original);
+        printf("duplicate = %s\n", duplicate);
+        // strdup使用malloc分配内存，因此要使用free函数来释放这块儿内存，以避免内存泄漏
+        free(duplicate);
+    }
+    else
+    {
+        printf("Memory allocate failed\n");
+    }
+}
+
 int main()
 {
     //StrlenTest();
@@ -927,7 +1002,7 @@ int main()
     //StrncpyTips1Test();
     //StrncpyTips2Test();
     //StrcatTest();
-    MyStrcatTest1();
+    //MyStrcatTest1();
     //MyStrcatTest2();
     //StrncatTest();
     //StrncatTips2Test();
@@ -947,5 +1022,9 @@ int main()
     //MyStrstr1Test();
     //MyStrstr2Test();
     //MyStrstr2Test();
+    //StrlwrTest();
+    //StruprTest();
+    //StrDupTest();
+    MyStrDupTest();
 	return 0;
 }
