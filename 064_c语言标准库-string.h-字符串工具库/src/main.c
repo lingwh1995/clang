@@ -325,6 +325,7 @@ char* Strcat2(char* dest, const char* src)
     }
     while(*dest = *src)
     {
+        printf("%c\n", (*dest = *src));
         dest++;
         src++;
     }
@@ -1003,7 +1004,7 @@ int main()
     //StrncpyTips2Test();
     //StrcatTest();
     //MyStrcatTest1();
-    //MyStrcatTest2();
+    MyStrcatTest2();
     //StrncatTest();
     //StrncatTips2Test();
 	//MemcpyTest1();
