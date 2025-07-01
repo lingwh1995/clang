@@ -957,7 +957,7 @@ void StrDupTest()
 }
 
 /**
- * 自定义方法实现字符串复制
+ * 自定义方法实现strdup方式字符串复制
  */
 char* MyStrDup(const char* str)
 {
@@ -972,7 +972,7 @@ char* MyStrDup(const char* str)
 }
 
 /**
- * 测试自定义方法实现字符串复制
+ * 测试自定义方法实现strdup方式字符串复制
  */
 void MyStrDupTest()
 {
