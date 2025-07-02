@@ -966,9 +966,9 @@ char* MyStrDup(const char* str)
         return NULL;
     }
     int len = strlen(str) + 1;
-    char* s = (char*)malloc(sizeof(char) * len);
-    strcpy(s, str);
-    return s;
+    char* dest = (char*)malloc(sizeof(char) * len);
+    strcpy(dest, str);
+    return dest;
 }
 
 /**
