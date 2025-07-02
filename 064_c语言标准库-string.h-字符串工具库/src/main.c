@@ -970,6 +970,10 @@ void StruprTest()
 
 /**
  * 测试字符串复制函数strdup
+ * 注意事项：
+ *     strdup 的可移植性：非C标准函数，需确保环境支持（如Windows需 _strdup）
+ *     内存泄漏：strdup 返回的指针必须用 free() 释放
+ *     错误处理：strdup 可能返回 NULL，需检查后再使用
  */
 void StrDupTest()
 {
