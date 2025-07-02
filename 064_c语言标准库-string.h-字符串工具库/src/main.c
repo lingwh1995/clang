@@ -17,9 +17,9 @@ void StrlenTest()
 }
 
 /**
- * 自定义方法计算字符串长度
+ * 自定义方法计算字符串长度方式一
  */
-int Strlen(const char* str)
+int Strlen1(const char* str)
 {
     if(NULL == str)
     {
@@ -36,12 +36,42 @@ int Strlen(const char* str)
 }
 
 /**
- * 测试自定义方法计算字符串长度
+ * 测试自定义方法计算字符串长度方式一
  */
-void MyStrlenTest()
+void MyStrlen1Test()
 {
     const char* str = "hello world";
-    int length = Strlen(str);
+    int length = Strlen1(str);
+    printf("自定义函数 length = %d\n", length);
+}
+
+
+/**
+ * 自定义方法计算字符串长度方式二：利用指针相减的特性
+ */
+int Strlen2(const char* str)
+{
+    if(NULL == str)
+    {
+        return -1;
+    }
+    // 或
+    //assert(NULL != str);
+    char* cp = (char*)str;
+    while(*cp != '\0')
+    {
+        cp++;
+    }
+    return (int)(cp - str);
+}
+
+/**
+ * 测试自定义方法计算字符串长度方式二：利用指针相减的特性
+ */
+void MyStrlen2Test()
+{
+    const char* str = "hello world";
+    int length = Strlen2(str);
     printf("自定义函数 length = %d\n", length);
 }
 
@@ -325,6 +355,7 @@ char* Strcat2(char* dest, const char* src)
     }
     while(*dest = *src)
     {
+        // 打印的是右边的值，因为是将右边的值赋值给左边的值
         printf("%c\n", (*dest = *src));
         dest++;
         src++;
@@ -995,7 +1026,8 @@ void MyStrDupTest()
 int main()
 {
     //StrlenTest();
-    //MyStrlenTest();
+    //MyStrlen1Test();
+    MyStrlen2Test();
     //StrcpyTest();
     //MyStrcpy1Test();
     //MyStrcpy2Test();
@@ -1004,7 +1036,7 @@ int main()
     //StrncpyTips2Test();
     //StrcatTest();
     //MyStrcatTest1();
-    MyStrcatTest2();
+    //MyStrcatTest2();
     //StrncatTest();
     //StrncatTips2Test();
 	//MemcpyTest1();
@@ -1026,6 +1058,6 @@ int main()
     //StrlwrTest();
     //StruprTest();
     //StrDupTest();
-    MyStrDupTest();
+    //MyStrDupTest();
 	return 0;
 }
