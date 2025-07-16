@@ -5,16 +5,17 @@
 unsigned char* Hex2ByteArr(char *puchMsg);
 void PrintDecAndHex(int crcDec);
 unsigned short CRC_CCITT_XModem(unsigned char *puchMsg, unsigned int usDataLen);
+unsigned short CRC16(unsigned char *puchMsg, unsigned int usDataLen);
 
 
 int main()
 {
-    char *hex = "000199999999999999999101250428110500ffb9001c1f383636383737303739373532343238383938363038353831303234343031343434323000000042433935434e560101000126799175";
+    char *hex = "A78230130000250716110627";
     unsigned char *byteArr = Hex2ByteArr(hex);
     int len = strlen(hex) / 2;
 
     // CRC_CCITT_XModem
-	unsigned short crcDec = CRC_CCITT_XModem(byteArr,len);
+	unsigned short crcDec = CRC16(byteArr,len);
 	PrintDecAndHex(crcDec);
 	return 0;
 }
@@ -77,4 +78,25 @@ unsigned short CRC_CCITT_XModem(unsigned char *puchMsg, unsigned int usDataLen)
 		}
 	}
 	return (wCRCin);
+}
+
+/**
+ * CRC16
+ * @param puchMsg 要进行crc计算的字符串
+ * @param usDataLen 要进行crc计算的字符串的长度
+ */
+unsigned short CRC16(unsigned char *puchMsg, unsigned int usDataLen)
+{
+    unsigned short wCRCin = 0x0000; unsigned short wCPoly = 0x1021;
+    unsigned char wChar = 0;
+    while (usDataLen--)
+    {
+        wChar = *(puchMsg++); wCRCin ^= (wChar << 8); for(int i = 0;i < 8;i++)
+        {
+            if(wCRCin & 0x8000)
+                wCRCin = (wCRCin << 1) ^ wCPoly; else
+                wCRCin = wCRCin << 1;
+        }
+    }
+    return (wCRCin) ;
 }
