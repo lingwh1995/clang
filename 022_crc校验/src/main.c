@@ -10,7 +10,7 @@ unsigned short CRC16(unsigned char *puchMsg, unsigned int usDataLen);
 
 int main()
 {
-    char *hex = "A78230130000250716110627";
+    char *hex = "AC8930130000250716123357";
     unsigned char *byteArr = Hex2ByteArr(hex);
     int len = strlen(hex) / 2;
 
