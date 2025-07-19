@@ -7,7 +7,10 @@ void PrintDecAndHex(int crcDec);
 unsigned short CRC_CCITT_XModem(unsigned char *puchMsg, unsigned int usDataLen);
 unsigned short CRC16(unsigned char *puchMsg, unsigned int usDataLen);
 
-
+/**
+ * C语言无类型指针（）
+ * @return
+ */
 int main()
 {
     char *hex = "AC8930130000250716123357";
