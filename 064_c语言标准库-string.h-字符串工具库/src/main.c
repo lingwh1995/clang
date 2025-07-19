@@ -1133,8 +1133,10 @@ char* my_memset_test()
  */
 void memcmp_test()
 {
-
-
+	int arr_1[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	int arr_2[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 20 };
+	int flag = memcmp(arr_1, arr_2, sizeof(arr_1));
+	printf("flag = %d\n", flag);
 }
 
 /**
@@ -1190,6 +1192,7 @@ int main()
     //strdup_test();
     //my_strdup_test();
 	//memset_test();
-	my_memset_test();
+	//my_memset_test();
+	memcmp_test();
 	return 0;
 }
