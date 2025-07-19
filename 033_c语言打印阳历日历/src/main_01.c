@@ -4,15 +4,15 @@
 /**
  * 2022年版
  */
-void print_calendar_(int year);
+void print_calendar(int year);
 
 #if 0
 #endif
 int main()
 {
     //输入年份
-    int year = 2023;
-    print_calendar_(year);
+    int year = 2025;
+    print_calendar(year);
 }
 
 /**
@@ -100,7 +100,7 @@ int get_day_of_week(int year, int month, int day)
  * @param day 这个月总共有多少天
  * @param wk  这个月的第1天是星期几
  */
-void print_calendar_(int year)
+void print_calendar(int year)
 {
     //当前年份
     for (int i = 1; i <= 12; i++)

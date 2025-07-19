@@ -233,7 +233,7 @@ void my_strcpy_2_test()
 *       2.strncpy()也可以用来拷贝部分字符串
 * char * strncpy( char * dest, const char * src, size_t n );
 */
-void strncpy_test()
+void strncpy_test_1()
 {
     char* p = NULL;
 
@@ -274,7 +274,7 @@ void strncpy_test()
 /**
  * strncpy()：演示src字符串的长度超过了dest字符串的长度，参数n的最大值 sizeof(dest) - 1，因为要留一个字节的空间存储结尾符 '\0'
  */
-void strncpy_tips_1_test()
+void strncpy_test_2()
 {
     char src[] = "Hello, world!";
     char dest[5];
@@ -285,7 +285,7 @@ void strncpy_tips_1_test()
 /**
  * strncpy()：演示拷贝部分字符串
  */
-void strncpy_tips_2_test()
+void strncpy_test_3()
 {
     char src[] = "Hello, world!";
     char dest[50];
@@ -384,7 +384,7 @@ void my_strcat_2_test()
  *       2.strncat()总是会在拼接结果的结尾，自动添加空字符\0，所以第三个参数的最大值，应该是str1的变量长度减去str1的字符串长度，再减去1
  * char* strcat(char* str1, const char* str2, size_t count);
  */
-void strncat_test()
+void strncat_test_1()
 {
     char str1[12] = "hello";
     char str2[6] = "world";
@@ -396,7 +396,7 @@ void strncat_test()
  * 下面示例中，str1的变量长度是10，字符长度是6，两者相减后再减去1，得到3，表明str1最多可以再添加3个字符，所以得到的结果是MondayTue。
  * 注意：即使count的值设置为5，大于3了，程序可执行，并且不会报错，但是拼接出来的str1没有结尾符'\0'，这个只是一个字符数组，并不是一个字符串，由此可见，c语言很自由，很多地方依赖程序员自己控制
  */
-void strncat_tips_2_test()
+void strncat_test_2()
 {
     char str1[10] = "Monday";
     char str2[8] = "Tuesday";
@@ -1035,14 +1035,14 @@ int main()
     //strcpy_test();
     //my_strcpy_1_test();
     //my_strcpy_2_test();
-    //strncpy_test();
-    //strncpy_tips_1_test();
-    //strncpy_tips_2_test();
+    //strncpy_test_1();
+    //strncpy_test_2();
+    //strncpy_test_3();
     //strcat_test();
     //my_strcat_1_test();
     //my_strcat_2_test();
-    //strncat_test();
-    //strncat_tips_2_test();
+    //strncat_test_1();
+    //strncat_test_2();
 	//memcpy_test_1();
 	//memcpy_test_2();
     //strcmp_test();

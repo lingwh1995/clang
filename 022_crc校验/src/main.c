@@ -17,9 +17,8 @@ int main()
     unsigned char *byte_arr = hex2byte_arr(hex);
     int len = strlen(hex) / 2;
 
-    // crc_ccitt_xmodem
-	unsigned short crcDec = crc16(byte_arr,len);
-	print_dec_and_hex(crcDec);
+	unsigned short crc_dec = crc16(byte_arr,len);
+	print_dec_and_hex(crc_dec);
 	return 0;
 }
 
@@ -102,4 +101,27 @@ unsigned short crc16(unsigned char *puchMsg, unsigned int usDataLen)
         }
     }
     return (wCRCin) ;
+}
+
+
+unsigned int MathCrc16(unsigned  char  *ptr, unsigned  int  len)
+{
+	unsigned int crc_val=0xffff;
+	unsigned int tmp;
+	unsigned int i;
+
+	while (len>0)
+
+	{
+		crc_val ^= *ptr;
+		ptr++;
+		for(i=0;i<8;i++)
+		{
+			tmp = crc_val;
+			crc_val >>= 1;		// CRC校验字节的右移，最低位到C，最高位补0
+			if ((tmp & 0x01)==1)crc_val ^= 0xA001;//采用的多项式是：0xA001
+		}
+		len--;
+	}
+	return(crc_val);
 }
