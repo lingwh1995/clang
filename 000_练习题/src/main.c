@@ -45,7 +45,7 @@
 /**
  * 001.循环打印 a-g 方式一：不使用取余运算
  */
-void Question_001_LoopPrintAToG()
+void question_001_loop_print_a2g()
 {
 	char str[] = "abcdefg";
 	int len = strlen(str);
@@ -68,7 +68,7 @@ void Question_001_LoopPrintAToG()
 /**
  * 002.循环打印 a-g 方式二：使用取余运算
  */
-void Question_002_LoopPrintAToG()
+void question_002_loop_print_a2g()
 {
 	char str[] = "abcdefg";
 	int len = strlen(str);
@@ -90,7 +90,7 @@ void Question_002_LoopPrintAToG()
  * 		a.找出a和b中最小的数，把这个数赋值给c
  * 		b.第一个满足 a%c==0 && b%c==0 的数就是a和b的最大公约数
  */
-void Question_003_GreatestCommonDivisor()
+void question_003_gcd()
 {
 	int a, b;
 	scanf("%d %d", &a, &b);
@@ -113,7 +113,7 @@ void Question_003_GreatestCommonDivisor()
  * 	    	 gcd(18,12) = gcd(12, 6);
  * 	         gcd(12,6)  = gcd(6, 0);
  */
-void Question_004_GreatestCommonDivisor()
+void question_004_gcd()
 {
 	int a, b, mod;
 	scanf("%d %d", &a, &b);
@@ -131,7 +131,7 @@ void Question_004_GreatestCommonDivisor()
  * 		公式：gcd(a, b) = gcd(b, a - b);
  * 		注意：a<b时，要先交换a、b两个数的位置再进行相减
  */
-void Question_005_GreatestCommonDivisor()
+void question_005_gcd()
 {
 	int a, b, diff;
 	scanf("%d %d", &a, &b);
@@ -153,7 +153,7 @@ void Question_005_GreatestCommonDivisor()
 /**
  * 006.求最小公倍数 方式一：暴力穷举
  */
-void Question_006_LeastCommonMultiple()
+void question_006_lcm()
 {
 	int a, b, lcm;
 	scanf("%d %d", &a, &b);
@@ -183,7 +183,7 @@ int gcd(int a, int b)
 	}
 	return a;
 }
-void Question_007_LeastCommonMultiple()
+void question_007_lcm()
 {
 	int a, b, lcm;
 	scanf("%d %d", &a, &b);
@@ -194,7 +194,7 @@ void Question_007_LeastCommonMultiple()
 /**
  * 008.求最小公倍数 方式三：最小i值法
  */
-void Question_008_LeastCommonMultiple()
+void question_008_lcm()
 {
 	int a, b, lcm;
 	scanf("%d %d", &a, &b);
@@ -210,7 +210,7 @@ void Question_008_LeastCommonMultiple()
 /**
  * 009.输入三个整型数据，求最小值
  */ 
-void Question_009_GetMinValue()
+void question_009_get_min_value()
 {
 	printf("请输入三个整型数据，使用空格分隔:\n");
 	int a, b, c, min;
@@ -223,7 +223,7 @@ void Question_009_GetMinValue()
 /**
  * 010.输入三个整型数据，求中间值
  */ 
-void Question_010_GetMidValue()
+void question_010_get_mid_value()
 {
 	printf("请输入三个整型数据，使用空格分隔:\n");
 	int a, b, c, min, mid, max;
@@ -241,7 +241,7 @@ void Question_010_GetMidValue()
 /**
  * 011.输入三个整型数据，求最大值
  */ 
-void Question_011_GetMaxValue()
+void question_011_get_max_value()
 {
 	printf("请输入三个整型数据，使用空格分隔:\n");
 	int a, b, c, max;
@@ -254,7 +254,7 @@ void Question_011_GetMaxValue()
 /**
  * 012.统计字符串中一共有多少个单词
  */ 
-void Question_012_CountWord()
+void question_012_count_word()
 {
 	char str[] = " one  two   three    four     five ";
     int j;
@@ -280,7 +280,7 @@ void Question_012_CountWord()
 /**
  * 013.小球从100米落下,每次落地后跳回原来的高度一半，再落下，求它在第10次落下时共经过多少米?反弹高度是多少?
  */
-void Question_013_BallFalls()
+void question_013_ball_falls()
 {
     //下落经过的总高度
     double sumHeight = 100.00;
@@ -301,19 +301,19 @@ void Question_013_BallFalls()
  * 月份     1       2       3       4       5       6       7       8
  * 对数     1       1       2       3       5       8       13      21
  */
-int RabbitCount(int m)
+int rabbit_count(int m)
 {
 	if(m == 1 || m == 2)
 	{
 		return 1;
 	}
-	return RabbitCount(m-1) + RabbitCount(m-2);
+	return rabbit_count(m-1) + rabbit_count(m-2);
 }
 
-void Question_014_RabbitCount_Recursion()
+void question_014_rabbit_count_recursion()
 {
 	int m = 8;
-	int totalRabbit = RabbitCount(m);
+	int totalRabbit = rabbit_count(m);
 	printf("第%d个月兔子总数 = %d\n", m, totalRabbit);
 }
 
@@ -323,7 +323,7 @@ void Question_014_RabbitCount_Recursion()
  * 月份     1       2       3       4       5       6       7       8
  * 对数     1       1       2       3       5       8       13      21
  */
-void Question_015_RabbitCount_No_Recursion()
+void question_015_rabbit_count_no_recursion()
 {
     //c代表后续月份兔子个数
     int a = 1, b = 1, c = 1, m = 10;
@@ -339,7 +339,7 @@ void Question_015_RabbitCount_No_Recursion()
 /**
  * 016.牛顿迭代法求平方根，要求两次求出的平方根的差的绝对值小于0.00001
  */
-void Question_016_NewtonRaphson_Method_Sqrt()
+void question_016_newton_raphson_method_sqrt()
 {
 	double d;
     printf("请输入一个浮点类型数据：\n");
@@ -358,7 +358,7 @@ void Question_016_NewtonRaphson_Method_Sqrt()
 /**
  * 017.如果一个数等于它的因子之和，则这个数称为完数 6 = 1 + 2 + 3，找出1000以内的所有完数
  */
-void Question_017_PerfectNumber()
+void question_017_perfect_number()
 {
     int n = 1000;
     for (int i = 2; i <= n; i++)
@@ -381,7 +381,7 @@ void Question_017_PerfectNumber()
 /**
  * 018.如果一个数等于它的因子之和，则这个数称为完数 6 = 1 + 2 + 3，找出1000以内的所有完数和该完数的因数（方式一）
  */
-void Question_018_PerfectNumberFactor()
+void question_018_perfect_number_factor()
 {
     int n = 1000;
     for (int i = 2; i <= n; i++)
@@ -412,7 +412,7 @@ void Question_018_PerfectNumberFactor()
 /**
  * 019.如果一个数等于它的因子之和，则这个数称为完数 6 = 1 + 2 + 3，找出1000以内的所有完数和该完数的因数（方式二）
  */
-void Question_019_PerfectNumberFactor()
+void question_019_perfect_number_factor()
 {
     int n = 1000;
     for (int i = 2; i <= n; i++)
@@ -443,7 +443,7 @@ void Question_019_PerfectNumberFactor()
 /**
  * 020.打印九九乘法表
  */
-void Question_020_MultiplicationTable()
+void question_020_multiplication_table()
 {
 	for(int i=1; i<=9; i++)
 	{
@@ -458,7 +458,7 @@ void Question_020_MultiplicationTable()
 /**
  * 021.找出用户输入的一串数字中的最大数，程序需要提示用户一个一个的输入，当用户输入0或负数时，程序显示已经输入的最大非负数
  */
-void Question_021_GetMaxInputValue()
+void question_021_get_max_input_value()
 {
     int input, max=0;
     while(input>0)
@@ -474,7 +474,7 @@ void Question_021_GetMaxInputValue()
 /**
  * 022.随机生成1-100之间的数字请人猜，如果是猜对了结束游戏，如果猜错则继续猜并提示所猜的数是大于还是小于所指定的数，最终提示猜对所用次数
  */ 
-void Question_022_GuessNumber()
+void question_022_guess_number()
 {
     srand((unsigned)time(NULL));
     int r = rand() % 10;
@@ -508,7 +508,7 @@ void Question_022_GuessNumber()
  * 判断当前年份是否是闰年(闰年全年366天，2月29天，平年全年365天，2月28天)
  * @param year 当前年份
  */ 
-bool IsLeapYear(int year)
+bool is_leap_year(int year)
 {
     return (year%4 == 0 && year%100 != 0) || (year%400 == 0);
 }
@@ -518,13 +518,13 @@ bool IsLeapYear(int year)
  * @param year 当前年份
  * @param month 当前月份
  */ 
-int GetCurrentMonthDays(int year, int month)
+int get_current_month_days(int year, int month)
 {
     int days = 31;
     switch(month)
     {
         case 2:
-            days = IsLeapYear(year) ? 29 : 28;
+            days = is_leap_year(year) ? 29 : 28;
             break;
         case 4:
         case 6:
@@ -539,7 +539,7 @@ int GetCurrentMonthDays(int year, int month)
 /**
  * 023.多次输入年月日，输出最早的年月日（方式一：不使用结构体版）
  */
-void Question_023_GetEarliestInputDate()
+void question_023_get_earliest_Input_date()
 {
 	int year = 1, month = 1, day = 1;
 	int myear = INT_MAX, mmonth = 12, mday = 31;
@@ -559,7 +559,7 @@ void Question_023_GetEarliestInputDate()
 			break;
 		}
 		// 判断输入的日是否合法
-		if(day < 1 || day > GetCurrentMonthDays(year,month))
+		if(day < 1 || day > get_current_month_days(year,month))
 		{
 			break;
 		}
@@ -588,7 +588,7 @@ void Question_023_GetEarliestInputDate()
 /**
  * 024.多次输入年月日，输出最早的年月日（方式二：使用结构体版）
  */
-void Question_024_GetEarliestInputDate()
+void question_024_get_earliest_input_date()
 {
 	typedef struct
 	{
@@ -614,7 +614,7 @@ void Question_024_GetEarliestInputDate()
 			break;
 		}
 		// 判断输入的日是否合法
-		if(inputVal.day < 1 || inputVal.day > GetCurrentMonthDays(inputVal.year,inputVal.month))
+		if(inputVal.day < 1 || inputVal.day > get_current_month_days(inputVal.year,inputVal.month))
 		{
 			break;
 		}
@@ -644,7 +644,7 @@ void Question_024_GetEarliestInputDate()
  * @param a a元素的地址
  * @param b b元素的地址
  */
-void SwapNumber(int* ap, int* bp)
+void swap_number(int* ap, int* bp)
 {
 	if(ap == NULL || bp == NULL)
 	{
@@ -660,7 +660,7 @@ void SwapNumber(int* ap, int* bp)
  *      外层循环控制比较轮数            比较轮数(从0开始) = 数组的长度 - 1 
  *      内层循环控制每一轮比较次数       每一轮比较次数 = 数组长度 - 当前比较轮数(从0开始) -1
  */
-void Question_025_BubbleSort()
+void question_025_bubble_sort()
 {
 	int nums[] = { 3,9,7,1,5 };
 	int length = sizeof(nums) / sizeof(nums[0]);
@@ -674,7 +674,7 @@ void Question_025_BubbleSort()
         {
             if(nums[c] > nums[c+1])
             {
-                SwapNumber(&nums[c],&nums[c+1]);
+                swap_number(&nums[c],&nums[c+1]);
             }
         }
 	}
@@ -687,7 +687,7 @@ void Question_025_BubbleSort()
 /**
  * 026.定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素可以重复，并且使用冒泡排序对数组元素进行排序（基础版）
  */
-void Question_026_BubbleSort()
+void question_026_bubble_sort()
 {
     int nums[100] = { 0 };
     int length = sizeof(nums) / sizeof(nums[0]);
@@ -704,7 +704,7 @@ void Question_026_BubbleSort()
         {
             if (nums[j] > nums[j + 1])
             {
-                SwapNumber(&nums[j], &nums[j + 1]);
+                swap_number(&nums[j], &nums[j + 1]);
             }
         }
     }
@@ -722,7 +722,7 @@ void Question_026_BubbleSort()
 /**
  * 027.定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素可以重复，并且使用冒泡排序对数组元素进行排序（优化版）
  */
-void Question_027_BubbleSort()
+void question_027_bubble_sort()
 {
     int nums[100] = { 0 };
     int length = sizeof(nums) / sizeof(nums[0]);
@@ -742,7 +742,7 @@ void Question_027_BubbleSort()
             if (nums[j] > nums[j + 1])
             {
             	isNotExchange = false;
-                SwapNumber(&nums[j], &nums[j + 1]);
+                swap_number(&nums[j], &nums[j + 1]);
             }
         }
         if (isNotExchange)
@@ -766,7 +766,7 @@ void Question_027_BubbleSort()
  * @param k 查找重复元素结束索引
  * @param value 需要判断是否重复的元素
  */
-int FindValue(int* nums, int k, int value)
+int find_value(int* nums, int k, int value)
 {
 	int position = -1;
 	for(int i = 0; i < k; i++)
@@ -782,7 +782,7 @@ int FindValue(int* nums, int k, int value)
 /**
  * 028.定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素不可以重复，并且使用冒泡排序对数组元素进行排序（for循环版）
  */
-void Question_028_BubbleSort()
+void question_028_bubble_sort()
 {
 	int nums[100] = { 0 };
 	int length = sizeof(nums) / sizeof(nums[0]);
@@ -791,13 +791,13 @@ void Question_028_BubbleSort()
 	for(int i = 0; i < length; i++)
 	{
 		int r = rand() % length + 1;
-		if(FindValue(nums,i,r) == -1)
+		if(find_value(nums,i,r) == -1)
 		{
 			nums[i] = r;
 		}
 		else
 		{
-			// 如果FindValue()返回值不为-1,则说明数组中已经有一个元素的值和r相等,则让i--,这是很巧妙的处理方法
+			// 如果find_value()返回值不为-1,则说明数组中已经有一个元素的值和r相等,则让i--,这是很巧妙的处理方法
 			i--;
 		}
 	}
@@ -808,7 +808,7 @@ void Question_028_BubbleSort()
 		{
 			if(nums[j] > nums[j+1])
 			{
-				SwapNumber(&nums[j], &nums[j+1]);
+				swap_number(&nums[j], &nums[j+1]);
 			}
 		}
 	}
@@ -826,7 +826,7 @@ void Question_028_BubbleSort()
 /**
  * 029.定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素不可以重复，并且使用冒泡排序对数组元素进行排序（while循环版）
  */
-void Question_029_BubbleSort()
+void question_029_bubble_sort()
 {
 	int nums[100] = { 0 };
 	int length = sizeof(nums) / sizeof(nums[0]);
@@ -836,7 +836,7 @@ void Question_029_BubbleSort()
 	while(i < length)
 	{
 		int r = rand() % length + 1;
-		if(FindValue(nums,i,r) == -1)
+		if(find_value(nums,i,r) == -1)
 		{
 			nums[i] = r;
 			i++;
@@ -850,7 +850,7 @@ void Question_029_BubbleSort()
 		{
 			if(nums[j] > nums[j+1])
 			{
-				SwapNumber(&nums[j], &nums[j+1]);
+				swap_number(&nums[j], &nums[j+1]);
 			}
 		}
 	}
@@ -868,7 +868,7 @@ void Question_029_BubbleSort()
 /**
  * 030.定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素不可以重复，并且使用冒泡排序对数组元素进行排序（查表版 方式一）
  */
-void Question_030_BubbleSort()
+void question_030_bubble_sort()
 {
 	int nums[100] = { 0 };
 	int length = sizeof(nums) / sizeof(nums[0]);
@@ -896,7 +896,7 @@ void Question_030_BubbleSort()
 		{
 			if(nums[j] > nums[j+1])
 			{
-				SwapNumber(&nums[j], &nums[j+1]);
+				swap_number(&nums[j], &nums[j+1]);
 			}
 		}
 	}
@@ -914,7 +914,7 @@ void Question_030_BubbleSort()
 /**
  * 031.定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素不可以重复，并且使用冒泡排序对数组元素进行排序（查表版 方式二）
  */
-void Question_031_BubbleSort()
+void question_031_bubble_sort()
 {
 	int nums[100] = { 0 };
 	int length = sizeof(nums) / sizeof(nums[0]);
@@ -964,36 +964,36 @@ int main()
 	  printf("花费时间 = %ld s\n", (end - start));
 	 */
 
-	//Question_001_LoopPrintAToG();
-	//Question_002_LoopPrintAToG();
-	//Question_003_GreatestCommonDivisor();
-	//Question_004_GreatestCommonDivisor();
-	//Question_005_GreatestCommonDivisor();
-	//Question_006_LeastCommonMultiple();
-	//Question_007_LeastCommonMultiple();
-	//Question_008_LeastCommonMultiple();
-	//Question_009_GetMinValue();
-	//Question_010_GetMidValue();
-	//Question_011_GetMaxValue();
-	//Question_012_CountWord();
-	//Question_013_BallFalls();
-	//Question_014_RabbitCount_Recursion();
-	//Question_015_RabbitCount_No_Recursion();
-	//Question_016_NewtonRaphson_Method_Sqrt();
-	//Question_017_PerfectNumber();
-	//Question_018_PerfectNumberFactor();
-	//Question_019_PerfectNumberFactor();
-	//Question_020_MultiplicationTable();
-	//Question_021_GetMaxInputValue();
-    //Question_022_GuessNumber();
-    //Question_023_GetEarliestInputDate();
-	//Question_024_GetEarliestInputDate();
-	//Question_025_BubbleSort();
-	//Question_026_BubbleSort();
-	//Question_027_BubbleSort();
-	//Question_028_BubbleSort();
-	Question_029_BubbleSort();
-	//Question_030_BubbleSort();
-	//Question_031_BubbleSort();
+	//question_001_loop_print_a2g();
+	//question_002_loop_print_a2g();
+	//question_003_gcd();
+	//question_004_gcd();
+	//question_005_gcd();
+	//question_006_lcm();
+	//question_007_lcm();
+	//question_008_lcm();
+	//question_009_get_min_value();
+	//question_010_get_mid_value();
+	//question_011_get_max_value();
+	//question_012_count_word();
+	//question_013_ball_falls();
+	//question_014_rabbit_count_recursion();
+	//question_015_rabbit_count_no_recursion();
+	//question_016_newton_raphson_method_sqrt();
+	//question_017_perfect_number();
+	//question_018_perfect_number_factor();
+	//question_019_perfect_number_factor();
+	//question_020_multiplication_table();
+	//question_021_get_max_input_value();
+    //question_022_guess_number();
+    //question_023_get_earliest_Input_date();
+	//question_024_get_earliest_input_date();
+	//question_025_bubble_sort();
+	//question_026_bubble_sort();
+	//question_027_bubble_sort();
+	//question_028_bubble_sort();
+	question_029_bubble_sort();
+	//question_030_bubble_sort();
+	//question_031_bubble_sort();
 	return 0;
 }
