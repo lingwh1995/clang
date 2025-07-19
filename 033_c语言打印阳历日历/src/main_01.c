@@ -20,7 +20,7 @@ int main()
  * @param year
  * @return
  */
-bool is_leap_year(int year)
+bool is_leap_year_(int year)
 {
     bool leap = false;
     if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
@@ -50,7 +50,7 @@ int get_days(int year, int month)
 			days = 31;
 			break;
 		case 2:
-			days = is_leap_year(year) ? 29 : 28;
+			days = is_leap_year_(year) ? 29 : 28;
 			break;
 		case 4:
 		case 6:
