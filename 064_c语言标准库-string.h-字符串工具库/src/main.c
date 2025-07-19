@@ -18,6 +18,8 @@ void strlen_test()
 
 /**
  * 自定义方法计算字符串长度方式一
+ *
+ * @param str 要计算长度的字符串
  */
 int my_strlen_1(const char* str)
 {
@@ -48,6 +50,8 @@ void my_strlen_1_test()
 
 /**
  * 自定义方法计算字符串长度方式二：利用指针相减的特性
+ *
+ * @param str 要计算长度的字符串
  */
 int my_strlen_2(const char* str)
 {
@@ -76,7 +80,8 @@ void my_strlen_2_Test()
 }
 
 /**
- * @desc 字符串拷贝函数
+ * 字符串拷贝函数
+ *
  * @param dest 目的字符串数组
  * @param src 源字符串数组
  * @return 返回拷贝后的目的地内存块的起始地址
@@ -157,6 +162,7 @@ void strcpy_test()
 
 /**
  * 自定义的字符串拷贝函数
+ *
  * @param dest 目标字符串
  * @param src  源字符串
  * @return
@@ -192,6 +198,7 @@ void my_strcpy_1_test()
 
 /**
  * 自定义的字符串拷贝函数
+ *
  * @param dest 目标字符串
  * @param src  源字符串
  * @return
@@ -223,7 +230,8 @@ void my_strcpy_2_test()
 }
 
 /**
-* @desc 字符串拷贝函数
+* 字符串拷贝函数
+*
 * @param dest 目的字符串数组
 * @param src 源字符串数组
 * @param n 要复制的字符数
@@ -294,7 +302,8 @@ void strncpy_test_3()
 }
 
 /**
- * @desc 函数用于连接字符串，接受两个字符串作为参数，把第二个字符串的副本添加到第一个字符串的末尾。这个函数会改变第一个字符串，但是第二个字符串不变。
+ * 函数用于连接字符串，接受两个字符串作为参数，把第二个字符串的副本添加到第一个字符串的末尾。这个函数会改变第一个字符串，但是第二个字符串不变。
+ *
  * @param str1 第一个字符串（字符数组类型的字符串变量）
  * @param str2 第二个字符串（字符数组类型的字符串变量）
  * @return 拼接后第一个字符串
@@ -375,7 +384,8 @@ void my_strcat_2_test()
 }
 
 /**
- * @desc 函数用于连接字符串，接受两个字符串作为参数，把第二个字符串的副本添加到第一个字符串的末尾。这个函数会改变第一个字符串，但是第二个字符串不变。
+ * 函数用于连接字符串，接受两个字符串作为参数，把第二个字符串的副本添加到第一个字符串的末尾。这个函数会改变第一个字符串，但是第二个字符串不变。
+ *
  * @param str1 第一个字符串（字符数组类型的字符串变量）
  * @param str2 第二个字符串（字符数组类型的字符串变量）
  * @param count 最大添加的字符数
@@ -474,6 +484,7 @@ void strcmp_test()
 
 /**
  * 自定义方法实现字符串比较
+ *
  * @param str1 第一个字符串
  * @param str2 第二个字符串
  */
@@ -522,6 +533,7 @@ void my_strcmp_1_test()
 
 /**
  * 自定义方法实现字符串比较
+ *
  * @param str1 第一个字符串
  * @param str2 第二个字符串
  */
@@ -594,6 +606,7 @@ void strncmp_test()
 
 /**
  * 自定义方法实现字符串中前n个字符比较
+ *
  * @param str1 第一个字符串
  * @param str2 第二个字符串
  * @param n 比较到第几个位置就结束比较
@@ -642,7 +655,8 @@ void my_strncmp_test()
 }
 
 /**
- * @desc 从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * 从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ *
  * @param str 给定字符串
  * @param c 给定字符
  * @return 如果找到字符c，则返回指向该字符在字符串中第一次出现位置的指针。如果未找到字符c，则返回NULL指针。
@@ -666,6 +680,7 @@ void strchr_test()
 
 /**
  * 自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ *
  * @param str
  * @param c
  * @return
@@ -691,7 +706,6 @@ char* my_strchr(const char *str, int c)
 
 /**
  * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
- * @return
  */
 void my_strchr_test()
 {
@@ -710,11 +724,7 @@ void my_strchr_test()
 }
 
 /**
- * @desc 从尾到头在一个字符串中查找给定字符的第一个匹配之处
- * @param str 给定字符串
- * @param c 给定字符
- * @return 如果找到字符c，则返回指向该字符在字符串中第一次出现位置的指针。如果未找到字符c，则返回NULL指针。
- * char *strchr (const char *str, int c)
+ * char *strchr (const char *str, int c)：从尾到头在一个字符串中查找给定字符的第一个匹配之处
  */
 void strrchr_test()
 {
@@ -734,6 +744,7 @@ void strrchr_test()
 
 /**
  * 自定义方法实现从尾到头在一个字符串中查找给定字符的第一个匹配之处
+ *
  * @param str
  * @param c
  * @return
@@ -761,7 +772,6 @@ char* my_strrchr_1(const char *str, int c)
 
 /**
  * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
- * @return
  */
 void my_strrchr_1_test()
 {
@@ -781,6 +791,7 @@ void my_strrchr_1_test()
 
 /**
  * 自定义方法实现从尾到头在一个字符串中查找给定字符的第一个匹配之处
+ *
  * @param str
  * @param c
  * @return
@@ -808,7 +819,6 @@ char* my_strrchr_2(const char *str, int c)
 
 /**
  * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
- * @return
  */
 void my_strrchr_2_test()
 {
@@ -827,11 +837,7 @@ void my_strrchr_2_test()
 }
 
 /**
- * @desc 从尾到头在一个字符串中查找给定子串的第一个匹配之处
- * @param str 给定字符串
- * @param substr 给定子串
- * @return 如果找到子符substr，则返回指向该子串在字符串中第一次出现位置的指针。如果未找到子串substr，则返回NULL指针。
- * char *strchr (const char *str, const char *substr)
+ * char *strchr (const char *str, const char *substr)： 从尾到头在一个字符串中查找给定子串的第一个匹配之处
  */
 void strstr_test()
 {
@@ -850,6 +856,10 @@ void strstr_test()
 
 /**
  * 自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ *
+ * @param str 给定字符串
+ * @param substr 给定子串
+ * @return 如果找到子符substr，则返回指向该子串在字符串中第一次出现位置的指针。如果未找到子串substr，则返回NULL指针。
  */
 char* my_strstr_1(const char *str, const char *substr) {
     if (NULL == str || NULL == substr) {
@@ -900,6 +910,10 @@ void my_strstr_1_test()
 
 /**
  * 自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ *
+ * @param str 给定字符串
+ * @param substr 给定子串
+ * @return 如果找到子符substr，则返回指向该子串在字符串中第一次出现位置的指针。如果未找到子串substr，则返回NULL指针。
  */
 char* my_strstr_2(const char *str, const char *substr) {
     if (NULL == str || NULL == substr) {
@@ -994,6 +1008,9 @@ void strdup_test()
 
 /**
  * 自定义方法实现strdup方式字符串复制
+ *
+ * @param	str
+ * @return
  */
 char* my_strdup(const char* str)
 {
@@ -1027,11 +1044,120 @@ void my_strdup_test()
     }
 }
 
+/**
+ * void *memset(void *s, int c, size_t n): 初始化内存的"万能函数"，通常为新申请的内存进行初始化工作
+ */
+void memset_test()
+{
+	char str[10];
+	// 使用数字10填充
+	memset(str, 10, sizeof(str));
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", str[i]);
+	}
+	printf("\n");
+
+	// 使用字符'a'填充
+	memset(str, 'a', sizeof(str));
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", str[i]);
+	}
+	printf("\n");
+
+	// 使用数字0填充
+	memset(str, 0, sizeof(str));
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", str[i]);
+	}
+	printf("\n");
+}
+
+/**
+ * 自定义方法实现 memset
+ *
+ * @param vp 泛型指针
+ * @param ch 要填充的类型
+ * @param ch 要填充的长度
+ */
+char* my_memset(void* vp, unsigned char ch, size_t count)
+{
+	assert(vp != NULL);
+	unsigned char* cp = (unsigned char*)vp;
+	for(int i = 0; i < count; i++)
+	{
+		//cp[i] = ch; // *(cp+i) = ch;
+		*cp = ch;
+		cp = cp + 1;
+	}
+	return vp;
+}
+
+/**
+ * 测试自定义方法实现 memset
+ */
+char* my_memset_test()
+{
+	char str[10];
+	// 使用数字10填充
+	my_memset(str, 10, sizeof(str));
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", str[i]);
+	}
+	printf("\n");
+
+	// 使用字符'a'填充
+	my_memset(str, 'a', sizeof(str));
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", str[i]);
+	}
+	printf("\n");
+
+	// 使用数字0填充
+	my_memset(str, 0, sizeof(str));
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", str[i]);
+	}
+	printf("\n");
+}
+
+
+
+/**
+ * int memcmp(const void *str1, const void *str2, size_t n): 用于比较两块内存区域前n个字节内容的函数
+ */
+void memcmp_test()
+{
+
+
+}
+
+/**
+ * 自己实现的用于比较两块内存区域前n个字节内容的函数
+ */
+void my_memcmp(const void *str1, const void *str2, size_t n)
+{
+
+}
+
+/**
+ * 测试自己实现的用于比较两块内存区域前n个字节内容的函数
+ */
+void my_memcmp_test()
+{
+
+}
+
 int main()
 {
     //strlen_test();
     //my_strlen_1_test();
-    my_strlen_2_Test();
+    //my_strlen_2_Test();
     //strcpy_test();
     //my_strcpy_1_test();
     //my_strcpy_2_test();
@@ -1063,5 +1189,7 @@ int main()
     //strupr_test();
     //strdup_test();
     //my_strdup_test();
+	//memset_test();
+	my_memset_test();
 	return 0;
 }
