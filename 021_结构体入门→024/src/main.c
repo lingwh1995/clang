@@ -175,7 +175,7 @@
 /**
  * 定义结构体、结构体类型变量(或结构体类型指针变量)方式一：先定义结构体,再定义结构体类型变量(或结构体类型指针变量)
  */ 
-void DefineStruct_1()
+void define_struct_1()
 {
 	// 定义结构体
 	struct Student
@@ -206,7 +206,7 @@ void DefineStruct_1()
 /**
  * 定义结构体、结构体类型变量(或结构体类型指针变量)方式二：定义结构体的同时定义结构体类型变量(或结构体类型指针变量)
  */ 
-void DefineStruct_2()
+void define_struct_2()
 {
 	// 定义结构体的同时定义结构体类型变量(或结构体类型指针变量)
 	struct Student
@@ -232,7 +232,7 @@ void DefineStruct_2()
 /**
  * 定义结构体、结构体类型变量(或结构体类型指针变量)方式三：使用typedef关键字定义结构体，定义结构体类型变量(或结构体类型指针变量)时可以使用简化的方式声明
  */ 
-void DefineStruct_3()
+void define_struct_3()
 {
 	// 定义结构体
 	typedef struct
@@ -263,7 +263,7 @@ void DefineStruct_3()
 /**
  * 定义结构体、结构体类型变量(或结构体类型指针变量)方式四：定义匿名结构体类型变量(或结构体类型指针变量)(适用于临时使用结构体的情况)
  */ 
-void DefineStruct_4()
+void define_struct_4()
 {
 	// 定义匿名结构体类型变量(或结构体类型指针变量)
 	struct
@@ -289,7 +289,7 @@ void DefineStruct_4()
 /**
  * 给结构体变量赋值方式一：直接赋值(使用.运算符赋值)
  */ 
-void AssignmentStruct_1()
+void assignment_struct_1()
 {
 	// 定义结构体
 	struct Student
@@ -308,7 +308,7 @@ void AssignmentStruct_1()
 /**
  * 给结构体变量赋值方式二：先定义结构体类型变量，后赋值(使用.运算符赋值)
  */ 
-void AssignmentStruct_2()
+void assignment_struct_2()
 {
 	// 定义结构体
 	struct Student
@@ -331,7 +331,7 @@ void AssignmentStruct_2()
 /**
  * 给结构体变量赋值方式三：C99指定初始化器(可乱序赋值)
  */ 
-void AssignmentStruct_3()
+void assignment_struct_3()
 {
 	// 定义结构体
 	struct Student
@@ -350,7 +350,7 @@ void AssignmentStruct_3()
 /**
  * 给结构体变量赋值方式四：使用指针解引用赋值(指针需要进行初始化且初始化时不能指向NULL)
  */ 
-void AssignmentStruct_4()
+void assignment_struct_4()
 {
 	// 定义结构体
 	struct Student
@@ -376,7 +376,7 @@ void AssignmentStruct_4()
 /**
  * 给结构体变量赋值方式五：使用指针配合箭头函数赋值
  */ 
-void AssignmentStruct_5()
+void assignment_struct_5()
 {
 	// 定义结构体
 	struct Student
@@ -402,7 +402,7 @@ void AssignmentStruct_5()
 /**
  * 访问结构体变量方式一：使用.运算符访问
  */ 
-void VisitStruct_1()
+void visit_struct_1()
 {
 	// 定义结构体
 	struct Student
@@ -421,7 +421,7 @@ void VisitStruct_1()
 /**
  * 访问结构体变量方式二：使用指针解引用访问
  */ 
-void VisitStruct_2()
+void visit_struct_2()
 {
 	// 定义结构体
 	struct Student
@@ -441,7 +441,7 @@ void VisitStruct_2()
 /**
  * 访问结构体变量方式三：使用指针配合箭头函数访问
  */ 
-void VisitStruct_3()
+void visit_struct_3()
 {
 	// 定义结构体
 	struct Student
@@ -461,7 +461,7 @@ void VisitStruct_3()
 /**
  * 结构体数组
  */ 
-void StructArray()
+void struct_array()
 {
 	struct Student
 	{
@@ -486,23 +486,23 @@ void StructArray()
 int main()
 {
 	// 定义结构体、结构体类型变量、结构体类型指针变量有以下几种方式
-	//DefineStruct_2();
-	//DefineStruct_3();
-	//DefineStruct_4();
+	//define_struct_2();
+	//define_struct_3();
+	//define_struct_4();
 
 	// 给结构体变量赋值有以下几种方式
-	//AssignmentStruct_1();
-	//AssignmentStruct_2();
-	//AssignmentStruct_3();
-	//AssignmentStruct_4();
-	//AssignmentStruct_5();
+	//assignment_struct_1();
+	//assignment_struct_2();
+	//assignment_struct_3();
+	//assignment_struct_4();
+	//assignment_struct_5();
 
 	// 访问结构体变量有以下几种方式
-	//VisitStruct_1();
-	//VisitStruct_2();
-	VisitStruct_3();
+	//visit_struct_1();
+	//visit_struct_2();
+	visit_struct_3();
 
 	// 结构体类型数组
-	//StructArray();
+	//struct_array();
 	return 0;
 }

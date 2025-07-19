@@ -283,16 +283,16 @@ void question_012_count_word()
 void question_013_ball_falls()
 {
     //下落经过的总高度
-    double sumHeight = 100.00;
+    double sum_height = 100.00;
     //每一次的反弹高度
-    double currentJumpHeight = sumHeight / 2;
+    double current_jump_height = sum_height / 2;
     for (int i = 2; i <= 10; i++)
     {
-        sumHeight = sumHeight + currentJumpHeight * 2;
-        currentJumpHeight = currentJumpHeight / 2;
+        sum_height = sum_height + current_jump_height * 2;
+        current_jump_height = current_jump_height / 2;
     }
-    printf("经过的总高度 sumHeight = %f\n", sumHeight);
-    printf("第10次反弹高度 currentJumpHeight = %f\n", currentJumpHeight);
+    printf("经过的总高度 sum_height = %f\n", sum_height);
+    printf("第10次反弹高度 current_jump_height = %f\n", current_jump_height);
 }
 
 /**

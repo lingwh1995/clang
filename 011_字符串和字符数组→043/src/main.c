@@ -22,7 +22,7 @@
 /*
  * 字符串的定义：使用 "" 来确定字符串范围，但是计算字符串长度时要根据 '\0' 的位置来确定字符串的结尾位置
  */
-void StringBasic()
+void string_basic()
 {
     // 定义一个字符串:方式1
 	//char s1[] = { "hello" };
@@ -64,7 +64,7 @@ void StringBasic()
 /*
  * 字符数组的定义 + 字符串和字符数组的区别
  */
-void StringAndCharArray()
+void string_and_char_array()
 {
     // 普通字符数组
     char c1[] = { 'h', 'e', 'l', 'l', 'o' };
@@ -83,7 +83,7 @@ void StringAndCharArray()
 /**
  * 遍历字符串方式一
  */
-void ForeachString1()
+void foreach_string_1()
 {
     char str[] = "hello";
     for (int i= 0; i < strlen(str); i++)
@@ -96,7 +96,7 @@ void ForeachString1()
 /**
  * 遍历字符串方式二
  */
-void ForeachString2()
+void foreach_string_2()
 {
     char str[] = "world";
     for (int i = 0; str[i] != '\0'; i++)
@@ -110,7 +110,7 @@ void ForeachString2()
 /**
  * 结尾符 '\0' 的ASCII码是0
  */
-void EndFlagAsciiCode()
+void end_flag_ascii_code()
 {
     char end_flag = '\0';
     printf("end_flag = %d\n", end_flag);
@@ -118,10 +118,10 @@ void EndFlagAsciiCode()
 
 int main()
 {
-	StringBasic();
-	//StringAndCharArray();
-	//ForeachString1();
-	//ForeachString2();
-    EndFlagAsciiCode();
+	string_basic();
+	//string_and_char_array();
+	//foreach_string_1();
+	//foreach_string_2();
+    end_flag_ascii_code();
 	return 0;
 }

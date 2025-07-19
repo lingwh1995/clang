@@ -30,7 +30,7 @@
 /**
  * 十进制数转换成二进制数
  */
-void decToBin(int dec)
+void dec_to_bin(int dec)
 {
 	// 存放二进制位的数组
 	int binary[32];
@@ -44,31 +44,31 @@ void decToBin(int dec)
 
 	// 获取整型数组真实长度
 	int len = i;
-	char binaryStr[len+1];
+	char binary_str[len+1];
 	// 设置字符串以 '\0' 结尾
-	binaryStr[len] = '\0';
+	binary_str[len] = '\0';
 	for(i=1; i<=len; i++)
 	{
 	    // 把整型数组转换成字符串
-		sprintf(binaryStr, "%s%d", binaryStr, binary[len-i]);
+		sprintf(binary_str, "%s%d", binary_str, binary[len-i]);
 	}
-	printf("%s\n", binaryStr);
+	printf("%s\n", binary_str);
 }
 
 
 /**
  * 二进制数转换成十进制数
  */
-int binTodec(char *binaryStr)
+int bin_to_dec(char *binary_str)
 {
-	int len = strlen(binaryStr);
-    char binaryArr[len];
-    strcpy(binaryArr, binaryStr);
+	int len = strlen(binary_str);
+    char binary_arr[len];
+    strcpy(binary_arr, binary_str);
 
     int dec = 0;
 	for(int i = 0; i < len; i++)
 	{
-		int r = (binaryArr[i] - '0') * (int)pow(2,len-i-1);
+		int r = (binary_arr[i] - '0') * (int)pow(2,len-i-1);
 		dec += r;
 	}
 	return dec;
@@ -79,7 +79,7 @@ int binTodec(char *binaryStr)
  * 十进制数转换成二进制数贪心算法版
  * TODO 将二进制字符串转为八进制数和十六进制数
  */
-void decToBinGreedy(int dec)
+void dec_to_bin_greedy(int dec)
 {
 	int n = 0;
 	do
@@ -153,13 +153,13 @@ int main()
 
 
     int dec = 11;
-    decToBin(dec);
+    dec_to_bin(dec);
 
-    char binaryStr[] = "1010";
-    dec = binTodec(binaryStr);
-    printf("二进制数 %s 转换成十进制数是 %d \n", binaryStr, dec);
+    char binary_str[] = "1010";
+    dec = bin_to_dec(binary_str);
+    printf("二进制数 %s 转换成十进制数是 %d \n", binary_str, dec);
 
     dec = 103;
-    decToBinGreedy(dec);
+    dec_to_bin_greedy(dec);
     return 0;
 }

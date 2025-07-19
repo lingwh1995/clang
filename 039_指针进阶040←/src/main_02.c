@@ -17,9 +17,9 @@
  *
  * 注意：当参数为数组时， [] 和 * 可以互相替换， int nums[] 和 int* nums效果是相同的
  */
-//void PrintArr1(int nums[])  // 写法一 不推荐
-//void PrintArr1(int nums[5]) // 写法二 不推荐
-void PrintArr1(int* nums)	  // 写法三	推荐
+//void print_arr_1(int nums[])  // 写法一 不推荐
+//void print_arr_1(int nums[5]) // 写法二 不推荐
+void print_arr_1(int* nums)	  // 写法三	推荐
 {
 	// 这里实际上求的是指针的长度
 	printf("sizeof(nums) = %d\n", sizeof(nums));
@@ -37,7 +37,7 @@ void PrintArr1(int* nums)	  // 写法三	推荐
  * @param nums 代表数组的指针
  * @param n 数组的长度
  */
-void PrintArr2(int* nums, int n)
+void print_arr_2(int* nums, int n)
 {
     if(NULL == nums)
     {
@@ -53,7 +53,7 @@ void PrintArr2(int* nums, int n)
 /**
  * 使用指针和while循环打印数组
  */
-void PrintArrayByWhileLoop(int* start, int* end)
+void print_array_by_while_loop(int* start, int* end)
 {
     if(NULL == start || NULL == end)
     {
@@ -74,11 +74,11 @@ int main()
 {
     int nums[] = { 1,2,3,4,5 };
     // 参数是数组名，也就是数组首元素地址
-    PrintArr1(nums);
+    print_arr_1(nums);
     int length = sizeof(nums) / sizeof(nums[0]);
     // 参数是数组名，也就是数组首元素地址
-    PrintArr2(nums, length);
-    PrintArrayByWhileLoop(nums, nums+length);
+    print_arr_2(nums, length);
+    print_array_by_while_loop(nums, nums+length);
     return 0;
 }
 #endif

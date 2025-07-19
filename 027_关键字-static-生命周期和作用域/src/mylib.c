@@ -21,7 +21,7 @@ int gi_in_other_file_ordinary = 100;
 const int gc_in_other_file_ordinary = 200;
 
 //定义一个没有被static修饰的函数
-int AddInOtherFileOrdinary(int a, int b)
+int add_in_other_file_ordinary(int a, int b)
 {
     printf("我是mylib.c中的普通函数......(来自其他文件,没有被static修饰)\n");
     return a + b;

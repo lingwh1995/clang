@@ -3,7 +3,7 @@
 /**
  * 数组名就是数组首元素地址
  */
-void PointerAndArrayTest1()
+void pointer_and_array_test_1()
 {
     int arr[5] = { 1,2,3,4,5 };
     //数组的地址
@@ -26,7 +26,7 @@ void PointerAndArrayTest1()
 /*
  * 解引用符号*和[]的优先级
  */
-void PointerAndArrayTest2()
+void pointer_and_array_test_2()
 {
     int a = 1, b = 2, c = 3, d = 4;
     //定义一个数组指针
@@ -40,7 +40,7 @@ void PointerAndArrayTest2()
 /*
  * 指针的运算
  */
-void PointerAndArrayTest3()
+void pointer_and_array_test_3()
 {
     int arr_1[5] = { 1,2,3,4,5 };
     int size_1 = sizeof(arr_1) / sizeof(arr_1[0]);
@@ -92,7 +92,7 @@ void PointerAndArrayTest3()
  *
  * 总结：	a[b] == *(a + b)
  */
-void PointerAndArrayTest4()
+void pointer_and_array_test_4()
 {
     int arr[] = { 1,2,3,4,5 };
     int length = sizeof(arr) / sizeof(arr[0]);
@@ -109,7 +109,7 @@ void PointerAndArrayTest4()
 /**
  * 数组名的含义
  */
-void PointerAndArrayTest5()
+void pointer_and_array_test_5()
 {
     int arr[] = { 1,2,3,4,5 };
     //在sizeof()表达式中,数组名代表的是整个数组的意义,这包含了两个意义,即数组的类型+数组的大小
@@ -122,7 +122,7 @@ void PointerAndArrayTest5()
 /**
  * 使用指针和while循环打印数组
  */
-void PrintArrayByWhileLoop(int* start, int* end)
+void print_array_by_while_loop(int* start, int* end)
 {
     // 判断指针是否为空
     if(NULL == p || NULL == end)
@@ -139,7 +139,7 @@ void PrintArrayByWhileLoop(int* start, int* end)
 /**
  * 使用指针访问数组元素
  */
-void PointerAndArrayTest6()
+void pointer_and_array_test_6()
 {
     int arr[] = { 1,2,3,4,5 };
     int length = sizeof(arr) / sizeof(arr[0]);
@@ -165,17 +165,17 @@ void PointerAndArrayTest6()
         printf("%d\n", *(arr + i));
     }
     printf("----------4-----------\n");
-    PrintArrayByWhileLoop(arr,arr+5);
+    print_array_by_while_loop(arr,arr+5);
     printf("----------5-----------\n");
 }
 
 int main()
 {
-	//PointerAndArrayTest1();
-    //PointerAndArrayTest2();
-	//PointerAndArrayTest3();
-	//PointerAndArrayTest4();
-	//PointerAndArrayTest5();
-	PointerAndArrayTest6();
+	//pointer_and_array_test_1();
+    //pointer_and_array_test_2();
+	//pointer_and_array_test_3();
+	//pointer_and_array_test_4();
+	//pointer_and_array_test_5();
+	pointer_and_array_test_6();
     return 0;
 }

@@ -12,5 +12,5 @@ extern int gi_in_other_file_ordinary;
 //声明其他文件中的一个没有被static修饰的全局常量
 extern const int gc_in_other_file_ordinary;
 //声明其他文件中的一个没有被static修饰的方法
-extern int AddInOtherFileOrdinary(int, int);
+extern int add_in_other_file_ordinary(int, int);
 #endif // !MYLIB_H

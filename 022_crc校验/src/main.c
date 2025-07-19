@@ -2,10 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 
-unsigned char* Hex2ByteArr(char *puchMsg);
-void PrintDecAndHex(int crcDec);
-unsigned short CRC_CCITT_XModem(unsigned char *puchMsg, unsigned int usDataLen);
-unsigned short CRC16(unsigned char *puchMsg, unsigned int usDataLen);
+unsigned char* hex2byte_arr(char *puchMsg);
+void print_dec_and_hex(int crcDec);
+unsigned short crc_ccitt_xmodem(unsigned char *puchMsg, unsigned int usDataLen);
+unsigned short crc16(unsigned char *puchMsg, unsigned int usDataLen);
 
 /**
  * C语言无类型指针（）
@@ -14,12 +14,12 @@ unsigned short CRC16(unsigned char *puchMsg, unsigned int usDataLen);
 int main()
 {
     char *hex = "AC8930130000250716123357";
-    unsigned char *byteArr = Hex2ByteArr(hex);
+    unsigned char *byte_arr = hex2byte_arr(hex);
     int len = strlen(hex) / 2;
 
-    // CRC_CCITT_XModem
-	unsigned short crcDec = CRC16(byteArr,len);
-	PrintDecAndHex(crcDec);
+    // crc_ccitt_xmodem
+	unsigned short crcDec = crc16(byte_arr,len);
+	print_dec_and_hex(crcDec);
 	return 0;
 }
 
@@ -27,7 +27,7 @@ int main()
  * 十六进制字符串转字节数组
  * @param puchMsg	要进行crc计算的字符串
  */ 
-unsigned char* Hex2ByteArr(char *puchMsg)
+unsigned char* hex2byte_arr(char *puchMsg)
 {
 	int len = strlen(puchMsg);
 	// 分配足够的空间存储字节数组
@@ -49,7 +49,7 @@ unsigned char* Hex2ByteArr(char *puchMsg)
  * 打印十进制和十六进制crc的值
  * @param crcDec 十进制crc的值
  */ 
-void PrintDecAndHex(int crcDec)
+void print_dec_and_hex(int crcDec)
 {
 	printf("crc  十进制 = %d\n",crcDec);
 	char crcHex[50];
@@ -58,11 +58,11 @@ void PrintDecAndHex(int crcDec)
 }
 
 /**
- * CRC_CCITT_XModem
+ * crc_ccitt_xmodem
  * @param puchMsg 要进行crc计算的字符串
  * @param usDataLen 要进行crc计算的字符串的长度
  */ 
-unsigned short CRC_CCITT_XModem(unsigned char *puchMsg, unsigned int usDataLen)
+unsigned short crc_ccitt_xmodem(unsigned char *puchMsg, unsigned int usDataLen)
 {
 	unsigned short wCRCin = 0x0000;
 	unsigned short wCPoly = 0x1021;
@@ -84,11 +84,11 @@ unsigned short CRC_CCITT_XModem(unsigned char *puchMsg, unsigned int usDataLen)
 }
 
 /**
- * CRC16
+ * crc16
  * @param puchMsg 要进行crc计算的字符串
  * @param usDataLen 要进行crc计算的字符串的长度
  */
-unsigned short CRC16(unsigned char *puchMsg, unsigned int usDataLen)
+unsigned short crc16(unsigned char *puchMsg, unsigned int usDataLen)
 {
     unsigned short wCRCin = 0x0000; unsigned short wCPoly = 0x1021;
     unsigned char wChar = 0;

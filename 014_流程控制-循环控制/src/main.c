@@ -32,7 +32,7 @@
 /*
  * while循环测试
  */
-void WhileLoopTest()
+void while_loop_test()
 {
     int i = 0;
     while (i < 10)
@@ -46,7 +46,7 @@ void WhileLoopTest()
 /*
  * do while循环测试
  */
-void DoWhileLoopTest()
+void dowhile_loop_test()
 {
     int i = 0;
     do
@@ -59,7 +59,7 @@ void DoWhileLoopTest()
 /*
  * for循环测试
  */
-void ForLoopTest()
+void for_loop_test()
 {
     for (int i = 0; i < 10; i++)
     {
@@ -72,7 +72,7 @@ void ForLoopTest()
 #endif
 int main()
 {
-	//WhileLoopTest();
-	//DoWhileLoopTest();
-    ForLoopTest();
+	//while_loop_test();
+	//dowhile_loop_test();
+    for_loop_test();
 }

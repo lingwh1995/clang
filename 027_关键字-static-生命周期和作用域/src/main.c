@@ -17,7 +17,7 @@
 /*
  * 普通函数
  */
-void OrdinaryFunctionTest()
+void ordinary_function_test()
 {
 	// 定义一个普通变量a,本方法每次调用时变量a都会被初始化
     int a = 0;
@@ -31,7 +31,7 @@ void OrdinaryFunctionTest()
 /*
  * 记忆函数
  */
-void MemoryFunctionTest()
+void memory_function_test()
 {
 	// 定义一个普通变量a,本方法每次调用时变量a都会被初始化
     int a = 0;
@@ -47,8 +47,8 @@ int main()
 {
     for (int i = 0; i < 5; i++)
     {
-    	//OrdinaryFunctionTest();
-        MemoryFunctionTest();
+    	//ordinary_function_test();
+        memory_function_test();
     }
     return 0;
 }

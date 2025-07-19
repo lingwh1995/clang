@@ -16,7 +16,7 @@
  /*
   * 逻辑运算符测试
   */
-void RelationalOperatorTest()
+void relational_operator_test()
 {
 	int a = 1, b = 2, c = 3;
 	int i = a < b < c;
@@ -38,7 +38,7 @@ void RelationalOperatorTest()
  *  验证加括号和不加括号最终结果取值区别：不加括号最终取最左边表达式计算结果,加括号最终取最右边表达式计算结果
  *  特别注意：不加括号和加括号，表达式执行顺序都是从左往右依次执行，只是根据是否加括号决定取最右边和最左边的表达式的计算结果
  */
-void CommaExpressionTest1()
+void comma_expression_test_1()
 {
 	int a = 3, b = 5, c = 7;
 	int i = 0;
@@ -69,7 +69,7 @@ void CommaExpressionTest1()
  * 逗号表达式测试
  *  验证并非只是执行最左边或者最右边的表达式,而是执行所有的表达式
  */
-void CommaExpressionTest2()
+void comma_expression_test_2()
 {
 	int a = 3, b = 5, c = 7;
 	int i = 0;
@@ -89,7 +89,7 @@ void CommaExpressionTest2()
  *  逗号表达式实际应用
  *  特别注意：不加括号和加括号，表达式执行顺序都是从左往右依次执行，只是根据是否加括号决定取最右边和最左边的表达式的计算结果
  */
-void CommaExpressionTest3()
+void comma_expression_test_3()
 {
 	int x = 0;
 	if (printf("请输入一个数字:\n"), scanf("%d", &x), x > 0)
@@ -102,9 +102,9 @@ void CommaExpressionTest3()
 
 int main()
 {
-	RelationalOperatorTest();
-	//CommaExpressionTest1();
-	//CommaExpressionTest2();
-	//CommaExpressionTest3();
+	relational_operator_test();
+	//comma_expression_test_1();
+	//comma_expression_test_2();
+	//comma_expression_test_3();
 	return 0;
 }

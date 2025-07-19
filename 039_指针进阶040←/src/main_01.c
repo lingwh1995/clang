@@ -29,7 +29,7 @@
  * 2.char类型指针的+1
  * 3.大端和小端
  */
-void IntPointerToCharPointer()
+void int_pointer_to_char_pointer()
 {
     int a = 0x12345678;
     int* ip = &a;
@@ -52,7 +52,7 @@ void IntPointerToCharPointer()
 /**
  * int类型指针的+1，每次指针+1后内存地址偏移4个字节
  */
-void IntPointerPlusOne()
+void int_pointer_plus_one()
 {
     int arr[5] = { 10,20,30,40,50 };
     for(int i = 0; i < 5; i++)
@@ -66,7 +66,7 @@ void IntPointerPlusOne()
 /**
  * char类型指针的+1，每次指针+1后内存地址偏移1个字节
  */
-void CharPointerPlusOne()
+void char_pointer_plus_one()
 {
     char arr[5] = { 'h','e','l','l','o' };
     for(int i = 0; i < 5; i++)
@@ -80,7 +80,7 @@ void CharPointerPlusOne()
 /**
  * double类型指针的+1，每次指针+1后内存地址偏移8个字节
  */
-void DoublePointerPlusOne()
+void double_pointer_plus_one()
 {
     double arr[5] = { 10.1,20.2,30.3,40.4,50.5 };
     for(int i = 0; i < 5; i++)
@@ -93,10 +93,10 @@ void DoublePointerPlusOne()
 
 #if 0
 int main() {
-	IntPointerToCharPointer();
-	//IntPointerPlusOne();
-	//CharPointerPlusOne();
-	//DoublePointerPlusOne();
+	int_pointer_to_char_pointer();
+	//int_pointer_plus_one();
+	//char_pointer_plus_one();
+	//double_pointer_plus_one();
     return 0;
 }
 #endif

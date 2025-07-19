@@ -4,7 +4,7 @@
 /**
  * 可变参数
  */
-void Varargs(int n, ...) {
+void varargs_test(int n, ...) {
     va_list args;
     va_start(args, n);
 
@@ -18,7 +18,7 @@ void Varargs(int n, ...) {
 }
 
 int main() {
-    Varargs(3, 1, 2, 3);  // 输出：1 2 3
-    Varargs(5, 4, 5, 6, 7, 8);  // 输出：4 5 6 7 8
+    varargs_test(3, 1, 2, 3);  // 输出：1 2 3
+    varargs_test(5, 4, 5, 6, 7, 8);  // 输出：4 5 6 7 8
     return 0;
 }

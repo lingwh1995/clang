@@ -9,7 +9,7 @@
  * @param val 要确定是否存在于当前数组中的值
  */
 /*
-int FindValueV3(const int* arr, int n, int val)
+int find_value_3(const int* arr, int n, int val)
 {
 	assert(NULL != arr);
 	if (n < 1) return -1;
@@ -22,7 +22,7 @@ int FindValueV3(const int* arr, int n, int val)
 	return position;
 }
 */
-int FindValueV3(const int* arr, int n, int val)
+int find_value_3(const int* arr, int n, int val)
 {
 	assert(NULL != arr);
 	if (n < 1) return -1;
@@ -39,7 +39,7 @@ int FindValueV3(const int* arr, int n, int val)
  * @param *arr 代表数组的指针
  * @param length 数组长度
  */
-void InitArrV3(int* arr, int length)
+void init_arr_3(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;
@@ -50,7 +50,7 @@ void InitArrV3(int* arr, int length)
 	while (i < 100)
 	{
 		int r = rand() % 100 + 1;
-		int position = FindValueV3(arr, i, r);
+		int position = find_value_3(arr, i, r);
 		if (position == -1)
 		{
 			arr[i] = r;
@@ -64,7 +64,7 @@ void InitArrV3(int* arr, int length)
  * @param *ap 代表第一个数的指针
  * @param *bp 代表第二个数的指针
  */
-void SwapV3(int* ap, int* bp)
+void swap_3(int* ap, int* bp)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == ap || NULL == bp) return;
@@ -80,7 +80,7 @@ void SwapV3(int* ap, int* bp)
  * @param *arr 代表数组的指针
  * @param length 数组长度
  */
-void BubbleSortV3(int* arr, int length)
+void bubble_sort_3(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;
@@ -92,7 +92,7 @@ void BubbleSortV3(int* arr, int length)
 		{
 			if (arr[j] > arr[j + 1])
 			{
-				SwapV3(&arr[j], &arr[j + 1]);
+				swap_3(&arr[j], &arr[j + 1]);
 			}
 		}
 	}
@@ -103,7 +103,7 @@ void BubbleSortV3(int* arr, int length)
  * @param *arr 代表数组的指针
  * @param length 数组长度
  */
-void PrintArrV3(int* arr, int length)
+void print_arr_3(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;

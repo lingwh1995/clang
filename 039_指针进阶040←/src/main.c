@@ -7,7 +7,7 @@
 /*
  * 指针中 * 的含义
  */
-void PointerSeniorTest1() {
+void pointer_senior_test_1() {
 	/**
 	 * 常见的指针变量
 	 *
@@ -38,7 +38,7 @@ void PointerSeniorTest1() {
     s = &*p; // 等价于 s = &a;
 }
 
-void PointerSeniorTest2() {
+void pointer_senior_test_2() {
     int a = 10, b = 20;
     int* ap = &a;
     int* bp = &b;
@@ -72,7 +72,7 @@ void fun(int* p) {
 /**
  * 调用方法修改指针指向的值
  */
-void PointerSeniorTest3() {
+void pointer_senior_test_3() {
     int a = 1main0;
     int* p = &a;
     fun(p);
@@ -91,7 +91,7 @@ void PointerSeniorTest3() {
  *  2.野指针一般可以通过参数校验，即使通过了参数校验，依然是一个不合法的参数，所以不允许出现野指针
  *  3.指针类型变量如果没有初始值，定义为空指针即可
  */
-void PointerSeniorTest4() {
+void pointer_senior_test_4() {
     int a; //随机值
     int* p; //野指针:非常危险，要杜绝野指针的使用
 
@@ -119,7 +119,7 @@ static int sg;
 int* gp = NULL;
 // 定义一个静态类型的全局空指针
 static int* sgp = NULL;
-void PointerSeniorTest5() {
+void pointer_senior_test_5() {
     int i;
     static int si = 0;
 
@@ -145,9 +145,9 @@ void PointerSeniorTest5() {
  * 返回指针类型数据，栈帧回收后，这个返回值存放在一个临时变量中
  */
 /**/
-int* GetPointer1() {
+int* get_pointer_1() {
 	int a = 100;
-    //相当于把主函数中的 变量a 复制一份放在GetPointer1()这个函数中执行
+    //相当于把主函数中的 变量a 复制一份放在get_pointer_1()这个函数中执行
     int* p = &a;
     //返回的p是当前栈帧中的 变量a 的地址
     printf("变量a的地址 = %p\n", &a);
@@ -156,46 +156,46 @@ int* GetPointer1() {
 
 //解决失效指针(空悬指针)
 /*
-int* GetPointer1() {
+int* get_pointer_1() {
     //使用static修饰，修改变量a的声明周期，本质是因为静态变量不在栈区，不会在栈帧被回收时同时回收
     static int a = 100;
-    //相当于把主函数中的 变量a 复制一份放在GetPointer1()这个函数中执行
+    //相当于把主函数中的 变量a 复制一份放在get_pointer_1()这个函数中执行
     int* p = &a;
     //返回的p是当前栈帧中的 变量a 的地址
     printf("变量a的地址 = %p\n", &a);
     return p;
 }*/
 
-void PointerSeniorTest6() {
+void pointer_senior_test_6() {
     //指针的判断正确定义
     int i = 5;
     int* p = NULL;
     printf("变量i的地址 = %p\n", &i);
     printf("对变量i解引用 = %d\n", *&i);
-    p = GetPointer1();
+    p = get_pointer_1();
     //指针的判空处理
     if (p != NULL) {
     	// 初次解引用还是可以获取到正确的值的，第二次解引用就无法获取到正确的值了
     	printf("对变量a在栈帧中地址的副本解引用 = %d\n", *p);
         printf("变量a在栈帧中地址的副本 = %p\n", p);
-        //为什么返回的值不是100,因为这个指针失效了: 当GetPointer1()执行结束后，GetPointer1()中的变量已经释放了，所以解引用的时候这个指针已经失效了
+        //为什么返回的值不是100,因为这个指针失效了: 当get_pointer_1()执行结束后，get_pointer_1()中的变量已经释放了，所以解引用的时候这个指针已经失效了
         //MinGW编译器不会失效，可以成功解引用,但是vs编译器会失效
         printf("对变量a在栈帧中地址的副本解引用 = %d\n", *p);
     }
 }
 
-int* GetPointer2(int* p) {
+int* get_pointer_2(int* p) {
     if (p != NULL) {
         *p = 100;
     }
     return p;
 }
 
-void PointerSeniorTest7() {
+void pointer_senior_test_7() {
     int a = 10;
     int* p = &a;
     int* s = NULL;
-    s = GetPointer2(p);
+    s = get_pointer_2(p);
     printf("a = %d\n", a);
     printf("*s = %d\n", *s);
 }
@@ -209,7 +209,7 @@ struct Student {
 /**
  * 查看各种类型指针的大小
  */
-void PointerSeniorTest8() {
+void pointer_senior_test_8() {
     int* ip = NULL;
     char* cp = NULL;
     double* dp = NULL;
@@ -226,7 +226,7 @@ void PointerSeniorTest8() {
 /**
  * 指针经典练习题：指针和自增运算符的结合
  */
-void PointerSeniorTest9() {
+void pointer_senior_test_9() {
     int arr[5] = { 12,23,34,45,56 };
     int* p = arr;
     int x = 0;//12
@@ -245,7 +245,7 @@ void PointerSeniorTest9() {
 /*
  * *&p = &*p，编译器会自动处理成 *&p = &*p = p
  */
-void PointerSeniorTest10() {
+void pointer_senior_test_10() {
     int a = 10;
     int* p = &a;
     printf("*&a = %d\n", *&a); // 10
@@ -258,16 +258,16 @@ void PointerSeniorTest10() {
 #if 0
 #endif
 int main() {
-	//PointerSeniorTest1();
-	PointerSeniorTest2();
-	//PointerSeniorTest3();
-	//PointerSeniorTest4();
-	//PointerSeniorTest5();
-	//PointerSeniorTest6();
-	//PointerSeniorTest7();
-	//PointerSeniorTest8();
-	//PointerSeniorTest9();
-	//PointerSeniorTest10();
+	//pointer_senior_test_1();
+	pointer_senior_test_2();
+	//pointer_senior_test_3();
+	//pointer_senior_test_4();
+	//pointer_senior_test_5();
+	//pointer_senior_test_6();
+	//pointer_senior_test_7();
+	//pointer_senior_test_8();
+	//pointer_senior_test_9();
+	//pointer_senior_test_10();
     return 0;
 }
 

@@ -4,7 +4,7 @@
 /**
  * 2022年版
  */
-void PrintCalendar_(int year);
+void print_calendar_(int year);
 
 #if 0
 #endif
@@ -12,7 +12,7 @@ int main()
 {
     //输入年份
     int year = 2023;
-    PrintCalendar_(year);
+    print_calendar_(year);
 }
 
 /**
@@ -20,7 +20,7 @@ int main()
  * @param year
  * @return
  */
-bool IsLeapYear_(int year)
+bool is_leap_year(int year)
 {
     bool leap = false;
     if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
@@ -35,7 +35,7 @@ bool IsLeapYear_(int year)
  * 判断某个月有多少天,闰年 2月29天,平年2月28天
  * @return
  */
-int GetDays(int year, int month)
+int get_days(int year, int month)
 {
     int days = 0;
     switch (month)
@@ -50,7 +50,7 @@ int GetDays(int year, int month)
 			days = 31;
 			break;
 		case 2:
-			days = IsLeapYear_(year) ? 29 : 28;
+			days = is_leap_year(year) ? 29 : 28;
 			break;
 		case 4:
 		case 6:
@@ -72,7 +72,7 @@ int GetDays(int year, int month)
  * @param day 日
  * @return
  */
-int getDayOfWeek(int year, int month, int day)
+int get_day_of_week(int year, int month, int day)
 {
     int c, y, week;
     //判断month是否为1或2　
@@ -100,15 +100,15 @@ int getDayOfWeek(int year, int month, int day)
  * @param day 这个月总共有多少天
  * @param wk  这个月的第1天是星期几
  */
-void PrintCalendar_(int year)
+void print_calendar_(int year)
 {
     //当前年份
     for (int i = 1; i <= 12; i++)
     {
         //根据年份和月份获取该月有多少天
-        int days = GetDays(year, i);
+        int days = get_days(year, i);
         //求当前月第一天是星期几
-        int day_of_week = getDayOfWeek(year, i, 1);
+        int day_of_week = get_day_of_week(year, i, 1);
         int k = 0;
         printf("  年份:%d     月份:%d\n", year, i);
         printf("  ---------------------------\n");

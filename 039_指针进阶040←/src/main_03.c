@@ -9,25 +9,25 @@
 /**
  * 指针相减运算结果 = 十六进制地址相减之差转换为十进制数 / sizeof(数据类型)
  */
-void PointerSubIntArr()
+void pointer_subInt_arr()
 {
     int arr[] = { 1, 2, 3, 4, 5 };
     // 数组首元素地址
-    int* pF = &arr[0];
+    int* p_first = &arr[0];
     // 数组尾元素地址
-    int* pL = &arr[4];
-    printf("pL - pF = %d\n", (int)(pL - pF));
-    printf("pF - pL = %d\n", (int)(pF - pL));
+    int* p_last = &arr[4];
+    printf("pL - pF = %d\n", (int)(p_last - p_first));
+    printf("pF - pL = %d\n", (int)(p_first - p_last));
 
     // 数组结束位置（尾元素地址+1）地址
-    int* pE = &arr[5];
-    printf("pE - pF = %d\n", (int)(pE - pF));
+    int* p_end = &arr[5];
+    printf("pE - pF = %d\n", (int)(p_end - p_first));
 }
 
 /**
  * 指针相减运算结果 = 十六进制地址相减之差转换为十进制数 / sizeof(数据类型)
  */
-void PointerSubStr()
+void pointer_sub_str()
 {
     const char* str = "hello";
     char* cp = (char*)str;
@@ -52,8 +52,8 @@ void PointerSubStr()
 int main()
 {
     // 使用整型数组 1.观察遍历数组时指针的变化 2.观察指针的相减
-    PointerSubIntArr();
+    pointer_subInt_arr();
     // 使用字符串 1.观察遍历数组时指针的变化 2.观察指针的相减
-    //PointerSubStr();
+    //pointer_sub_str();
     return 0;
 }

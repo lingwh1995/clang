@@ -10,7 +10,7 @@
 /*
  * 单分支测试
  */
-void SingleBranchTest()
+void single_branch_test()
 {
     printf("请输入i和j的值,使用空格隔开:\n");
     int i, j, max;
@@ -28,7 +28,7 @@ void SingleBranchTest()
 /*
  * 三元表达式测试
  */
-void TernaryExpression()
+void ternary_expression()
 {
     printf("请输入i和j的值,使用空格隔开:\n");
     int i, j, max;
@@ -41,7 +41,7 @@ void TernaryExpression()
 #endif
 int main()
 {
-	//SingleBranchTest();
-    TernaryExpression();
+	//single_branch_test();
+    ternary_expression();
     return 0;
 }

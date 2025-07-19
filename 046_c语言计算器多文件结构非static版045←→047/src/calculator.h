@@ -4,11 +4,11 @@
 #define CALCULATOR_H
 
 //声明其他文件中的函数
-extern void Calc(int a, int b, char op);
-extern int Add_Int(int a, int b);
-extern int Sub_Int(int a, int b);
-extern int Mul_Int(int a, int b);
-extern int Div_Int(int a, int b);
-extern void Show(int a, int b, char op, int result);
+extern void calc(int a, int b, char op);
+extern int add_int(int a, int b);
+extern int sub_int(int a, int b);
+extern int mul_int(int a, int b);
+extern int div_int(int a, int b);
+extern void show(int a, int b, char op, int result);
 #endif // !CALCULATOR_H
 

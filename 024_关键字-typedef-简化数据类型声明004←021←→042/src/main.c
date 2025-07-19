@@ -16,7 +16,7 @@
 typedef int* PINT;
 
 
-void TypeDefTest()
+void typedef_test()
 {
     // 正常定义
     unsigned char c;
@@ -72,7 +72,7 @@ typedef struct User
 /**
  * 测试typedef和结构体结合使用
  */
-void TypeDefWithStructTest()
+void typedef_with_struct_test()
 {
     /**
      * 测试 typedef和结构体结合使用方式一:
@@ -90,7 +90,7 @@ void TypeDefWithStructTest()
 /**
  * 宏定义和typedef的对比
  */ 
-void MacroDefineAndTypedef()
+void macrodefine_and_typedef()
 {
     // 相当于 int *a; int b; 宏只是做字符串替换
     MINT a, b;
@@ -102,8 +102,8 @@ void MacroDefineAndTypedef()
 
 int main()
 {
-    //TypeDefTest();
-    //TypeDefWithStructTest();
-    MacroDefineAndTypedef();
+    //typedef_test();
+    //typedef_with_struct_test();
+    macrodefine_and_typedef();
     return 0;
 }

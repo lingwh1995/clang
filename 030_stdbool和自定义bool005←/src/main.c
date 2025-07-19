@@ -10,7 +10,7 @@
 /**
  * C语言中判断真或假
  */
-void JudgeTrueOrFalse(int n)
+void judge_true_or_false(int n)
 {
     if(n)
     {
@@ -25,23 +25,23 @@ void JudgeTrueOrFalse(int n)
 /*
  * C语言中判断真或假测试
  */
-void JudgeTrueOrFalseTest()
+void judge_true_or_false_test()
 {
     //在C语言中,0为假,非0都为真
     int n = 0;
-    JudgeTrueOrFalse(n);
+    judge_true_or_false(n);
 
     n = 1;
-    JudgeTrueOrFalse(n);
+    judge_true_or_false(n);
 
     n = -1;
-    JudgeTrueOrFalse(n);
+    judge_true_or_false(n);
 }
 
 /*
  * stdbool.h测试
  */
-void StdboolTest()
+void stdbool_test()
 {
     //如果要使用bool，需要引入 stdbool.h
     bool b = false;
@@ -85,7 +85,7 @@ void StdboolTest()
 /**
  * C99中提供的Bool类型
  */ 
-void C99BoolTest()
+void c99_bool_test()
 {
     bool b = true;
     printf("true = %d 代表 真\n",b);
@@ -96,9 +96,9 @@ void C99BoolTest()
 #if 0
 int main()
 {
-	//JudgeTrueOrFalseTest();
-    //StdboolTest();
-    C99BoolTest();
+	//judge_true_or_false_test();
+    //stdbool_test();
+    c99_bool_test();
     return 0;
 }
 #endif

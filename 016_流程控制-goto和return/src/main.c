@@ -9,7 +9,7 @@
   * goto测试
   *      
   */
-void GoToTest()
+void goto_test()
 {
     for (int i = 0; i < 10; i++)
     {
@@ -31,6 +31,6 @@ jump:
 
 int main()
 {
-    GoToTest();
+    goto_test();
     return 0;
 }

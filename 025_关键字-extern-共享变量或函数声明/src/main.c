@@ -20,7 +20,7 @@ extern int gi_in_current_file;
 // 声明当前文件中的一个全局常量
 extern const int gc_in_current_file;
 // 声明当前文件中的一个方法
-extern int AddInCurrentFile(int, int);
+extern int add_in_current_file(int, int);
 */
 
 // 不使用extern关键字声明定义在本文件中的 变量/常量/函数
@@ -29,12 +29,12 @@ int gi_in_current_file;
 // 声明当前文件中的一个全局常量
 const int gc_in_current_file;
 // 声明当前文件中的一个方法
-int AddInCurrentFile(int, int);
+int add_in_current_file(int, int);
 
 /*
  * 测试使用extern声明其他文件中的 变量/常量/函数
  */
-void ExternOtherFileVariableAndConstAndFunctionTest()
+void extern_other_file_variable_and_const_and_function_test()
 {
 	printf("gi_in_other_file = %d\n", gi_in_other_file);
 	printf("gc_in_other_file = %d\n", gc_in_other_file);
@@ -45,20 +45,20 @@ void ExternOtherFileVariableAndConstAndFunctionTest()
 /*
  * 测试使用extern声明当前文件中的 变量/常量/函数
  */
-void ExternCurrentFileVariableAndConstAndFunctionTest()
+void extern_current_file_variable_and_const_and_function_test()
 {
 	printf("gi_in_current_file = %d\n", gi_in_current_file);
 	printf("gc_in_current_file = %d\n", gc_in_current_file);
-	//AddInCurrentFile()在main.c中使用extern关键字声明,在main.c中定义
-	AddInCurrentFile(0, 0);
+	//add_in_current_file()在main.c中使用extern关键字声明,在main.c中定义
+	add_in_current_file(0, 0);
 }
 
 #if 0
 int main()
 {
-	ExternOtherFileVariableAndConstAndFunctionTest();
+	extern_other_file_variable_and_const_and_function_test();
 	//直接调用会报错,因为这个函数中调用的变量、常量和方法都定义在下面,同样需要在当前文件中使用extern声明
-	ExternCurrentFileVariableAndConstAndFunctionTest();
+	extern_current_file_variable_and_const_and_function_test();
 	return 0;
 }
 #endif
@@ -70,7 +70,7 @@ int gi_in_current_file = 10;
 const int gc_in_current_file = 20;
 
 // 定义一个函数
-int AddInCurrentFile(int a, int b)
+int add_in_current_file(int a, int b)
 {
 	printf("我是main.c中的普通函数......(来自当前文件)\n");
 	return a + b;

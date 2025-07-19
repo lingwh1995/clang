@@ -25,9 +25,9 @@ int main()
 	{
 		pArr = &arr;
 	}
-	InitArrV3(pArr, ARSIZE);
-	BubbleSortV3(pArr, ARSIZE);
-	PrintArrV3(pArr, ARSIZE);
+	init_arr_3(pArr, ARSIZE);
+	bubble_sort_3(pArr, ARSIZE);
+	print_arr_3(pArr, ARSIZE);
 	return 0;
 }
 #endif

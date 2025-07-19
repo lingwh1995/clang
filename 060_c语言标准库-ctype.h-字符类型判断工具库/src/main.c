@@ -22,7 +22,7 @@
  /**
   * 自己实现判断逻辑
   */
-void JudgeCharacterTypeTest1()
+void judge_character_type_test_1()
 {
     printf("请输入一个字符:\n");
     char c = getchar();
@@ -51,7 +51,7 @@ void JudgeCharacterTypeTest1()
 /**
  * 调用ctype.h实现判断逻辑
  */
-void JudgeCharacterTypeTest2()
+void judge_character_type_test_2()
 {
     printf("请输入一个字符:\n");
     char c = getchar();
@@ -78,7 +78,7 @@ void JudgeCharacterTypeTest2()
 }
 int main()
 {
-    //JudgeCharacterTypeTest1();
-    JudgeCharacterTypeTest2();
+    //judge_character_type_test_1();
+    judge_character_type_test_2();
     return 0;
 }

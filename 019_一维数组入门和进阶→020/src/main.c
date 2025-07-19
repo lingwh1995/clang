@@ -12,7 +12,7 @@
 /**
  * 一维数组的定义
  */
-void DefineOneDimensionalArray()
+void define_one_dimensional_array()
 {
     // 错误的定义数组，演示一：n必须为一个常量，这里n不是一个常量
 	/*
@@ -96,7 +96,7 @@ void DefineOneDimensionalArray()
 /**
  * 一维数组的长度
  */
-void LengthOfOneDimensionalArray()
+void length_of_one_dimensional_array()
 {
     // 如果定义数组时规定了数组的长度,那么不管真实的长度是多少,求出来的长度都是之前规定好的长度
     int arr_1[10] = { 1,2,3,4,5 };
@@ -130,7 +130,7 @@ void LengthOfOneDimensionalArray()
  *  数组的类型
  *  数组的大小
  */
-void TwoAttributeOfOneDimensionalArray()
+void two_attribute_of_one_dimensional_array()
 {
     // 计算数组所占空间大小的两种方式
     int arr[5] = { 1,2,3,4,5 };
@@ -163,7 +163,7 @@ void TwoAttributeOfOneDimensionalArray()
 /**
  * 查看不同数据类型数组中每一个元素在内存中的物理地址
  */
-void ViewMemoryPhysicalAddressOfOneDimensionalArray()
+void view_memory_physical_address_of_one_dimensional_array()
 {
     // 可以清晰的观察到一个字符占用一个字节
     char str[] = { "hello" };
@@ -185,7 +185,7 @@ void ViewMemoryPhysicalAddressOfOneDimensionalArray()
 /**
  * 可变长数组
  */
-void VariableLengthArray()
+void variable_length_array()
 {
 	int n = 10;
 
@@ -204,7 +204,7 @@ void VariableLengthArray()
 /**
  * 指针是一个常量，不能修改指针的值
  */
-void PointIsConst()
+void pointIs_const()
 {
 	// 创建变量a、b
 	int a = 10, b = 20;
@@ -223,10 +223,10 @@ void PointIsConst()
 #endif
 int main()
 {
-	//DefineOneDimensionalArray();
-	//LengthOfOneDimensionalArray();
-	//TwoAttributeOfOneDimensionalArray();
-	//ViewMemoryPhysicalAddressOfOneDimensionalArray();
-	VariableLengthArray();
+	//define_one_dimensional_array();
+	//length_of_one_dimensional_array();
+	//two_attribute_of_one_dimensional_array();
+	//view_memory_physical_address_of_one_dimensional_array();
+	variable_length_array();
     return 0;
 }

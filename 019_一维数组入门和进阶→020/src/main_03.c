@@ -5,7 +5,7 @@
 /**
  * 打印数组
  */
-void PrintArray(int* arr,int length)
+void print_array(int* arr,int length)
 {
 	for(int i=0; i<length; i++)
 	{
@@ -18,7 +18,7 @@ void PrintArray(int* arr,int length)
 /**
  * 复制数组方式一：自己写算法实现
  */
-int* CopyArray_1(int* src,int length)
+int* copy_array1(int* src,int length)
 {
 	// 下面方式定义的数组返回会报错，因为函数执行完成后，这个函数占用的栈内存就被释放了，最后会导致数组占用的内存空间无法访问
 	//int dest[length] = {};
@@ -36,7 +36,7 @@ int* CopyArray_1(int* src,int length)
 /**
  * 复制数组方式二：使用复制内存块函数实现
  */
-int* CopyArray_2(int* src,int length)
+int* copy_array2(int* src,int length)
 {
 	int* dest = (int*)malloc(sizeof(int) * length);
 	/**
@@ -56,14 +56,14 @@ int main()
 	int length = sizeof(arr) / sizeof(arr[0]);
 
 	// 方式一复制数组
-	int* arr_copy = CopyArray_1(arr, length);
+	int* arr_copy = copy_array1(arr, length);
 	// 打印数组
-	PrintArray(arr_copy, length);
+	print_array(arr_copy, length);
 
 	// 方式二复制数组
-	arr_copy = CopyArray_2(arr, length);
+	arr_copy = copy_array2(arr, length);
 	// 打印数组
-	PrintArray(arr_copy, length);
+	print_array(arr_copy, length);
 	return 0;
 }
 #endif

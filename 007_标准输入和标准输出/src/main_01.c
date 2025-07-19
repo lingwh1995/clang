@@ -9,7 +9,7 @@
  /**
  * 标准输入测试
  */
-void StdinAndEOFTest1()
+void stdin_and_eof_test_1()
 {
     printf("请输入,按回车结束:\n");
     int sum = 0;
@@ -24,7 +24,7 @@ void StdinAndEOFTest1()
 /**
  * 标准输入和EOF测试
  */
-void StdinAndEOFTest2()
+void stdin_and_eof_test_2()
 {
     printf("请输入,输入 Ctrl+C 结束:\n");
     int sum = 0;
@@ -40,7 +40,7 @@ void StdinAndEOFTest2()
  * 标准输入测试
  *  接收单个字符: 不管输入多少个字符,都只会接收第一个字符
  */
-void StdinAndEOFTest3()
+void stdin_and_eof_test_3()
 {
     printf("请输入:\n");
     char ch = getchar();
@@ -52,7 +52,7 @@ void StdinAndEOFTest3()
  * 标准输入测试：接收多个字符(输入Ctrl+C结束)
  *
  */
-void StdinAndEOFTest4()
+void stdin_and_eof_test_4()
 {
     printf("请输入:\n");
     char ch = '\0';
@@ -75,13 +75,13 @@ void StdinAndEOFTest4()
  * 标准输入测试：接收多个字符串(输入Ctrl+C结束)
  *    输入水果名称，通过水果名称判断是不是最喜爱的运动，如果输入的是 apple 就是最喜爱的水果
  */
-void StdinAndEOFTest5()
+void stdin_and_eof_test_5()
 {
     printf("请输入名称:\n");
-    char fruitName;
-    while (scanf("%s", &fruitName) != EOF)
+    char fruit_name;
+    while (scanf("%s", &fruit_name) != EOF)
     {
-        if(strcmp(&fruitName,"apple") == 0)
+        if(strcmp(&fruit_name,"apple") == 0)
         {
             printf("是最喜爱的水果\n");
         }
@@ -97,7 +97,7 @@ void StdinAndEOFTest5()
  * 标准输入测试：接收多个数字(输入Ctrl+C结束)
  *    输入IQ值，通过IQ值判断是不是Genius，IQ>=140是Genius
  */
-void StdinAndEOFTest6()
+void stdin_and_eof_test_6()
 {
     printf("请输入IQ值:\n");
     int IQ;
@@ -117,7 +117,7 @@ void StdinAndEOFTest6()
 /**
  * 打印时左对齐和右对齐
  */
-void StdinAndEOFTest7()
+void stdin_and_eof_test_7()
 {
 	// 左对齐
 	printf("%2d\n", 1);
@@ -134,12 +134,12 @@ void StdinAndEOFTest7()
 #if 0
 int main()
 {
-    //StdinAndEOFTest1();
-	//StdinAndEOFTest2();
-    //StdinAndEOFTest3();
-    //StdinAndEOFTest4();
-	//StdinAndEOFTest5();
-	//StdinAndEOFTest6();
-	StdinAndEOFTest7();
+    //stdin_and_eof_test_1();
+	//stdin_and_eof_test_2();
+    //stdin_and_eof_test_3();
+    //stdin_and_eof_test_4();
+	//stdin_and_eof_test_5();
+	//stdin_and_eof_test_6();
+	stdin_and_eof_test_7();
 }
 #endif

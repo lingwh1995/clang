@@ -14,7 +14,7 @@ int main()
 	do
 	{
 		scanf("%d %c %d", &a, &op, &b); // 1 + 5\n
-		Calc(a, b, op);
+		calc(a, b, op);
 		printf("输入y/Y继续:\n");
 		//fflush(stdin);  // 清空缓冲区
 		//Visual Studio中可以使用这个函数清空stdin缓冲区

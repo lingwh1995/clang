@@ -7,7 +7,7 @@
  * @param *arr 代表数组的指针
  * @param length 数组长度
  */
-void InitArrV2(int* arr, int length)
+void init_arr_2(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;
@@ -25,7 +25,7 @@ void InitArrV2(int* arr, int length)
  * @param *ap 代表第一个数的指针
  * @param *bp 代表第二个数的指针
  */
-void SwapV2(int* ap, int* bp)
+void swap_2(int* ap, int* bp)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == ap || NULL == bp) return;
@@ -41,7 +41,7 @@ void SwapV2(int* ap, int* bp)
  * @param *arr 代表数组的指针
  * @param length 数组长度
  */
-void BubbleSortV2(int* arr, int length)
+void bubble_sort_2(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;
@@ -53,7 +53,7 @@ void BubbleSortV2(int* arr, int length)
 		{
 			if (arr[j] > arr[j + 1])
 			{
-				SwapV2(&arr[j], &arr[j + 1]);
+				swap_2(&arr[j], &arr[j + 1]);
 			}
 		}
 	}
@@ -64,7 +64,7 @@ void BubbleSortV2(int* arr, int length)
  * @param *arr 代表数组的指针
  * @param length 数组长度
  */
-void PrintArrV2(int* arr, int length)
+void print_arr_2(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;

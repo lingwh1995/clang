@@ -11,7 +11,7 @@
 /**
  * 输入三个整型数据，求最小值
  */ 
-void GetMinValue()
+void get_min_value()
 {
 	printf("请输入三个整型数据，使用空格分隔:\n");
 	int a, b, c, min;
@@ -24,7 +24,7 @@ void GetMinValue()
 /**
  * 输入三个整型数据，求最大值
  */ 
-void GetMaxValue()
+void get_max_value()
 {
 	printf("请输入三个整型数据，使用空格分隔:\n");
 	int a, b, c, max;
@@ -37,7 +37,7 @@ void GetMaxValue()
 /**
  * 输入三个整型数据，求中间值
  */ 
-void GetMidValue()
+void get_mid_value()
 {
 	printf("请输入三个整型数据，使用空格分隔:\n");
 	int a, b, c, mid;
@@ -50,8 +50,8 @@ void GetMidValue()
 #endif
 int main()
 {
-	//GetMinValue();
-	//GetMaxValue();
-	GetMidValue();
+	//get_min_value();
+	//get_max_value();
+	get_mid_value();
 	return 0;
 }

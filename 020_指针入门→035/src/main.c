@@ -79,8 +79,8 @@ int main()
     /**
      * C语言中的NULL指针
      */
-    int* pNULL = NULL;
-    printf("pNULL的内存地址 = %p\n", pNULL);
+    int* p_null = NULL;
+    printf("pNULL的内存地址 = %p\n", p_null);
     printf("---------------------------------------------\n");
 
     //C语言字符串和指针

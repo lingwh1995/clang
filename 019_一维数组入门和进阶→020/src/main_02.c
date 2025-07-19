@@ -18,9 +18,9 @@ enum
  * 判断当前年份是否是闰年(闰年全年366天，2月29天，平年全年365天，2月28天)
  * @param year 当前年份
  */
-bool IsLeapYear_(int year)
+bool is_leap_year_(int year)
 {
-    return (year%4 == 0 && year%100 != 0) || (year%400 == 0);
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
 /**
@@ -30,12 +30,12 @@ bool IsLeapYear_(int year)
   * @param year
   * @param month
   */
-int GetDaysByYearAndMonth_(int year, int month)
+int get_days_by_year_and_month_(int year, int month)
 {
     // 被static修饰的变量会存放在数据区(.data)，从索引1开始存放一月数据而不是从索引0开始存放一月数据体现了灵活编程思想
     static const int days[] = { 29,31,28,31,30,31,30,31,31,30,31,30,31 };
     // 短路与的细节用法，只有月份是2月的时候才需要判断是否是闰年
-    if (month == 2 && IsLeapYear_(year))
+    if (month == 2 && is_leap_year_(year))
     {
         month = 0;
     }
@@ -49,7 +49,7 @@ int GetDaysByYearAndMonth_(int year, int month)
  * @param day
  * @return
  */
-int GetDays_(int year, int month, int day)
+int get_days_(int year, int month, int day)
 {
 	// 返回-1代表输入的年份不合理
 	if(year < 1) {
@@ -61,7 +61,7 @@ int GetDays_(int year, int month, int day)
         return MONTH_ERROR;
     }
     // 返回-2代表输入的天数不合理
-    if (day < 1 || day > GetDaysByYearAndMonth_(year,month))
+    if (day < 1 || day > get_days_by_year_and_month_(year,month))
     {
         return DAY_ERROR;
     }
@@ -69,7 +69,7 @@ int GetDays_(int year, int month, int day)
     // 被static修饰的变量会存放在数据区(.data)，从索引1开始存放一月数据而不是从索引0开始存放一月数据体现了灵活编程思想
     static const int days[] = { 0,31,59,90,120,151,181,212,243,273,304,334,365 };
     // 短路与的细节用法，只有月份是2月的时候才需要判断是否是闰年
-    return total_days = (month > 2 && IsLeapYear_(year) ? 1 : 0) +  days[month-1] + day;
+    return total_days = (month > 2 && is_leap_year_(year) ? 1 : 0) +  days[month-1] + day;
 }
 
 #if 0
@@ -77,9 +77,9 @@ int main()
 {
     // 获取从第一天到这个日期总共有多少天
 	// 测试闰年
-    int days = GetDays_(2000, 3, 1);
+    int days = get_days_(2000, 3, 1);
     // 测试非闰年
-    //int days = GetDays_(2001, 3, 1);
+    //int days = get_days_(2001, 3, 1);
     switch (days)
     {
     case -1:

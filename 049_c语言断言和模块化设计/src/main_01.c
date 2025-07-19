@@ -18,14 +18,14 @@
 int main()
 {
 	int arr[ARSIZE] = { 0 };
-	int* pArr = NULL;
+	int* p_arr = NULL;
 	int val = 0;
 	if (0 == val) {
-		pArr = &arr;
+		p_arr = &arr;
 	}
-	InitArrV2(pArr, ARSIZE);
-	BubbleSortV2(pArr, ARSIZE);
-	PrintArrV2(pArr, ARSIZE);
+	init_arr_2(pArr, ARSIZE);
+	bubble_sort_2(pArr, ARSIZE);
+	print_arr_2(pArr, ARSIZE);
 	return 0;
 }
 #endif

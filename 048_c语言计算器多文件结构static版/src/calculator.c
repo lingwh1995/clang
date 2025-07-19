@@ -4,11 +4,11 @@
 #include "calculator.h"
 
 //声明本文件中的函数
-static int Add_Int(int a, int b);
-static int Sub_Int(int a, int b);
-static int Mul_Int(int a, int b);
-static int Div_Int(int a, int b);
-static void Show(int a, int b, char op, int result);
+static int add_int(int a, int b);
+static int sub_int(int a, int b);
+static int mul_int(int a, int b);
+static int div_int(int a, int b);
+static void show(int a, int b, char op, int result);
 
 /*
  * 进行计算的方法,不能使用static修饰,因为这是本程序唯一对外暴露的接口
@@ -16,40 +16,40 @@ static void Show(int a, int b, char op, int result);
  * @param b 计算参数2
  * @param op 运算符
  */
-void Calc(int a, int b, char op)
+void calc(int a, int b, char op)
 {
 	int result = 0;
-	bool bIsShow = true;
+	bool b_is_show = true;
 	switch (op)
 	{
 		case '+':
-			result = Add_Int(a, b);
+			result = add_int(a, b);
 			break;
 		case '-':
-			result = Sub_Int(a, b);
+			result = sub_int(a, b);
 			break;
 		case '*':
-			result = Mul_Int(a, b);
+			result = mul_int(a, b);
 			break;
 		case '/':
 			if (b == 0)
 			{
-				bIsShow = false;
+                b_is_show = false;
 				printf("div by zeron error!\n");
 			}
 			else
 			{
-				result = Div_Int(a, b);
+				result = div_int(a, b);
 			}
 			break;
 		default:
-			bIsShow = false;
+            b_is_show = false;
 			printf("op input error!\n");
 			break;
 	}
-	if (bIsShow)
+	if (b_is_show)
 	{
-		Show(a, b, op, result);
+		show(a, b, op, result);
 	}
 }
 
@@ -58,7 +58,7 @@ void Calc(int a, int b, char op)
  * @param a 计算参数1
  * @param b 计算参数2
  */
-static int Add_Int(int a, int b)
+static int add_int(int a, int b)
 {
 	return a + b;
 }
@@ -69,7 +69,7 @@ static int Add_Int(int a, int b)
  * @param b 计算参数2
  */
 
-static int Sub_Int(int a, int b)
+static int sub_int(int a, int b)
 {
 	return a - b;
 }
@@ -79,7 +79,7 @@ static int Sub_Int(int a, int b)
  * @param a 计算参数1
  * @param b 计算参数2
  */
-static int Mul_Int(int a, int b)
+static int mul_int(int a, int b)
 {
 	return a * b;
 }
@@ -89,7 +89,7 @@ static int Mul_Int(int a, int b)
  * @param a 计算参数1
  * @param b 计算参数2
  */
-static int Div_Int(int a, int b)
+static int div_int(int a, int b)
 {
 	return a / b;
 }
@@ -101,7 +101,7 @@ static int Div_Int(int a, int b)
  * @param op 运算符
  * @param result 计算结果
  */
-static void Show(int a, int b, char op, int result)
+static void show(int a, int b, char op, int result)
 {
 	printf("%d %c %d = %d\n", a, op, b, result);
 }

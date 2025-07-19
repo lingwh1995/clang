@@ -5,5 +5,5 @@ extern int gi_in_other_file;
 // 声明其他文件中的一个全局常量
 extern const int gc_in_other_file;
 // 声明其他文件中的一个方法
-extern int AddInOtherFile(int, int);
+extern int add_in_other_file(int, int);
 #endif // !MYLIB_H

@@ -8,7 +8,7 @@
  *
  * x86架构的CPU（包括Intel和AMD的处理器）采用‌小端模式（Little-Endian）‌存储数据
  */
-void BigEndOrLittleEnd_1()
+void big_end_or_little_end_1()
 {
 	int i = 1;
 	// 获取整形指针
@@ -33,7 +33,7 @@ void BigEndOrLittleEnd_1()
  * 	小端：返回1，说明数据的低字节在内存的低地址存放
  *	大端：返回0，说明数据的低字节在内存的高地址存放
  */
-void BigEndOrLittleEnd_2()
+void big_end_or_little_end_2()
 {
 	int i = 1;
 	// (char)i : 强转为 char 类型，实际就是取 i 在内存中第一个字节的数据
@@ -50,7 +50,7 @@ void BigEndOrLittleEnd_2()
 
 }
 
-void TestBigEndAndLittleEnd()
+void big_end_and_little_end_test()
 {
 	int a = 10, b = 20, c = 30, d = 40;
 	printf("&a = %p\n", &a);
@@ -90,8 +90,8 @@ int main()
 	 * 	低地址 ------------------> 高地址
 	 * 	0x01  |  0x00  |  0x00  |  0x00
 	 */
-	//BigEndOrLittleEnd_1();
-	//BigEndOrLittleEnd_2();
-	TestBigEndAndLittleEnd();
+	//big_end_or_little_end_1();
+	//big_end_or_little_end_2();
+	big_end_and_little_end_test();
 	return 0;
 }

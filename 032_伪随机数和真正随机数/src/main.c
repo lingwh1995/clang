@@ -11,7 +11,7 @@
 /**
  * 伪随机数：每次生成的随机数是一样的
  */
-void GetRandomNumber1()
+void get_random_number_1()
 {
     printf("r = %d\n", rand());
     printf("r = %d\n", rand());
@@ -23,7 +23,7 @@ void GetRandomNumber1()
 /**
  * 伪随机数,每次生成的随机数是相同的
  */
-void GetRandomNumber2()
+void get_random_number_2()
 {
     int r = rand();
     printf("r = %d\n", r);
@@ -52,7 +52,7 @@ void GetRandomNumber2()
 /**
  * 种子随机数,每次生成的随机数是不同的
  */
-void GetRandomNumber3()
+void get_random_number_3()
 {
     srand((unsigned)time(NULL));
     int r = rand() % 10;
@@ -82,7 +82,7 @@ void GetRandomNumber3()
 /**
  * 生成10个随机数
  */
-void GetRandomNumber4()
+void get_random_number_4()
 {
     //初始化随机数
     srand((unsigned)time(NULL));
@@ -97,7 +97,7 @@ void GetRandomNumber4()
 /**
  * 生成一个0-1的随机数
  */
-void GetRandomNumber5()
+void get_random_number_5()
 {
     //初始化随机数
     srand((unsigned)time(NULL));
@@ -119,7 +119,7 @@ void GetRandomNumber5()
  *      100022 % 10 = 2
  *  用100取余可以得到最后一位数,最后一位数的范围为: 0-9,所以  rand()+1 的范围是 0-10
  */
-void GetRandomNumber6()
+void get_random_number_6()
 {
     //初始化随机数
     srand((unsigned)time(NULL));
@@ -142,7 +142,7 @@ void GetRandomNumber6()
  *      100022 % 100 = 22
  *  用100取余可以得到最后两位数,最后两位数的范围为: 00-99,所以  rand()+1 的范围是 00-100
  */
-void GetRandomNumber7()
+void get_random_number_7()
 {
     //初始化随机数
     srand((unsigned)time(NULL));
@@ -156,12 +156,12 @@ void GetRandomNumber7()
 
 int main()
 {
-	//GetRandomNumber1();
-    //GetRandomNumber2();
-	//GetRandomNumber3();
-    GetRandomNumber4();
-    //GetRandomNumber5();
-    //GetRandomNumber6();
-    //GetRandomNumber7();
+	//get_random_number_1();
+    //get_random_number_2();
+	//get_random_number_3();
+    get_random_number_4();
+    //get_random_number_5();
+    //get_random_number_6();
+    //get_random_number_7();
     return 0;
 }

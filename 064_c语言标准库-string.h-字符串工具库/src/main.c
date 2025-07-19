@@ -6,7 +6,7 @@
 /**
  * size_t strlen(const char *_Str)：返回字符串的字节长度，不包括末尾的空字符'\0'
  */
-void StrlenTest()
+void strlen_test()
 {
     char* s1 = "hello";
     printf("strlen(s1) = %ld\n", strlen(s1));
@@ -19,7 +19,7 @@ void StrlenTest()
 /**
  * 自定义方法计算字符串长度方式一
  */
-int Strlen1(const char* str)
+int my_strlen_1(const char* str)
 {
     if(NULL == str)
     {
@@ -38,10 +38,10 @@ int Strlen1(const char* str)
 /**
  * 测试自定义方法计算字符串长度方式一
  */
-void MyStrlen1Test()
+void my_strlen_1_test()
 {
     const char* str = "hello world";
-    int length = Strlen1(str);
+    int length = my_strlen_1(str);
     printf("自定义函数 length = %d\n", length);
 }
 
@@ -49,7 +49,7 @@ void MyStrlen1Test()
 /**
  * 自定义方法计算字符串长度方式二：利用指针相减的特性
  */
-int Strlen2(const char* str)
+int my_strlen_2(const char* str)
 {
     if(NULL == str)
     {
@@ -68,10 +68,10 @@ int Strlen2(const char* str)
 /**
  * 测试自定义方法计算字符串长度方式二：利用指针相减的特性
  */
-void MyStrlen2Test()
+void my_strlen_2_Test()
 {
     const char* str = "hello world";
-    int length = Strlen2(str);
+    int length = my_strlen_2(str);
     printf("自定义函数 length = %d\n", length);
 }
 
@@ -83,7 +83,7 @@ void MyStrlen2Test()
  * @tips 1.必须要保证第一个参数的长度不小于第二个参数，否则虽然不会报错，但会溢出第一个字符串变量的边界，发生难以预料的结果。 2.第二个参数被const修饰，表示这个函数不会修改第二个字符串。
  * char * strcpy ( char * dest, const char * src )
  */
-void StrcpyTest()
+void strcpy_test()
 {
     // 错误的字符串复制方式一：因为字符串一旦定义，字符串的地址值不能再发生改变，定义后再去赋值编译无法通过
     /*
@@ -161,7 +161,7 @@ void StrcpyTest()
  * @param src  源字符串
  * @return
  */
-char* Strcpy1(char* dest, const char* src)
+char* my_strcpy_1(char* dest, const char* src)
 {
     if(NULL == dest || NULL == src)
     {
@@ -182,11 +182,11 @@ char* Strcpy1(char* dest, const char* src)
 /**
  * 自定义方法编写算法实现字符串拷贝
  */
-void MyStrcpy1Test()
+void my_strcpy_1_test()
 {
     char src[] = "hello world";
     char dest[25];
-    Strcpy1(dest, src);
+    my_strcpy_1(dest, src);
     printf("dest = %s\n", dest);
 }
 
@@ -196,7 +196,7 @@ void MyStrcpy1Test()
  * @param src  源字符串
  * @return
  */
-char* Strcpy2(char* dest, const char* src)
+char* my_strcpy_2(char* dest, const char* src)
 {
     if(NULL == dest || NULL == src)
     {
@@ -214,11 +214,11 @@ char* Strcpy2(char* dest, const char* src)
 /**
  * 自定义方法编写算法实现字符串拷贝
  */
-void MyStrcpy2Test()
+void my_strcpy_2_test()
 {
     char src[] = "hello world";
     char dest[25];
-    Strcpy2(dest, src);
+    my_strcpy_2(dest, src);
     printf("dest = %s\n", dest);
 }
 
@@ -233,7 +233,7 @@ void MyStrcpy2Test()
 *       2.strncpy()也可以用来拷贝部分字符串
 * char * strncpy( char * dest, const char * src, size_t n );
 */
-void StrncpyTest()
+void strncpy_test()
 {
     char* p = NULL;
 
@@ -274,7 +274,7 @@ void StrncpyTest()
 /**
  * strncpy()：演示src字符串的长度超过了dest字符串的长度，参数n的最大值 sizeof(dest) - 1，因为要留一个字节的空间存储结尾符 '\0'
  */
-void StrncpyTips1Test()
+void strncpy_tips_1_test()
 {
     char src[] = "Hello, world!";
     char dest[5];
@@ -285,7 +285,7 @@ void StrncpyTips1Test()
 /**
  * strncpy()：演示拷贝部分字符串
  */
-void StrncpyTips2Test()
+void strncpy_tips_2_test()
 {
     char src[] = "Hello, world!";
     char dest[50];
@@ -301,7 +301,7 @@ void StrncpyTips2Test()
  * @tips 1.参数要为字符数组类型的字符串变量，不能为指针类型的字符串变量，如果使用指针类型的字符串变量，会报错
  * char* strcat(char* str1, const char* str2);
  */
-void StrcatTest()
+void strcat_test()
 {
     char str1[12] = "hello";
     char str2[6] = "world";
@@ -318,7 +318,7 @@ void StrcatTest()
 /**
  * 自定义方法实现字符串拷贝
  */
-char* Strcat1(char* dest, const char* src)
+char* my_strcat_1(char* dest, const char* src)
 {
     if(NULL == dest || NULL == src)
     {
@@ -332,18 +332,18 @@ char* Strcat1(char* dest, const char* src)
 /**
  * 测试自定义方法实现字符串连接
  */
-void MyStrcatTest1()
+void my_strcat_1_test()
 {
     char str1[12] = "hello";
     char str2[6] = "world";
-    Strcat1(str1, str2);
+    my_strcat_1(str1, str2);
     puts(str1); // "helloworld"
 }
 
 /**
  * 自定义方法实现字符串拷贝
  */
-char* Strcat2(char* dest, const char* src)
+char* my_strcat_2(char* dest, const char* src)
 {
     if(NULL == dest || NULL == src)
     {
@@ -366,11 +366,11 @@ char* Strcat2(char* dest, const char* src)
 /**
  * 测试自定义方法实现字符串连接
  */
-void MyStrcatTest2()
+void my_strcat_2_test()
 {
     char str1[12] = "hello";
     char str2[6] = "world";
-    Strcat2(str1, str2);
+    my_strcat_2(str1, str2);
     puts(str1); // "helloworld"
 }
 
@@ -384,7 +384,7 @@ void MyStrcatTest2()
  *       2.strncat()总是会在拼接结果的结尾，自动添加空字符\0，所以第三个参数的最大值，应该是str1的变量长度减去str1的字符串长度，再减去1
  * char* strcat(char* str1, const char* str2, size_t count);
  */
-void StrncatTest()
+void strncat_test()
 {
     char str1[12] = "hello";
     char str2[6] = "world";
@@ -396,7 +396,7 @@ void StrncatTest()
  * 下面示例中，str1的变量长度是10，字符长度是6，两者相减后再减去1，得到3，表明str1最多可以再添加3个字符，所以得到的结果是MondayTue。
  * 注意：即使count的值设置为5，大于3了，程序可执行，并且不会报错，但是拼接出来的str1没有结尾符'\0'，这个只是一个字符数组，并不是一个字符串，由此可见，c语言很自由，很多地方依赖程序员自己控制
  */
-void StrncatTips2Test()
+void strncat_tips_2_test()
 {
     char str1[10] = "Monday";
     char str2[8] = "Tuesday";
@@ -407,7 +407,7 @@ void StrncatTips2Test()
 /**
  * memcpy()：数组复制
  */
-void MemcpyTest1()
+void memcpy_test_1()
 {
 	int src[] = { 1,2,3,4,5,6,7,8,9,0 };
 	int dest[20] = { 0 };
@@ -430,7 +430,7 @@ void MemcpyTest1()
 /**
  * memcpy()：数组复制
  */
-void MemcpyTest2()
+void memcpy_test_2()
 {
 	char src[] = "hello world";
 	char* dest = (char*)malloc((int)sizeof(char) * (int)sizeof(src));;
@@ -448,7 +448,7 @@ void MemcpyTest2()
 /**
  * strcmp()：字符串比较（实际上是按位比较字符的ASCII码）
  */
-void StrcmpTest()
+void strcmp_test()
 {
     const char* str1 = "abcde";
     const char* str2 = "abcde";
@@ -477,7 +477,7 @@ void StrcmpTest()
  * @param str1 第一个字符串
  * @param str2 第二个字符串
  */
-int Strcmp1(const char* str1, const char* str2)
+int my_strcmp_1(const char* str1, const char* str2)
 {
     if(NULL == str1 || NULL == str2)
     {
@@ -496,27 +496,27 @@ int Strcmp1(const char* str1, const char* str2)
 /**
  * 测试自定义方法实现字符串比较
  */
-void MyStrcmp1Test()
+void my_strcmp_1_test()
 {
     const char* str1 = "abcde";
     const char* str2 = "abcde";
-    int r = Strcmp1(str1, str2);
+    int r = my_strcmp_1(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
     str2 = "abxde";
-    r = Strcmp1(str1, str2);
+    r = my_strcmp_1(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
     str2 = "abcdea";
-    r = Strcmp1(str1, str2);
+    r = my_strcmp_1(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abxde";
     str2 = "abcde";
-    r = Strcmp1(str1, str2);
+    r = my_strcmp_1(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcdea";
     str2 = "abcde";
-    r = Strcmp1(str1, str2);
+    r = my_strcmp_1(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
 }
 
@@ -525,7 +525,7 @@ void MyStrcmp1Test()
  * @param str1 第一个字符串
  * @param str2 第二个字符串
  */
-int Strcmp2(const char* str1, const char* str2)
+int my_strcmp_2(const char* str1, const char* str2)
 {
     if(NULL == str1 || NULL == str2)
     {
@@ -541,34 +541,34 @@ int Strcmp2(const char* str1, const char* str2)
 /**
  * 测试自定义方法实现字符串比较
  */
-void MyStrcmp2Test()
+void my_strcmp_2_test()
 {
     const char* str1 = "abcde";
     const char* str2 = "abcde";
-    int r = Strcmp2(str1, str2);
+    int r = my_strcmp_2(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
     str2 = "abxde";
-    r = Strcmp2(str1, str2);
+    r = my_strcmp_2(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
     str2 = "abcdea";
-    r = Strcmp2(str1, str2);
+    r = my_strcmp_2(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abxde";
     str2 = "abcde";
-    r = Strcmp2(str1, str2);
+    r = my_strcmp_2(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcdea";
     str2 = "abcde";
-    r = Strcmp2(str1, str2);
+    r = my_strcmp_2(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
 }
 
 /**
  * strncmp()：字符串比较（实际上是按位比较字符的ASCII码）
  */
-void StrncmpTest()
+void strncmp_test()
 {
     const char* str1 = "abcde";
     const char* str2 = "abcde";
@@ -598,7 +598,7 @@ void StrncmpTest()
  * @param str2 第二个字符串
  * @param n 比较到第几个位置就结束比较
  */
-int Strncmp(const char* str1, const char* str2, size_t n)
+int my_strncmp(const char* str1, const char* str2, size_t n)
 {
     if(NULL == str1 || NULL == str2 || 0 == n)
     {
@@ -617,27 +617,27 @@ int Strncmp(const char* str1, const char* str2, size_t n)
 /**
  * 测试自定义方法实现字符串中前n个字符比较
  */
-void MyStrncmpTest()
+void my_strncmp_test()
 {
     const char* str1 = "abcde";
     const char* str2 = "abcde";
-    int r = Strncmp(str1, str2, 3);
+    int r = my_strncmp(str1, str2, 3);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
     str2 = "abxde";
-    r = Strncmp(str1, str2, 3);
+    r = my_strncmp(str1, str2, 3);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
     str2 = "abcdea";
-    r = Strncmp(str1, str2, 3);
+    r = my_strncmp(str1, str2, 3);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abxde";
     str2 = "abcde";
-    r = Strncmp(str1, str2, 3);
+    r = my_strncmp(str1, str2, 3);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcdea";
     str2 = "abcde";
-    r = Strncmp(str1, str2, 3);
+    r = my_strncmp(str1, str2, 3);
     printf("str1和str2比较结果： %d\n", r);
 }
 
@@ -648,7 +648,7 @@ void MyStrncmpTest()
  * @return 如果找到字符c，则返回指向该字符在字符串中第一次出现位置的指针。如果未找到字符c，则返回NULL指针。
  * char *strchr (const char *str, int c)
  */
-void StrchrTest()
+void strchr_test()
 {
     const char* str = "abccde";
     char* p = strchr(str, 'c');
@@ -670,7 +670,7 @@ void StrchrTest()
  * @param c
  * @return
  */
-char* MyStrchr(const char *str, int c)
+char* my_strchr(const char *str, int c)
 {
     if(NULL == str)
     {
@@ -693,10 +693,10 @@ char* MyStrchr(const char *str, int c)
  * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
  * @return
  */
-void MyStrchrTest()
+void my_strchr_test()
 {
     const char* str = "abccde";
-    char* p = MyStrchr(str, 'c');
+    char* p = my_strchr(str, 'c');
     printf("数组地址 = %p\n", str);
     printf("字符地址 = %p\n", p);
     if(NULL != p)
@@ -716,7 +716,7 @@ void MyStrchrTest()
  * @return 如果找到字符c，则返回指向该字符在字符串中第一次出现位置的指针。如果未找到字符c，则返回NULL指针。
  * char *strchr (const char *str, int c)
  */
-void StrrchrTest()
+void strrchr_test()
 {
     const char* str = "abccde";
     char* p = strrchr(str, 'c');
@@ -738,7 +738,7 @@ void StrrchrTest()
  * @param c
  * @return
  */
-char* MyStrrchr1(const char *str, int c)
+char* my_strrchr_1(const char *str, int c)
 {
     if(NULL == str)
     {
@@ -763,10 +763,10 @@ char* MyStrrchr1(const char *str, int c)
  * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
  * @return
  */
-void MyStrrchr1Test()
+void my_strrchr_1_test()
 {
     const char* str = "abccde";
-    char* p = MyStrrchr1(str, 'c');
+    char* p = my_strrchr_1(str, 'c');
     printf("数组地址 = %p\n", str);
     printf("字符地址 = %p\n", p);
     if(NULL != p)
@@ -785,7 +785,7 @@ void MyStrrchr1Test()
  * @param c
  * @return
  */
-char* MyStrrchr2(const char *str, int c)
+char* my_strrchr_2(const char *str, int c)
 {
     if(NULL == str)
     {
@@ -810,10 +810,10 @@ char* MyStrrchr2(const char *str, int c)
  * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
  * @return
  */
-void MyStrrchr2Test()
+void my_strrchr_2_test()
 {
     const char* str = "abccde";
-    char* p = MyStrrchr2(str, 'c');
+    char* p = my_strrchr_2(str, 'c');
     printf("数组地址 = %p\n", str);
     printf("字符地址 = %p\n", p);
     if(NULL != p)
@@ -833,7 +833,7 @@ void MyStrrchr2Test()
  * @return 如果找到子符substr，则返回指向该子串在字符串中第一次出现位置的指针。如果未找到子串substr，则返回NULL指针。
  * char *strchr (const char *str, const char *substr)
  */
-void StrstrTest()
+void strstr_test()
 {
     const char *str = "onetwothree";
     const char *substr = "two";
@@ -851,7 +851,7 @@ void StrstrTest()
 /**
  * 自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
  */
-char* Strstr1(const char *str, const char *substr) {
+char* my_strstr_1(const char *str, const char *substr) {
     if (NULL == str || NULL == substr) {
         return NULL;
     }
@@ -883,11 +883,11 @@ char* Strstr1(const char *str, const char *substr) {
 /**
  * 测试自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
  */
-void MyStrstr1Test()
+void my_strstr_1_test()
 {
     const char *str = "abccabcabbc";
     const char *substr = "abca";
-    char* p = Strstr1(str,substr);
+    char* p = my_strstr_1(str,substr);
     if(NULL != p)
     {
         printf("%s\n", p);
@@ -901,7 +901,7 @@ void MyStrstr1Test()
 /**
  * 自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
  */
-char* Strstr2(const char *str, const char *substr) {
+char* my_strstr_2(const char *str, const char *substr) {
     if (NULL == str || NULL == substr) {
         return NULL;
     }
@@ -935,11 +935,11 @@ char* Strstr2(const char *str, const char *substr) {
 /**
  * 测试自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
  */
-void MyStrstr2Test()
+void my_strstr_2_test()
 {
     const char *str = "abccabcabbc";
     const char *substr = "cca";
-    char* p = Strstr2(str,substr);
+    char* p = my_strstr_2(str,substr);
     if(NULL != p)
     {
         printf("%s\n", p);
@@ -953,7 +953,7 @@ void MyStrstr2Test()
 /**
  * 测试将字符串转换为小写格式
  */
-void StrlwrTest()
+void strlwr_test()
 {
     char s[] = "AbC";
     printf("s = %s\n", strlwr(s));
@@ -962,7 +962,7 @@ void StrlwrTest()
 /**
  * 测试将字符串转换为大写格式
  */
-void StruprTest()
+void strupr_test()
 {
     char s[] = "AbC";
     printf("s = %s\n", strupr(s));
@@ -975,7 +975,7 @@ void StruprTest()
  *     内存泄漏：strdup 返回的指针必须用 free() 释放
  *     错误处理：strdup 可能返回 NULL，需检查后再使用
  */
-void StrDupTest()
+void strdup_test()
 {
     const char* original = "Hello World!";
     char *duplicate = strdup(original);
@@ -995,7 +995,7 @@ void StrDupTest()
 /**
  * 自定义方法实现strdup方式字符串复制
  */
-char* MyStrDup(const char* str)
+char* my_strdup(const char* str)
 {
     if(NULL == str)
     {
@@ -1010,10 +1010,10 @@ char* MyStrDup(const char* str)
 /**
  * 测试自定义方法实现strdup方式字符串复制
  */
-void MyStrDupTest()
+void my_strdup_test()
 {
     const char* original = "Hello World!";
-    char *duplicate = MyStrDup(original);
+    char *duplicate = my_strdup(original);
     if(NULL != duplicate)
     {
         printf("original  = %s\n", original);
@@ -1029,39 +1029,39 @@ void MyStrDupTest()
 
 int main()
 {
-    //StrlenTest();
-    //MyStrlen1Test();
-    MyStrlen2Test();
-    //StrcpyTest();
-    //MyStrcpy1Test();
-    //MyStrcpy2Test();
-    //StrncpyTest();
-    //StrncpyTips1Test();
-    //StrncpyTips2Test();
-    //StrcatTest();
-    //MyStrcatTest1();
-    //MyStrcatTest2();
-    //StrncatTest();
-    //StrncatTips2Test();
-	//MemcpyTest1();
-	//MemcpyTest2();
-    //StrcmpTest();
-    //MyStrcmp1Test();
-    //MyStrcmp2Test();
-    //StrncmpTest();
-    //MyStrncmpTest();
-    //StrchrTest();
-    //MyStrchrTest();
-    //StrrchrTest();
-    //MyStrrchr1Test();
-    //MyStrrchr2Test();
-    //StrstrTest();
-    //MyStrstr1Test();
-    //MyStrstr2Test();
-    //MyStrstr2Test();
-    //StrlwrTest();
-    //StruprTest();
-    //StrDupTest();
-    //MyStrDupTest();
+    //strlen_test();
+    //my_strlen_1_test();
+    my_strlen_2_Test();
+    //strcpy_test();
+    //my_strcpy_1_test();
+    //my_strcpy_2_test();
+    //strncpy_test();
+    //strncpy_tips_1_test();
+    //strncpy_tips_2_test();
+    //strcat_test();
+    //my_strcat_1_test();
+    //my_strcat_2_test();
+    //strncat_test();
+    //strncat_tips_2_test();
+	//memcpy_test_1();
+	//memcpy_test_2();
+    //strcmp_test();
+    //my_strcmp_1_test();
+    //my_strcmp_2_test();
+    //strncmp_test();
+    //my_strncmp_test();
+    //strchr_test();
+    //my_strchr_test();
+    //strrchr_test();
+    //my_strrchr_1_test();
+    //my_strrchr_2_test();
+    //strstr_test();
+    //my_strstr_1_test();
+    //my_strstr_2_test();
+    //my_strstr_2_test();
+    //strlwr_test();
+    //strupr_test();
+    //strdup_test();
+    //my_strdup_test();
 	return 0;
 }

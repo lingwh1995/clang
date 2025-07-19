@@ -17,7 +17,7 @@
  * i++ : 先用后+
  * ++i : 先加后用
  */
-void IncrementOperator()
+void increment_operator()
 {
 	// i++
 	int i = 10;
@@ -35,7 +35,7 @@ void IncrementOperator()
 /**
  * 三目运算符
  */
-void TernaryConditionalOperator()
+void ternary_conditional_operator()
 {
 	int a, b, max;
 	scanf("%d %d", &a, &b);
@@ -46,7 +46,7 @@ void TernaryConditionalOperator()
 /* 
  * 加等运算符
  */
-void AddEqualOperator()
+void add_equal_operator()
 {
 	int nums[] = { 1,2,3,4,5 };
 	int length = sizeof(nums) / sizeof(nums[0]);
@@ -61,7 +61,7 @@ void AddEqualOperator()
 /*
  * 乘等运算符
  */
-void MultiplyEqualOperator()
+void multiply_equal_operator()
 {
 	int nums[] = { 1,2,3,4,5 };
 	int length = sizeof(nums) / sizeof(nums[0]);
@@ -76,7 +76,7 @@ void MultiplyEqualOperator()
 /**
  * 取余运算符
  */
-void ModOperator()
+void mod_operator()
 {
 	int i;
 	for (i = 0; i < 100; i++)
@@ -87,7 +87,6 @@ void ModOperator()
 		}
 		printf("%4d", i);
 	}
-
 
 	for (i = 1; i <= 100; i++)
 	{
@@ -125,7 +124,7 @@ void ModOperator()
  *          -10 => 转换为二进制 => 1111 1111 1111 0110 => 左移四位(得到负数补码) => 1111 1111 0110 0000 => 补码-1得到反码 => 1111 1111 0101 1111 
  * 					=> 符号位不变，其他位取反得到原码 => 1000 0000 1010 0000 => 使用short类型接收(byte15为符号位) => 1010 0000 * - 1 =>  -160
  */	
-void BitwiseOperator()
+void bitwise_operator()
 {
 	// 8的二进制位 1000
 	// 1的二进制位 0001
@@ -204,9 +203,9 @@ void BitwiseOperator()
 }
 
 /**
- * 正数左移1到4位，当左移四位时分别使用 char 和 shor 接收
+ * 正数左移1到4位，当左移四位时分别使用 char 和 short 接收
  */
-void PositiveNumberLeftShift()
+void positive_number_left_shift()
 {
 	char ch = 10;
 	// 左移1位
@@ -234,7 +233,7 @@ void PositiveNumberLeftShift()
 /**
  * 负数左移1到4位，当左移四位时分别使用 char 和 shor 接收
  */
-void NegativeNumberLeftShift()
+void negative_number_left_shift()
 {
 	char ch = -10;
 	
@@ -261,12 +260,12 @@ void NegativeNumberLeftShift()
  
 int main()
 {
-	//IncrementOperator();
-	//TernaryConditionalOperator();
-	//AddEqualOperator();
-	//MultiplyEqualOperator();
-	//ModOperator();
-	//BitwiseOperator();
-	//PositiveNumberLeftShift();
-	NegativeNumberLeftShift();
+	//increment_operator();
+	//ternary_conditional_operator();
+	//add_equal_operator();
+	//multiply_equal_operator();
+	//mod_operator();
+	//bitwise_operator();
+	//positive_number_left_shift();
+	negative_number_left_shift();
 }

@@ -8,7 +8,7 @@
  * 指向为常性的指针
  * const在*左边，表示指向的值是常量
  */
-void PointerAndConstTest1() {
+void pointer_and_const_test_1() {
     int a = 10, b = 20;
     const int* p = &a;
     // 等价写法一
@@ -27,7 +27,7 @@ void PointerAndConstTest1() {
  * 常性指针
  * const在*右边，表示指针自身是一个常量
  */
-void PointerAndConstTest2() {
+void pointer_and_const_test_2() {
     int a = 10, b = 20;
     int* const p = &a;
 
@@ -43,7 +43,7 @@ void PointerAndConstTest2() {
  * 定义一个指针自身和指针的指向都是常量的常量
  *  起到保护指针自身和被指针指向的值的效果
  */
-void PointerAndConstTest3() {
+void pointer_and_const_test_3() {
     int a = 10, b = 20;
     const int* const p = &a;
     //这种写法等价于上面一行
@@ -62,7 +62,7 @@ void PointerAndConstTest3() {
  * 1.使用const修饰指针类型: 可以读取指针地址和指针指向的数据，但是不能改变指针所指向的值，这样可以保护指针指向的值
  * 2.被const修饰的常量值可以通过指针来修改
  */
-void PointerAndConstTest4() {
+void pointer_and_const_test_4() {
     int a = 10, b = 20;
     const int c = 30;
     int* ap = &a;
@@ -85,9 +85,9 @@ void PointerAndConstTest4() {
 #if 0
 #endif
 int main() {
-	//PointerAndConstTest1();
-	//PointerAndConstTest2();
-	//PointerAndConstTest3();
-    PointerAndConstTest4();
+	//pointer_and_const_test_1();
+	//pointer_and_const_test_2();
+	//pointer_and_const_test_3();
+    pointer_and_const_test_4();
     return 0;
 }

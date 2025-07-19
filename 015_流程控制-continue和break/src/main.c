@@ -4,7 +4,7 @@
   * break测试
   *  跳出当前循环
   */
-void BreakTest()
+void break_test()
 {
     for (int i = 0; i < 10; i++)
     {
@@ -21,7 +21,7 @@ void BreakTest()
  * continue测试
  *  正常使用continue
  */
-void ContinueTest1()
+void continue_test_1()
 {
     for (int i = 0; i < 10; i++)
     {
@@ -38,7 +38,7 @@ void ContinueTest1()
  * continue测试
  *  正常使用continue,注意i++的位置
  */
-void ContinueTest2()
+void continue_test_2()
 {
     for (int i = 0; i < 10; )
     {
@@ -60,7 +60,7 @@ void ContinueTest2()
  *  注意i++的位置
  *
  */
-void ContinueTest3()
+void continue_test_3()
 {
     for (int i = 0; i < 10; )
     {
@@ -79,7 +79,7 @@ void ContinueTest3()
  * continue测试
  *  正常使用continue
  */
-void ContinueTest4()
+void continue_test_4()
 {
     int n = 0;
     while (n < 10)
@@ -101,7 +101,7 @@ void ContinueTest4()
  *  所以看起来效果和break相同,但是实际上是死循环
  *
  */
-void ContinueTest5()
+void continue_test_5()
 {
     int n = 0;
     while (n < 10)
@@ -119,11 +119,11 @@ void ContinueTest5()
 
 int main()
 {
-    //BreakTest();
-    //ContinueTest1();
-    //ContinueTest2();
-	//ContinueTest3();
-	//ContinueTest4();
-    ContinueTest5();
+    //break_test();
+    //continue_test_1();
+    //continue_test_2();
+	//continue_test_3();
+	//continue_test_4();
+    continue_test_5();
     return 0;
 }

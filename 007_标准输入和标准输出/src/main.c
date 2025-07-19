@@ -33,7 +33,7 @@
 /*
  * 测试getchar()
  */
-void GetCharTest()
+void getchar_test_1()
 {
 	printf("请输入单个字符: \n");
 	char c = getchar();
@@ -44,7 +44,7 @@ void GetCharTest()
 /*
  * 测试gets()
  */
-void GetsTest1()
+void gets_test_1()
 {
 	printf("请输入字符串: \n");
 	// 必须规定字符串的长度,否则会报异常
@@ -56,7 +56,7 @@ void GetsTest1()
 /*
  * 测试gets()
  */
-void GetsTest2()
+void gets_test_2()
 {
 	printf("请输入字符串: \n");
 	// 必须规定字符串的长度,否则会报异常
@@ -72,7 +72,7 @@ void GetsTest2()
 /*
  * 测试scanf()
  */
-void ScanfTest1()
+void scanf_test_1()
 {
 	int i;
 	float f;
@@ -85,7 +85,7 @@ void ScanfTest1()
 /*
  * 测试scanf()
  */
-void ScanfTest2()
+void scanf_test_2()
 {
 	printf("请输入字符串: \n");
 	// 必须规定字符串的长度,否则会报异常
@@ -97,7 +97,7 @@ void ScanfTest2()
 /*
  * 测试scanf()
  */
-void ScanfTest3()
+void scanf_test_3()
 {
 	printf("请输入double类型数据: \n");
 	double d;
@@ -108,7 +108,7 @@ void ScanfTest3()
 /**
  * 测试scanf()返回值是 成功读取并正确赋值的变量数量
  */
-void ScanfTest4()
+void scanf_test_4()
 {
     int i, j, k;
     k = scanf("%d %d", &i, &j);
@@ -121,7 +121,7 @@ void ScanfTest4()
  *  gets()接收到: i love you
  *  scanf()接收到: i
  */
-void GetsAndScanfTest1()
+void gets_and_scanf_test_1()
 {
 	printf("请输入字符串(使用空格隔开): \n");
 	char str_1[30];
@@ -145,7 +145,7 @@ void GetsAndScanfTest1()
  *		c =
  *  2.get()会清空缓冲区的换行符,scanf()不会清空缓冲区的换行符
  */
-void GetsAndScanfTest2()
+void gets_and_scanf_test_2()
 {
 	printf("请输入数据: \n");
 	char str[30];
@@ -162,7 +162,7 @@ void GetsAndScanfTest2()
 /*
  * putchar()：输入单个字符
  */
-void PutCharTest()
+void putchar_test()
 {
 	putchar('\101');//代表十进制的65，或者字母A
 	putchar('\x42');//代表十进制的66，或者字母B,补充a为97
@@ -178,7 +178,7 @@ void PutCharTest()
 /*
  * puts()：输出字符串并自动换行
  */
-void PutsTest()
+void puts_test()
 {
 	char name[] = "祖国!";
 	// 用printf输出
@@ -192,7 +192,7 @@ void PutsTest()
 /*
  * 测试printf()
  */
-void PrintfTest()
+void printf_test()
 {
 	// 输出不同进制
 	int a = 10;
@@ -213,7 +213,7 @@ void PrintfTest()
 /*
  * ASCII码形式输出和转义字符串输出
  */
-void AsciiPrintfAndEscapePrintfTest()
+void ascii_printf_and_escape_printf_test()
 {
 	/*
 	 *ASCII码形式输出
@@ -250,7 +250,7 @@ void AsciiPrintfAndEscapePrintfTest()
 /**
  * 计算三角形面积
  */
-void CalcAreaofTriangle()
+void calc_area_of_triangle()
 {
 	printf("请输入三角形的三条边的长度:\n");
 	float a = 0, b = 0, c = 0, p = 0, s = 0;
@@ -266,19 +266,19 @@ void CalcAreaofTriangle()
 // 标准输入输出的基本测试
 int main()
 {
-	//GetCharTest();
-	//GetsTest1();
-	//GetsTest2();
-	//ScanfTest1();
-	//ScanfTest2();
-	//ScanfTest3();
-	//ScanfTest4();
-	//GetsAndScanfTest1();
-	//GetsAndScanfTest2();
-	//PutCharTest();
-	PutsTest();
-	//PrintfTest();
-	//AsciiPrintfAndEscapePrintfTest();
-    //CalcAreaofTriangle();
+	//getchar_test_1();
+	//gets_test_1();
+	//gets_test_2();
+	//scanf_test_1();
+	//scanf_test_2();
+	//scanf_test_3();
+	//scanf_test_4();
+	//gets_and_scanf_test_1();
+	//gets_and_scanf_test_2();
+	//putchar_test();
+	puts_test();
+	//printf_test();
+	//ascii_printf_and_escape_printf_test();
+    //calc_area_of_triangle();
 	return 0;
 }

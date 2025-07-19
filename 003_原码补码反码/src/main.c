@@ -8,7 +8,7 @@
  * 		反码：原码按位取反，符号位不变
  * 		补码：在反码的基础上加1
  */
-void PrintBinaryString(int n)
+void print_binary_string(int n)
 {
 	for(int i=7; i>=0; i--)
 	{
@@ -22,24 +22,24 @@ int main()
 	int n = 5;
 	// 打印5的二进制原码
 	printf("5  的二进制原码  ");
-	PrintBinaryString(n);
+	print_binary_string(n);
 	// 打印5的二进制反码
 	printf("5  的二进制反码  ");
-	PrintBinaryString(n);
+	print_binary_string(n);
 	// 打印5的二进制补码
 	printf("5  的二进制补码  ");
-	PrintBinaryString(n);
+	print_binary_string(n);
 
 	printf("-----------------------\n");
 
 	// 打印-5的二进制原码
 	printf("-5 的二进制原码  ");
-	PrintBinaryString((1 << 7) | n);
+	print_binary_string((1 << 7) | n);
 	// 打印-5的二进制反码
 	printf("-5 的二进制反码  ");
-	PrintBinaryString(~n);
+	print_binary_string(~n);
 	// 打印-5的二进制补码
 	printf("-5 的二进制补码  ");
-	PrintBinaryString(-n);
+	print_binary_string(-n);
 	return 0;
 }

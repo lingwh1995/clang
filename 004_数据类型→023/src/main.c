@@ -51,7 +51,7 @@ enum Color
  * 打印颜色
  *   使用枚举约束了case后面的值
  */
-void printColor(enum Color color)
+void print_color(enum Color color)
 {
     switch (color)
     {
@@ -168,15 +168,15 @@ int main()
     // 结构体(Struct)
     struct Student alice = { 1,"Alice",18 };
     struct Student bob = { 2,"Bob",23 };
-    struct Student studentArr[] = {
+    struct Student student_arr[] = {
     		alice,
     		bob,
     		{ 3,"Charile",29 }
     };
-    size = sizeof(studentArr)/sizeof(studentArr[0]);
+    size = sizeof(student_arr)/sizeof(student_arr[0]);
     for(i = 0; i < size; i++)
     {
-    	printf("学生编号：%d,学生姓名：%s,学生年龄：%d\n", studentArr[i].id, studentArr[i].name, studentArr[i].age);
+    	printf("学生编号：%d,学生姓名：%s,学生年龄：%d\n", student_arr[i].id, student_arr[i].name, student_arr[i].age);
     }
     printf("-------------------------------------\n");
 
@@ -184,7 +184,7 @@ int main()
     // 枚举(Enum)
     enum Color color = RED;
     printf("%d\n", color);
-    printColor(color);
+    print_color(color);
     // 注意：枚举可以像整型数组一样使用
     for(i=RED; i<=BLUE; i++)
     {

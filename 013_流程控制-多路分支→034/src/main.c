@@ -8,7 +8,7 @@
  *  switch case
  */
 
-void MultipleBranchTest1()
+void multiple_branch_test_1()
 {
     printf("请输入i的值，输入0退出:\n");
     int i;
@@ -50,7 +50,7 @@ void MultipleBranchTest1()
 /*
  * 多分支测试
  */
-void MultipleBranchTest2()
+void multiple_branch_test_2()
 {
     printf("请输入i的值，输入0退出:\n");
     int i;
@@ -88,7 +88,7 @@ void MultipleBranchTest2()
  * 多分支测试
  *  只能匹配大写字母
  */
-void MultipleBranchTest3()
+void multiple_branch_test_3()
 {
     printf("请输入分数等级 (A B C D E F)，输入Q退出:\n");
     while(true)
@@ -131,7 +131,7 @@ void MultipleBranchTest3()
  * 多分支测试
  *  匹配大小写字母
  */
-void MultipleBranchTest4()
+void multiple_branch_test_4()
 {
     printf("请输入分数等级 (A B C D E F)，输入Q/q退出:\n");
     while(true)
@@ -180,7 +180,7 @@ void MultipleBranchTest4()
  * 多分支测试
  *  switch的嵌套使用
  */
-void MultipleBranchTest5()
+void multiple_branch_test_5()
 {
     int a = 1;
     int b = 0;
@@ -213,10 +213,10 @@ void MultipleBranchTest5()
 #endif
 int main()
 {
-	//MultipleBranchTest1();
-    //MultipleBranchTest2();
-    //MultipleBranchTest3();
-	//MultipleBranchTest4();
-    MultipleBranchTest5();
+	//multiple_branch_test_1();
+    //multiple_branch_test_2();
+    //multiple_branch_test_3();
+	//multiple_branch_test_4();
+    multiple_branch_test_5();
     return 0;
 }

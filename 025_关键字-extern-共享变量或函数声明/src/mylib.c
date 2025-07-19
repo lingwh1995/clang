@@ -7,7 +7,7 @@ int gi_in_other_file = 100;
 const int gc_in_other_file = 200;
 
 // 定义一个函数
-int AddInOtherFile(int a, int b)
+int add_in_other_file(int a, int b)
 {
     printf("我是mylib.c中的普通函数......(来自其他文件)\n");
     return a + b;

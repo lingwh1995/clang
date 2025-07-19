@@ -3,7 +3,7 @@
 #ifndef CALCULATOR_H
 #define CALCULATOR_H
 
-extern void Calc(int a, int b, char op);
+extern void calc(int a, int b, char op);
 
 #endif // !CALCULATOR_H
 
