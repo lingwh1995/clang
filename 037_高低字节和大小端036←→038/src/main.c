@@ -90,8 +90,8 @@ int main()
 	 * 	低地址 ------------------> 高地址
 	 * 	0x01  |  0x00  |  0x00  |  0x00
 	 */
-	//big_end_or_little_end_1();
+	big_end_or_little_end_1();
 	//big_end_or_little_end_2();
-	big_end_and_little_end_test();
+    //big_end_and_little_end_test();
 	return 0;
 }

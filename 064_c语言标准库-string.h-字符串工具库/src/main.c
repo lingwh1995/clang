@@ -415,19 +415,16 @@ void strncat_test_2()
 }
 
 /**
- * memcpy()：数组复制
+ * void* memcpy(void *dest, const void *src, size_t n)
+ * dest-- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
+ * src -- 指向要复制的数据源，类型强制转换为 void* 指针
+ * n-- 要被复制的字节数
  */
 void memcpy_test_1()
 {
 	int src[] = { 1,2,3,4,5,6,7,8,9,0 };
 	int dest[20] = { 0 };
 
-	/**
-	 * void* memcpy(void *dest, const void *src, size_t n)
-	 * dest-- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
-	 * src -- 指向要复制的数据源，类型强制转换为 void* 指针
-	 * n-- 要被复制的字节数
-	 */
 	memcpy(dest, src, 16); // 会复制 1,2,3,4 这四个数，因为一个int类型数据占4个字节
 
 	//此处的16代表着16个字节，而我们访问的数组是int型，所以此处拷贝的是4个元素
@@ -438,7 +435,10 @@ void memcpy_test_1()
 }
 
 /**
- * memcpy()：数组复制
+ * void* memcpy(void *dest, const void *src, size_t n)
+ * dest-- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
+ * src -- 指向要复制的数据源，类型强制转换为 void* 指针
+ * n-- 要被复制的字节数
  */
 void memcpy_test_2()
 {
@@ -453,6 +453,96 @@ void memcpy_test_2()
 	 */
 	memcpy(dest, src, (int)sizeof(char) * (int)sizeof(src));
 	printf("dest = %s\n", dest);
+}
+
+struct Student
+{
+    char stu_name[20];
+    int age;
+};
+
+/**
+ * void* memcpy(void *dest, const void *src, size_t n)
+ * dest-- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
+ * src -- 指向要复制的数据源，类型强制转换为 void* 指针
+ * n-- 要被复制的字节数
+ */
+void memcpy_test_3()
+{
+    int arr_1[5] = { 1, 2, 3, 4, 5 };
+    int arr_2[5];
+    int arr_3[5];
+    memcpy(arr_2, arr_1, sizeof(arr_2));
+    for(int i = 0; i < sizeof(arr_2) / sizeof(arr_2[0]); i++)
+    {
+        printf("%d ", arr_2[i]);
+    }
+    printf("\n");
+
+    memcpy(arr_3, memcpy(arr_2, arr_1, sizeof(arr_1)), sizeof(arr_2));
+    for(int i = 0; i < sizeof(arr_3) / sizeof(arr_3[0]); i++)
+    {
+        printf("%d ", arr_3[i]);
+    }
+    printf("\n");
+
+    struct Student stus[3] = { {"zhangsan",23}, {"lisi",24}, {"wangwu",25} };
+    struct Student stus_cpy[3];
+    memcpy(stus_cpy, stus, sizeof(stus));
+    for(int i = 0; i < sizeof(stus) / sizeof(stus[0]); i++)
+    {
+        printf("stu_name：%s， stu_age：%d\n", stus_cpy[i].stu_name, stus_cpy[i].age);
+    }
+}
+
+/**
+ * 自己实现内存复制
+ * @return
+ */
+char* my_memcpy(void * dest,const void * src,size_t count)
+{
+    assert(dest != NULL && src != NULL);
+    if(0 == count)
+    {
+        return dest;
+    }
+    char* p_dest = (char *)dest;
+    const char* p_src = (const char *)src;
+    while(count != 0)
+    {
+        *p_dest = *p_src;
+        p_dest++;
+        p_src++;
+        count--;
+    }
+}
+
+void my_memcpy_test()
+{
+    int arr_1[5] = { 1, 2, 3, 4, 5 };
+    int arr_2[5];
+    int arr_3[5];
+    my_memcpy(arr_2, arr_1, sizeof(arr_2));
+    for(int i = 0; i < sizeof(arr_2) / sizeof(arr_2[0]); i++)
+    {
+        printf("%d ", arr_2[i]);
+    }
+    printf("\n");
+
+    my_memcpy(arr_3, memcpy(arr_2, arr_1, sizeof(arr_1)), sizeof(arr_2));
+    for(int i = 0; i < sizeof(arr_3) / sizeof(arr_3[0]); i++)
+    {
+        printf("%d ", arr_3[i]);
+    }
+    printf("\n");
+
+    struct Student stus[3] = { {"zhangsan",23}, {"lisi",24}, {"wangwu",25} };
+    struct Student stus_cpy[3];
+    my_memcpy(stus_cpy, stus, sizeof(stus));
+    for(int i = 0; i < sizeof(stus) / sizeof(stus[0]); i++)
+    {
+        printf("stu_name：%s， stu_age：%d\n", stus_cpy[i].stu_name, stus_cpy[i].age);
+    }
 }
 
 /**
@@ -1076,75 +1166,81 @@ void memset_test()
 }
 
 /**
- * 自定义方法实现 memset
- *
- * @param vp 泛型指针
- * @param ch 要填充的类型
- * @param ch 要填充的长度
+ * 把连续空间设置为0
+ * @param vp
+ * @param ch
+ * @param count
  */
-char* my_memset(void* vp, unsigned char ch, size_t count)
+void my_memset(void* vp, unsigned char ch, size_t count)
 {
-	assert(vp != NULL);
-	unsigned char* cp = (unsigned char*)vp;
-	for(int i = 0; i < count; i++)
-	{
-		//cp[i] = ch; // *(cp+i) = ch;
-		*cp = ch;
-		cp = cp + 1;
-	}
-	return vp;
+    unsigned char* cp = (unsigned char*)vp;
+    for(int i = 0; i < count; i++)
+    {
+        /*
+        *cp = ch;
+        cp = cp + 1;
+         */
+        cp[i] = ch; // *(ch+i) = ch;
+    }
 }
 
-/**
- * 测试自定义方法实现 memset
- */
-char* my_memset_test()
+void my_memset_test()
 {
-	char str[10];
+    int arr[10];
+    my_memset(arr, 10, sizeof(arr));
+    for(int i = 0; i < 10; i++)
+    {
+        printf("%d  ", arr[i]);
+    }
+    printf("\n");
+
+    char str[10];
+    my_memset(str, 'a', sizeof(str));
+    for(int i = 0; i < 10; i++)
+    {
+        printf("%d  ", str[i]);
+    }
+    printf("\n");
+
 	// 使用数字10填充
 	my_memset(str, 10, sizeof(str));
 	for (int i = 0; i < 10; i++)
 	{
-		printf("%d ", str[i]);
-	}
-	printf("\n");
-
-	// 使用字符'a'填充
-	my_memset(str, 'a', sizeof(str));
-	for (int i = 0; i < 10; i++)
-	{
-		printf("%d ", str[i]);
-	}
-	printf("\n");
-
-	// 使用数字0填充
-	my_memset(str, 0, sizeof(str));
-	for (int i = 0; i < 10; i++)
-	{
-		printf("%d ", str[i]);
+		printf("%d  ", str[i]);
 	}
 	printf("\n");
 }
-
-
 
 /**
  * int memcmp(const void *str1, const void *str2, size_t n): 用于比较两块内存区域前n个字节内容的函数
  */
 void memcmp_test()
 {
-	int arr_1[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	int arr_2[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 20 };
-	int flag = memcmp(arr_1, arr_2, sizeof(arr_1));
-	printf("flag = %d\n", flag);
+    int arr_1[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int arr_2[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int flag = memcmp(arr_1, arr_2, sizeof(arr_1));
+    printf("flag = %d\n", flag);
 }
 
 /**
  * 自己实现的用于比较两块内存区域前n个字节内容的函数
  */
-void my_memcmp(const void *str1, const void *str2, size_t n)
+int my_memcmp(const void *buf1, const void *buf2, size_t count)
 {
-
+    assert(buf1 != NULL && buf2 != NULL);
+    if(0 == count)
+    {
+        return 0;
+    }
+    const char* p_buf1 = (const char*)buf1;
+    const char* p_buf2 = (const char*)buf2;
+    while (count != 1 && *p_buf1 == *p_buf2)
+    {
+        count--;
+        p_buf1++;
+        p_buf2++;
+    }
+    return *p_buf2 - *p_buf1;
 }
 
 /**
@@ -1152,7 +1248,10 @@ void my_memcmp(const void *str1, const void *str2, size_t n)
  */
 void my_memcmp_test()
 {
-
+    int arr_1[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int arr_2[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int flag = my_memcmp(arr_1, arr_2, sizeof(arr_1));
+    printf("flag = %d\n", flag);
 }
 
 int main()
@@ -1173,6 +1272,8 @@ int main()
     //strncat_test_2();
 	//memcpy_test_1();
 	//memcpy_test_2();
+    //memcpy_test_3();
+    my_memcpy_test();
     //strcmp_test();
     //my_strcmp_1_test();
     //my_strcmp_2_test();
@@ -1193,6 +1294,7 @@ int main()
     //my_strdup_test();
 	//memset_test();
 	//my_memset_test();
-	memcmp_test();
+	//memcmp_test();
+    //my_memcmp_test();
 	return 0;
 }
