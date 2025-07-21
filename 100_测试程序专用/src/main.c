@@ -29,11 +29,27 @@ char* my_strstr(const char* str, const char* substr)
 	return NULL;
 }
 
-int main()
+void my_strstr_test()
 {
 	const char* str = "abccabcabbc";
 	const char* substr = "abc";
 	char* result = my_strstr(str,substr);
 	printf("result = %s\n", result);
+}
+
+void strncpy_test()
+{
+   char src[40];
+   char dest[12];
+   memset(dest, '\0', sizeof(dest));
+   strcpy(src, "Hello, world!");
+   strncpy(dest, src, 5);
+   printf("最终的目标字符串： %s\n", dest);
+}
+
+int main()
+{
+	//my_strstr_test();
+	strncpy_test();
 	return 0;
 }

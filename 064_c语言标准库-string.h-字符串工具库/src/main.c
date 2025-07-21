@@ -4,22 +4,27 @@
 #include <assert.h>
 
 /**
- * size_t strlen(const char *_Str)：返回字符串的字节长度，不包括末尾的空字符'\0'
+ * 计算字符串的长度，直到空结束字符，但不包括末尾的空字符'\0'
+ *
+ * size_t strlen(const char *str)
+ * @param  str 要计算长度的字符串
+ * @return 字符串str的长度
  */
 void strlen_test()
 {
     char* s1 = "hello";
-    printf("strlen(s1) = %ld\n", strlen(s1));
+    printf("strlen(s1) = %u\n", strlen(s1));
 
     char s2[50] = "hello";
-    printf("strlen(s2) = %ld\n", strlen(s2));
-    printf("sizeof(s2) = %ld\n", sizeof(s2));
+    printf("strlen(s2) = %u\n", strlen(s2));
+    printf("sizeof(s2) = %u\n", sizeof(s2));
 }
 
 /**
- * 自定义方法计算字符串长度方式一
+ * 自定义的字符串长度计算函数一：利用循遍历思想
  *
- * @param str 要计算长度的字符串
+ * @param  str 要计算长度的字符串
+ * @return 字符串str的长度
  */
 int my_strlen_1(const char* str)
 {
@@ -38,7 +43,7 @@ int my_strlen_1(const char* str)
 }
 
 /**
- * 测试自定义方法计算字符串长度方式一
+ * 测试自定义的字符串长度计算函数一
  */
 void my_strlen_1_test()
 {
@@ -47,11 +52,11 @@ void my_strlen_1_test()
     printf("自定义函数 length = %d\n", length);
 }
 
-
 /**
- * 自定义方法计算字符串长度方式二：利用指针相减的特性
+ * 自定义的字符串长度计算函数二：利用指针相减的特性
  *
- * @param str 要计算长度的字符串
+ * @param  str 要计算长度的字符串
+ * @return 返回字符串str的长度
  */
 int my_strlen_2(const char* str)
 {
@@ -70,7 +75,7 @@ int my_strlen_2(const char* str)
 }
 
 /**
- * 测试自定义方法计算字符串长度方式二：利用指针相减的特性
+ * 测试自定义的字符串长度计算函数二
  */
 void my_strlen_2_Test()
 {
@@ -82,11 +87,12 @@ void my_strlen_2_Test()
 /**
  * 字符串拷贝函数
  *
- * @param dest 目的字符串数组
- * @param src 源字符串数组
- * @return 返回拷贝后的目的地内存块的起始地址
- * @tips 1.必须要保证第一个参数的长度不小于第二个参数，否则虽然不会报错，但会溢出第一个字符串变量的边界，发生难以预料的结果。 2.第二个参数被const修饰，表示这个函数不会修改第二个字符串。
- * char * strcpy ( char * dest, const char * src )
+ * char *strcpy(char *dest, const char *src)
+ * @param  dest 目的字符串数组
+ * @param  src 源字符串数组
+ * @return 返回一个指向最终的目标字符串dest的指针（返回拷贝后的目的地内存块的起始地址）
+ * @tips   1.必须要保证第一个参数的长度不小于第二个参数，否则虽然不会报错，但会溢出第一个字符串变量的边界，发生难以预料的结果。
+ * @tips   2.第二个参数被const修饰，表示这个函数不会修改第二个字符串。
  */
 void strcpy_test()
 {
@@ -161,11 +167,14 @@ void strcpy_test()
 }
 
 /**
- * 自定义的字符串拷贝函数
+ * 自定义的字符串拷贝函数一
  *
- * @param dest 目标字符串
- * @param src  源字符串
- * @return
+ * char *strcpy(char *dest, const char *src)
+ * @param  dest 目的字符串数组
+ * @param  src 源字符串数组
+ * @return 返回一个指向最终的目标字符串dest的指针（返回拷贝后的目的地内存块的起始地址）
+ * @tips   1.必须要保证第一个参数的长度不小于第二个参数，否则虽然不会报错，但会溢出第一个字符串变量的边界，发生难以预料的结果。
+ * @tips   2.第二个参数被const修饰，表示这个函数不会修改第二个字符串。
  */
 char* my_strcpy_1(char* dest, const char* src)
 {
@@ -186,7 +195,7 @@ char* my_strcpy_1(char* dest, const char* src)
 }
 
 /**
- * 自定义方法编写算法实现字符串拷贝
+ * 测试自定义的字符串拷贝函数一
  */
 void my_strcpy_1_test()
 {
@@ -197,11 +206,14 @@ void my_strcpy_1_test()
 }
 
 /**
- * 自定义的字符串拷贝函数
+ * 自定义的字符串拷贝函数二
  *
- * @param dest 目标字符串
- * @param src  源字符串
- * @return
+ * char *strcpy(char *dest, const char *src)
+ * @param  dest 目的字符串数组
+ * @param  src 源字符串数组
+ * @return 返回一个指向最终的目标字符串dest的指针（返回拷贝后的目的地内存块的起始地址）
+ * @tips   1.必须要保证第一个参数的长度不小于第二个参数，否则虽然不会报错，但会溢出第一个字符串变量的边界，发生难以预料的结果。
+ * @tips   2.第二个参数被const修饰，表示这个函数不会修改第二个字符串。
  */
 char* my_strcpy_2(char* dest, const char* src)
 {
@@ -219,7 +231,7 @@ char* my_strcpy_2(char* dest, const char* src)
 }
 
 /**
- * 自定义方法编写算法实现字符串拷贝
+ * 测试自定义的字符串拷贝函数二
  */
 void my_strcpy_2_test()
 {
@@ -230,17 +242,19 @@ void my_strcpy_2_test()
 }
 
 /**
-* 字符串拷贝函数
-*
-* @param dest 目的字符串数组
-* @param src 源字符串数组
-* @param n 要复制的字符数
-* @return 返回拷贝后的目的地内存块的起始地址
-* @tips 1.第三个参数n定义了复制的最大字符数。如果达到最大字符数以后，源字符串仍然没有复制完，就会停止复制，这时目的字符串结尾将没有终止符'\0'，这一点务必
-*         注意。如果源字符串的字符数小于n，则strncpy()的行为与strcpy()完全一致。需要手动在dest字符串中添加结尾符'\0'
-*       2.strncpy()也可以用来拷贝部分字符串
-* char * strncpy( char * dest, const char * src, size_t n );
-*/
+ * 字符串拷贝函数（最多拷贝n字节）
+ *
+ * char *strncpy(char *dest, const char *src, size_t n)
+ * @param  dest 目的字符串数组
+ * @param  src  源字符串数组
+ * @param  n    要从源字符串中复制的字符数
+ * @return 返回一个指向最终的目标字符串dest的指针（返回拷贝后的目的地内存块的起始地址）
+ * @tips   1.第三个参数n定义了复制的最大字符数。如果达到最大字符数以后，源字符串仍然没有复制完，就会停止复制，这时目的
+ * 			 字符串结尾将没有终止符'\0'，这一点务必注意。如果源字符串的字符数小于n，则strncpy()的行为与strcpy()完全
+ * 			 一致。需要手动在dest字符串中添加结尾符'\0'
+ * @tips   2.第二个参数被const修饰，表示这个函数不会修改第二个字符串。
+ * @tips   3.此函数可以用来拷贝全部字符串或者部分字符串
+ */
 void strncpy_test_1()
 {
     char* p = NULL;
@@ -250,7 +264,7 @@ void strncpy_test_1()
     // 特别注意：dest_1数组的长度要大于等于sizeof(src_1)，否则会出问题
     char dest_1[100];
     p = strncpy(dest_1, src_1, 14);
-    dest_1[0] = 'O';
+    dest_1[0] = 'X';
     // 使用puts()输出字符串
     /*
     puts(src_1);
@@ -280,35 +294,62 @@ void strncpy_test_1()
 }
 
 /**
- * strncpy()：演示src字符串的长度超过了dest字符串的长度，参数n的最大值 sizeof(dest) - 1，因为要留一个字节的空间存储结尾符 '\0'
+ * 字符串拷贝函数（最多拷贝n字节）：演示src字符串的长度超过了dest字符串的长度，参数n的最大值 sizeof(dest) - 1，因为要留一个字节的空间存储结尾符 '\0'
+ *
+ * char *strncpy(char *dest, const char *src, size_t n)
+ * @param  dest 目的字符串数组
+ * @param  src  源字符串数组
+ * @param  n    要从源字符串中复制的字符数
+ * @return 返回一个指向最终的目标字符串dest的指针（返回拷贝后的目的地内存块的起始地址）
+ * @tips   1.第三个参数n定义了复制的最大字符数。如果达到最大字符数以后，源字符串仍然没有复制完，就会停止复制，这时目的
+ * 			 字符串结尾将没有终止符'\0'，这一点务必注意。如果源字符串的字符数小于n，则strncpy()的行为与strcpy()完全
+ * 			 一致。需要手动在dest字符串中添加结尾符'\0'
+ * @tips   2.第二个参数被const修饰，表示这个函数不会修改第二个字符串。
+ * @tips   3.此函数可以用来拷贝全部字符串或者部分字符串
  */
 void strncpy_test_2()
 {
     char src[] = "Hello, world!";
     char dest[5];
     strncpy(dest, src, sizeof(dest) - 1);
+    // 手动在结尾添加 '\0'
+    dest[4] = '\0';
     printf("dest = %s\n", dest);
 }
 
 /**
- * strncpy()：演示拷贝部分字符串
+ * 字符串拷贝函数（最多拷贝n字节）：演示拷贝部分字符串
+ *
+ * char *strncpy(char *dest, const char *src, size_t n)
+ * @param  dest 目的字符串数组
+ * @param  src  源字符串数组
+ * @param  n    要从源字符串中复制的字符数
+ * @return 返回一个指向最终的字符串dest的指针（返回拷贝后的目的地内存块的起始地址）
+ * @tips   1.第三个参数n定义了复制的最大字符数。如果达到最大字符数以后，源字符串仍然没有复制完，就会停止复制，这时目的
+ * 			 字符串结尾将没有终止符'\0'，这一点务必注意。如果源字符串的字符数小于n，则strncpy()的行为与strcpy()完全
+ * 			 一致。需要手动在dest字符串中添加结尾符'\0'
+ * @tips   2.第二个参数被const修饰，表示这个函数不会修改第二个字符串。
+ * @tips   3.此函数可以用来拷贝全部字符串或者部分字符串
  */
 void strncpy_test_3()
 {
     char src[] = "Hello, world!";
     char dest[50];
     strncpy(dest, src, 5);
+    // 手动在结尾添加 '\0'
+    dest[5] = '\0';
     printf("dest = %s\n", dest);
 }
 
+
 /**
- * 函数用于连接字符串，接受两个字符串作为参数，把第二个字符串的副本添加到第一个字符串的末尾。这个函数会改变第一个字符串，但是第二个字符串不变。
+ * 字符串拼接函数（接受两个字符串作为参数，把第二个字符串的副本添加到第一个字符串的末尾。这个函数会改变第一个字符串，但是第二个字符串不变。）
  *
- * @param str1 第一个字符串（字符数组类型的字符串变量）
- * @param str2 第二个字符串（字符数组类型的字符串变量）
- * @return 拼接后第一个字符串
- * @tips 1.参数要为字符数组类型的字符串变量，不能为指针类型的字符串变量，如果使用指针类型的字符串变量，会报错
  * char* strcat(char* str1, const char* str2);
+ * @param  dest 目的字符串
+ * @param  src 源字符串
+ * @return 该函数返回一个指向最终的目标字符串 dest 的指针
+ * @tips   参数要为字符数组类型的字符串变量，不能为指针类型的字符串变量，如果使用指针类型的字符串变量，会报错
  */
 void strcat_test()
 {
@@ -325,7 +366,11 @@ void strcat_test()
 }
 
 /**
- * 自定义方法实现字符串拷贝
+ * 自定义的字符串拼接函数一
+ *
+ * @param  dest 目的字符串
+ * @param  src 源字符串
+ * @return 该函数返回一个指向最终的目标字符串 dest 的指针
  */
 char* my_strcat_1(char* dest, const char* src)
 {
@@ -339,18 +384,24 @@ char* my_strcat_1(char* dest, const char* src)
 }
 
 /**
- * 测试自定义方法实现字符串连接
+ * 测试自定义的字符串拼接函数一
  */
 void my_strcat_1_test()
 {
     char str1[12] = "hello";
     char str2[6] = "world";
     my_strcat_1(str1, str2);
+    // 使用puts()输出字符串
     puts(str1); // "helloworld"
 }
 
+
 /**
- * 自定义方法实现字符串拷贝
+ * 自定义的字符串拼接函数二
+ *
+ * @param  dest 目的字符串
+ * @param  src 源字符串
+ * @return 该函数返回一个指向最终的目标字符串 dest 的指针
  */
 char* my_strcat_2(char* dest, const char* src)
 {
@@ -373,7 +424,7 @@ char* my_strcat_2(char* dest, const char* src)
 }
 
 /**
- * 测试自定义方法实现字符串连接
+ * 测试自定义的字符串拼接函数二
  */
 void my_strcat_2_test()
 {
@@ -515,8 +566,12 @@ char* my_memcpy(void * dest,const void * src,size_t count)
         p_src++;
         count--;
     }
+    return dest;
 }
 
+/**
+ * 测试自己实现内存复制
+ */
 void my_memcpy_test()
 {
     int arr_1[5] = { 1, 2, 3, 4, 5 };
@@ -544,6 +599,14 @@ void my_memcpy_test()
         printf("stu_name：%s， stu_age：%d\n", stus_cpy[i].stu_name, stus_cpy[i].age);
     }
 }
+
+/**
+ * void *memmove (void *, const void *, size_t);
+ */
+//void memmove_test()
+//{
+//	memmove
+//}
 
 /**
  * strcmp()：字符串比较（实际上是按位比较字符的ASCII码）
@@ -1262,10 +1325,10 @@ int main()
     //strcpy_test();
     //my_strcpy_1_test();
     //my_strcpy_2_test();
-    //strncpy_test_1();
-    //strncpy_test_2();
-    //strncpy_test_3();
-    //strcat_test();
+	//strncpy_test_1();
+	//strncpy_test_2();
+	//strncpy_test_3();
+    strcat_test();
     //my_strcat_1_test();
     //my_strcat_2_test();
     //strncat_test_1();
@@ -1273,7 +1336,7 @@ int main()
 	//memcpy_test_1();
 	//memcpy_test_2();
     //memcpy_test_3();
-    my_memcpy_test();
+    //my_memcpy_test();
     //strcmp_test();
     //my_strcmp_1_test();
     //my_strcmp_2_test();
