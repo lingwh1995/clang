@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<stdbool.h>
+#include <stdint.h>
+#include <string.h>
 
 /**
  * 判断大端和小端
@@ -50,6 +52,9 @@ void big_end_or_little_end_2()
 
 }
 
+/**
+ * 判断大小端
+ */
 void big_end_and_little_end_test()
 {
 	int a = 10, b = 20, c = 30, d = 40;
@@ -58,6 +63,42 @@ void big_end_and_little_end_test()
 	printf("&c = %p\n", &c);
 	printf("&d = %p\n", &d);
 }
+
+
+
+/**
+ * 通用的大小端转换函数：将 src 中的 n 字节反转到 dst 中
+ */
+void swap_endian(void* dst, const void* src, size_t n) {
+    uint8_t* dst_bytes = (uint8_t*)dst;
+    const uint8_t* src_bytes = (const uint8_t*)src;
+
+    for (size_t i = 0; i < n; ++i) {
+        dst_bytes[i] = src_bytes[n - 1 - i];
+    }
+}
+
+/**
+ * 测试大小端转换
+ */
+void swap_endian_test()
+{
+    uint16_t val16 = 0x1234;
+    uint16_t val16_swap_endian;
+    swap_endian(&val16_swap_endian, &val16, sizeof(val16));
+    printf("原始16位数据: 0x%04x, 转换大小端后16位数据: 0x%04x\n", val16, val16_swap_endian);
+
+    uint32_t val32 = 0x12345678;
+    uint32_t val32_swap_endian;
+    swap_endian(&val32_swap_endian, &val32, sizeof(val32));
+    printf("原始32位数据: 0x%08x, 转换大小端后32位数据: 0x%08x\n", val32, val32_swap_endian);
+
+    uint64_t val64 = 0x0102030405060708;
+    uint64_t val64_swap_endian;
+    swap_endian(&val64_swap_endian, &val64, sizeof(val64));
+    printf("原始64位数据: 0x%016llx, 转换大小端后64位数据: 0x%016llx\n", val64, val64_swap_endian);
+}
+
 
 int main()
 {
@@ -90,8 +131,10 @@ int main()
 	 * 	低地址 ------------------> 高地址
 	 * 	0x01  |  0x00  |  0x00  |  0x00
 	 */
-	big_end_or_little_end_1();
+	//big_end_or_little_end_1();
 	//big_end_or_little_end_2();
     //big_end_and_little_end_test();
+
+	swap_endian_test();
 	return 0;
 }
