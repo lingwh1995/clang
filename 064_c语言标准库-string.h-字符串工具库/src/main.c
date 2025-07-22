@@ -616,12 +616,29 @@ void my_memcpy_test()
 }
 
 /**
- * void *memmove (void *, const void *, size_t);
+ * 内存拷贝的函数
+ *
+ * void *memmove(void *dest, const void *src, size_t n);
+ * @param dest 目的字符串
+ * @param src  源字符串
+ * @param n    要拷贝的字节数
+ *
+ * 与memcpy的主要区别在于能安全处理目标区域和源区域重叠的情况。当内存区域重叠时，memmove 会先拷贝重叠部分到目标区域，避免数据丢失。
+ *
+ *
+ * 与 memcpy 的区别
+ *  ‌重叠内存处理‌：当目标区域与源区域重叠时，memmove 会先将重叠部分拷贝到目标区域，避免数据覆盖；而 memcpy 在重叠区域可能导致不可预测行为。 ‌24
+ *   ‌编译器兼容性‌：memcpy 在处理自身内存重叠时可能导致编译错误，而 memmove 不会。 ‌34
  */
-//void memmove_test()
-//{
-//	memmove
-//}
+void memmove_test()
+{
+	int arr[] = { 1, 2, 3, 4, 5 };
+	memmove(arr, arr, sizeof(arr));
+	for(int i=0; i < sizeof(arr)/sizeof(arr[0]); i++)
+	{
+		printf("%d\n", arr[i]);
+	}
+}
 
 /**
  * 字符串比较函数（实际上是按位比较字符的ASCII码）
@@ -1422,7 +1439,7 @@ void my_memcmp_test()
 
 int main()
 {
-    strlen_test();
+    //strlen_test();
     //my_strlen_1_test();
     //my_strlen_2_Test();
     //strcpy_test();
@@ -1440,6 +1457,7 @@ int main()
 	//memcpy_test_2();
     //memcpy_test_3();
     //my_memcpy_test();
+    memmove_test();
     //strcmp_test();
     //my_strcmp_1_test();
     //my_strcmp_2_test();
