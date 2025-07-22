@@ -169,7 +169,6 @@ void strcpy_test()
 /**
  * 自定义的字符串拷贝函数一
  *
- * char *strcpy(char *dest, const char *src)
  * @param  dest 目的字符串数组
  * @param  src 源字符串数组
  * @return 返回一个指向最终的目标字符串dest的指针（返回拷贝后的目的地内存块的起始地址）
@@ -208,7 +207,6 @@ void my_strcpy_1_test()
 /**
  * 自定义的字符串拷贝函数二
  *
- * char *strcpy(char *dest, const char *src)
  * @param  dest 目的字符串数组
  * @param  src 源字符串数组
  * @return 返回一个指向最终的目标字符串dest的指针（返回拷贝后的目的地内存块的起始地址）
@@ -435,15 +433,15 @@ void my_strcat_2_test()
 }
 
 /**
- * 函数用于连接字符串，接受两个字符串作为参数，把第二个字符串的副本添加到第一个字符串的末尾。这个函数会改变第一个字符串，但是第二个字符串不变。
+ * 字符串拼接函数
  *
- * @param str1 第一个字符串（字符数组类型的字符串变量）
- * @param str2 第二个字符串（字符数组类型的字符串变量）
- * @param count 最大添加的字符数
- * @return 拼接后第一个字符串
- * @tips 1.参数要为字符数组类型的字符串变量，不能为指针类型的字符串变量，如果使用指针类型的字符串变量，会报错
- *       2.strncat()总是会在拼接结果的结尾，自动添加空字符\0，所以第三个参数的最大值，应该是str1的变量长度减去str1的字符串长度，再减去1
- * char* strcat(char* str1, const char* str2, size_t count);
+ * char *strncat(char *dest, const char *src, size_t n);
+ * @param  dest 指向目标数组，该数组包含了一个 C 字符串，且足够容纳追加后的字符串，包括额外的空字符
+ * @param  src 要追加的字符串
+ * @param  n 要追加的最大字符数
+ * @return 该函数返回一个指向最终的目标字符串 dest 的指针
+ * @tips   1.参数要为字符数组类型的字符串变量，不能为指针类型的字符串变量，如果使用指针类型的字符串变量，会报错
+ * @tips   2.strncat()总是会在拼接结果的结尾，自动添加空字符\0，所以第三个参数的最大值，应该是str1的变量长度减去str1的字符串长度，再减去1
  */
 void strncat_test_1()
 {
@@ -454,9 +452,19 @@ void strncat_test_1()
 }
 
 /**
+* 字符串拼接函数
+*
+* char *strncat(char *dest, const char *src, size_t n);
+* @param  dest 指向目标数组，该数组包含了一个 C 字符串，且足够容纳追加后的字符串，包括额外的空字符
+* @param  src 要追加的字符串
+* @param  n 要追加的最大字符数
+* @return 该函数返回一个指向最终的目标字符串 dest 的指针
+* @tips   1.参数要为字符数组类型的字符串变量，不能为指针类型的字符串变量，如果使用指针类型的字符串变量，会报错
+* @tips   2.strncat()总是会在拼接结果的结尾，自动添加空字符\0，所以第三个参数的最大值，应该是str1的变量长度减去str1的字符串长度，再减去1
+ *
  * 下面示例中，str1的变量长度是10，字符长度是6，两者相减后再减去1，得到3，表明str1最多可以再添加3个字符，所以得到的结果是MondayTue。
  * 注意：即使count的值设置为5，大于3了，程序可执行，并且不会报错，但是拼接出来的str1没有结尾符'\0'，这个只是一个字符数组，并不是一个字符串，由此可见，c语言很自由，很多地方依赖程序员自己控制
- */
+*/
 void strncat_test_2()
 {
     char str1[10] = "Monday";
@@ -466,18 +474,18 @@ void strncat_test_2()
 }
 
 /**
+ * 内存拷贝函数（将指定内存空间的内容拷贝到你想要存放的内存空间处。但前提是你想要存放的内存空间大小得容纳得下待拷贝的内容。）
+ *
  * void* memcpy(void *dest, const void *src, size_t n)
- * dest-- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
- * src -- 指向要复制的数据源，类型强制转换为 void* 指针
- * n-- 要被复制的字节数
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * @param n    要被复制的字节数
  */
 void memcpy_test_1()
 {
 	int src[] = { 1,2,3,4,5,6,7,8,9,0 };
 	int dest[20] = { 0 };
-
 	memcpy(dest, src, 16); // 会复制 1,2,3,4 这四个数，因为一个int类型数据占4个字节
-
 	//此处的16代表着16个字节，而我们访问的数组是int型，所以此处拷贝的是4个元素
 	for (int i = 0; i < 20; i++)
 	{
@@ -486,10 +494,12 @@ void memcpy_test_1()
 }
 
 /**
+ * 内存拷贝函数（将指定内存空间的内容拷贝到你想要存放的内存空间处。但前提是你想要存放的内存空间大小得容纳得下待拷贝的内容。）
+ *
  * void* memcpy(void *dest, const void *src, size_t n)
- * dest-- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
- * src -- 指向要复制的数据源，类型强制转换为 void* 指针
- * n-- 要被复制的字节数
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * @param n    要被复制的字节数
  */
 void memcpy_test_2()
 {
@@ -513,10 +523,12 @@ struct Student
 };
 
 /**
+ * 内存拷贝函数（将指定内存空间的内容拷贝到你想要存放的内存空间处。但前提是你想要存放的内存空间大小得容纳得下待拷贝的内容。）
+ *
  * void* memcpy(void *dest, const void *src, size_t n)
- * dest-- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
- * src -- 指向要复制的数据源，类型强制转换为 void* 指针
- * n-- 要被复制的字节数
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * @param n    要被复制的字节数
  */
 void memcpy_test_3()
 {
@@ -547,30 +559,33 @@ void memcpy_test_3()
 }
 
 /**
- * 自己实现内存复制
- * @return
+ * 自定义的内存拷贝函数
+ *
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * @param n    要被复制的字节数
  */
-char* my_memcpy(void * dest,const void * src,size_t count)
+char* my_memcpy(void * dest,const void * src,size_t n)
 {
     assert(dest != NULL && src != NULL);
-    if(0 == count)
+    if(0 == n)
     {
         return dest;
     }
     char* p_dest = (char *)dest;
     const char* p_src = (const char *)src;
-    while(count != 0)
+    while(n != 0)
     {
         *p_dest = *p_src;
         p_dest++;
         p_src++;
-        count--;
+        n--;
     }
     return dest;
 }
 
 /**
- * 测试自己实现内存复制
+ * 测试自定义的内存拷贝函数
  */
 void my_memcpy_test()
 {
@@ -609,7 +624,14 @@ void my_memcpy_test()
 //}
 
 /**
- * strcmp()：字符串比较（实际上是按位比较字符的ASCII码）
+ * 字符串比较函数（实际上是按位比较字符的ASCII码）
+ *
+ * int strcmp(const char *str1, const char *str2)
+ * @param str1 要进行比较的第一个字符串
+ * @param str2 要进行比较的第二个字符串
+ * @return 如果返回值小于 0，则表示 str1 小于 str2。
+ *         如果返回值大于 0，则表示 str1 大于 str2。
+ *         如果返回值等于 0，则表示 str1 等于 str2。
  */
 void strcmp_test()
 {
@@ -636,10 +658,13 @@ void strcmp_test()
 }
 
 /**
- * 自定义方法实现字符串比较
+ * 自定义的字符串比较函数一（实际上是按位比较字符的ASCII码）
  *
- * @param str1 第一个字符串
- * @param str2 第二个字符串
+ * @param str1 要进行比较的第一个字符串
+ * @param str2 要进行比较的第二个字符串
+ * @return 如果返回值小于 0，则表示 str1 小于 str2。
+ *         如果返回值大于 0，则表示 str1 大于 str2。
+ *         如果返回值等于 0，则表示 str1 等于 str2。
  */
 int my_strcmp_1(const char* str1, const char* str2)
 {
@@ -658,7 +683,7 @@ int my_strcmp_1(const char* str1, const char* str2)
 }
 
 /**
- * 测试自定义方法实现字符串比较
+ * 测试自定义的字符串比较函数一
  */
 void my_strcmp_1_test()
 {
@@ -685,10 +710,13 @@ void my_strcmp_1_test()
 }
 
 /**
- * 自定义方法实现字符串比较
+ * 自定义的字符串比较函数二（实际上是按位比较字符的ASCII码）
  *
- * @param str1 第一个字符串
- * @param str2 第二个字符串
+ * @param str1 要进行比较的第一个字符串
+ * @param str2 要进行比较的第二个字符串
+ * @return 如果返回值小于 0，则表示 str1 小于 str2。
+ *         如果返回值大于 0，则表示 str1 大于 str2。
+ *         如果返回值等于 0，则表示 str1 等于 str2。
  */
 int my_strcmp_2(const char* str1, const char* str2)
 {
@@ -704,7 +732,7 @@ int my_strcmp_2(const char* str1, const char* str2)
 }
 
 /**
- * 测试自定义方法实现字符串比较
+ * 测试自定义的字符串比较函数二
  */
 void my_strcmp_2_test()
 {
@@ -731,7 +759,15 @@ void my_strcmp_2_test()
 }
 
 /**
- * strncmp()：字符串比较（实际上是按位比较字符的ASCII码）
+ * 字符串比较函数，最多比较n个字符数（实际上是按位比较字符的ASCII码）
+ *
+ * int strcmp(const char *str1, const char *str2, size_t n)
+ * @param str1 要进行比较的第一个字符串
+ * @param str2 要进行比较的第二个字符串
+ * @param n    要比较的最大字符数
+ * @return 如果返回值小于 0，则表示 str1 小于 str2。
+ *         如果返回值大于 0，则表示 str1 大于 str2。
+ *         如果返回值等于 0，则表示 str1 等于 str2。
  */
 void strncmp_test()
 {
@@ -758,12 +794,15 @@ void strncmp_test()
 }
 
 /**
- * 自定义方法实现字符串中前n个字符比较
- *
- * @param str1 第一个字符串
- * @param str2 第二个字符串
- * @param n 比较到第几个位置就结束比较
- */
+* 自定义的字符串比较函数，最多比较n个字符数（实际上是按位比较字符的ASCII码）
+*
+* @param str1 要进行比较的第一个字符串
+* @param str2 要进行比较的第二个字符串
+* @param n    要比较的最大字符数
+* @return 如果返回值小于 0，则表示 str1 小于 str2。
+*         如果返回值大于 0，则表示 str1 大于 str2。
+*         如果返回值等于 0，则表示 str1 等于 str2。
+*/
 int my_strncmp(const char* str1, const char* str2, size_t n)
 {
     if(NULL == str1 || NULL == str2 || 0 == n)
@@ -781,7 +820,7 @@ int my_strncmp(const char* str1, const char* str2, size_t n)
 }
 
 /**
- * 测试自定义方法实现字符串中前n个字符比较
+ * 测试自定义的字符串比较函数，最多比较n个字符数
  */
 void my_strncmp_test()
 {
@@ -810,8 +849,9 @@ void my_strncmp_test()
 /**
  * 从头到尾在一个字符串中查找给定字符的第一个匹配之处
  *
+ * char *strchr(const char *str, int c)
  * @param str 给定字符串
- * @param c 给定字符
+ * @param c   给定字符
  * @return 如果找到字符c，则返回指向该字符在字符串中第一次出现位置的指针。如果未找到字符c，则返回NULL指针。
  * char *strchr (const char *str, int c)
  */
@@ -832,11 +872,11 @@ void strchr_test()
 }
 
 /**
- * 自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * 自定义函数实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
  *
- * @param str
- * @param c
- * @return
+ * @param str 给定字符串
+ * @param c   给定字符
+ * @return 如果在字符串 str 中找到字符 c，则函数返回指向该字符的指针，如果未找到该字符则返回 NULL。
  */
 char* my_strchr(const char *str, int c)
 {
@@ -858,7 +898,7 @@ char* my_strchr(const char *str, int c)
 }
 
 /**
- * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * 测试自定义函数实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
  */
 void my_strchr_test()
 {
@@ -877,7 +917,12 @@ void my_strchr_test()
 }
 
 /**
- * char *strchr (const char *str, int c)：从尾到头在一个字符串中查找给定字符的第一个匹配之处
+ * 从头到尾在一个字符串中查找给定字符的最后一个匹配之处（从尾到头在一个字符串中查找给定字符的第一个匹配之处）
+ *
+ * char *strrchr(const char *str, int c)
+ * @param str 给定字符串
+ * @param c   给定字符
+ * @return 从字符串的末尾开始向前搜索，直到找到指定的字符或搜索完整个字符串。如果找到字符，它将返回一个指向该字符的指针，否则返回 NULL。
  */
 void strrchr_test()
 {
@@ -896,11 +941,11 @@ void strrchr_test()
 }
 
 /**
- * 自定义方法实现从尾到头在一个字符串中查找给定字符的第一个匹配之处
+ * 自定义函数实现从头到尾在一个字符串中查找给定字符的最后一个匹配之处（从尾到头在一个字符串中查找给定字符的第一个匹配之处）一
  *
- * @param str
- * @param c
- * @return
+ * @param str 给定字符串
+ * @param c   给定字符
+ * @return 从字符串的末尾开始向前搜索，直到找到指定的字符或搜索完整个字符串。如果找到字符，它将返回一个指向该字符的指针，否则返回 NULL。
  */
 char* my_strrchr_1(const char *str, int c)
 {
@@ -924,7 +969,7 @@ char* my_strrchr_1(const char *str, int c)
 }
 
 /**
- * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * 测试自定义函数实现从头到尾在一个字符串中查找给定字符的最后一个匹配之处（从尾到头在一个字符串中查找给定字符的第一个匹配之处）一
  */
 void my_strrchr_1_test()
 {
@@ -943,11 +988,11 @@ void my_strrchr_1_test()
 }
 
 /**
- * 自定义方法实现从尾到头在一个字符串中查找给定字符的第一个匹配之处
+ * 自定义函数实现从头到尾在一个字符串中查找给定字符的最后一个匹配之处（从尾到头在一个字符串中查找给定字符的第一个匹配之处）二
  *
- * @param str
- * @param c
- * @return
+ * @param str 给定字符串
+ * @param c   给定字符
+ * @return 从字符串的末尾开始向前搜索，直到找到指定的字符或搜索完整个字符串。如果找到字符，它将返回一个指向该字符的指针，否则返回 NULL。
  */
 char* my_strrchr_2(const char *str, int c)
 {
@@ -971,7 +1016,7 @@ char* my_strrchr_2(const char *str, int c)
 }
 
 /**
- * 测试自定义方法实现从头到尾在一个字符串中查找给定字符的第一个匹配之处
+ * 测试自定义函数实现从头到尾在一个字符串中查找给定字符的最后一个匹配之处（从尾到头在一个字符串中查找给定字符的第一个匹配之处）二
  */
 void my_strrchr_2_test()
 {
@@ -990,8 +1035,13 @@ void my_strrchr_2_test()
 }
 
 /**
- * char *strchr (const char *str, const char *substr)： 从尾到头在一个字符串中查找给定子串的第一个匹配之处
- */
+ * 从头到尾在一个字符串中查找给定字符串的第一个匹配之处
+ *
+ * char *strrchr(const char *str, const char subStr)
+ * @param str 给定字符串
+ * @param substr 给定子字符串
+ * @return 返回的是从匹配的子字符串开始到原字符串结束的部分
+*/
 void strstr_test()
 {
     const char *str = "onetwothree";
@@ -1008,14 +1058,16 @@ void strstr_test()
 }
 
 /**
- * 自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ * 自定义函数实现从头到尾在一个字符串中查找给定字符串的第一个匹配之处一
  *
  * @param str 给定字符串
- * @param substr 给定子串
- * @return 如果找到子符substr，则返回指向该子串在字符串中第一次出现位置的指针。如果未找到子串substr，则返回NULL指针。
+ * @param substr 给定子字符串
+ * @return 返回的是从匹配的子字符串开始到原字符串结束的部分
  */
-char* my_strstr_1(const char *str, const char *substr) {
-    if (NULL == str || NULL == substr) {
+char* my_strstr_1(const char *str, const char *substr)
+{
+    if (NULL == str || NULL == substr)
+    {
         return NULL;
     }
     if(strlen(str) < strlen(substr))
@@ -1043,8 +1095,9 @@ char* my_strstr_1(const char *str, const char *substr) {
     return NULL;
 }
 
+
 /**
- * 测试自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ * 测试自定义函数实现从头到尾在一个字符串中查找给定字符串的第一个匹配之处一
  */
 void my_strstr_1_test()
 {
@@ -1062,14 +1115,16 @@ void my_strstr_1_test()
 }
 
 /**
- * 自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ * 自定义函数实现从头到尾在一个字符串中查找给定字符串的第一个匹配之处二
  *
  * @param str 给定字符串
- * @param substr 给定子串
- * @return 如果找到子符substr，则返回指向该子串在字符串中第一次出现位置的指针。如果未找到子串substr，则返回NULL指针。
+ * @param substr 给定子字符串
+ * @return 返回的是从匹配的子字符串开始到原字符串结束的部分
  */
-char* my_strstr_2(const char *str, const char *substr) {
-    if (NULL == str || NULL == substr) {
+char* my_strstr_2(const char *str, const char *substr)
+{
+    if (NULL == str || NULL == substr)
+    {
         return NULL;
     }
     if(strlen(str) < strlen(substr))
@@ -1100,7 +1155,7 @@ char* my_strstr_2(const char *str, const char *substr) {
 }
 
 /**
- * 测试自定义方法实现从尾到头在一个字符串中查找给定子串的第一个匹配之处
+ * 测试自定义函数实现从头到尾在一个字符串中查找给定字符串的第一个匹配之处二
  */
 void my_strstr_2_test()
 {
@@ -1118,7 +1173,11 @@ void my_strstr_2_test()
 }
 
 /**
- * 测试将字符串转换为小写格式
+ * 字符串转为小写格式函数
+ *
+ * char* strlwr(char* str)
+ * @param str 要转成小写格式的字符串
+ * @return 小写格式的字符串
  */
 void strlwr_test()
 {
@@ -1127,7 +1186,11 @@ void strlwr_test()
 }
 
 /**
- * 测试将字符串转换为大写格式
+ * 字符串转为大写格式函数
+ *
+ * char* strupr(char* str)
+ * @param str 要转成大写格式的字符串
+ * @return 大写格式的字符串
  */
 void strupr_test()
 {
@@ -1136,11 +1199,14 @@ void strupr_test()
 }
 
 /**
- * 测试字符串复制函数strdup
- * 注意事项：
- *     strdup 的可移植性：非C标准函数，需确保环境支持（如Windows需 _strdup）
- *     内存泄漏：strdup 返回的指针必须用 free() 释放
- *     错误处理：strdup 可能返回 NULL，需检查后再使用
+ * 字符串拷贝函数（一般和 free() 函数成对出现）
+ *
+ * char *strdup(const char *str);
+ * @param str 指向要复制的源字符串
+ * @return 返回一个指向新分配的、包含复制内容的字符串的指针。如果内存分配失败，则返回 NULL
+ * @tips  1.strdup的可移植性：非C标准函数，需确保环境支持（如Windows需 _strdup）
+ * @tips  2.strdup可能出现内存泄漏：strdup返回的指针必须用free()释放
+ * @tips  3.strdup可能返回NULL，需检查后再使用
  */
 void strdup_test()
 {
@@ -1160,11 +1226,14 @@ void strdup_test()
 }
 
 /**
- * 自定义方法实现strdup方式字符串复制
- *
- * @param	str
- * @return
- */
+* 自定义的字符串拷贝函数（一般和 free() 函数成对出现）
+*
+* @param str 指向要复制的源字符串
+* @return 返回一个指向新分配的、包含复制内容的字符串的指针。如果内存分配失败，则返回 NULL
+* @tips  1.strdup的可移植性：非C标准函数，需确保环境支持（如Windows需 _strdup）
+* @tips  2.strdup可能出现内存泄漏：strdup返回的指针必须用free()释放
+* @tips  3.strdup可能返回NULL，需检查后再使用
+*/
 char* my_strdup(const char* str)
 {
     if(NULL == str)
@@ -1178,7 +1247,7 @@ char* my_strdup(const char* str)
 }
 
 /**
- * 测试自定义方法实现strdup方式字符串复制
+ * 测试自定义的字符串拷贝函数
  */
 void my_strdup_test()
 {
@@ -1198,7 +1267,12 @@ void my_strdup_test()
 }
 
 /**
- * void *memset(void *s, int c, size_t n): 初始化内存的"万能函数"，通常为新申请的内存进行初始化工作
+ * 初始化内存空间函数（将dest的前n个字符设置为字符val）
+ *
+ * void * memset(void * dest, int val, size_t n)
+ * @param dest 目标内存地址
+ * @param val 要设置的值，虽然它是一个int类型，但实际上它会被解释为unsigned char，即只会用到这个值的最低8位。
+ * @param n   要设置的字节数
  */
 void memset_test()
 {
@@ -1229,15 +1303,16 @@ void memset_test()
 }
 
 /**
- * 把连续空间设置为0
- * @param vp
- * @param ch
- * @param count
+ * 自定义的初始化内存空间函数（将dest的前n个字符设置为字符val）
+ *
+ * @param vp 目标字符串
+ * @param ch 要设置的值，虽然它是一个int类型，但实际上它会被解释为unsigned char，即只会用到这个值的最低8位。
+ * @param n  要设置的字节数
  */
-void my_memset(void* vp, unsigned char ch, size_t count)
+void my_memset(void* vp, unsigned char ch, size_t n)
 {
     unsigned char* cp = (unsigned char*)vp;
-    for(int i = 0; i < count; i++)
+    for(int i = 0; i < n; i++)
     {
         /*
         *cp = ch;
@@ -1247,6 +1322,9 @@ void my_memset(void* vp, unsigned char ch, size_t count)
     }
 }
 
+/**
+ * 测试自定义的初始化内存空间函数（将dest的前n个字符设置为字符val）
+ */
 void my_memset_test()
 {
     int arr[10];
@@ -1275,7 +1353,15 @@ void my_memset_test()
 }
 
 /**
- * int memcmp(const void *str1, const void *str2, size_t n): 用于比较两块内存区域前n个字节内容的函数
+ * 比较两块内存区域前n个字节内容的函数
+ *
+ * int memcmp(const void *str1, const void *str2, size_t n);
+ * @param buf1 指向内存块儿buf1的指针
+ * @param buf2 指向内存块儿buf2的指针
+ * @param n    要被比较的字节数
+ * @return     如果返回值 < 0，则表示 str1 小于 str2。
+ *             如果返回值 > 0，则表示 str2 小于 str1。
+ *             如果返回值 = 0，则表示 str1 等于 str2。
  */
 void memcmp_test()
 {
@@ -1286,28 +1372,45 @@ void memcmp_test()
 }
 
 /**
- * 自己实现的用于比较两块内存区域前n个字节内容的函数
+ * 自定义的比较两块内存区域前n个字节内容的函数
+ *
+ * @param buf1 指向内存块儿buf1的指针
+ * @param buf2 指向内存块儿buf2的指针
+ * @param n    要被比较的字节数
+ * @return     如果返回值 < 0，则表示 str1 小于 str2。
+ *             如果返回值 > 0，则表示 str2 小于 str1。
+ *             如果返回值 = 0，则表示 str1 等于 str2。
  */
-int my_memcmp(const void *buf1, const void *buf2, size_t count)
+int my_memcmp(const void *buf1, const void *buf2, size_t n)
 {
     assert(buf1 != NULL && buf2 != NULL);
-    if(0 == count)
+    if(0 == n)
     {
         return 0;
     }
     const char* p_buf1 = (const char*)buf1;
     const char* p_buf2 = (const char*)buf2;
-    while (count != 1 && *p_buf1 == *p_buf2)
+    while (n != 1 && *p_buf1 == *p_buf2)
     {
-        count--;
+        n--;
         p_buf1++;
         p_buf2++;
     }
-    return *p_buf2 - *p_buf1;
+    int result = 0;
+    int difference = *p_buf1 - *p_buf2;
+    if(difference > 0)
+    {
+        result  = 1;
+    }
+    if(difference < 0)
+    {
+        result  = -1;
+    }
+    return result;
 }
 
 /**
- * 测试自己实现的用于比较两块内存区域前n个字节内容的函数
+ * 测试自定义的比较两块内存区域前n个字节内容的函数
  */
 void my_memcmp_test()
 {
@@ -1328,7 +1431,7 @@ int main()
 	//strncpy_test_1();
 	//strncpy_test_2();
 	//strncpy_test_3();
-    strcat_test();
+    //strcat_test();
     //my_strcat_1_test();
     //my_strcat_2_test();
     //strncat_test_1();
@@ -1357,7 +1460,7 @@ int main()
     //my_strdup_test();
 	//memset_test();
 	//my_memset_test();
-	//memcmp_test();
-    //my_memcmp_test();
+    //memcmp_test();
+    my_memcmp_test();
 	return 0;
 }
