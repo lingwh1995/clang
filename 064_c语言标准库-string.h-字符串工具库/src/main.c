@@ -1422,7 +1422,7 @@ void my_memcmp_test()
 
 int main()
 {
-    //strlen_test();
+    strlen_test();
     //my_strlen_1_test();
     //my_strlen_2_Test();
     //strcpy_test();
@@ -1461,6 +1461,6 @@ int main()
 	//memset_test();
 	//my_memset_test();
     //memcmp_test();
-    my_memcmp_test();
+    //my_memcmp_test();
 	return 0;
 }
