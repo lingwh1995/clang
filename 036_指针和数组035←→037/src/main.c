@@ -125,7 +125,7 @@ void pointer_and_array_test_5()
 void print_array_by_while_loop(int* start, int* end)
 {
     // 判断指针是否为空
-    if(NULL == p || NULL == end)
+    if(NULL == start || NULL == end)
     {
         return;
     }

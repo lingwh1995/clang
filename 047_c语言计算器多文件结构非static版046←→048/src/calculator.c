@@ -34,12 +34,12 @@ void calc(int a, int b, char op)
 		case '/':
 			if (b == 0)
 			{
-				bIsShow = false;
+				b_is_show = false;
 				printf("div by zeron error!\n");
 			}
 			else
 			{
-				result = div_Int(a, b);
+				result = div_int(a, b);
 			}
 			break;
 		default:

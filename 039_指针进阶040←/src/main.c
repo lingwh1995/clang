@@ -73,7 +73,7 @@ void fun(int* p) {
  * 调用方法修改指针指向的值
  */
 void pointer_senior_test_3() {
-    int a = 1main0;
+    int a = 1;
     int* p = &a;
     fun(p);
     printf("a = %d, %p => *p %d\n", a, p, *p);
@@ -256,7 +256,6 @@ void pointer_senior_test_10() {
 }
 
 #if 0
-#endif
 int main() {
 	//pointer_senior_test_1();
 	pointer_senior_test_2();
@@ -270,4 +269,5 @@ int main() {
 	//pointer_senior_test_10();
     return 0;
 }
+#endif
 

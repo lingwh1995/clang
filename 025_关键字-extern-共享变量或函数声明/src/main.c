@@ -39,7 +39,7 @@ void extern_other_file_variable_and_const_and_function_test()
 	printf("gi_in_other_file = %d\n", gi_in_other_file);
 	printf("gc_in_other_file = %d\n", gc_in_other_file);
 	//AddInOtherFile()在mylib.h中使用extern关键字声明,在mylib.c中定义
-	AddInOtherFile(0, 0);
+	add_in_other_file(0, 0);
 }
 
 /*
