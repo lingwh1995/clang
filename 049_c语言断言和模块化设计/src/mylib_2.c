@@ -14,8 +14,10 @@ int find_value_3(const int* arr, int n, int val)
 	assert(NULL != arr);
 	if (n < 1) return -1;
 	int position = -1;
-	for (int i = 0; i < n; i++) {
-		if (val == arr[i]) {
+	for (int i = 0; i < n; i++)
+	{
+		if (val == arr[i])
+		{
 			position = i;
 		}
 	}

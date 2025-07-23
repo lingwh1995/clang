@@ -52,7 +52,8 @@ int get_days_by_year_and_month_(int year, int month)
 int get_days_(int year, int month, int day)
 {
 	// 返回-1代表输入的年份不合理
-	if(year < 1) {
+	if(year < 1)
+	{
 		return YEAR_ERROR;
 	}
     // 返回-1代表输入的月份不合理

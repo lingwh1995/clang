@@ -69,11 +69,13 @@ void big_end_and_little_end_test()
 /**
  * 通用的大小端转换函数：将 src 中的 n 字节反转到 dst 中
  */
-void swap_endian(void* dst, const void* src, size_t n) {
+void swap_endian(void* dst, const void* src, size_t n)
+{
     uint8_t* dst_bytes = (uint8_t*)dst;
     const uint8_t* src_bytes = (const uint8_t*)src;
 
-    for (size_t i = 0; i < n; ++i) {
+    for (size_t i = 0; i < n; ++i)
+    {
         dst_bytes[i] = src_bytes[n - 1 - i];
     }
 }

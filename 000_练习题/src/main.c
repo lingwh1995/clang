@@ -956,6 +956,9 @@ void question_031_bubble_sort()
 
 int main()
 {
+	// 解决eclipse无法使用scanf()从控制台接收参数的问题
+	//setbuf(stdout, NULL);
+
 	// 测试执行效率，使用以下方法
 	/*
 	  long start, end;
@@ -966,7 +969,7 @@ int main()
 
 	//question_001_loop_print_a2g();
 	//question_002_loop_print_a2g();
-	//question_003_gcd();
+	question_003_gcd();
 	//question_004_gcd();
 	//question_005_gcd();
 	//question_006_lcm();
@@ -992,7 +995,7 @@ int main()
 	//question_026_bubble_sort();
 	//question_027_bubble_sort();
 	//question_028_bubble_sort();
-	question_029_bubble_sort();
+	//question_029_bubble_sort();
 	//question_030_bubble_sort();
 	//question_031_bubble_sort();
 	return 0;

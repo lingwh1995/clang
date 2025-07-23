@@ -7,6 +7,9 @@
 //使用多文件结构(模块化设计)编写计算器程序:测试部分
 int main()
 {
+	// 解决eclipse无法使用scanf()从控制台接收参数的问题
+	setbuf(stdout, NULL);
+
 	printf("请输入表达式: a op b\n");
 	int a = 0, b = 0;
 	char op = '\0';

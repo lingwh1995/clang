@@ -92,7 +92,8 @@ void double_pointer_plus_one()
 }
 
 #if 0
-int main() {
+int main()
+{
 	int_pointer_to_char_pointer();
 	//int_pointer_plus_one();
 	//char_pointer_plus_one();
