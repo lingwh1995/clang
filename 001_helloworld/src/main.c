@@ -52,12 +52,21 @@ int main()
 #endif
 
 #if 0
-#endif
 int main()
 {
 	printf("hello world~\n");
 	printf("你好世界~\n");
 	return 0;
 }
+#endif
 
+/**
+ * 1.main()的返回值就是程序的返回值
+ * 2.main()的返回值可以省略不写，编译器会自动加上 return 0;
+ */
+#if 0
+#endif
+int main(void) {
+	printf("hello world~\n");
+}
 

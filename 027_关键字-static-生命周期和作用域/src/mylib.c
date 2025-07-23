@@ -8,7 +8,7 @@ int gi_in_other_file_static = 10;
 const int gc_in_other_file_static = 20;
 
 //定义一个被static修饰的函数
-int AddInOtherFileStatic(int a, int b)
+int add_in_other_file_static(int a, int b)
 {
     printf("我是mylib.c中的普通函数......(来自其他文件,被static修饰)\n");
     return a + b;
