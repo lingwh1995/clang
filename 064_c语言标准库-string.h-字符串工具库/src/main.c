@@ -616,24 +616,22 @@ void my_memcpy_test()
 }
 
 /**
- * 内存拷贝的函数
+ * 内存拷贝的函数（用于处理把自身内容拷贝给自身）
  *
  * void *memmove(void *dest, const void *src, size_t n);
  * @param dest 目的字符串
  * @param src  源字符串
  * @param n    要拷贝的字节数
  *
- * 与memcpy的主要区别在于能安全处理目标区域和源区域重叠的情况。当内存区域重叠时，memmove 会先拷贝重叠部分到目标区域，避免数据丢失。
+ * 与memcpy的区别：memmove能安全处理目标区域和源区域重叠的情况，而memcpy不一定能
+ *   -当内存区域重叠时，memmove 会先拷贝重叠部分到目标区域，避免数据丢失
+ *   -由于编译器兼容性问题，memcpy在处理重叠区域时可能导致不可预测行为
  *
- *
- * 与 memcpy 的区别
- *  ‌重叠内存处理‌：当目标区域与源区域重叠时，memmove 会先将重叠部分拷贝到目标区域，避免数据覆盖；而 memcpy 在重叠区域可能导致不可预测行为。 ‌24
- *   ‌编译器兼容性‌：memcpy 在处理自身内存重叠时可能导致编译错误，而 memmove 不会。 ‌34
  */
 void memmove_test()
 {
 	int arr[] = { 1, 2, 3, 4, 5 };
-	memmove(arr, arr, sizeof(arr));
+	memmove(arr, arr + 2, sizeof(arr));
 	for(int i=0; i < sizeof(arr)/sizeof(arr[0]); i++)
 	{
 		printf("%d\n", arr[i]);
