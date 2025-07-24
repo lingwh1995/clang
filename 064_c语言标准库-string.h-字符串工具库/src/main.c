@@ -632,11 +632,27 @@ void my_memcpy_test()
 void memmove_test()
 {
 	int arr[] = { 1, 2, 3, 4, 5 };
-	memmove(arr + 2, arr, sizeof(arr));
+	// 一个int类型数据占4个字节，2个int类型数据占8个字节
+	memmove(arr, arr + 2, 8);
 	for(int i=0; i < sizeof(arr)/sizeof(arr[0]); i++)
 	{
-		printf("%d\n", arr[i]);
+		printf("%d ", arr[i]);
 	}
+	printf("\n");
+
+	// 正向自拷贝
+	char str1[] = "12345";
+	// 推荐使用memmove
+	memmove(str1, str1 + 2, 2);
+	//memcpy(str1, str1 + 2, 2);
+	puts(str1);
+
+	// 反向自拷贝
+	char str2[] = "12345";
+	// 推荐使用memmove
+	memmove(str2 + 2, str2, 2);
+	//memcpy(str2 + 2, str2, 2);
+	puts(str2);
 }
 
 /**
@@ -1558,7 +1574,7 @@ int main()
 	//memcpy_test_2();
     //memcpy_test_3();
     //my_memcpy_test();
-    //memmove_test();
+    memmove_test();
     //strcmp_test();
     //my_strcmp_1_test();
     //my_strcmp_2_test();
@@ -1582,6 +1598,6 @@ int main()
     //memcmp_test();
     //my_memcmp_test();
     //sprintf_test();
-    snprintf_test();
+    //snprintf_test();
 	return 0;
 }

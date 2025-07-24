@@ -67,7 +67,8 @@ int main()
  */
 #if 0
 #endif
-int main(void) {
+int main(void)
+{
 	printf("hello world~\n");
 }
 
