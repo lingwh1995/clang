@@ -21,6 +21,7 @@ void varargs_test(int n, ...)
 
 int main()
 {
+    varargs_test(2, 1, 2);  // 输出：1 2
     varargs_test(3, 1, 2, 3);  // 输出：1 2 3
     varargs_test(5, 4, 5, 6, 7, 8);  // 输出：4 5 6 7 8
     return 0;
