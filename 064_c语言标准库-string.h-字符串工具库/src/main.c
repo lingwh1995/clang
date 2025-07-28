@@ -617,7 +617,7 @@ void my_memcpy_test()
 }
 
 /**
- * 内存拷贝的函数（用于处理把自身内容拷贝给自身）
+ * 内存移动函数（用于处理把自身内容拷贝给自身）
  *
  * void *memmove(void *dest, const void *src, size_t n);
  * @param dest 目的字符串
@@ -651,6 +651,60 @@ void memmove_test()
 	char str2[] = "12345";
 	// 推荐使用memmove
 	memmove(str2 + 2, str2, 2);
+	//memcpy(str2 + 2, str2, 2);
+	puts(str2);
+}
+
+/**
+ * 自定义的内存移动函数
+ *
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * @param n    要被复制的字节数
+ */
+char* my_memove(void * dest,const void * src,size_t n)
+{
+    assert(dest != NULL && src != NULL);
+    if(0 == n)
+    {
+        return dest;
+    }
+    char* p_dest = (char *)dest;
+    const char* p_src = (const char *)src;
+    while(n--)
+    {
+        *p_dest = *p_src;
+        p_dest++;
+        p_src++;
+    }
+    return dest;
+}
+
+/**
+ * 自定义的内存移动函数测试
+ */
+void my_memove_test()
+{
+	int arr[] = { 1, 2, 3, 4, 5 };
+	// 一个int类型数据占4个字节，2个int类型数据占8个字节
+	my_memove(arr, arr + 2, 8);
+	for(int i=0; i < sizeof(arr)/sizeof(arr[0]); i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+
+	// 正向自拷贝
+	char str1[] = "12345";
+	// 推荐使用memmove
+	my_memove(str1, str1 + 2, 2);
+	//memcpy(str1, str1 + 2, 2);
+	puts(str1);
+
+	// 反向自拷贝
+	char str2[] = "12345";
+	// 推荐使用memmove
+	my_memove(str2 + 2, str2, 2);
 	//memcpy(str2 + 2, str2, 2);
 	puts(str2);
 }
@@ -1574,7 +1628,8 @@ int main()
 	//memcpy_test_2();
     //memcpy_test_3();
     //my_memcpy_test();
-    memmove_test();
+    //memmove_test();
+    my_memove_test();
     //strcmp_test();
     //my_strcmp_1_test();
     //my_strcmp_2_test();
