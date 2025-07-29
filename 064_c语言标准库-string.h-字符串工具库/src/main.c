@@ -643,26 +643,26 @@ void memmove_test()
 	// 正向自拷贝
 	char str1[] = "12345";
 	// 推荐使用memmove
-	memmove(str1, str1 + 2, 2);
+	memmove(str1, str1 + 2, 3);
 	//memcpy(str1, str1 + 2, 2);
 	puts(str1);
 
 	// 反向自拷贝
 	char str2[] = "12345";
 	// 推荐使用memmove
-	memmove(str2 + 2, str2, 2);
-	//memcpy(str2 + 2, str2, 2);
+	memmove(str2 + 2, str2, 3);
+	//memcpy(str2 + 2, str2, 3);
 	puts(str2);
 }
 
 /**
- * 自定义的内存移动函数
+ * 自定义的内存移动函数1：正向自拷贝功能正常，反向自拷贝功能未实现
  *
  * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
  * @param src  指向要复制的数据源，类型强制转换为 void* 指针
  * @param n    要被复制的字节数
  */
-char* my_memove(void * dest,const void * src,size_t n)
+char* my_memove_1(void * dest,const void * src,size_t n)
 {
     assert(dest != NULL && src != NULL);
     if(0 == n)
@@ -681,31 +681,79 @@ char* my_memove(void * dest,const void * src,size_t n)
 }
 
 /**
- * 自定义的内存移动函数测试
+ * 自定义的内存移动函数测试（正向自拷贝功能正常，反向自拷贝功能未实现）
  */
-void my_memove_test()
+void my_memove_1_test()
 {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	// 一个int类型数据占4个字节，2个int类型数据占8个字节
-	my_memove(arr, arr + 2, 8);
+	my_memove_1(arr, arr + 2, 8);
 	for(int i=0; i < sizeof(arr)/sizeof(arr[0]); i++)
 	{
 		printf("%d ", arr[i]);
 	}
 	printf("\n");
 
-	// 正向自拷贝
+	// 正向自拷贝 => 功能正常
 	char str1[] = "12345";
-	// 推荐使用memmove
-	my_memove(str1, str1 + 2, 2);
-	//memcpy(str1, str1 + 2, 2);
+	my_memove_1(str1, str1 + 2, 3);
 	puts(str1);
 
-	// 反向自拷贝
+	// 反向自拷贝 => 功能未实现
 	char str2[] = "12345";
-	// 推荐使用memmove
-	my_memove(str2 + 2, str2, 2);
-	//memcpy(str2 + 2, str2, 2);
+	my_memove_1(str2 + 2, str2, 3);
+	puts(str2);
+}
+
+/**
+ * 自定义的内存移动函数2：正向拷贝功能正常，反向拷贝功能正常
+ * 核心解决思路：从后向前拷贝，而不是从前向后拷贝（这个思路非常好，没有使用多余的内存空间，而是优化了算法）
+ *
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * @param n    要被复制的字节数
+ */
+char* my_memove_2(void * dest,const void * src,size_t n)
+{
+    assert(dest != NULL && src != NULL);
+    if(0 == n)
+    {
+        return dest;
+    }
+    char* p_dest = (char *)dest + n - 1;
+    const char* p_src = (const char *)src + n - 1;
+    while(n--)
+    {
+        *p_dest = *p_src;
+        p_dest--;
+        p_src--;
+    }
+    return dest;
+}
+
+
+/**
+ * 自定义的内存移动函数测试2（正向拷贝功能正常，反向拷贝功能正常）
+ */
+void my_memove_2_test()
+{
+	int arr[] = { 1, 2, 3, 4, 5 };
+	// 一个int类型数据占4个字节，2个int类型数据占8个字节
+	my_memove_2(arr, arr + 2, 8);
+	for(int i=0; i < sizeof(arr)/sizeof(arr[0]); i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+
+	// 正向自拷贝 => 功能正常
+	char str1[] = "12345";
+	my_memove_2(str1, str1 + 2, 3);
+	puts(str1);
+
+	// 反向自拷贝 => 功能正常
+	char str2[] = "12345";
+	my_memove_2(str2 + 2, str2, 3);
 	puts(str2);
 }
 
@@ -1628,8 +1676,9 @@ int main()
 	//memcpy_test_2();
     //memcpy_test_3();
     //my_memcpy_test();
-    //memmove_test();
-    my_memove_test();
+	//memmove_test();
+    //my_memove_1_test();
+    my_memove_2_test();
     //strcmp_test();
     //my_strcmp_1_test();
     //my_strcmp_2_test();
