@@ -573,13 +573,13 @@ char* my_memcpy(void * dest,const void * src,size_t n)
     {
         return dest;
     }
-    char* p_dest = (char *)dest;
-    const char* p_src = (const char *)src;
+    char* dcp = (char *)dest;
+    const char* scp = (const char *)src;
     while(n != 0)
     {
-        *p_dest = *p_src;
-        p_dest++;
-        p_src++;
+        *dcp = *scp;
+        dcp++;
+        scp++;
         n--;
     }
     return dest;
@@ -623,7 +623,8 @@ void my_memcpy_test()
  * @param dest 目的字符串
  * @param src  源字符串
  * @param n    要拷贝的字节数
- *
+ * @tips       正向自拷贝 => dest < src
+ * @tips       反向自拷贝 => dest > src
  * 与memcpy的区别：memmove能安全处理目标区域和源区域重叠的情况，而memcpy不一定能
  *   -当内存区域重叠时，memmove 会先拷贝重叠部分到目标区域，避免数据丢失
  *   -由于编译器兼容性问题，memcpy在处理重叠区域时可能导致不可预测行为
@@ -653,14 +654,21 @@ void memmove_test()
 	memmove(str2 + 2, str2, 3);
 	//memcpy(str2 + 2, str2, 3);
 	puts(str2);
+
+	// 原地自拷贝 => 功能正常
+	char str3[] = "12345";
+	memmove(str3, str3, 3);
+	puts(str3); // 预期正确输出值 => 12345，实际输出值 => 12345
 }
 
 /**
- * 自定义的内存移动函数1：正向自拷贝功能正常，反向自拷贝功能未实现
+ * 自定义的内存移动函数1：正向自拷贝功能正常，反向自拷贝功能错误
  *
  * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
  * @param src  指向要复制的数据源，类型强制转换为 void* 指针
  * @param n    要被复制的字节数
+ * @tips       正向自拷贝 => dest < src
+ * @tips       反向自拷贝 => dest > src
  */
 char* my_memove_1(void * dest,const void * src,size_t n)
 {
@@ -669,19 +677,19 @@ char* my_memove_1(void * dest,const void * src,size_t n)
     {
         return dest;
     }
-    char* p_dest = (char *)dest;
-    const char* p_src = (const char *)src;
+    char* dcp = (char *)dest;
+    const char* scp = (const char *)src;
     while(n--)
     {
-        *p_dest = *p_src;
-        p_dest++;
-        p_src++;
+        *dcp = *scp;
+        dcp++;
+        scp++;
     }
     return dest;
 }
 
 /**
- * 自定义的内存移动函数测试（正向自拷贝功能正常，反向自拷贝功能未实现）
+ * 自定义的内存移动函数测试（正向自拷贝功能正常，反向自拷贝功能错误）
  */
 void my_memove_1_test()
 {
@@ -697,21 +705,49 @@ void my_memove_1_test()
 	// 正向自拷贝 => 功能正常
 	char str1[] = "12345";
 	my_memove_1(str1, str1 + 2, 3);
-	puts(str1);
+	/**
+	 * 函数执行过程分析=>
+	 *
+	 * 目标数组 => 12345 => 32345 => 34345 => 34545
+	 * 移动位置 => ↑     =>  ↑    =>   ↑   =>
+	 * 移动部分 => 345** => 345** => 345**
+	 */
+	puts(str1); // 预期正确输出值 => 34545，实际输出值 => 34545
 
-	// 反向自拷贝 => 功能未实现
+	// 反向自拷贝 => 功能错误
 	char str2[] = "12345";
 	my_memove_1(str2 + 2, str2, 3);
-	puts(str2);
+	/**
+	 * 函数执行过程分析=>
+	 *
+	 * 目标数组 => 12345 => 12145 => 12125 => 12121
+	 * 移动位置 =>   ↑   =>    ↑  =>     ↑ =>
+	 * 移动部分 => **123 => **121 => **121
+	 */
+	puts(str2);	// 预期正确输出值 => 12123，实际输出值 => 12121
+
+	// 原地自拷贝 => 功能正常
+	char str3[] = "12345";
+	my_memove_1(str3, str3, 3);
+	/**
+	 * 函数执行过程分析=>
+	 *
+	 * 目标数组 => 12345 => 12345 => 12345 => 12345
+	 * 移动位置 => ↑     =>  ↑    =>   ↑ =>
+	 * 移动部分 => 123** => 123** => 123**
+	 */
+	puts(str3); // 预期正确输出值 => 12345，实际输出值 => 12345
 }
 
 /**
- * 自定义的内存移动函数2：正向拷贝功能正常，反向拷贝功能正常
+ * 自定义的内存移动函数2：正向拷贝功能错误，反向拷贝功能正常
  * 核心解决思路：从后向前拷贝，而不是从前向后拷贝（这个思路非常好，没有使用多余的内存空间，而是优化了算法）
  *
  * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
  * @param src  指向要复制的数据源，类型强制转换为 void* 指针
  * @param n    要被复制的字节数
+ * @tips       正向自拷贝 => dest < src
+ * @tips       反向自拷贝 => dest > src
  */
 char* my_memove_2(void * dest,const void * src,size_t n)
 {
@@ -720,20 +756,19 @@ char* my_memove_2(void * dest,const void * src,size_t n)
     {
         return dest;
     }
-    char* p_dest = (char *)dest + n - 1;
-    const char* p_src = (const char *)src + n - 1;
+    char* dcp = (char *)dest + n - 1;
+    const char* scp = (const char *)src + n - 1;
     while(n--)
     {
-        *p_dest = *p_src;
-        p_dest--;
-        p_src--;
+        *dcp = *scp;
+        dcp--;
+        scp--;
     }
     return dest;
 }
 
-
 /**
- * 自定义的内存移动函数测试2（正向拷贝功能正常，反向拷贝功能正常）
+ * 自定义的内存移动函数测试2（正向拷贝功能错误，反向拷贝功能正常）
  */
 void my_memove_2_test()
 {
@@ -749,12 +784,116 @@ void my_memove_2_test()
 	// 正向自拷贝 => 功能正常
 	char str1[] = "12345";
 	my_memove_2(str1, str1 + 2, 3);
-	puts(str1);
+	/**
+	 * 函数执行过程分析=>
+	 *
+	 * 目标数组 => 12345 => 12545 => 14545 => 54545
+	 * 移动位置 =>   ↑   =>  ↑    =>   ↑   =>
+	 * 移动部分 => 345** => 545** => 545**
+	 */
+	puts(str1);	// 预期正确输出值 => 34545，实际输出值 => 54545
+
+	// 反向自拷贝 => 功能错误
+	char str2[] = "12345";
+	my_memove_2(str2 + 2, str2, 3);
+	/**
+	 * 函数执行过程分析=>
+	 *
+	 * 目标数组 => 12345 => 12343 => 12323 => 12123
+	 * 移动位置 =>     ↑ =>    ↑  =>   ↑   =>
+	 * 移动部分 => **123 => **123 => **123
+	 */
+	puts(str2); // 预期正确输出值 => 12123，实际输出值 => 12123
+
+
+	// 原地自拷贝 => 功能正常
+	char str3[] = "12345";
+	my_memove_2(str3, str3, 3);
+	/**
+	 * 函数执行过程分析=>
+	 *
+	 * 目标数组 => 12345 => 12345 => 12345 => 12345
+	 * 移动位置 =>   ↑   =>  ↑    => ↑     =>
+	 * 移动部分 => 123** => 123** => 123**
+	 */
+	puts(str3); // 预期正确输出值 => 12345，实际输出值 => 12345
+}
+
+
+/**
+ * 自定义的内存移动函数2：正向拷贝功能错误，反向拷贝功能正常
+ * 核心解决思路：从后向前拷贝，而不是从前向后拷贝（这个思路非常好，没有使用多余的内存空间，而是优化了算法）
+ *
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * @param n    要被复制的字节数
+ * @tips       正向自拷贝 => dest < src
+ * @tips       反向自拷贝 => dest > src
+ */
+char* my_memove_3(void * dest,const void * src,size_t n)
+{
+    assert(dest != NULL && src != NULL);
+    if(0 == n)
+    {
+        return dest;
+    }
+    char* dcp = (char *)dest;
+    const char* scp = (const char *)src;
+    if(dest == src)
+    {
+    	return dest;
+    }
+    if(dest < src)
+    {
+        while(n--)
+        {
+            *dcp = *scp;
+            dcp++;
+            scp++;
+        }
+    }
+    else
+    {
+        dcp = (char *)dest + n - 1;
+        scp = (const char *)src + n - 1;
+        while(n--)
+        {
+            *dcp = *scp;
+            dcp--;
+            scp--;
+        }
+    }
+    return dest;
+}
+
+/**
+ * 自定义的内存移动函数测试2（正向拷贝功能错误，反向拷贝功能正常）
+ */
+void my_memove_3_test()
+{
+	int arr[] = { 1, 2, 3, 4, 5 };
+	// 一个int类型数据占4个字节，2个int类型数据占8个字节
+	my_memove_3(arr, arr + 2, 8);
+	for(int i=0; i < sizeof(arr)/sizeof(arr[0]); i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+
+	// 正向自拷贝 => 功能正常
+	char str1[] = "12345";
+	my_memove_3(str1, str1 + 2, 3);
+	puts(str1);	// 预期正确输出值 => 34545，实际输出值 => 34545
 
 	// 反向自拷贝 => 功能正常
 	char str2[] = "12345";
-	my_memove_2(str2 + 2, str2, 3);
-	puts(str2);
+	my_memove_3(str2 + 2, str2, 3);
+	puts(str2); // 预期正确输出值 => 12123，实际输出值 => 12123
+
+	// 原地自拷贝 => 功能正常
+	char str3[] = "12345";
+	my_memove_3(str3, str3, 3);
+	puts(str3); // 预期正确输出值 => 12123，实际输出值 => 12123
 }
 
 /**
@@ -1677,8 +1816,9 @@ int main()
     //memcpy_test_3();
     //my_memcpy_test();
 	//memmove_test();
-    //my_memove_1_test();
-    my_memove_2_test();
+	//my_memove_1_test();
+	//my_memove_2_test();
+	my_memove_3_test();
     //strcmp_test();
     //my_strcmp_1_test();
     //my_strcmp_2_test();

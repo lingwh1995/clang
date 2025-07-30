@@ -19,7 +19,8 @@ void single_branch_test()
     {
         max = i;
     }
-    else {
+    else
+    {
         max = j;
     }
     printf("两个值中最大的值 max = %d\n", max);

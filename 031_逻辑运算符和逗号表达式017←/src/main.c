@@ -95,7 +95,9 @@ void comma_expression_test_3()
 	if (printf("请输入一个数字:\n"), scanf("%d", &x), x > 0)
 	{
 		printf("输入的值大于0\n");
-	}else {
+	}
+	else
+	{
 		printf("输入的值小于0\n");
 	}
 }
