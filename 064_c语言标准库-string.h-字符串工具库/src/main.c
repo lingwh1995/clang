@@ -839,11 +839,7 @@ char* my_memove_3(void * dest,const void * src,size_t n)
     }
     char* dcp = (char *)dest;
     const char* scp = (const char *)src;
-    if(dest == src)
-    {
-    	return dest;
-    }
-    if(dest < src)
+    if(dcp <= scp || dcp >= (scp + n)) // 正向拷贝
     {
         while(n--)
         {
@@ -852,7 +848,7 @@ char* my_memove_3(void * dest,const void * src,size_t n)
             scp++;
         }
     }
-    else
+    else // 反向拷贝
     {
         dcp = (char *)dest + n - 1;
         scp = (const char *)src + n - 1;
