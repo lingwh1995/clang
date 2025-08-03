@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
+#include <assert.h>
 
 /**
  * 字符串转int类型数据函数
@@ -77,36 +78,59 @@ void strtol_test()
  * @param str 要被转换的字符串
  * @return    转换后的返回的int类型数据
  */
-void my_atoi(const char *str)
+//void my_atoi(const char *str)
+//{
+//	if(NULL == str)
+//	{
+//		return;
+//	}
+//	char* pstr = (char *)str;
+//	while(*pstr != '\0')
+//	{
+//        /*
+//         * 遇到第一个字符'1'时，num = 0 * 10 + (1 - '0') = 0 + 1 = 1
+//         * 遇到第二个字符'2'时，num = 1 * 10 + (2 - '0') = 10 + 2 = 12
+//         * 遇到第三个字符'3'时，num = 12 * 10 + (3 - '0') = 120 + 3 = 123
+//         */
+//		//int i = *pstr - '0';
+//		//2 * 10 + 3 * (10 ^ 0)
+//		//printf("%d ", i);
+//		int number = 0;
+//		int step = pstr - str;
+//		for(int i = step; i >= 0; i--)
+//		{
+//			int temp = str[i] - '0';
+//			number += temp * pow(10,i);
+//			//printf("%d ", str[i] - '0');
+//		}
+//		printf("number = %d", number);
+//		//printf("\n");
+//		//printf("%d", pstr - str);
+//		pstr++;
+//	}
+//}
+
+///**
+// * 测试自定义的字符串转int类型数据函数
+// */
+//void my_atoi_test()
+//{
+//	//char* str = "-12345a";
+//	char* str = "12345";
+//	my_atoi(str);
+//}
+
+int my_atoi(const char* str)
 {
-	if(NULL == str)
+	int sum = 0;
+	assert(str != NULL);
+	while(*str != '\0')
 	{
-		return;
+		sum = sum * 10 + *str - '0';
+        printf("%d ", sum);
+		str++;
 	}
-	char* pstr = (char *)str;
-	while(*pstr != '\0')
-	{
-        /*
-         * 遇到第一个字符'1'时，num = 0 * 10 + (1 - '0') = 0 + 1 = 1
-         * 遇到第二个字符'2'时，num = 1 * 10 + (2 - '0') = 10 + 2 = 12
-         * 遇到第三个字符'3'时，num = 12 * 10 + (3 - '0') = 120 + 3 = 123
-         */
-		//int i = *pstr - '0';
-		//2 * 10 + 3 * (10 ^ 0)
-		//printf("%d ", i);
-		int number = 0;
-		int step = pstr - str;
-		for(int i = step; i >= 0; i--)
-		{
-			int temp = str[i] - '0';
-			number += temp * pow(10,i);
-			//printf("%d ", str[i] - '0');
-		}
-		printf("number = %d", number);
-		//printf("\n");
-		//printf("%d", pstr - str);
-		pstr++;
-	}
+	return sum;
 }
 
 /**
@@ -116,7 +140,7 @@ void my_atoi_test()
 {
 	//char* str = "-12345a";
 	char* str = "12345";
-	my_atoi(str);
+	printf("%d ", my_atoi(str));
 }
 
 /**
