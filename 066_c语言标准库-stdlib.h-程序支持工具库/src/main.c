@@ -1,7 +1,8 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include <assert.h>
+#include <ctype.h>
 
 /**
  * 字符串转int类型数据函数
@@ -73,63 +74,105 @@ void strtol_test()
 }
 
 /**
- * 自定义的字符串转int类型数据函数
+ * 十进制字符串转数字
  *
- * @param str 要被转换的字符串
- * @return    转换后的返回的int类型数据
+ * @param 要转换成数字的字符串
  */
-//void my_atoi(const char *str)
-//{
-//	if(NULL == str)
-//	{
-//		return;
-//	}
-//	char* pstr = (char *)str;
-//	while(*pstr != '\0')
-//	{
-//        /*
-//         * 遇到第一个字符'1'时，num = 0 * 10 + (1 - '0') = 0 + 1 = 1
-//         * 遇到第二个字符'2'时，num = 1 * 10 + (2 - '0') = 10 + 2 = 12
-//         * 遇到第三个字符'3'时，num = 12 * 10 + (3 - '0') = 120 + 3 = 123
-//         */
-//		//int i = *pstr - '0';
-//		//2 * 10 + 3 * (10 ^ 0)
-//		//printf("%d ", i);
-//		int number = 0;
-//		int step = pstr - str;
-//		for(int i = step; i >= 0; i--)
-//		{
-//			int temp = str[i] - '0';
-//			number += temp * pow(10,i);
-//			//printf("%d ", str[i] - '0');
-//		}
-//		printf("number = %d", number);
-//		//printf("\n");
-//		//printf("%d", pstr - str);
-//		pstr++;
-//	}
-//}
+int my_atoi_dec(const char* str)
+{
+	int sum = 0;
+	while(isdigit(*str))
+	{
+		sum = sum * 10 + *str - '0';
+		str++;
+	}
+	return sum;
+}
 
-///**
-// * 测试自定义的字符串转int类型数据函数
-// */
-//void my_atoi_test()
-//{
-//	//char* str = "-12345a";
-//	char* str = "12345";
-//	my_atoi(str);
-//}
+/**
+ * 八进制字符串转数字
+ *
+ * @param 要转换成数字的字符串
+ */
+int my_atoi_oct(const char* str)
+{
+	int sum = 0;
+	while(isdigit(*str) && *str != '8' && *str != '9')
+	{
+		sum = sum * 8 + *str - '0';
+		str++;
+	}
+	return sum;
+}
 
+/**
+ * 十六进制字符串转数字
+ *
+ * @param 要转换成数字的字符串
+ */
+int my_atoi_hex(const char* str)
+{
+	int sum = 0;
+	// 0-9、a-f、A-F
+	while(isxdigit(*str))
+	{
+		int ch = 0;
+		// 若参数为阿拉伯数字0~9，则返回非0值，否则返回0。
+		if(isdigit(*str))
+		{
+			ch = *str - '0';
+		}
+		else
+		{
+			ch = tolower(*str);
+		}
+		sum = sum * 16 + ch - '0';
+		str++;
+	}
+	return sum;
+}
+
+
+/**
+ * 字符串转数字
+ *
+ * @param 要转换成数字的字符串
+ */
 int my_atoi(const char* str)
 {
 	int sum = 0;
 	assert(str != NULL);
-	while(*str != '\0')
+	int tag = 1;	// 1.负数 2.正数
+	while(isspace(*str))
 	{
-		sum = sum * 10 + *str - '0';
-        printf("%d ", sum);
 		str++;
 	}
+	if('-' == *str)
+	{
+		tag = -1;
+		str++;
+	}
+	else if('+' == *str)
+	{
+		tag = 1;
+		str++;
+	}
+	if('0' == *str)
+	{
+		if(*(str + 1) == 'x' || *(str + 1) == 'X' )
+		{
+			sum = my_atoi_hex(str + 2);
+		}
+		else
+		{
+			sum = my_atoi_oct(str + 1);
+		}
+	}
+	else
+	{
+		sum = my_atoi_dec(str);
+	}
+	sum *= tag;
 	return sum;
 }
 
@@ -138,9 +181,22 @@ int my_atoi(const char* str)
  */
 void my_atoi_test()
 {
-	//char* str = "-12345a";
-	char* str = "12345";
-	printf("%d ", my_atoi(str));
+	char* str = "1234";
+	printf("str => %d\n", my_atoi(str));
+	str = "12.43";
+	printf("str => %d\n", my_atoi(str));
+	str = "+12.45";
+	printf("str => %d\n", my_atoi(str));
+	str = "-12.45";
+	printf("str => %d\n", my_atoi(str));
+	str = " 0123 425859";
+	printf("str => %d\n", my_atoi(str));
+	str = "0x123afbx";
+	printf("str => %d\n", my_atoi(str));
+	str = "-078";
+	printf("str => %d\n", my_atoi(str));
+	str = "qef2132";
+	printf("str => %d\n", my_atoi(str));
 }
 
 /**

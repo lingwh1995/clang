@@ -6,6 +6,7 @@ unsigned char* hex2byte_arr(char *puchMsg);
 void print_dec_and_hex(int crcDec);
 unsigned short crc_ccitt_xmodem(unsigned char *puchMsg, unsigned int usDataLen);
 unsigned short crc16(unsigned char *puchMsg, unsigned int usDataLen);
+unsigned int MathCrc16(unsigned  char  *ptr, unsigned  int  len);
 
 /**
  * C语言无类型指针（）
@@ -13,11 +14,15 @@ unsigned short crc16(unsigned char *puchMsg, unsigned int usDataLen);
  */
 int main()
 {
-    char *hex = "AC8930130000250716123357";
+	// 682E003001010099999999999925080400000200150099999999999989861124210003270233006C9DA56E => 0FE5
+    char *hex = "682E003001010099999999999925080400000200150099999999999989861124210003270233006C9DA56E";
     unsigned char *byte_arr = hex2byte_arr(hex);
     int len = strlen(hex) / 2;
 
 	unsigned short crc_dec = crc16(byte_arr,len);
+	print_dec_and_hex(crc_dec);
+
+	crc_dec = MathCrc16(byte_arr,len);
 	print_dec_and_hex(crc_dec);
 	return 0;
 }
@@ -54,6 +59,7 @@ void print_dec_and_hex(int crcDec)
 	char crcHex[50];
     sprintf(crcHex, "%x", crcDec);
     printf("crc十六进制 = %s\n", crcHex);
+    printf("---------------------\n");
 }
 
 /**
