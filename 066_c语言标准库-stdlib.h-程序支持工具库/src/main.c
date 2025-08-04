@@ -49,31 +49,6 @@ void atoi_test()
 }
 
 /**
- * 字符串转int类型数据函数
- *
- * long int strtol(const char *str, char **endptr, int base)
- * @param str 要转换为长整数的字符串
- * @param endptr 对类型为 char* 的对象的引用，其值由函数设置为 str 中数值后的下一个字符
- * @param base 基数，必须介于2和36（包含）之间，或者是特殊值0。如果base为0，则会根据字符串的前缀来判断进制：如果字符串以 '0x' 或 '0X' 开头，则将其视为十六进制；如果字符串以 '0' 开头，则将其视为八进制；否则将其视为十进制。
- */
-void strtol_test()
-{
-    char str[] = "123abc";
-    char *endptr;
-    long num = strtol(str, &endptr, 10);
-
-    if (*endptr != '\0')
-    {
-    	printf("转换失败：输入字符串不是一个有效的整数。已转换部分：%ld\n", num);
-		printf("转换失败：输入字符串不是一个有效的整数。未转换部分：%s\n", endptr);
-	}
-    else
-	{
-		printf("转换结果：%ld\n", num);
-	}
-}
-
-/**
  * 十进制字符串转数字
  *
  * @param 要转换成数字的字符串
@@ -131,7 +106,6 @@ int my_atoi_hex(const char* str)
 	}
 	return sum;
 }
-
 
 /**
  * 字符串转数字
@@ -197,6 +171,31 @@ void my_atoi_test()
 	printf("str => %d\n", my_atoi(str));
 	str = "qef2132";
 	printf("str => %d\n", my_atoi(str));
+}
+
+/**
+ * 字符串转int类型数据函数
+ *
+ * long int strtol(const char *str, char **endptr, int base)
+ * @param str 要转换为长整数的字符串
+ * @param endptr 对类型为 char* 的对象的引用，其值由函数设置为 str 中数值后的下一个字符
+ * @param base 基数，必须介于2和36（包含）之间，或者是特殊值0。如果base为0，则会根据字符串的前缀来判断进制：如果字符串以 '0x' 或 '0X' 开头，则将其视为十六进制；如果字符串以 '0' 开头，则将其视为八进制；否则将其视为十进制。
+ */
+void strtol_test()
+{
+    char str[] = "123abc";
+    char *endptr;
+    long num = strtol(str, &endptr, 10);
+
+    if (*endptr != '\0')
+    {
+    	printf("转换失败：输入字符串不是一个有效的整数。已转换部分：%ld\n", num);
+		printf("转换失败：输入字符串不是一个有效的整数。未转换部分：%s\n", endptr);
+	}
+    else
+	{
+		printf("转换结果：%ld\n", num);
+	}
 }
 
 /**
