@@ -1737,6 +1737,18 @@ void sprintf_test()
 	n = sprintf(s6, "%x", 123);
 	printf("写入字节数 = %d\n", n);
 	printf("字符串s6 = %s\n", s6);
+
+	//把浮点数12.25打印成一个字符串保存在s7中
+	char s7[20];
+	n = sprintf(s7, "%f", 12.25);
+	printf("写入字节数 = %d\n", n);
+	printf("字符串s7 = %s\n", s7);
+
+	//把浮点数12.25打印成一个字符串保存在s8中，并设置保留两位小数
+	char s8[20];
+	n = sprintf(s8, "%2.2f", 12.25);
+	printf("写入字节数 = %d\n", n);
+	printf("字符串s8 = %s\n", s8);
 }
 
 /**
@@ -1791,6 +1803,20 @@ void snprintf_test()
 	printf("字符串s6 = %s\n", s6);
 }
 
+/**
+ * 从缓冲区中读取数据
+ * @param 缓冲区字符串
+ */
+void sscanf_test()
+{
+	int a = 0;
+	int b = 0;
+	char s[20] = "10 20";
+	int len = sscanf(s, "%d %d", &a, &b);
+	printf("从缓冲区中读取到的数据个数：%d，读取到的数据：a = %d, b = %d\n", len, a, b);
+}
+
+
 int main()
 {
     //strlen_test();
@@ -1814,7 +1840,7 @@ int main()
 	//memmove_test();
 	//my_memove_1_test();
 	//my_memove_2_test();
-	my_memove_3_test();
+	//my_memove_3_test();
     //strcmp_test();
     //my_strcmp_1_test();
     //my_strcmp_2_test();
@@ -1839,5 +1865,6 @@ int main()
     //my_memcmp_test();
     //sprintf_test();
     //snprintf_test();
+    sscanf_test();
 	return 0;
 }
