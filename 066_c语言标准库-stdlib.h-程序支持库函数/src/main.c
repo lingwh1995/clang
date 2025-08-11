@@ -115,7 +115,7 @@ int my_atoi_hex(const char* str)
 int my_atoi(const char* str)
 {
 	int sum = 0;
-	assert(str != NULL);
+	assert(NULL != str);
 	int tag = 1;	// 1.负数 2.正数
 	while(isspace(*str))
 	{
