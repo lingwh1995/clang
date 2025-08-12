@@ -1,8 +1,12 @@
 #include <stdio.h>
 
+/**
+ * 二级指针
+ */
+
+#if 0
 int main()
 {
-
 	int a = 10, b = 20;
 	printf("a = %d, &a = %p\n", a, &a);
 	printf("b = %d, &b = %p\n", b, &b);
@@ -31,3 +35,4 @@ int main()
 	printf("b = %d, &b = %p\n", b, &b);
 	return 0;
 }
+#endif
