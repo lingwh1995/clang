@@ -105,7 +105,7 @@ int main()
     printf("数组中第%d个元素 = %d\n", c, arr[c]);
 
     // 定义数组
-    int arr1[10];
+    int arr_1[10];
     printf("-----------------------\n");
 
 
