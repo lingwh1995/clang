@@ -49,67 +49,71 @@ void two_dimensional_array_definition_test()
 }
 
 /**
- * 二维数组遍历测试
+ * 遍历二维数组-使用二维数组作为参数（注意：第二维必须指定大小）
+ */
+void two_dimensional_array_traverse_1(int arr[][4], int rows)
+{
+    printf("方式1 - 使用二维数组作为参数:\n");
+    for(int i = 0; i < rows; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            //printf("%d ", arr[i][j]);
+            printf("%d ", *(*(arr + i) + j));
+        }
+        printf("\n");
+    }
+}
+
+/**
+ * 遍历二维数组-使用指针作为参数
+ */
+void two_dimensional_array_traverse_2(int (*arr)[4], int rows)
+{
+    printf("方式2 - 使用指针作为参数:\n");
+    for(int i = 0; i < rows; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+/**
+ * 遍历二维数组-指针作为函数参数
+ */
+void two_dimensional_array_traverse_3(int *arr, int rows, int cols)
+{
+	printf("方式3 - 使用指针作为参数:\n");
+	if(NULL == arr)
+	{
+		return;
+	}
+    for(int i = 0; i < rows; i++)
+    {
+        for(int j = 0; j < cols; j++)
+        {
+            printf("%d ", *(arr + i * cols + j));
+        }
+        printf("\n");
+    }
+}
+
+/**
+ * 遍历二维数组
  */
 void two_dimensional_array_traverse_test()
 {
-	// 声明并初始化一个 3*4 的二维数组，代表该二维数组一共有4个一维数组，每个一维数组中有两个元素
     int arr[3][4] = {
         {1, 2, 3, 4},
         {5, 6, 7, 8},
         {9, 10, 11, 12}
     };
-
-    // 打印二维数组的所有元素
-    printf("二维数组所有元素的值:\n");
-    // 使用嵌套循环遍历二维数组
-	for(int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)	 // 外层循环控制行
-	{
-		for(int j = 0; j < sizeof(arr[i]) / sizeof(arr[i][0]); j++)	// 内层循环控制列
-		{
-			printf("arr[%d][%d] = %2d\t", i, j, arr[i][j]);
-		}
-		printf("\n");
-	}
-
-    // 通过指针解引用方式访问
-    printf("\n通过指针解引用方式访问:\n");
-    for(int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
-    {
-        for(int j = 0; j < sizeof(arr[i]) / sizeof(arr[i][0]); j++)
-        {
-            printf("*(*(arr + %d) + %d) = %2d\t", i, j, *(*(arr + i) + j));
-        }
-        printf("\n");
-    }
-
-    // 打印二维数组的所有元素地址
-    printf("\n二维数组所有元素地址:\n");
-	for(int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
-	{
-		for(int j = 0; j < sizeof(arr[i]) / sizeof(arr[i][0]); j++)
-		{
-			printf("&arr[%d][%d] = %p\t", i, j, &arr[i][j]);
-		}
-		printf("\n");
-	}
-
-    // 计算二维数组的所有元素的总和
-    printf("\n二维数组所有元素总和:\n");
-    int sum = 0;
-	for(int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
-	{
-		for(int j = 0; j < sizeof(arr[i]) / sizeof(arr[i][0]); j++)
-		{
-			sum += arr[i][j];
-		}
-	}
-	printf("sum = %d\n", sum);
-
-
-    // 访问特定元素
-    printf("\n访问特定的元素:\n");
-    printf("第2行第3列的元素: %d\n", arr[1][2]);
+    two_dimensional_array_traverse_1(arr, 3);
+    two_dimensional_array_traverse_2(arr, 3);
+    two_dimensional_array_traverse_3(*arr, 3, 4);
 }
 
 /**
@@ -202,85 +206,6 @@ void two_dimensional_array_double_pointer_test()
 }
 
 /**
- * 二维数组作为参数时，第二维必须指定大小
- */
-void two_dimensional_array_as_param_1(int arr[][4], int rows)
-{
-    printf("方式1 - 二维数组参数:\n");
-    for(int i = 0; i < rows; i++)
-    {
-        for(int j = 0; j < 4; j++)
-        {
-            printf("%d ", arr[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-/**
- * 使用指针方式
- */
-void two_dimensional_array_as_param_2(int (*arr)[4], int rows)
-{
-    printf("方式2 - 指向数组的指针:\n");
-    for(int i = 0; i < rows; i++)
-    {
-        for(int j = 0; j < 4; j++)
-        {
-            printf("%d ", arr[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-/**
- * 二维数组作为函数参数测试
- */
-void two_dimensional_array_as_param_test()
-{
-    int arr[3][4] = {
-        {1, 2, 3, 4},
-        {5, 6, 7, 8},
-        {9, 10, 11, 12}
-    };
-	two_dimensional_array_as_param_1(arr, 3);
-	two_dimensional_array_as_param_2(arr, 3);
-}
-
-/**
- * 二级指针作为函数参数
- */
-void double_pointer_as_param(int **arr, int rows, int cols)
-{
-	if(NULL == arr)
-	{
-		return;
-	}
-    printf("二级指针作为参数:\n");
-    for(int i = 0; i < rows; i++)
-    {
-        for(int j = 0; j < cols; j++)
-        {
-            printf("%d ", arr[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-/**
- * 二级指针作为函数参数测试
- */
-void double_pointer_as_param_test()
-{
-    int arr[3][4] = {
-        {1, 2, 3, 4},
-        {5, 6, 7, 8},
-        {9, 10, 11, 12}
-    };
-    double_pointer_as_param(arr, 3, 3);
-}
-
-/**
  * 二级指针模拟二维数组
  */
 void double_pointer_simulate_two_dimensional_array_test()
@@ -343,12 +268,10 @@ void double_pointer_simulate_two_dimensional_array_test()
 int main()
 {
 	//two_dimensional_array_definition_test();
-	//two_dimensional_array_traverse_test();
+	two_dimensional_array_traverse_test();
 	//two_dimensional_array_sms_test();
 	//two_dimensional_array_add_test();
 	//two_dimensional_array_double_pointer_test();
-	two_dimensional_array_as_param_test();
-	//double_pointer_as_param_test();
 	//double_pointer_simulate_two_dimensional_array_test();
 	return 0;
 }
