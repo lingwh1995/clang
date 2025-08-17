@@ -37,6 +37,11 @@ void double_pointer_basic_test()
 	**s = 200;	// b = 200;
 	printf("b = %d, &b = %p\n", b, &b);
 
+	s = &p1;
+	printf("s = %p\n", s);
+	// s + 1 = s + sizeof(int*) * 1
+	printf("s + 1 = %p\n", s + 1);
+	printf("**s = %d\n", **s);
 
     int c = 30;
     int *p3 = &c;
@@ -47,11 +52,52 @@ void double_pointer_basic_test()
     printf("pp3的值: %p， pp3指向的值: %p, 二级指针解引用: %d\n", pp3, *pp3, **pp3);
 }
 
+
+/**
+ * 一维数组和一级指针
+ */
+void one_dimensional_array_add_one_pointer_test()
+{
+	// 使用一维数组演示使用指针指向整个数组，而不是使用指针指向数组的首元素
+	int arr[4] = { 1, 2, 3, 4 };
+	printf("sizeof(arr) = %d\n", sizeof(arr));
+	int* p = arr; // 等同于 int* p = &arr;
+	printf("p = %p\n", p);
+	printf("p + 1 = %p\n", p + 1); // p + 1 增加了4个字节
+	// s指向整个数组的地址，使用debug模式观察 *s 的值可以看到 *s 的值就是整个数组
+	int (*s)[4] = &arr;
+	printf("sizeof(s) = %d\n", sizeof(s)); // 4个字节，32位系统指针占据4个字节，64位系统指针占据8个字节
+	printf("sizeof(*s) = %d\n", sizeof(*s)); // 16个字节，*s 这里代表整个一维数组
+	printf("s = %p\n", s);
+	printf("s + 1 = %p\n", s + 1); // s + 1增加了16个字节，因为s指向的是整个一维数组
+}
+
+/**
+ * 二维数组和二级指针
+ */
+void two_dimensional_array_add_double_pointer_test()
+{
+    int arr[3][4] = {
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10, 11, 12}
+    };
+    printf("sizeof(arr) = %d\n", sizeof(arr));
+    int (*p)[4] = arr; // 首元素地址
+    printf("sizeof(*p) = %d\n", sizeof(*p));
+    int (*s)[3][4] = &arr; // 整个二维数组地址，使用debug模式观察 *s 的值可以看到 *s 的值就是整个二维数组
+    printf("sizeof(*s) = %d\n", sizeof(*s));
+    printf("sizeof(**s) = %d\n", sizeof(**s)); // 二维数组中第一个一维数组的大小
+    printf("sizeof(***s) = %d\n", sizeof(***s)); // 4个字节，二维数组中第一个一维数组中第一个整形元素的大小
+}
+
 #if 0
+#endif
 int main()
 {
-	double_pointer_basic_test();
+	//double_pointer_basic_test();
+	//one_dimensional_array_add_one_pointer_test();
+    two_dimensional_array_add_double_pointer_test();
 	return 0;
 }
-#endif
 
