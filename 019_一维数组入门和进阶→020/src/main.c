@@ -196,9 +196,9 @@ void variable_length_array()
 	int arr_2[n];
 	int arr_3[n + 5];
 	int arr_4[n + 10];
-	printf("arr_2的长度 = %llu\n", sizeof(arr_2)/sizeof(arr_2[0]));
-	printf("arr_3的长度 = %llu\n", sizeof(arr_3)/sizeof(arr_3[0]));
-	printf("arr_4的长度 = %llu\n", sizeof(arr_4)/sizeof(arr_4[0]));
+	printf("arr_2的长度 = %d\n", sizeof(arr_2)/sizeof(arr_2[0]));
+	printf("arr_3的长度 = %d\n", sizeof(arr_3)/sizeof(arr_3[0]));
+	printf("arr_4的长度 = %d\n", sizeof(arr_4)/sizeof(arr_4[0]));
 }
 
 /**

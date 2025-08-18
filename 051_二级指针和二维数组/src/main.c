@@ -78,7 +78,7 @@ void one_dimensional_array_add_one_pointer_test()
 /**
  * 二维数组和二级指针
  */
-void two_dimensional_array_add_double_pointer_test()
+void two_dimensional_array_add_double_pointer_test_1()
 {
     int arr[3][4] = {
         {1, 2, 3, 4},
@@ -86,12 +86,36 @@ void two_dimensional_array_add_double_pointer_test()
         {9, 10, 11, 12}
     };
     printf("sizeof(arr) = %d\n", sizeof(arr));
-    int (*p)[4] = arr; // 首元素地址
+    // 首元素地址
+    int (*p)[4] = arr;
     printf("sizeof(*p) = %d\n", sizeof(*p));
-    int (*s)[3][4] = &arr; // 整个二维数组地址，使用debug模式观察 *s 的值可以看到 *s 的值就是整个二维数组
+    // 整个二维数组地址，使用debug模式观察 *s 的值可以看到 *s 的值就是整个二维数组
+    int (*s)[3][4] = &arr;
     printf("sizeof(*s) = %d\n", sizeof(*s));
-    printf("sizeof(**s) = %d\n", sizeof(**s)); // 二维数组中第一个一维数组的大小
-    printf("sizeof(***s) = %d\n", sizeof(***s)); // 4个字节，二维数组中第一个一维数组中第一个整形元素的大小
+    // 二维数组中第一个一维数组的大小
+    printf("sizeof(**s) = %d\n", sizeof(**s));
+    // 4个字节，二维数组中第一个一维数组中第一个整形元素的大小
+    printf("sizeof(***s) = %d\n", sizeof(***s));
+}
+
+
+/**
+ * 二维数组和二级指针
+ */
+void two_dimensional_array_add_double_pointer_test_2()
+{
+    int arr[3][4] = {
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10, 11, 12}
+    };
+    // s代表二维数组中第一个元素的地址，就是二维数组中第一个一维数组的地址 
+    int (*s)[4] = &arr[1];
+    // p代表二维数组中第一个元素，就是二维数组中第一个一维数组的首元素的地址
+    int* p = arr[1];
+    printf("二维数组中第一个一维数组的首元素 = %d\n", *p);
+    printf("%d \n", s[1][3]); // s[1][3] => *(s[1] + 3) => *(*(s + 1) + 3)
+    printf("%d \n", p[3]); // p[3] => *(p + 3)
 }
 
 #if 0
@@ -99,7 +123,8 @@ void two_dimensional_array_add_double_pointer_test()
 int main()
 {
 	//double_pointer_basic_test();
-	one_dimensional_array_add_one_pointer_test();
-	//two_dimensional_array_add_double_pointer_test();
+    //one_dimensional_array_add_one_pointer_test();
+	//two_dimensional_array_add_double_pointer_test_1();
+	two_dimensional_array_add_double_pointer_test_2();
 	return 0;
 }
