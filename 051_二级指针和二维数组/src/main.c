@@ -61,7 +61,10 @@ void one_dimensional_array_add_one_pointer_test()
 	// 使用一维数组演示使用指针指向整个数组，而不是使用指针指向数组的首元素
 	int arr[4] = { 1, 2, 3, 4 };
 	printf("sizeof(arr) = %d\n", sizeof(arr));
+	// p指向的是数组首元素地址，而非整个数组
 	int* p = arr; // 等同于 int* p = &arr;
+	printf("sizeof(p) = %d\n", sizeof(p)); // 4个字节，32位系统指针占据4个字节，64位系统指针占据8个字节
+	printf("sizeof(*p) = %d\n", sizeof(*p)); // 4个字节，*p 这里代表一维数组中第一个元素
 	printf("p = %p\n", p);
 	printf("p + 1 = %p\n", p + 1); // p + 1 增加了4个字节
 	// s指向整个数组的地址，使用debug模式观察 *s 的值可以看到 *s 的值就是整个数组
@@ -92,11 +95,11 @@ void two_dimensional_array_add_double_pointer_test()
 }
 
 #if 0
+#endif
 int main()
 {
 	//double_pointer_basic_test();
-	//one_dimensional_array_add_one_pointer_test();
-	two_dimensional_array_add_double_pointer_test();
+	one_dimensional_array_add_one_pointer_test();
+	//two_dimensional_array_add_double_pointer_test();
 	return 0;
 }
-#endif

@@ -268,7 +268,6 @@ void double_pointer_simulate_two_dimensional_array_test()
 
 
 #if 0
-#endif
 int main()
 {
 	two_dimensional_array_definition_test();
@@ -279,3 +278,4 @@ int main()
 	//double_pointer_simulate_two_dimensional_array_test();
 	return 0;
 }
+#endif
