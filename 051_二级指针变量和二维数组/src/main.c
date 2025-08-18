@@ -77,6 +77,7 @@ void one_dimensional_array_add_one_pointer_test()
  */
 void two_dimensional_array_add_double_pointer_test()
 {
+    // 庆历四年春
     int arr[3][4] = {
         {1, 2, 3, 4},
         {5, 6, 7, 8},
