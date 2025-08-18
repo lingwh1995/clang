@@ -25,27 +25,31 @@
  */
 void two_dimensional_array_definition_test()
 {
-    // 方式1：完全初始化
-    int arr_1[2][3] = {{1, 2, 3}, {4, 5, 6}};
-    printf("二维数组中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_1) / sizeof(arr_1[0]), sizeof(arr_1[0])/sizeof(arr_1[0][0]));
+    // 方式1：使用一维数组方式进行初始化，系统会自动将一维数组识别成为二维数组
+    int arr_1[2][3] = { 1, 2, 3, 4, 5, 6 };
+    printf("二维数组arr_1中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_1) / sizeof(arr_1[0]), sizeof(arr_1[0])/sizeof(arr_1[0][0]));
 
-    // 方式2：部分初始化（未初始化元素默认为0）
-    int arr_2[2][3] = {{1, 2}, {4}};
-    printf("二维数组中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_2) / sizeof(arr_2[0]), sizeof(arr_2[0])/sizeof(arr_2[0][0]));
+    // 方式2：完全初始化
+    int arr_2[2][3] = { {1, 2, 3}, {4, 5, 6} };
+    printf("二维数组arr_2中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_2) / sizeof(arr_2[0]), sizeof(arr_2[0])/sizeof(arr_2[0][0]));
 
-    // 方式3：省略第一维大小
-    int arr_3[][3] = {{1, 2, 3}, {4, 5, 6}};
-    printf("二维数组中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_3) / sizeof(arr_3[0]), sizeof(arr_3[0])/sizeof(arr_3[0][0]));
+    // 方式3：部分初始化（未初始化元素默认为0）
+    int arr_3[2][3] = { {1, 2}, {4} };
+    printf("二维数组arr_3中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_3) / sizeof(arr_3[0]), sizeof(arr_3[0])/sizeof(arr_3[0][0]));
+
+    // 方式4：省略第一维大小
+    int arr_4[][3] = { {1, 2, 3}, {4, 5, 6} };
+    printf("二维数组arr_4中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_4) / sizeof(arr_4[0]), sizeof(arr_4[0])/sizeof(arr_4[0][0]));
 
     // 方式4：逐个赋值
-    int arr_4[2][3];
-    printf("二维数组中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_4) / sizeof(arr_4[0]), sizeof(arr_4[0])/sizeof(arr_4[0][0]));
-    arr_4[0][0] = 1;
-    arr_4[0][1] = 2;
-    arr_4[0][2] = 3;
-    arr_4[1][0] = 4;
-    arr_4[1][1] = 5;
-    arr_4[1][2] = 6;
+    int arr_5[2][3];
+    printf("二维数组arr_5中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_5) / sizeof(arr_5[0]), sizeof(arr_5[0])/sizeof(arr_5[0][0]));
+    arr_5[0][0] = 1;
+    arr_5[0][1] = 2;
+    arr_5[0][2] = 3;
+    arr_5[1][0] = 4;
+    arr_5[1][1] = 5;
+    arr_5[1][2] = 6;
 }
 
 /**
@@ -264,14 +268,14 @@ void double_pointer_simulate_two_dimensional_array_test()
 
 
 #if 0
+#endif
 int main()
 {
-	//two_dimensional_array_definition_test();
-	two_dimensional_array_traverse_test();
+	two_dimensional_array_definition_test();
+	//two_dimensional_array_traverse_test();
 	//two_dimensional_array_sms_test();
 	//two_dimensional_array_add_test();
 	//two_dimensional_array_double_pointer_test();
 	//double_pointer_simulate_two_dimensional_array_test();
 	return 0;
 }
-#endif

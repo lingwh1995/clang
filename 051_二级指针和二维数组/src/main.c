@@ -77,7 +77,6 @@ void one_dimensional_array_add_one_pointer_test()
  */
 void two_dimensional_array_add_double_pointer_test()
 {
-    // 庆历四年春，滕子京谪守巴陵郡。
     int arr[3][4] = {
         {1, 2, 3, 4},
         {5, 6, 7, 8},
@@ -93,12 +92,11 @@ void two_dimensional_array_add_double_pointer_test()
 }
 
 #if 0
-#endif
 int main()
 {
 	//double_pointer_basic_test();
 	//one_dimensional_array_add_one_pointer_test();
-    two_dimensional_array_add_double_pointer_test();
+	two_dimensional_array_add_double_pointer_test();
 	return 0;
 }
-
+#endif
