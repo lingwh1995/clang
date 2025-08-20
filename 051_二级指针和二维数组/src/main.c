@@ -52,7 +52,6 @@ void double_pointer_test()
     printf("pp3的值: %p， pp3指向的值: %p, 二级指针解引用: %d\n", pp3, *pp3, **pp3);
 }
 
-
 /**
  * 一维数组和一级指针
  */
