@@ -116,7 +116,7 @@ void snprintf_test()
 }
 
 /**
- * 从缓冲区中读取数据
+ * 从缓冲区中（实际上是从字符串中）读取数据
  * @param 缓冲区字符串
  */
 void sscanf_test()
