@@ -8,7 +8,7 @@
 /**
  * 二级指针基础知识
  */
-void double_pointer_basic_test()
+void double_pointer_test()
 {
 	int a = 10, b = 20;
 	printf("a = %d, &a = %p\n", a, &a);
@@ -109,38 +109,22 @@ void two_dimensional_array_add_double_pointer_test_2()
         {5, 6, 7, 8},
         {9, 10, 11, 12}
     };
-    // s代表二维数组中第一个元素的地址，就是二维数组中第一个一维数组的地址 
-    int (*s)[4] = &arr[1];
-    // p代表二维数组中第一个元素，就是二维数组中第一个一维数组的首元素的地址
-    int* p = arr[1];
-    printf("二维数组中第一个一维数组的首元素 = %d\n", *p);
-    printf("%d \n", s[1][3]); // s[1][3] => *(s[1] + 3) => *(*(s + 1) + 3)
-    printf("%d \n", p[3]); // p[3] => *(p + 3)
-}
-
-/**
- * 二维数组和字符串
- */
-void two_dimensional_array_add_string()
-{
-	char arr[3][10] = { "hello", "world", "clang" };
-	printf("arr[0] = %s\n", arr[0]);
-	printf("arr[1] = %s\n", arr[1]);
-	printf("arr[2] = %s\n", arr[2]);
-	const char* p_arr = { "hello", "world", "clang" };
-	printf("p_arr[0] = %c\n", p_arr[0]);
-	printf("p_arr[1] = %c\n", p_arr[1]);
-	printf("p_arr[2] = %c\n", p_arr[2]);
+    // p代表二维数组中第一个元素的地址，就是二维数组中第一个一维数组的地址
+    int (*p)[4] = &arr[1];
+    // s代表二维数组中第一个元素，就是二维数组中第一个一维数组的首元素的地址
+    int* s = arr[1];
+    printf("二维数组中第一个一维数组的首元素 = %d\n", *s);
+    printf("p[1][3] = %d \n", p[1][3]); // p[1][3] => *(p[1] + 3) => *(*(p + 1) + 3)
+    printf("s[3] = %d \n", s[3]); // s[3] => *(s + 3)
 }
 
 #if 0
 #endif
 int main()
 {
-	//double_pointer_basic_test();
+	//double_pointer_test();
     //one_dimensional_array_add_one_pointer_test();
 	//two_dimensional_array_add_double_pointer_test_1();
-	//two_dimensional_array_add_double_pointer_test_2();
-	two_dimensional_array_add_string();
+	two_dimensional_array_add_double_pointer_test_2();
 	return 0;
 }
