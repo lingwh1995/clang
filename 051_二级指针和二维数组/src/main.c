@@ -118,6 +118,21 @@ void two_dimensional_array_add_double_pointer_test_2()
     printf("%d \n", p[3]); // p[3] => *(p + 3)
 }
 
+/**
+ * 二维数组和字符串
+ */
+void two_dimensional_array_add_string()
+{
+	char arr[3][10] = { "hello", "world", "clang" };
+	printf("arr[0] = %s\n", arr[0]);
+	printf("arr[1] = %s\n", arr[1]);
+	printf("arr[2] = %s\n", arr[2]);
+	const char* p_arr = { "hello", "world", "clang" };
+	printf("p_arr[0] = %c\n", p_arr[0]);
+	printf("p_arr[1] = %c\n", p_arr[1]);
+	printf("p_arr[2] = %c\n", p_arr[2]);
+}
+
 #if 0
 #endif
 int main()
@@ -125,6 +140,7 @@ int main()
 	//double_pointer_basic_test();
     //one_dimensional_array_add_one_pointer_test();
 	//two_dimensional_array_add_double_pointer_test_1();
-	two_dimensional_array_add_double_pointer_test_2();
+	//two_dimensional_array_add_double_pointer_test_2();
+	two_dimensional_array_add_string();
 	return 0;
 }
