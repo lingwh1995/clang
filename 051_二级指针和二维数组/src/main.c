@@ -296,6 +296,17 @@ void two_dimensional_array_traverse_test()
 	two_dimensional_array_traverse_4(matrix, 3, 4);
 }
 
+/**
+ * 二维数组经典应用场景-存放多个字符串
+ */
+void two_dimensional_array_classic_application_scenarios_test()
+{
+	char names[3][10] = { "张三", "李四", "王五" };
+	for(int i = 0; i < sizeof(names) / sizeof(names[0]); i++) {
+		printf("%s\n", names[i]);
+	}
+}
+
 #if 0
 #endif
 int main()
@@ -305,7 +316,8 @@ int main()
 	//one_dimensional_array_add_one_pointer_test();
 	//two_dimensional_array_add_double_pointer_test_1();
 	//two_dimensional_array_add_double_pointer_test_2();
-	two_dimensional_array_add_double_pointer_test_3();
+	//two_dimensional_array_add_double_pointer_test_3();
 	//two_dimensional_array_traverse_test();
+	two_dimensional_array_classic_application_scenarios_test();
 	return 0;
 }
