@@ -27,6 +27,7 @@
 #define ROWSSIZE 3
 #define COLSSIZE 4
 typedef int GradType[ROWSSIZE][COLSSIZE];
+#define N 3
 
 /**
  * 二级指针基础知识
@@ -307,6 +308,33 @@ void two_dimensional_array_classic_application_scenarios_test()
 	}
 }
 
+/**
+ * 二维数组和字符串
+ */
+void two_dimensional_array_and_string()
+{
+	// 数组中每个元素存放的是一个字符数组（字符串），最直观的方式是使用debug模式观察 arr[0] 代表的值
+	char arr[N][10] = { "hello", "world", "clang" };
+	printf("sizeof(arr[0]) = %d\n", sizeof(arr[0]));
+	printf("sizeof(arr[1]) = %d\n", sizeof(arr[1]));
+	printf("sizeof(arr[2]) = %d\n", sizeof(arr[2]));
+	for(int i = 0; i < N; i++)
+	{
+		printf("%s\n", arr[i]);
+	}
+	printf("-----------------------------\n");
+
+	// 数组中每个元素存放的是一个指向只读数据区首元素地址的指针变量，最直观的方式是使用debug模式观察 arr[0] 代表的值
+	const char* p_arr[N] = { "hello", "world", "clang" };
+	printf("sizeof(p_arr[0]) = %d\n", sizeof(p_arr[0]));
+	printf("sizeof(p_arr[1]) = %d\n", sizeof(p_arr[1]));
+	printf("sizeof(p_arr[2]) = %d\n", sizeof(p_arr[2]));
+	for(int i = 0; i < N; i++)
+	{
+		printf("%s\n", p_arr[i]);
+	}
+}
+
 #if 0
 #endif
 int main()
@@ -318,6 +346,7 @@ int main()
 	//two_dimensional_array_add_double_pointer_test_2();
 	//two_dimensional_array_add_double_pointer_test_3();
 	//two_dimensional_array_traverse_test();
-	two_dimensional_array_classic_application_scenarios_test();
+	//two_dimensional_array_classic_application_scenarios_test();
+	two_dimensional_array_and_string();
 	return 0;
 }

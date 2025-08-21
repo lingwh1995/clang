@@ -133,13 +133,38 @@ void double_pointer_simulate_two_dimensional_array_test()
     printf("释放指针数组内存\n\n");
 }
 
+/**
+ * 根据
+ */
+void print_two_dimensional_array_by_one_dimensional_array_test()
+{
+	int arr[] = { 1, 3, 0, 2 };
+	int rows = 4;
+	int cols = 4;
+	for(int i = 0; i < rows; i++)
+	{
+		for(int j = 0; j < cols; j++)
+		{
+			if(arr[i] == j)
+			{
+				printf("%s\t", "o");
+			}
+			else
+			{
+				printf("%s\t", "#");
+			}
+		}
+		printf("\n");
+	}
+}
 
 #if 0
 int main()
 {
-	two_dimensional_array_sms_test();
-	two_dimensional_array_add_test();
-	double_pointer_simulate_two_dimensional_array_test();
+	//two_dimensional_array_sms_test();
+	//two_dimensional_array_add_test();
+	//double_pointer_simulate_two_dimensional_array_test();
+	print_two_dimensional_array_by_one_dimensional_array_test();
 	return 0;
 }
 #endif
