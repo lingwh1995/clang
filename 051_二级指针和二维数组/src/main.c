@@ -336,7 +336,6 @@ void two_dimensional_array_and_string()
 }
 
 #if 0
-#endif
 int main()
 {
 	//double_pointer_test();
@@ -350,3 +349,4 @@ int main()
 	two_dimensional_array_and_string();
 	return 0;
 }
+#endif

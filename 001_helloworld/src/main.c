@@ -36,11 +36,13 @@
  * 
  *  MinGw
  *      https://sourceforge.net/projects/mingw-w64/
- *  C语言参考网站
+ *  c语言参考网站
  *      https://zh.cppreference.com/w/
  *      https://cplusplus.com/
  *      https://wangdoc.com/clang/			推荐
  *      https://www.dotcpp.com/course/
+ *  c语言命名规范
+ *  	https://blog.csdn.net/qq_43582136/article/details/148142720
  */
 
 #if 0
