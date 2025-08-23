@@ -201,7 +201,7 @@ void strtol_test()
 /**
  * strtol()函数应用案例
  */
-int str2i(const char *str, char split, char **endptr)
+int str2i(const char* str, char split, char **endptr)
 {
 	if(NULL == str || NULL == endptr)
 	{
@@ -223,15 +223,15 @@ int str2i(const char *str, char split, char **endptr)
  */
 void str2i_test()
 {
-    char *str = "1,2,3,4,5";
-    char *end = NULL;
+    char* str = "1,2,3,4,5";
+    char* end = NULL;
     int res[5] = { 0 };
-    char *pstr = str;
+    char* p_str = str;
 
     for (int i = 0; i < 5; i++)
     {
-        res[i] = str2i(pstr, ',', &end);
-        pstr = end;
+        res[i] = str2i(p_str, ',', &end);
+        p_str = end;
     }
 
     for (int i = 0; i < 5; i++)

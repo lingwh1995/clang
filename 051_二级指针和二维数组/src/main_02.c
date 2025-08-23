@@ -17,6 +17,7 @@ typedef struct{
 	unsigned int MatrixRow, MatrixCol, TotalDataNodeNum;  //二维数组行数，列数，非零元素个数
 }Struct_SparseArr;  //稀疏矩阵结构体
 
+#if 0
 int main() {
 	//定义稀疏矩阵、转置稀疏矩阵
 	Struct_SparseArr OriSparseArr, TraSparseArr;
@@ -108,3 +109,4 @@ int main() {
 	}
 	return 0;
 }
+#endif

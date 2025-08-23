@@ -19,15 +19,15 @@
 int main()
 {
 	int arr[ARSIZE] = { 0 };
-	int* pArr = NULL;
+	int* p_arr = NULL;
 	int val = 0;
 	if (0 == val)
 	{
-		pArr = &arr;
+		p_arr = &arr;
 	}
-	init_arr_3(pArr, ARSIZE);
-	bubble_sort_3(pArr, ARSIZE);
-	print_arr_3(pArr, ARSIZE);
+	init_arr_3(p_arr, ARSIZE);
+	bubble_sort_3(p_arr, ARSIZE);
+	print_arr_3(p_arr, ARSIZE);
 	return 0;
 }
 #endif

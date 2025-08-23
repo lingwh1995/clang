@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <assert.h>
 
 /**
  * 1.二维数组版学生管理系统
@@ -17,6 +19,8 @@
 // 列数
 #define COLS 3
 
+#define N 5
+#define LEN 10
 
 /**
  * 二维数组版学生管理系统测试
@@ -134,7 +138,7 @@ void double_pointer_simulate_two_dimensional_array_test()
 }
 
 /**
- * 根据
+ * 根据一维数组还原二维数组
  */
 void print_two_dimensional_array_by_one_dimensional_array_test()
 {
@@ -158,13 +162,154 @@ void print_two_dimensional_array_by_one_dimensional_array_test()
 	}
 }
 
+/**
+ * 打印二维字符数组
+ * 	注意： 这里实际上是使用下标方式访问数组，使用下标方式访问数组本质就是使用指针方式访问数组
+ */
+//void print_two_dimensional_array_1(const char **pstr, int n)
+void print_two_dimensional_array_1(const char *pstr[], int n)
+{
+	if(NULL == pstr)
+	{
+		return;
+	}
+	for(int i = 0; i < n; i++)
+	{
+		printf("%s\n", pstr[i]); // printf("%s\n", *(pstr + i));
+	}
+	printf("\n");
+}
+
+/**
+ * 二维字符数组冒泡排序
+ */
+void two_dimensional_array_bubble_sort_1(const char *pstr[], int n)
+{
+	if(NULL == pstr)
+	{
+		return;
+	}
+	for(int i = 0; i < n - 1; i++)
+	{
+		for(int j = 0; j < n - 1 - i; j++)
+		{
+			if(strcmp(pstr[j], pstr[j + 1]) > 0)
+			{
+				const char *temp = pstr[j];
+				pstr[j] = pstr[j + 1];
+				pstr[j + 1] = temp;
+			}
+		}
+	}
+}
+
+/**
+ * 二维字符数组排序测试
+ */
+void two_dimensional_array_bubble_sort_test_1()
+{
+	const char* pstr[N] = { "tulun", "complex", "newdata", "math", "locale" };
+	/**
+	 *  二维数组pstr内存结构图简化版
+	 *
+	 *  +-------------------------- 栈区（低地址 → 高地址） -------------------------+
+	 *	| 地址: 0xbffff400 | p_str[0] = 0x08048500  ←→  指向只读段的 "tulun" 首地址 |
+	 *	| 地址: 0xbffff404 | p_str[1] = 0x08048506  ←→  指向只读段的 "complex" 首地址 |
+	 *	| 地址: 0xbffff408 | p_str[2] = 0x0804850E  ←→  指向只读段的 "newdata" 首地址 |
+	 *	| 地址: 0xbffff40C | p_str[3] = 0x08048515  ←→  指向只读段的 "math" 首地址 |
+	 *	| 地址: 0xbffff410 | p_str[4] = 0x08048519  ←→  指向只读段的 "locale" 首地址 |
+	 *	+---------------------------------------------------------------------------+
+	 *
+	 *	+------------------------ 只读数据段（.rodata，低地址 → 高地址） -------------+
+	 *	| 地址: 0x08048500 | 't' 'u' 'l' 'u' 'n' '\0'  →  字符串 "tulun"             |
+	 *	| 地址: 0x08048506 | 'c' 'o' 'm' 'p' 'l' 'e' 'x' '\0'  →  字符串 "complex"   |
+	 *	| 地址: 0x0804850E | 'n' 'e' 'w' 'd' 'a' 't' 'a' '\0'  →  字符串 "newdata"   |
+	 *	| 地址: 0x08048515 | 'm' 'a' 't' 'h' '\0'  →  字符串 "math"                 |
+	 *	| 地址: 0x08048519 | 'l' 'o' 'c' 'a' 'l' '\0'  →  字符串 "locale"             |
+	 *	+---------------------------------------------------------------------------+
+	 */
+	print_two_dimensional_array_1(pstr, N);
+	two_dimensional_array_bubble_sort_1(pstr, N);
+	print_two_dimensional_array_1(pstr, N);
+}
+
+/**
+ * 初始化二维数组
+ */
+void init_two_dimensional_array(char (*pstr)[LEN], int rows, int len)
+{
+	assert(NULL != pstr);
+	for(int i = 0; i < rows; i++)
+	{
+		gets(pstr[i]);
+	}
+}
+
+
+/**
+ * 二维字符数组冒泡排序
+ */
+void two_dimensional_array_bubble_sort_2(char (*pstr)[LEN], int rows, int len)
+{
+	if(NULL == pstr)
+	{
+		return;
+	}
+	if(rows < 1)
+	{
+		return;
+	}
+	char *temp = (char*)malloc(sizeof(char) * len);
+	for(int i = 0; i < rows - 1; i++)
+	{
+		for(int j = 0; j < rows - 1 - i; j++)
+		{
+			if(strcmp(pstr[j], pstr[j + 1]) > 0)
+			{
+				strcpy(temp, pstr[j]);
+				strcpy(pstr[j], pstr[j + 1]);
+				strcpy(pstr[j + 1], temp);
+			}
+		}
+	}
+	// 释放内存
+	free(temp);
+	// 手动将指针置为空
+	temp = NULL;
+}
+
+/**
+ * 打印二维数组
+ */
+void print_two_dimensional_array_2(char (*pstr)[LEN], int rows)
+{
+	for(int i = 0; i < rows; i++)
+	{
+		printf("%s\n", pstr[i]); // printf("%s\n", *(pstr + i));
+	}
+	printf("\n");
+}
+
+/**
+ * 二维字符数组排序测试
+ */
+void two_dimensional_array_bubble_sort_test_2()
+{
+	char str[N][LEN] = { 0 };
+	init_two_dimensional_array(str, N, LEN);
+	two_dimensional_array_bubble_sort_2(str, N, LEN);
+	print_two_dimensional_array_2(str, N);
+}
+
 #if 0
+#endif
 int main()
 {
 	//two_dimensional_array_sms_test();
 	//two_dimensional_array_add_test();
 	//double_pointer_simulate_two_dimensional_array_test();
-	print_two_dimensional_array_by_one_dimensional_array_test();
+	//print_two_dimensional_array_by_one_dimensional_array_test();
+	//two_dimensional_array_bubble_sort_test_1();
+	two_dimensional_array_bubble_sort_test_2();
 	return 0;
 }
-#endif

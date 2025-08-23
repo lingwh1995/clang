@@ -24,9 +24,9 @@ int main()
 	{
 		p_arr = &arr;
 	}
-	init_arr_2(pArr, ARSIZE);
-	bubble_sort_2(pArr, ARSIZE);
-	print_arr_2(pArr, ARSIZE);
+	init_arr_2(p_arr, ARSIZE);
+	bubble_sort_2(p_arr, ARSIZE);
+	print_arr_2(p_arr, ARSIZE);
 	return 0;
 }
 #endif
