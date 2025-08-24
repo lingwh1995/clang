@@ -7,6 +7,8 @@
 #include <time.h>
 #include <limits.h>
 
+#define N 20
+
 /**
  * 题目列表
  * 001.循环打印 a-g 方式一：不使用取余运算
@@ -40,6 +42,7 @@
  * 029.定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素不可以重复，并且使用冒泡排序对数组元素进行排序（while循环版）
  * 030.定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素不可以重复，并且使用冒泡排序对数组元素进行排序（查表版 方式一）
  * 031.定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素不可以重复，并且使用冒泡排序对数组元素进行排序（查表版 方式二）
+ * 032.杨辉三角
  */
 
 /**
@@ -953,6 +956,37 @@ void question_031_bubble_sort()
     }
 }
 
+/**
+ * 杨辉三角
+ * 1
+ * 1	1
+ * 1	2	1
+ * 1	3	3	1
+ * 1	4	6	4	1
+ */
+void question_032_pascals_triangle()
+{
+	int arr[N] = { 0 };
+	for(int i = 0; i < N; i++)
+	{
+		printf("第 %2d 行:", i);
+		for(int j = i; j >= 0; j--)
+		{
+			if(j == 0 || j == i)
+			{
+				arr[j] = 1;
+				printf("%10d", arr[j]);
+			}
+			else
+			{
+				arr[j] = arr[j] + arr[j - 1];
+				printf("%10d", arr[j]);
+			}
+		}
+		printf("\n");
+	}
+}
+
 
 int main()
 {
@@ -969,7 +1003,7 @@ int main()
 
 	//question_001_loop_print_a2g();
 	//question_002_loop_print_a2g();
-	question_003_gcd();
+	//question_003_gcd();
 	//question_004_gcd();
 	//question_005_gcd();
 	//question_006_lcm();
@@ -998,5 +1032,6 @@ int main()
 	//question_029_bubble_sort();
 	//question_030_bubble_sort();
 	//question_031_bubble_sort();
+	question_032_pascals_triangle();
 	return 0;
 }
