@@ -79,7 +79,7 @@ void double_pointer_test()
 /**
  * 二维数组基础知识
  */
-void two_dimensional_array_definition_test()
+void two_dimensional_arr_definition_test()
 {
     // 方式1：使用一维数组方式进行初始化，系统会自动将一维数组识别成为二维数组
     int arr_1[2][3] = { 1, 2, 3, 4, 5, 6 };
@@ -111,7 +111,7 @@ void two_dimensional_array_definition_test()
 /**
  * 一维数组和一级指针
  */
-void one_dimensional_array_add_one_pointer_test()
+void one_dimensional_arr_add_one_pointer_test()
 {
 	// 使用一维数组演示使用指针指向整个数组，而不是使用指针指向数组的首元素
 	int arr[4] = { 1, 2, 3, 4 };
@@ -133,7 +133,7 @@ void one_dimensional_array_add_one_pointer_test()
 /**
  * 二维数组和二级指针
  */
-void two_dimensional_array_add_double_pointer_test_1()
+void two_dimensional_arr_add_double_pointer_test_1()
 {
     int arr[3][4] = {
         {1, 2, 3, 4},
@@ -152,7 +152,7 @@ void two_dimensional_array_add_double_pointer_test_1()
 /**
  * 二维数组和二级指针
  */
-void two_dimensional_array_add_double_pointer_test_2()
+void two_dimensional_arr_add_double_pointer_test_2()
 {
     int arr[3][4] = {
         {1, 2, 3, 4},
@@ -175,7 +175,7 @@ void two_dimensional_array_add_double_pointer_test_2()
 /**
  * 二维数组和二级指针
  */
-void two_dimensional_array_add_double_pointer_test_3()
+void two_dimensional_arr_add_double_pointer_test_3()
 {
     int arr[3][4] = {
         {1, 2, 3, 4},
@@ -211,7 +211,7 @@ void two_dimensional_array_add_double_pointer_test_3()
  * 遍历二维数组方式一-使用二维数组作为参数（注意：第二维必须指定大小）
  * 		二维数组指针的退化： int arr[3][4] => int arr[][4]
  */
-void two_dimensional_array_traverse_1(int arr[][4], int rows)
+void two_dimensional_arr_traverse_1(int arr[][4], int rows)
 {
     printf("方式1:\n");
     for(int i = 0; i < rows; i++)
@@ -229,7 +229,7 @@ void two_dimensional_array_traverse_1(int arr[][4], int rows)
  * 遍历二维数组方式二-使用指针作为参数
  * 		二维数组指针的退化： int arr[3][4] => int arr[][4] => int (*)arr[4]
  */
-void two_dimensional_array_traverse_2(int (*arr)[4], int rows)
+void two_dimensional_arr_traverse_2(int (*arr)[4], int rows)
 {
     printf("方式2:\n");
     for(int i = 0; i < rows; i++)
@@ -245,7 +245,7 @@ void two_dimensional_array_traverse_2(int (*arr)[4], int rows)
 /**
  * 遍历二维数组方式三-指针作为函数参数
  */
-void two_dimensional_array_traverse_3(int *arr, int rows, int cols)
+void two_dimensional_arr_traverse_3(int *arr, int rows, int cols)
 {
 	printf("方式3:\n");
 	if(NULL == arr)
@@ -265,7 +265,7 @@ void two_dimensional_array_traverse_3(int *arr, int rows, int cols)
 /**
  * 遍历二维数组方式四-使用typedef简化二维数组定义并且遍历该二维数组
  */
-void two_dimensional_array_traverse_4(GradType matrix, int rows, int cols)
+void two_dimensional_arr_traverse_4(GradType matrix, int rows, int cols)
 {
 	printf("方式4:\n");
     for(int i = 0; i < rows; i++)
@@ -281,16 +281,16 @@ void two_dimensional_array_traverse_4(GradType matrix, int rows, int cols)
 /**
  * 遍历二维数组
  */
-void two_dimensional_array_traverse_test()
+void two_dimensional_arr_traverse_test()
 {
     int arr[3][4] = {
         {1, 2, 3, 4},
         {5, 6, 7, 8},
         {9, 10, 11, 12}
     };
-    two_dimensional_array_traverse_1(arr, 3);
-    two_dimensional_array_traverse_2(arr, 3);
-    two_dimensional_array_traverse_3(*arr, 3, 4);
+    two_dimensional_arr_traverse_1(arr, 3);
+    two_dimensional_arr_traverse_2(arr, 3);
+    two_dimensional_arr_traverse_3(*arr, 3, 4);
 
     // 使用GradType类型定义二维数组
 	GradType matrix = {
@@ -298,13 +298,13 @@ void two_dimensional_array_traverse_test()
         {5, 6, 7, 8},
         {9, 10, 11, 12}
     };
-	two_dimensional_array_traverse_4(matrix, 3, 4);
+	two_dimensional_arr_traverse_4(matrix, 3, 4);
 }
 
 /**
  * 二维数组经典应用场景-存放多个字符串
  */
-void two_dimensional_array_classic_application_scenarios_test()
+void two_dimensional_arr_classic_application_scenarios_test()
 {
 	char names[3][10] = { "张三", "李四", "王五" };
 	for(int i = 0; i < sizeof(names) / sizeof(names[0]); i++) {
@@ -315,7 +315,7 @@ void two_dimensional_array_classic_application_scenarios_test()
 /**
  * 二维数组和字符串
  */
-void two_dimensional_array_and_string_test()
+void two_dimensional_arr_and_string_test()
 {
 	// 数组中每个元素存放的是一个字符数组（字符串），最直观的方式是使用debug模式观察 arr[0] 代表的值
 	char arr[N][10] = { "tulun", "complex", "newdata", "math", "locale" };
@@ -363,14 +363,14 @@ void two_dimensional_array_and_string_test()
 int main()
 {
 	//double_pointer_test();
-	//two_dimensional_array_definition_test();
-	//one_dimensional_array_add_one_pointer_test();
-	//two_dimensional_array_add_double_pointer_test_1();
-	//two_dimensional_array_add_double_pointer_test_2();
-	//two_dimensional_array_add_double_pointer_test_3();
-	//two_dimensional_array_traverse_test();
-	//two_dimensional_array_classic_application_scenarios_test();
-    two_dimensional_array_and_string_test();
+	//two_dimensional_arr_definition_test();
+	//one_dimensional_arr_add_one_pointer_test();
+	//two_dimensional_arr_add_double_pointer_test_1();
+	//two_dimensional_arr_add_double_pointer_test_2();
+	//two_dimensional_arr_add_double_pointer_test_3();
+	//two_dimensional_arr_traverse_test();
+	//two_dimensional_arr_classic_application_scenarios_test();
+    two_dimensional_arr_and_string_test();
 	return 0;
 }
 #endif

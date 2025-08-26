@@ -69,7 +69,7 @@ int main()
     printf("s8 = %s\n", s8);
     char s9[20];
     //s9 = "Hello, world! s9~"; // 错误，不能直接把字符串赋值给字符数组变量，会报错。原因是字符数组的变量名，跟定义时所指向的数组是绑定的，不能指向另一个地址。
-    strcpy(s9,"Hello, world! s9~"); // 正确
+    strcpy(s9, "Hello, world! s9~"); // 正确
     printf("s9 = %s\n", s9);
     return 0;
 }

@@ -1,0 +1,344 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <time.h>
+
+/**
+ * c语言实现常见算法
+ *     1.冒泡排序
+ *     2.二分查找（要求数组数有序数组）
+ */
+
+/**
+ * @param a a元素的地址
+ * @param b b元素的地址
+ */
+void swap_number(int* ap, int* bp)
+{
+	if(ap == NULL || bp == NULL)
+	{
+		return;
+	}
+	int temp = *ap;
+	*ap = *bp;
+	*bp = temp;
+}
+
+/**
+ * 冒泡排序算法模型
+ *    外层循环控制比较轮数            比较轮数(从0开始) = 数组的长度 - 1
+ *    内层循环控制每一轮比较次数       每一轮比较次数 = 数组长度 - 当前比较轮数(从0开始) -1
+ */
+void bubble_sort_test_1()
+{
+	int nums[] = { 3,9,7,1,5 };
+	int length = sizeof(nums) / sizeof(nums[0]);
+	// 获取比较轮数
+	int round = length - 1;
+	for(int r = 0; r < round; r++)
+	{
+        // 获取每一轮比较次数
+        int compareTimes = length - r - 1;
+        for(int c = 0; c < compareTimes; c++)
+        {
+            if(nums[c] > nums[c+1])
+            {
+                swap_number(&nums[c],&nums[c+1]);
+            }
+        }
+	}
+    for(int i = 0; i < length; i++)
+    {
+        printf("%2d ", nums[i]);
+    }
+}
+
+/**
+ * 定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素可以重复，并且使用冒泡排序对数组元素进行排序（基础版）
+ */
+void bubble_sort_test_2()
+{
+    int nums[100] = { 0 };
+    int length = sizeof(nums) / sizeof(nums[0]);
+    srand((unsigned)time(NULL));
+    // 生成100个可重复随机数
+    for (int i = 0; i < length; i++)
+    {
+        nums[i] = rand() % length + 1;
+    }
+    // 冒泡排序
+    for (int i = 0; i < length - 1; i++)
+    {
+        for (int j = 0; j < length - i - 1; j++)
+        {
+            if (nums[j] > nums[j + 1])
+            {
+                swap_number(&nums[j], &nums[j + 1]);
+            }
+        }
+    }
+    // 打印数组
+    for (int i = 0; i < length; i++)
+    {
+        printf("%3d ", nums[i]);
+        if ((i + 1) % 10 == 0)
+        {
+            printf("\n");
+        }
+    }
+}
+
+/**
+ * 定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素可以重复，并且使用冒泡排序对数组元素进行排序（优化版）
+ */
+void bubble_sort_test_3()
+{
+    int nums[100] = { 0 };
+    int length = sizeof(nums) / sizeof(nums[0]);
+    // 生成100个可重复随机数
+    srand((unsigned)time(NULL));
+    for (int i = 0; i < length; i++)
+    {
+        nums[i] = rand() % length + 1;
+    }
+    // 冒泡排序
+    for (int i = 0; i < length - 1; i++)
+    {
+    	// 本轮循环是否没有进行元素交换，如果没有进行元素交换，说明当前数组是有序数组
+    	bool isNotExchange = true;
+        for (int j = 0; j < length - i - 1; j++)
+        {
+            if (nums[j] > nums[j + 1])
+            {
+            	isNotExchange = false;
+                swap_number(&nums[j], &nums[j + 1]);
+            }
+        }
+        if (isNotExchange)
+        {
+            break;
+        }
+    }
+    // 打印数组
+    for (int i = 0; i < length; i++)
+    {
+        printf("%3d ", nums[i]);
+        if ((i + 1) % 10 == 0)
+        {
+            printf("\n");
+        }
+    }
+}
+
+/**
+ * @param nums 数组nums的地址
+ * @param k 查找重复元素结束索引
+ * @param value 需要判断是否重复的元素
+ */
+int find_value(int* nums, int k, int value)
+{
+	int position = -1;
+	for(int i = 0; i < k; i++)
+	{
+		if(nums[i] == value)
+		{
+			position = i;
+		}
+	}
+	return position;
+}
+
+/**
+ * 定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素不可以重复，并且使用冒泡排序对数组元素进行排序（for循环版）
+ */
+void bubble_sort_test_4()
+{
+	int nums[100] = { 0 };
+	int length = sizeof(nums) / sizeof(nums[0]);
+	// 生成100个不重复随机数
+	srand((unsigned)time(NULL));
+	for(int i = 0; i < length; i++)
+	{
+		int r = rand() % length + 1;
+		if(find_value(nums,i,r) == -1)
+		{
+			nums[i] = r;
+		}
+		else
+		{
+			// 如果find_value()返回值不为-1,则说明数组中已经有一个元素的值和r相等,则让i--,这是很巧妙的处理方法
+			i--;
+		}
+	}
+	// 冒泡排序
+	for(int i = 0; i < length - 1; i++)
+	{
+		for(int j = 0; j < length - i - 1; j++)
+		{
+			if(nums[j] > nums[j+1])
+			{
+				swap_number(&nums[j], &nums[j+1]);
+			}
+		}
+	}
+	// 打印数组
+	for (int i = 0; i < length; i++)
+    {
+        printf("%3d ", nums[i]);
+        if ((i + 1) % 10 == 0)
+        {
+            printf("\n");
+        }
+    }
+}
+
+/**
+ * 定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素不可以重复，并且使用冒泡排序对数组元素进行排序（while循环版）
+ */
+void bubble_sort_test_5()
+{
+	int nums[100] = { 0 };
+	int length = sizeof(nums) / sizeof(nums[0]);
+	// 生成100个不重复随机数
+	srand((unsigned)time(NULL));
+	int i = 0;
+	while(i < length)
+	{
+		int r = rand() % length + 1;
+		if(find_value(nums,i,r) == -1)
+		{
+			nums[i] = r;
+			i++;
+		}
+	}
+
+	// 冒泡排序
+	for(i = 0; i < length - 1; i++)
+	{
+		for(int j = 0; j < length - i - 1; j++)
+		{
+			if(nums[j] > nums[j+1])
+			{
+				swap_number(&nums[j], &nums[j+1]);
+			}
+		}
+	}
+	// 打印数组
+	for (i = 0; i < length; i++)
+    {
+        printf("%3d ", nums[i]);
+        if ((i + 1) % 10 == 0)
+        {
+            printf("\n");
+        }
+    }
+}
+
+/**
+ * 定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素不可以重复，并且使用冒泡排序对数组元素进行排序（查表版 方式一）
+ */
+void bubble_sort_test_6()
+{
+	int nums[100] = { 0 };
+	int length = sizeof(nums) / sizeof(nums[0]);
+	// 创建表
+	int table[101] = { 0 };
+
+	// 生成100个不重复随机数
+	srand((unsigned)time(NULL));
+	int i = 0;
+	while(i < length)
+	{
+		int r = rand() % length + 1;
+		if(table[r] == 0)
+		{
+			nums[i] = r;
+			i++;
+			table[r] = 1;
+		}
+	}
+
+	// 冒泡排序
+	for(i = 0; i < length - 1; i++)
+	{
+		for(int j = 0; j < length - i - 1; j++)
+		{
+			if(nums[j] > nums[j+1])
+			{
+				swap_number(&nums[j], &nums[j+1]);
+			}
+		}
+	}
+	// 打印数组
+	for (i = 0; i < length; i++)
+    {
+        printf("%3d ", nums[i]);
+        if ((i + 1) % 10 == 0)
+        {
+            printf("\n");
+        }
+    }
+}
+
+/**
+ * 定义大小为100的整形数组，使用随机函数给数组元素赋值，数值范围1-100，数组中元素不可以重复，并且使用冒泡排序对数组元素进行排序（查表版 方式二）
+ */
+void bubble_sort_test_7()
+{
+	int nums[100] = { 0 };
+	int length = sizeof(nums) / sizeof(nums[0]);
+	// 创建表
+	int table[101] = { 0 };
+
+	// 生成100个不重复随机数
+	srand((unsigned)time(NULL));
+	int i = 0;
+	while(i < length)
+	{
+		int r = rand() % length + 1;
+		if(table[r] == 0)
+		{
+			i++;
+			table[r] = r;
+		}
+	}
+
+	// 不需要排序，因为按照上面的操作流程，table数组中存放的数据天然是有序的
+
+	// 复制数组
+	for(i = 0; i < length; i++)
+	{
+		nums[i] = table[i+1];
+	}
+
+	// 打印数组
+	for (int i = 0; i < length; i++)
+    {
+        printf("%3d ", nums[i]);
+        if ((i + 1) % 10 == 0)
+        {
+            printf("\n");
+        }
+    }
+}
+
+/**
+ * 二分查找
+ */
+void binary_search_test()
+{
+
+}
+
+int main()
+{
+	//bubble_sort_test_1();
+	//bubble_sort_test_2();
+	//bubble_sort_test_3();
+	//bubble_sort_test_4();
+	//bubble_sort_test_5();
+	//bubble_sort_test_6();
+	//bubble_sort_test_7();
+	binary_search_test();
+	return 0;
+}

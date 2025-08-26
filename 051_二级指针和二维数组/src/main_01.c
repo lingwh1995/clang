@@ -25,7 +25,7 @@
 /**
  * 二维数组版学生管理系统测试
  */
-void two_dimensional_array_sms_test()
+void twotd_arr_sms_test()
 {
     // 存储3个学生4门课程的成绩
     char names[STUDENTS][10] = { "张三", "李四", "王五" };
@@ -57,7 +57,7 @@ void two_dimensional_array_sms_test()
 /**
  * 二维数相加测试
  */
-void two_dimensional_array_add_test()
+void twotd_arr_add_test()
 {
     int arr_1[ROWS][COLS] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     int arr_2[ROWS][COLS] = {{9, 8, 7}, {6, 5, 4}, {3, 2, 1}};
@@ -83,7 +83,7 @@ void two_dimensional_array_add_test()
 /**
  * 二级指针模拟二维数组
  */
-void double_pointer_simulate_two_dimensional_array_test()
+void double_pointer_simulate_twotd_arr_test()
 {
     // 使用二级指针创建类似二维数组的结构
     int rows = 3, cols = 4;
@@ -130,17 +130,19 @@ void double_pointer_simulate_two_dimensional_array_test()
     // 6. 释放内存
     for(int i = 0; i < rows; i++)
     {
-        free(arr[i]);  // 释放每行内存
+    	// 释放每行内存
+        free(arr[i]);
         printf("释放第 %d 行内存\n", i);
     }
-    free(arr);  // 释放指针数组
+    // 释放指针数组
+    free(arr);
     printf("释放指针数组内存\n\n");
 }
 
 /**
  * 根据一维数组还原二维数组
  */
-void print_two_dimensional_array_by_one_dimensional_array_test()
+void print_twotd_arr_by_onetd_arr_test()
 {
 	int arr[] = { 1, 3, 0, 2 };
 	int rows = 4;
@@ -166,8 +168,8 @@ void print_two_dimensional_array_by_one_dimensional_array_test()
  * 打印二维字符数组
  * 	注意： 这里实际上是使用下标方式访问数组，使用下标方式访问数组本质就是使用指针方式访问数组
  */
-//void print_two_dimensional_array_1(const char **pstr, int n)
-void print_two_dimensional_array_1(const char *pstr[], int n)
+//void print_twotd_arr_1(const char **pstr, int n)
+void print_twotd_arr_1(const char *pstr[], int n)
 {
 	if(NULL == pstr)
 	{
@@ -183,7 +185,7 @@ void print_two_dimensional_array_1(const char *pstr[], int n)
 /**
  * 二维字符数组冒泡排序
  */
-void two_dimensional_array_bubble_sort_1(const char *pstr[], int n)
+void twotd_arr_bubble_sort_1(const char *pstr[], int n)
 {
 	if(NULL == pstr)
 	{
@@ -206,7 +208,7 @@ void two_dimensional_array_bubble_sort_1(const char *pstr[], int n)
 /**
  * 二维字符数组排序测试
  */
-void two_dimensional_array_bubble_sort_test_1()
+void twotd_arr_bubble_sort_test_1()
 {
 	const char* pstr[N] = { "tulun", "complex", "newdata", "math", "locale" };
 	/**
@@ -228,15 +230,15 @@ void two_dimensional_array_bubble_sort_test_1()
 	 *	| 地址: 0x08048519 | 'l' 'o' 'c' 'a' 'l' '\0'  →  字符串 "locale"             |
 	 *	+---------------------------------------------------------------------------+
 	 */
-	print_two_dimensional_array_1(pstr, N);
-	two_dimensional_array_bubble_sort_1(pstr, N);
-	print_two_dimensional_array_1(pstr, N);
+	print_twotd_arr_1(pstr, N);
+	twotd_arr_bubble_sort_1(pstr, N);
+	print_twotd_arr_1(pstr, N);
 }
 
 /**
  * 初始化二维数组
  */
-void init_two_dimensional_array(char (*pstr)[LEN], int rows, int len)
+void init_twotd_arr(char (*pstr)[LEN], int rows, int len)
 {
 	assert(NULL != pstr);
 	for(int i = 0; i < rows; i++)
@@ -249,7 +251,7 @@ void init_two_dimensional_array(char (*pstr)[LEN], int rows, int len)
 /**
  * 二维字符数组冒泡排序
  */
-void two_dimensional_array_bubble_sort_2(char (*pstr)[LEN], int rows, int len)
+void twotd_arr_bubble_sort_2(char (*pstr)[LEN], int rows, int len)
 {
 	if(NULL == pstr)
 	{
@@ -281,7 +283,7 @@ void two_dimensional_array_bubble_sort_2(char (*pstr)[LEN], int rows, int len)
 /**
  * 打印二维数组
  */
-void print_two_dimensional_array_2(char (*pstr)[LEN], int rows)
+void print_twotd_arr_2(char (*pstr)[LEN], int rows)
 {
 	for(int i = 0; i < rows; i++)
 	{
@@ -293,23 +295,23 @@ void print_two_dimensional_array_2(char (*pstr)[LEN], int rows)
 /**
  * 二维字符数组排序测试
  */
-void two_dimensional_array_bubble_sort_test_2()
+void twotd_arr_bubble_sort_test_2()
 {
 	char str[N][LEN] = { 0 };
-	init_two_dimensional_array(str, N, LEN);
-	two_dimensional_array_bubble_sort_2(str, N, LEN);
-	print_two_dimensional_array_2(str, N);
+	init_twotd_arr(str, N, LEN);
+	twotd_arr_bubble_sort_2(str, N, LEN);
+	print_twotd_arr_2(str, N);
 }
 
 #if 0
 #endif
 int main()
 {
-	//two_dimensional_array_sms_test();
-	//two_dimensional_array_add_test();
-	//double_pointer_simulate_two_dimensional_array_test();
-	//print_two_dimensional_array_by_one_dimensional_array_test();
-	//two_dimensional_array_bubble_sort_test_1();
-	two_dimensional_array_bubble_sort_test_2();
+	//twotd_arr_sms_test();
+	//twotd_arr_add_test();
+	//double_pointer_simulate_twotd_arr_test();
+	//print_twotd_arr_by_onetd_arr_test();
+	//twotd_arr_bubble_sort_test_1();
+	twotd_arr_bubble_sort_test_2();
 	return 0;
 }
