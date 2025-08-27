@@ -243,7 +243,7 @@ void pointer_senior_test_8()
  */
 void pointer_senior_test_9()
 {
-    int arr[5] = { 12,23,34,45,56 };
+    int arr[5] = { 12, 23, 34, 45, 56 };
     int* p = arr;
     int x = 0;//12
     int y = 0;//23

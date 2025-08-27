@@ -21,7 +21,7 @@ void print_array(int* arr,int length)
 int* copy_array1(int* src,int length)
 {
 	// 下面方式定义的数组返回会报错，因为函数执行完成后，这个函数占用的栈内存就被释放了，最后会导致数组占用的内存空间无法访问
-	//int dest[length] = {};
+	//int dest[length] = { };
 
 	// 动态分配空间
 	int* dest = (int*)malloc(sizeof(int) * length);
@@ -52,7 +52,7 @@ int* copy_array2(int* src,int length)
 #if 0
 int main()
 {
-	int arr[] = { 1,3,5,7,9 };
+	int arr[] = { 1, 3, 5, 7, 9 };
 	int length = sizeof(arr) / sizeof(arr[0]);
 
 	// 方式一复制数组

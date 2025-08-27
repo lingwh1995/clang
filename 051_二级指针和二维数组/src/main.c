@@ -86,15 +86,15 @@ void two_dimensional_arr_definition_test()
     printf("二维数组arr_1中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_1) / sizeof(arr_1[0]), sizeof(arr_1[0])/sizeof(arr_1[0][0]));
 
     // 方式2：完全初始化
-    int arr_2[2][3] = { {1, 2, 3}, {4, 5, 6} };
+    int arr_2[2][3] = { { 1, 2, 3 }, { 4, 5, 6 } };
     printf("二维数组arr_2中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_2) / sizeof(arr_2[0]), sizeof(arr_2[0])/sizeof(arr_2[0][0]));
 
     // 方式3：部分初始化（未初始化元素默认为0）
-    int arr_3[2][3] = { {1, 2}, {4} };
+    int arr_3[2][3] = { { 1, 2 }, { 4 } };
     printf("二维数组arr_3中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_3) / sizeof(arr_3[0]), sizeof(arr_3[0])/sizeof(arr_3[0][0]));
 
     // 方式4：省略第一维大小（二维数组第一维的大小可以计算得到，所以第一维大小可以省略）
-    int arr_4[][3] = { {1, 2, 3}, {4, 5, 6} };
+    int arr_4[][3] = { { 1, 2, 3 }, { 4, 5, 6 } };
     printf("二维数组arr_4中一维数组个数 = %d，一维数组中元素个数 = %d\n", sizeof(arr_4) / sizeof(arr_4[0]), sizeof(arr_4[0])/sizeof(arr_4[0][0]));
 
     // 方式4：逐个赋值
@@ -136,9 +136,9 @@ void one_dimensional_arr_add_one_pointer_test()
 void two_dimensional_arr_add_double_pointer_test_1()
 {
     int arr[3][4] = {
-        {1, 2, 3, 4},
-        {5, 6, 7, 8},
-        {9, 10, 11, 12}
+        { 1, 2, 3, 4 },
+        { 5, 6, 7, 8 },
+        { 9, 10, 11, 12 }
     };
     // p代表二维数组首元素地址，使用debug模式观察可以看到 *p 的值就是二维数组中第一个元素
     int (*p)[4] = &arr[1];
@@ -155,9 +155,9 @@ void two_dimensional_arr_add_double_pointer_test_1()
 void two_dimensional_arr_add_double_pointer_test_2()
 {
     int arr[3][4] = {
-        {1, 2, 3, 4},
-        {5, 6, 7, 8},
-        {9, 10, 11, 12}
+        { 1, 2, 3, 4 },
+        { 5, 6, 7, 8 },
+        { 9, 10, 11, 12 }
     };
     printf("sizeof(arr) = %d\n", sizeof(arr));
     // p代表二维数组首元素地址，使用debug模式观察可以看到 *p 的值就是整个二维数组中第一个元素
@@ -178,9 +178,9 @@ void two_dimensional_arr_add_double_pointer_test_2()
 void two_dimensional_arr_add_double_pointer_test_3()
 {
     int arr[3][4] = {
-        {1, 2, 3, 4},
-        {5, 6, 7, 8},
-        {9, 10, 11, 12}
+        { 1, 2, 3, 4 },
+        { 5, 6, 7, 8 },
+        { 9, 10, 11, 12 }
     };
 
     // 不同的访问方式
@@ -284,9 +284,9 @@ void two_dimensional_arr_traverse_4(GradType matrix, int rows, int cols)
 void two_dimensional_arr_traverse_test()
 {
     int arr[3][4] = {
-        {1, 2, 3, 4},
-        {5, 6, 7, 8},
-        {9, 10, 11, 12}
+        { 1, 2, 3, 4 },
+        { 5, 6, 7, 8 },
+        { 9, 10, 11, 12 }
     };
     two_dimensional_arr_traverse_1(arr, 3);
     two_dimensional_arr_traverse_2(arr, 3);
@@ -294,9 +294,9 @@ void two_dimensional_arr_traverse_test()
 
     // 使用GradType类型定义二维数组
 	GradType matrix = {
-        {1, 2, 3, 4},
-        {5, 6, 7, 8},
-        {9, 10, 11, 12}
+        { 1, 2, 3, 4 },
+        { 5, 6, 7, 8 },
+        { 9, 10, 11, 12 }
     };
 	two_dimensional_arr_traverse_4(matrix, 3, 4);
 }
@@ -331,7 +331,7 @@ void two_dimensional_arr_and_string_test()
 
 
 	// 数组中每个元素存放的是一个指向只读数据区首元素地址的指针变量，最直观的方式是使用debug模式观察 arr[0] 代表的值
-	const char* p_arr[N] = { "tulun", "complex", "newdata", "math", "locale" };;
+	const char* p_arr[N] = { "tulun", "complex", "newdata", "math", "locale" };
 	/**
 	 *  二维数组p_arr内存结构图简化版
 	 *

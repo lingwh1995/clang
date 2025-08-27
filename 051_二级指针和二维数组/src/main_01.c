@@ -59,8 +59,8 @@ void twotd_arr_sms_test()
  */
 void twotd_arr_add_test()
 {
-    int arr_1[ROWS][COLS] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-    int arr_2[ROWS][COLS] = {{9, 8, 7}, {6, 5, 4}, {3, 2, 1}};
+    int arr_1[ROWS][COLS] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+    int arr_2[ROWS][COLS] = { { 9, 8, 7 }, { 6, 5, 4 }, { 3, 2, 1 } };
     int arr_result[ROWS][COLS];
     for(int i = 0; i < ROWS; i++)
     {

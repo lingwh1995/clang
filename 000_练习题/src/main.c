@@ -421,7 +421,7 @@ void question_019_perfect_number_factor()
     for (int i = 2; i <= n; i++)
     {
         int sum = 1;
-        int factor[30] = {1};
+        int factor[30] = { 1 };
         int index = 1;
         for (int j = 2; j < i; j++)
         {

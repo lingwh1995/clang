@@ -72,7 +72,7 @@ void print_array_by_while_loop(int* start, int* end)
 #if 0
 int main()
 {
-    int nums[] = { 1,2,3,4,5 };
+    int nums[] = { 1, 2, 3, 4, 5 };
     // 参数是数组名，也就是数组首元素地址
     print_arr_1(nums);
     int length = sizeof(nums) / sizeof(nums[0]);

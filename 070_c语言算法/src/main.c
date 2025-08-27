@@ -31,7 +31,7 @@ void swap_number(int* ap, int* bp)
  */
 void bubble_sort_test_1()
 {
-	int nums[] = { 3,9,7,1,5 };
+	int nums[] = { 3, 9, 7, 1, 5 };
 	int length = sizeof(nums) / sizeof(nums[0]);
 	// 获取比较轮数
 	int round = length - 1;
@@ -333,34 +333,56 @@ int binary_search_find_value(const int* arr, int n, int val)
 	}
 	int position = -1;
 	int left = 0, right = n - 1;
-	while(left < right)
+	while(left <= right)
 	{
-		position = (left + right) / 2;
-		if(arr[position] == val)
+		// 注意： 这里的mid定义成局部变量就可以
+		int mid = (left + right) / 2;
+		printf("left = %d, right = %d, mid = %d\n", left, right, mid);
+		if(arr[mid] > val)
 		{
+			right = mid - 1;
+		}
+		else if(arr[mid] < val)
+		{
+			left = mid + 1;
+		}else {
+			position = mid;
 			break;
 		}
-		if(arr[position] > val)
-		{
-			right = position;
-		}
-		else
-		{
-			left = position;
-		}
+
 	}
 	return position;
 }
 
 /**
- * 测试二分查找
+ * 测试二分查找 => 查找108在数组中的位置
+ *
+ *  0    1    2    3    4    5    6    7    8    9    10   11
+ *
+ * 第一轮： left = 0, right = 11, mid = (left + right) / 2 = (0 + 11) / 2 = 5
+ * 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112
+ *  ↑						 ▲				  		       ↑
+ *
+ * 第二轮： left = mid + 1 = 5 + 1 = 6, right = 11, mid = (left + right) / 2 = (6 + 11) / 2 = 8
+ * 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112
+ *  						      ↑			▲  		       ↑
+ *
+ * 第三轮： left = 6, right = mid - 1 = 8 - 1 = 7, mid = (left + right) / 2 = (6 + 7) / 2 = 6
+ * 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112
+ *  						     ↑ ▲   ↑
+ *
+ * 第四轮： left = mid + 1 = 6 + 1 = 7, right  7, mid = (left + right) / 2 = (7 + 7) / 2 = 7
+ * 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112
+ *  						          ↑▲↑
+ *
  */
 void binary_search_find_value_test()
 {
-	int arr[] = { 12,23,34,45,56,67,78,89,90,100,110,120 };
+	int arr[] = { 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112 };
 	int n = sizeof(arr) / sizeof(arr[0]);
-	int val = 89;
-	binary_search_find_value(arr, n, val);
+	int val = 108;
+	int i = binary_search_find_value(arr, n, val);
+	printf("%d在数组中的索引位置i = %d\n", val, i);
 }
 
 int main()
@@ -371,7 +393,7 @@ int main()
 	//bubble_sort_test_4();
 	//bubble_sort_test_5();
 	//bubble_sort_test_6();
-	bubble_sort_test_7();
-	//binary_search_find_value_test();
+	//bubble_sort_test_7();
+	binary_search_find_value_test();
 	return 0;
 }

@@ -171,7 +171,7 @@ int main()
     struct Student student_arr[] = {
     		alice,
     		bob,
-    		{ 3,"Charile",29 }
+    		{ 3, "Charile", 29 }
     };
     size = sizeof(student_arr)/sizeof(student_arr[0]);
     for(i = 0; i < size; i++)
@@ -197,7 +197,7 @@ int main()
     // 指针
     int* p = &a;
     printf("a的地址 = %p\n", p);
-    int arr[5] = { 1,2,3,4,5 };
+    int arr[5] = { 1, 2, 3, 4, 5 };
     // 数组的地址
     printf("数组的地址 = %p\n", &arr);
     printf("-------------------------------------\n");

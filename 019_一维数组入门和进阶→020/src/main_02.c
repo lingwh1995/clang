@@ -33,7 +33,7 @@ bool is_leap_year_(int year)
 int get_days_by_year_and_month_(int year, int month)
 {
     // 被static修饰的变量会存放在数据区(.data)，从索引1开始存放一月数据而不是从索引0开始存放一月数据体现了灵活编程思想
-    static const int days[] = { 29,31,28,31,30,31,30,31,31,30,31,30,31 };
+    static const int days[] = { 29, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
     // 短路与的细节用法，只有月份是2月的时候才需要判断是否是闰年
     if (month == 2 && is_leap_year_(year))
     {
@@ -68,7 +68,7 @@ int get_days_(int year, int month, int day)
     }
     int total_days = 0;
     // 被static修饰的变量会存放在数据区(.data)，从索引1开始存放一月数据而不是从索引0开始存放一月数据体现了灵活编程思想
-    static const int days[] = { 0,31,59,90,120,151,181,212,243,273,304,334,365 };
+    static const int days[] = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
     // 短路与的细节用法，只有月份是2月的时候才需要判断是否是闰年
     return total_days = (month > 2 && is_leap_year_(year) ? 1 : 0) +  days[month-1] + day;
 }

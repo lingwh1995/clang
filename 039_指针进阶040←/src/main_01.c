@@ -54,7 +54,7 @@ void int_pointer_to_char_pointer()
  */
 void int_pointer_plus_one()
 {
-    int arr[5] = { 10,20,30,40,50 };
+    int arr[5] = { 10, 20, 30, 40, 50 };
     for(int i = 0; i < 5; i++)
     {
     	printf("&arr[%d] = %p\n", i, arr + i);
@@ -68,7 +68,7 @@ void int_pointer_plus_one()
  */
 void char_pointer_plus_one()
 {
-    char arr[5] = { 'h','e','l','l','o' };
+    char arr[5] = { 'h', 'e', 'l', 'l', 'o' };
     for(int i = 0; i < 5; i++)
     {
     	printf("&arr[%d] = %p\n", i, arr + i);
@@ -82,7 +82,7 @@ void char_pointer_plus_one()
  */
 void double_pointer_plus_one()
 {
-    double arr[5] = { 10.1,20.2,30.3,40.4,50.5 };
+    double arr[5] = { 10.1, 20.2, 30.3, 40.4, 50.5 };
     for(int i = 0; i < 5; i++)
     {
     	printf("&arr[%d] = %p\n", i, arr + i);

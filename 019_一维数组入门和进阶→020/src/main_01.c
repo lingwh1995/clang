@@ -32,7 +32,7 @@ bool is_leap_year(int year)
 int get_days_by_year_and_month(int year, int month)
 {
     // 被static修饰的变量会存放在数据区(.data)，从索引1开始存放一月数据而不是从索引0开始存放一月数据体现了灵活编程思想
-    static const int days[] = { 29,31,28,31,30,31,30,31,31,30,31,30,31 };
+    static const int days[] = { 29, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
     // 短路与的细节用法，只有月份是2月的时候才需要判断是否是闰年
     if (month == 2 && is_leap_year(year))
     {

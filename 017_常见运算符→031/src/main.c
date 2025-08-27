@@ -48,7 +48,7 @@ void ternary_conditional_operator()
  */
 void add_equal_operator()
 {
-	int nums[] = { 1,2,3,4,5 };
+	int nums[] = { 1, 2, 3, 4, 5 };
 	int length = sizeof(nums) / sizeof(nums[0]);
 	int sum = 0 ;
 	for (int i = 0; i < length; i++)
@@ -63,7 +63,7 @@ void add_equal_operator()
  */
 void multiply_equal_operator()
 {
-	int nums[] = { 1,2,3,4,5 };
+	int nums[] = { 1, 2, 3, 4, 5 };
 	int length = sizeof(nums) / sizeof(nums[0]);
 	int sum = 1;
 	for (int i = 0; i < length; i++)

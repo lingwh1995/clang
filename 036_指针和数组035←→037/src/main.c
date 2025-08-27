@@ -5,7 +5,7 @@
  */
 void pointer_and_array_test_1()
 {
-    int arr[5] = { 1,2,3,4,5 };
+    int arr[5] = { 1, 2, 3, 4, 5 };
     //数组的地址
     printf("获取数组（首元素）的地址（方式一：数组名arr即为数组（首元素）的地址） = %p\n", arr);
     printf("获取数组（首元素）的地址（方式二：直接获取数组（首元素）的地址） = %p\n", &arr[0]);
@@ -30,7 +30,7 @@ void pointer_and_array_test_2()
 {
     int a = 1, b = 2, c = 3, d = 4;
     //定义一个数组指针
-    int* arr[5] = { &a,&b,&c,&d };
+    int* arr[5] = { &a, &b, &c, &d };
     //使用*+变量名为变量(数组中的元素)赋值,下面两种写法都是可以的
     *(arr[0]) = 100;
     *arr[1] = 200;
@@ -42,7 +42,7 @@ void pointer_and_array_test_2()
  */
 void pointer_and_array_test_3()
 {
-    int arr_1[5] = { 1,2,3,4,5 };
+    int arr_1[5] = { 1, 2, 3, 4, 5 };
     int size_1 = sizeof(arr_1) / sizeof(arr_1[0]);
     //int* ip = &arr_1[0];
     int* ip = arr_1;
@@ -55,7 +55,7 @@ void pointer_and_array_test_3()
     }
     printf("------------------------\n");
 
-    double arr_2[5] = { 1.1,2.2,3.3,4.4,5.5 };
+    double arr_2[5] = { 1.1, 2.2, 3.3, 4.4, 5.5 };
     int size_2 = sizeof(arr_2) / sizeof(arr_2[0]);
     //double* dp = &arr_2[0];
     double* dp = arr_2;
@@ -68,7 +68,7 @@ void pointer_and_array_test_3()
     }
     printf("------------------------\n");
 
-    char arr_3[5] = { 'h','e','l','l','o' };
+    char arr_3[5] = { 'h', 'e', 'l', 'l', 'o' };
     int size_3 = sizeof(arr_3) / sizeof(arr_3[0]);
     //char* cp = &arr_3[0];
     char* cp = arr_3;
@@ -94,7 +94,7 @@ void pointer_and_array_test_3()
  */
 void pointer_and_array_test_4()
 {
-    int arr[] = { 1,2,3,4,5 };
+    int arr[] = { 1, 2, 3, 4, 5 };
     int length = sizeof(arr) / sizeof(arr[0]);
     for (int i = 0; i < length; i++)
     {
@@ -111,7 +111,7 @@ void pointer_and_array_test_4()
  */
 void pointer_and_array_test_5()
 {
-    int arr[] = { 1,2,3,4,5 };
+    int arr[] = { 1, 2, 3, 4, 5 };
     //在sizeof()表达式中,数组名代表的是整个数组的意义,这包含了两个意义,即数组的类型+数组的大小
     int size = sizeof(arr);
     //在sizeof()表达式除外的其他地方,数组名都代表的是数组的首元素地址值
@@ -141,7 +141,7 @@ void print_array_by_while_loop(int* start, int* end)
  */
 void pointer_and_array_test_6()
 {
-    int arr[] = { 1,2,3,4,5 };
+    int arr[] = { 1, 2, 3, 4, 5 };
     int length = sizeof(arr) / sizeof(arr[0]);
     for (int i = 0; i < length; i++)
     {

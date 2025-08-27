@@ -17,30 +17,30 @@ void define_one_dimensional_array()
     // 错误的定义数组，演示一：n必须为一个常量，这里n不是一个常量
 	/*
 	 int n = 3;
-	 int arr_1[n] = { 1,2,3 };
+	 int arr_1[n] = { 1, 2, 3 };
 	 */
 
 	// 错误的定义数组 演示二：c语言规定，数组变量一旦声明，就不能修改变量指向的地址，修改会报错，重新为数组变量赋值，改变原来的内存地址，就会报错
 	/*
-	 int arr_2[] = { 1,2,3 };
+	 int arr_2[] = { 1, 2, 3 };
 	 // 数组变量一旦定义好，就是一个常量，再去改变常量的值，会报错
-	 //arr_2 = { 4,5,6 };
+	 //arr_2 = { 4, 5, 6 };
 	 // 如果要给定义好的数组重新赋值，使用string.h中的memcpy()函数实现这个需求，如果是字符串，使用strcpy()处理
      */
 
     // 错误的定义数组 演示三：像这种数组的长度为5，但却初始化了10个元素，后面的五个元素是无法访问到的
-    //int arr_2[5] = { 1,2,3,4,5,6,7,8,9,10 };
+    //int arr_2[5] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     // 正确定义数组演示一
     int arr_3[3];
     // 正确定义数组演示二：使用宏来定义数组的长度
-    int arr_4[LEN] = { 1,2,3 };
+    int arr_4[LEN] = { 1, 2, 3 };
     // 正确定义数组演示三
-    int arr_5[3] = { 1,2,3 };
+    int arr_5[3] = { 1, 2, 3 };
     // 正确定义数组演示四
-    int arr_6[3] = { 5 }; // 等同于 int arr_6[3] = { 5,0,0 };
+    int arr_6[3] = { 5 }; // 等同于 int arr_6[3] = { 5, 0, 0 };
     // 正确定义数组演示五
-    int arr_7[3] = { 0 }; // 等同于 arr_7[3] = { 0,0,0 };
+    int arr_7[3] = { 0 }; // 等同于 arr_7[3] = { 0, 0, 0 };
     // 正确定义数组演示六：可变长数组
     int n = 5;
     int arr_8[n];
@@ -60,10 +60,10 @@ void define_one_dimensional_array()
 
     // 正确定义数组演示八
     //c语言允许省略方括号里面的数组成员数量，这时将根据大括号里面的值的数量，自动确定数组的长度
-    int arr_14[3] = { 1,2,3 }; // 等同于 int arr_13[] = { 1,2,3 };
+    int arr_14[3] = { 1, 2, 3 }; // 等同于 int arr_13[] = { 1, 2, 3 };
 
     // 定义一个长度为5的整形数组，这里的长度是系统自动计算出来的
-    int nums_1[] = { 1,2,3,4,5 };
+    int nums_1[] = { 1, 2, 3, 4, 5 };
     int len1 = sizeof(nums_1) / sizeof(nums_1[0]);
     printf("数组长度: len1 = %d\n", len1);
     for (int i = 0; i < len1; i++)
@@ -73,7 +73,7 @@ void define_one_dimensional_array()
     printf("--------------------------------\n");
 
     // 定义一个长度为5的整形数组
-    int nums_2[5] = { 1,2,3,4,5 };
+    int nums_2[5] = { 1, 2, 3, 4, 5 };
     int len2 = sizeof(nums_2) / sizeof(nums_2[0]);
     printf("数组长度: len2 = %d\n", len2);
     for (int i = 0; i < len2; i++)
@@ -83,7 +83,7 @@ void define_one_dimensional_array()
     printf("--------------------------------\n");
 
     // 数组长度为5,里面只包含三个元素,第4个和第5个元素因为没有被初始化,所以为值为0
-    int nums_3[5] = { 1,2,3 };
+    int nums_3[5] = { 1, 2, 3 };
     int len4 = sizeof(nums_3) / sizeof(nums_3[0]);
     printf("数组长度:%d\n", len4);
     for (int i = 0; i < len4; i++)
@@ -99,15 +99,15 @@ void define_one_dimensional_array()
 void length_of_one_dimensional_array()
 {
     // 如果定义数组时规定了数组的长度,那么不管真实的长度是多少,求出来的长度都是之前规定好的长度
-    int arr_1[10] = { 1,2,3,4,5 };
+    int arr_1[10] = { 1, 2, 3, 4, 5 };
     int len1 = sizeof(arr_1) / sizeof(arr_1[0]);
 
     // 如果定义数组时规定了数组的长度,那么不管真实的长度是多少,求出来的长度都是之前规定好的长度
-    int arr_2[5] = { 1,2,3,4,5 };
+    int arr_2[5] = { 1, 2, 3, 4, 5 };
     int len2 = sizeof(arr_2) / sizeof(arr_2[0]);
 
     // 如果定义数组时没有规定数组的长度,等号右边写了几个元素,数组的长度就是几
-    int arr_3[] = { 1,2,3,4,5 };
+    int arr_3[] = { 1, 2, 3, 4, 5 };
     int len3 = sizeof(arr_3) / sizeof(arr_3[0]);
 
     printf("数组arr_1的长度 len1 = %d\n", len1);
@@ -120,8 +120,8 @@ void length_of_one_dimensional_array()
      *     因为 strlen() 方法统计长度时遇到\0才会结束统计长度,是字符串专用方法,不适用于字符数组
      */
     char str[] = { "hello" };
-    char chars_1[] = { 'h','e','l','l','O','\0' };
-    char chars_2[] = { 'h','e','l','l','O' };
+    char chars_1[] = { 'h', 'e', 'l', 'l', 'o', '\0' };
+    char chars_2[] = { 'h', 'e', 'l', 'l', 'o' };
     printf("str长度 = %d, chars_1 = %d, chars_2 = %d\n", strlen(str), strlen(chars_1), strlen(chars_2));
 }
 
@@ -133,7 +133,7 @@ void length_of_one_dimensional_array()
 void two_attribute_of_one_dimensional_array()
 {
     // 计算数组所占空间大小的两种方式
-    int arr[5] = { 1,2,3,4,5 };
+    int arr[5] = { 1, 2, 3, 4, 5 };
     	// 方式一
     int size1 = sizeof(int) * 5;
     printf("数组arr所占空间大小 size1 = %d\n", size1);
@@ -174,7 +174,7 @@ void view_memory_physical_address_of_one_dimensional_array()
     printf("-----------------------------\n");
 
     // 可以清晰观察到一个int类型数据占4个字节
-    int nums[] = { 1,2,3,4,5 };
+    int nums[] = { 1, 2, 3, 4, 5 };
     int length = sizeof(nums) / sizeof(nums[0]);
     for (int i = 0; i < length; i++)
     {
@@ -190,7 +190,7 @@ void variable_length_array()
 	int n = 10;
 
 	// 注意：下面一行放开会报错
-	//int arr_1[n] = { 1,2,3 };
+	//int arr_1[n] = { 1, 2, 3 };
 
 	// 下面三行不会报错
 	int arr_2[n];

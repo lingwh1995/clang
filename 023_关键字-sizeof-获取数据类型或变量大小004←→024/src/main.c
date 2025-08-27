@@ -26,15 +26,15 @@ int main()
     printf("sizeof(arr) = %d\n", sizeof(arr));
     printf("----------------------------------------\n");
 
-    int nums[] = { 10,20,30,40,50 };
+    int nums[] = { 10, 20, 30, 40, 50 };
     printf("sizeof(nums[0]) = %d\n", sizeof(nums[0]));
     printf("sizeof(nums) = %d\n", sizeof(nums));
     printf("----------------------------------------\n");
 
     char stra[10] = { "tulun" };
-    char strb[10] = { 't','u','l','u','n' };
+    char strb[10] = { 't', 'u', 'l', 'u', 'n' };
     char strc[] = { "tulun" };
-    char strd[] = { 't','u','l','u','n' };
+    char strd[] = { 't', 'u', 'l', 'u', 'n' };
     printf("sizeof(stra) = %d\n", sizeof(stra));
     printf("sizeof(strb) = %d\n", sizeof(strb));
     printf("sizeof(strc) = %d\n", sizeof(strc));

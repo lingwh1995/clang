@@ -484,7 +484,7 @@ void strncat_test_2()
  */
 void memcpy_test_1()
 {
-	int src[] = { 1,2,3,4,5,6,7,8,9,0 };
+	int src[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 	int dest[20] = { 0 };
 	memcpy(dest, src, 16); // 会复制 1,2,3,4 这四个数，因为一个int类型数据占4个字节
 	//此处的16代表着16个字节，而我们访问的数组是int型，所以此处拷贝的是4个元素
@@ -550,7 +550,7 @@ void memcpy_test_3()
     }
     printf("\n");
 
-    struct Student stus[3] = { {"zhangsan",23}, {"lisi",24}, {"wangwu",25} };
+    struct Student stus[3] = { { "zhangsan", 23 }, { "lisi", 24 }, { "wangwu", 25 } };
     struct Student stus_cpy[3];
     memcpy(stus_cpy, stus, sizeof(stus));
     for(int i = 0; i < sizeof(stus) / sizeof(stus[0]); i++)
