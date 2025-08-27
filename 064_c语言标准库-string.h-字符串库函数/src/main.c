@@ -162,7 +162,7 @@ void strcpy_test()
     char s1[] = "a1";
     char s2[] = "b2";
     char s3[] = "c3";
-    strcpy(s1,strcpy(s2, s3));
+    strcpy(s1, strcpy(s2, s3));
     puts(s1);
     //printf("s1 = %s\n", s1);
 }

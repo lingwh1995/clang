@@ -323,11 +323,44 @@ void bubble_sort_test_7()
 }
 
 /**
- * 二分查找
+ * 二分查找法：在数组中查询输入值的索引位置，如果没有查询到返回-1
  */
-void binary_search_test()
+int binary_search_find_value(const int* arr, int n, int val)
 {
+	if(NULL == arr || n < 1)
+	{
+		return -1;
+	}
+	int position = -1;
+	int left = 0, right = n - 1;
+	while(left < right)
+	{
+		position = (left + right) / 2;
+		if(arr[position] == val)
+		{
+			break;
+		}
+		if(arr[position] > val)
+		{
+			right = position;
+		}
+		else
+		{
+			left = position;
+		}
+	}
+	return position;
+}
 
+/**
+ * 测试二分查找
+ */
+void binary_search_find_value_test()
+{
+	int arr[] = { 12,23,34,45,56,67,78,89,90,100,110,120 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	int val = 89;
+	binary_search_find_value(arr, n, val);
 }
 
 int main()
@@ -338,7 +371,7 @@ int main()
 	//bubble_sort_test_4();
 	//bubble_sort_test_5();
 	//bubble_sort_test_6();
-	//bubble_sort_test_7();
-	binary_search_test();
+	bubble_sort_test_7();
+	//binary_search_find_value_test();
 	return 0;
 }

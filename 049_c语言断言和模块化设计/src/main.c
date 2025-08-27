@@ -21,7 +21,7 @@
  * @param *arr 代表数组的指针
  * @param length 数组长度 
  */
-void init_arr_1(int *arr, int length)
+void init_arr_1(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;
@@ -39,7 +39,7 @@ void init_arr_1(int *arr, int length)
  * @param *ap 代表第一个数的指针
  * @param *bp 代表第二个数的指针
  */
-void swap_1(int *ap, int *bp)
+void swap_1(int* ap, int* bp)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == ap || NULL == bp) return;
@@ -55,7 +55,7 @@ void swap_1(int *ap, int *bp)
  * @param *arr 代表数组的指针
  * @param length 数组长度 
  */
-void bubble_sort_1(int *arr, int length)
+void bubble_sort_1(int* arr, int length)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || length < 1) return;

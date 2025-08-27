@@ -307,7 +307,8 @@ void two_dimensional_arr_traverse_test()
 void two_dimensional_arr_classic_application_scenarios_test()
 {
 	char names[3][10] = { "张三", "李四", "王五" };
-	for(int i = 0; i < sizeof(names) / sizeof(names[0]); i++) {
+	for(int i = 0; i < sizeof(names) / sizeof(names[0]); i++)
+	{
 		printf("%s\n", names[i]);
 	}
 }
