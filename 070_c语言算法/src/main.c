@@ -378,9 +378,11 @@ int binary_search_find_value(const int* arr, int n, int val)
  */
 void binary_search_find_value_test()
 {
-	int arr[] = { 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112 };
+//	int arr[] = { 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112 };
+//	int val = 108;
+	int arr[] = { 12, 23, 34, 45, 56, 67, 78, 89, 90, 100, 110, 120 };
+	int val = 95;
 	int n = sizeof(arr) / sizeof(arr[0]);
-	int val = 108;
 	int i = binary_search_find_value(arr, n, val);
 	printf("%d在数组中的索引位置i = %d\n", val, i);
 }
