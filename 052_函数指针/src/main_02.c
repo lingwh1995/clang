@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 /**
- * 使用函数调用优化冒泡排序
+ * 冒泡排序基础版
  */
 
-void swap_number(int* a, int *b)
+void swap_number_1(int* a, int *b)
 {
 	int temp = *a;
 	*a = *b;
@@ -13,7 +13,7 @@ void swap_number(int* a, int *b)
 /**
  * 冒泡排序
  */
-void bubble_sort(int* arr, int length)
+void bubble_sort_1(int* arr, int length)
 {
 	if(NULL == arr || length < 2)
 	{
@@ -25,7 +25,7 @@ void bubble_sort(int* arr, int length)
 		{
 			if(arr[j] > arr[j + 1])
 			{
-				swap_number(&arr[j], &arr[j + 1]);
+				swap_number_1(&arr[j], &arr[j + 1]);
 			}
 		}
 	}
@@ -34,7 +34,7 @@ void bubble_sort(int* arr, int length)
 /**
  * 打印数组
  */
-void print_arr(int* arr, int length)
+void print_arr_1(int* arr, int length)
 {
 	for(int i = 0; i < length; i++)
 	{
@@ -43,15 +43,15 @@ void print_arr(int* arr, int length)
 }
 
 #if 0
-#endif
 int main()
 {
 	int arr[] = { 5, 1, 9, 7, 3 };
 	int length = sizeof(arr)/sizeof(arr[0]);
 	// 冒泡排序
-	bubble_sort(arr, length);
+	bubble_sort_1(arr, length);
 	// 打印数组
-	print_arr(arr, length);
+	print_arr_1(arr, length);
 	return 0;
 }
+#endif
 
