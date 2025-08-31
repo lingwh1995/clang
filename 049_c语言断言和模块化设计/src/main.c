@@ -39,7 +39,7 @@ void init_arr_1(int* arr, int length)
  * @param *ap 代表第一个数的指针
  * @param *bp 代表第二个数的指针
  */
-void swap_1(int* ap, int* bp)
+void swap_number_1(int* ap, int* bp)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == ap || NULL == bp) return;
@@ -67,7 +67,7 @@ void bubble_sort_1(int* arr, int length)
 		{
 			if (arr[j] > arr[j+1])
 			{
-				swap_1(&arr[j], &arr[j+1]);
+				swap_number_1(&arr[j], &arr[j+1]);
 			}
 		}
 	}
@@ -91,7 +91,6 @@ void print_arr_1(int* arr, int length)
 }
 
 #if 0
-#endif
 int main()
 {
 	int arr[ARSIZE] = { 0 };
@@ -106,3 +105,4 @@ int main()
 	print_arr_1(p_arr, ARSIZE);
 	return 0;
 }
+#endif

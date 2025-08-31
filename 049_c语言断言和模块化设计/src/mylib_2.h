@@ -20,7 +20,7 @@ extern void init_arr_3(int* arr, int length);
  * @param *ap 代表第一个数的指针
  * @param *bp 代表第二个数的指针
  */
-extern void swap_3(int* ap, int* bp);
+extern void swap_number__3(int* ap, int* bp);
 
 /*
  * 冒泡排序

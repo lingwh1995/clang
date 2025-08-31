@@ -40,7 +40,7 @@ void dec_to_bin(int dec)
 		binary[i] = dec % 2;
 		i++;
 		dec /= 2;
-	}while(dec > 0);
+	} while(dec > 0);
 
 	// 获取整型数组真实长度
 	int len = i;

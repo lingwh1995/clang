@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 
-// 函数的声明
-float calc_area_of_triangle(float a, float b, float c);
+// 函数的声明（完整版）
+//float calc_area_of_triangle(float a, float b, float c);
+
+// 函数的声明（简化版）
+float calc_area_of_triangle(float, float, float);
 
 /**
  * 1.如果被调用的函数定义在main()之前，那么要在main()之前对这个函数声明
@@ -32,5 +35,4 @@ float calc_area_of_triangle(float a, float b, float c)
 		s = sqrt(p * (p - a) * (p - b) * (p - c));
 	}
 	return s;
-
 }

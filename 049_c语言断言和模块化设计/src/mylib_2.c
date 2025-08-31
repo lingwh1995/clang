@@ -66,7 +66,7 @@ void init_arr_3(int* arr, int length)
  * @param *ap 代表第一个数的指针
  * @param *bp 代表第二个数的指针
  */
-void swap_3(int* ap, int* bp)
+void swap_number_3(int* ap, int* bp)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == ap || NULL == bp) return;
@@ -94,7 +94,7 @@ void bubble_sort_3(int* arr, int length)
 		{
 			if (arr[j] > arr[j + 1])
 			{
-				swap_3(&arr[j], &arr[j + 1]);
+				swap_number_3(&arr[j], &arr[j + 1]);
 			}
 		}
 	}

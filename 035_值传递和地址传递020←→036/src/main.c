@@ -12,7 +12,7 @@
   * @param a
   * @param b
   */
-void swap_two_number_1(int a, int b)
+void swap_number_1(int a, int b)
 {
     int t = a;
     a = b;
@@ -24,7 +24,7 @@ void swap_two_number_1(int a, int b)
  * 地址传递
  *  是一种间接改变值的方案
  */
-void swap_two_number_2(int* x, int* y)
+void swap_number_2(int* x, int* y)
 {
     //使用指针变量前正确的做法是先对指针进行判空处理
     if (NULL == x || NULL == y)
@@ -40,13 +40,13 @@ int main()
 {
     //值传递调用函数后不能改变a和b的值
     int a = 10, b = 20;
-    swap_two_number_1(a, b);
+    swap_number_1(a, b);
     printf("a = %d, b = %d\n", a, b);
 
     //地址传递调用函数后可以改变x和y的值
     int x = 10, y = 20;
     //实参和形参的结合是从右向左,并非从左向右
-    swap_two_number_2(&x, &y);
+    swap_number_2(&x, &y);
     printf("x = %d, y = %d\n", x, y);
     return 0;
 }

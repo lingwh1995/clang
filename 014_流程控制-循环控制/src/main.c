@@ -61,11 +61,25 @@ void dowhile_loop_test()
  */
 void for_loop_test()
 {
+	// 循环10次
     for (int i = 0; i < 10; i++)
     {
         printf("%d\n", i);
     }
     printf("------------------\n");
+
+    // 循环1次
+    for (int i = 0; i < 1; i++)
+    {
+        printf("%d\n", i);
+    }
+    printf("------------------\n");
+
+    // 循环2次
+    for (int i = 0; i <= 1; i++)
+    {
+        printf("%d\n", i);
+    }
 }
 
 #if 0
