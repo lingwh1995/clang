@@ -635,7 +635,7 @@ void memmove_test()
 	int arr[] = { 1, 2, 3, 4, 5 };
 	// 一个int类型数据占4个字节，2个int类型数据占8个字节
 	memmove(arr, arr + 2, 8);
-	for(int i=0; i < sizeof(arr)/sizeof(arr[0]); i++)
+	for(int i=0; i < sizeof(arr) / sizeof(arr[0]); i++)
 	{
 		printf("%d ", arr[i]);
 	}
@@ -696,7 +696,7 @@ void my_memove_1_test()
 	int arr[] = { 1, 2, 3, 4, 5 };
 	// 一个int类型数据占4个字节，2个int类型数据占8个字节
 	my_memove_1(arr, arr + 2, 8);
-	for(int i=0; i < sizeof(arr)/sizeof(arr[0]); i++)
+	for(int i=0; i < sizeof(arr) / sizeof(arr[0]); i++)
 	{
 		printf("%d ", arr[i]);
 	}
@@ -775,7 +775,7 @@ void my_memove_2_test()
 	int arr[] = { 1, 2, 3, 4, 5 };
 	// 一个int类型数据占4个字节，2个int类型数据占8个字节
 	my_memove_2(arr, arr + 2, 8);
-	for(int i=0; i < sizeof(arr)/sizeof(arr[0]); i++)
+	for(int i=0; i < sizeof(arr) / sizeof(arr[0]); i++)
 	{
 		printf("%d ", arr[i]);
 	}
@@ -870,7 +870,7 @@ void my_memove_3_test()
 	int arr[] = { 1, 2, 3, 4, 5 };
 	// 一个int类型数据占4个字节，2个int类型数据占8个字节
 	my_memove_3(arr, arr + 2, 8);
-	for(int i=0; i < sizeof(arr)/sizeof(arr[0]); i++)
+	for(int i=0; i < sizeof(arr) / sizeof(arr[0]); i++)
 	{
 		printf("%d ", arr[i]);
 	}

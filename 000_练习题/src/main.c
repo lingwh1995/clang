@@ -672,12 +672,22 @@ void question_025_pascals_triangle()
 }
 
 /**
+ *
+ */
+void right_move_arr(int* arr, int n)
+{
+
+}
+
+/**
  * 循环移动数组
  */
 void question_026_cycle_move_arr()
 {
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	//right_move_arr();
+	int length = sizeof(arr) / sizeof(arr[0]);
+	right_move_arr(arr, length);
+	//right_move_arr_();
 	//right_move_arr_k();
 	//left_move_arr();
 	//left_move_arr_k();
