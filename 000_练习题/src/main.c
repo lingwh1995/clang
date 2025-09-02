@@ -672,11 +672,110 @@ void question_025_pascals_triangle()
 }
 
 /**
- *
+ * 数组元素整体向右移动一位
  */
-void right_move_arr(int* arr, int n)
+void right_move_arr_1(int* arr, int length)
 {
+   // 保存最后一个元素，因为它会被覆盖
+   int temp = arr[length - 1];
 
+   // 从后往前移动元素（避免数据覆盖）
+   for(int i = length - 1; i > 0; i--)
+   {
+        arr[i] = arr[i - 1];
+   }
+
+   // 将原来的最后一个元素放到第一个位置
+   arr[0] = temp;
+}
+
+/**
+ * 数组元素整体向左移动一位
+ */
+void left_move_arr_1(int* arr, int length)
+{
+   // 保存最后一个元素，因为它会被覆盖
+   int temp = arr[0];
+
+   // 从前往后移动元素（避免数据覆盖）
+   for(int i = 0; i < length; i++)
+   {
+        arr[i] = arr[i + 1];
+   }
+
+   // 将原来的第一个元素放到最后一个位置
+   arr[length - 1] = temp;
+}
+
+/**
+ * 数组元素整体向右移动k位
+ */
+void right_move_arr_k(int* arr, int length, int k)
+{
+    // 处理k值大于数组长度的情况
+    k = k % length;
+
+    // 创建一个数组用于保存最后k个元素
+    int* arr_temp = (int*)malloc(k * sizeof(int));
+
+    // 把最后k个元素保存到临时数组中
+    for(int i = 0; i < k; i++)
+    {
+        arr_temp[i] = arr[length - k + i];
+    }
+
+    // 从后往前移动元素（避免数据覆盖）
+    for(int i = length; i > 0; i--)
+    {
+        arr[i] = arr[i - k];
+    }
+
+    // 把最后k个元素放到数组的开头
+    for(int i = 0; i < k; i++)
+    {
+        arr[i] = arr_temp[i];
+    }
+}
+
+/**
+ * 数组元素整体向左移动k位
+ */
+void left_move_arr_k(int* arr, int length, int k)
+{
+    // 处理k值大于数组长度的情况
+    k = k % length;
+
+    // 创建一个数组用于保存前k个元素
+    int* arr_temp = (int*)malloc(k * sizeof(int));
+
+    // 把前k个元素保存到临时数组中
+    for(int i = 0; i < k; i++)
+    {
+        arr_temp[i] = arr[i];
+    }
+
+    // 从前往后移动元素（避免数据覆盖）
+    for(int i = 0; i < length; i++)
+    {
+        arr[i] = arr[i + k];
+    }
+
+    // 把前k个元素放到数组的结尾
+    for(int i = 0; i < k; i++)
+    {
+        arr[length - k + i] = arr_temp[i];
+    }
+}
+
+/**
+ * 打印数组
+ */ 
+void print_arr(int* arr, int length)
+{
+	for(int i = 0; i < length; i++)
+	{
+		printf("%d\n", arr[i]);
+	}
 }
 
 /**
@@ -686,11 +785,19 @@ void question_026_cycle_move_arr()
 {
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	int length = sizeof(arr) / sizeof(arr[0]);
-	right_move_arr(arr, length);
-	//right_move_arr_();
-	//right_move_arr_k();
-	//left_move_arr();
-	//left_move_arr_k();
+    // 向右移动一位
+	//right_move_arr_1(arr, length);
+    // 向左移动一位
+	//left_move_arr_1(arr, length);
+
+    int k = 3;
+
+    // 向右移动k位
+    //right_move_arr_k(arr, length, k);
+
+    // 向左移动k位
+    left_move_arr_k(arr, length, k);
+	print_arr(arr, length);
 }
 
 int main()
