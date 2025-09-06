@@ -39,6 +39,12 @@
  * 026.循环移动数组
  */
 
+void left_move_arr_step_k_2(int*, int, int);
+void right_move_arr_step_k_2(int*, int, int);
+void print_arr(int* , int);
+void reverse_arr(int*, int, int);
+void left_move_arr_step_k_3(int*, int, int);
+
 /**
  * 001.循环打印 a-g 方式一：不使用取余运算
  */
@@ -674,8 +680,12 @@ void question_025_pascals_triangle()
 /**
  * 数组元素整体向右移动一位
  */
-void right_move_arr_1(int* arr, int length)
+void right_move_arr_step_1(int* arr, int length)
 {
+   if(NULL == arr || length < 2)
+   {
+	   return;
+   }
    // 保存最后一个元素，因为它会被覆盖
    int temp = arr[length - 1];
 
@@ -692,8 +702,12 @@ void right_move_arr_1(int* arr, int length)
 /**
  * 数组元素整体向左移动一位
  */
-void left_move_arr_1(int* arr, int length)
+void left_move_arr_step_1(int* arr, int length)
 {
+   if(NULL == arr || length < 2)
+   {
+	   return;
+   }
    // 保存最后一个元素，因为它会被覆盖
    int temp = arr[0];
 
@@ -708,10 +722,46 @@ void left_move_arr_1(int* arr, int length)
 }
 
 /**
- * 数组元素整体向右移动k位
+ * 数组元素整体向右移动k位：方式一
  */
-void right_move_arr_k(int* arr, int length, int k)
+void right_move_arr_step_k_1(int* arr, int length, int k)
 {
+	if(NULL == arr || length < 2)
+	{
+		return;
+	}
+	k = k % length;
+	if(k > 0)
+	{
+		while(k--)
+		{
+			right_move_arr_step_1(arr, length);
+		}
+	}
+	else
+	{
+		while(k++) // => 这行代码写的真牛逼
+		{
+			left_move_arr_step_1(arr, length);
+		}
+	}
+}
+
+/**
+ * 数组元素整体向右移动k位：方式二
+ */
+void right_move_arr_step_k_2(int* arr, int length, int k)
+{
+	// 如果 k < 0，则调用左移的方法
+	if(k < 0)
+	{
+		left_move_arr_step_k_2(arr, length, -k);
+        return;
+	}
+    if(NULL == arr || length < 2)
+    {
+	    return;
+    }
     // 处理k值大于数组长度的情况
     k = k % length;
 
@@ -738,10 +788,46 @@ void right_move_arr_k(int* arr, int length, int k)
 }
 
 /**
- * 数组元素整体向左移动k位
+ * 数组元素整体向左移动k位：方式一
  */
-void left_move_arr_k(int* arr, int length, int k)
+void left_move_arr_step_k_1(int* arr, int length, int k)
 {
+	if(NULL == arr || length < 2)
+	{
+		return;
+	}
+	k = k % length;
+	if(k > 0)
+	{
+		while(k--)
+		{
+			left_move_arr_step_1(arr, length);
+		}
+	}
+	else
+	{
+		while(k++) // => 这行代码写的真牛逼
+		{
+			right_move_arr_step_1(arr, length);
+		}
+	}
+}
+
+/**
+ * 数组元素整体向左移动k位：方式二
+ */
+void left_move_arr_step_k_2(int* arr, int length, int k)
+{
+	// 如果 k < 0，则调用右移的方法
+	if(k < 0)
+	{
+		right_move_arr_step_k_2(arr, length, -k);
+        return;
+	}
+    if(NULL == arr || length < 2)
+    {
+	    return;
+    }
     // 处理k值大于数组长度的情况
     k = k % length;
 
@@ -768,14 +854,94 @@ void left_move_arr_k(int* arr, int length, int k)
 }
 
 /**
+ * 数组元素整体向左移动k位：方式三
+ */
+void right_move_arr_step_k_3(int* arr, int length, int k)
+{
+    if(k < 0)
+    {
+        left_move_arr_step_k_3(arr, length, -k);
+        return;
+    }
+    if(NULL == arr || length < 2 || k < 1)
+    {
+        return;
+    }
+    k = k % length;
+    reverse_arr(arr, length-k, length-1);
+    printf("第一次反转 => 反转 length-k到length-1 ：");
+    print_arr(arr, length);
+    reverse_arr(arr, 0, length-k-1);
+    printf("第二次反转 => 反转 0到length-k-1      ：");
+    print_arr(arr, length);
+    reverse_arr(arr, 0, length-1);
+    printf("第三次反转 => 反转 0到length-1        ：");
+    print_arr(arr, length);
+}
+
+/**
+ * 交换两个数
+ */
+void swap_number(int* left, int* right)
+{
+    int temp = *left;
+    *left = *right;
+    *right = temp;
+}
+
+/**
+ * 反转数组
+ */
+void reverse_arr(int* arr, int left, int right)
+{
+    if(NULL == arr || left >= right)
+    {
+        return;
+    }
+    while(left < right)
+    {
+        swap_number(&arr[left], &arr[right]);
+        left++;
+        right--;
+    }
+}
+
+/**
+ * 数组元素整体向右移动k位：方式三
+ *  k = 3 => 反转 0-2 => 反转 3-数组末尾 => 反转 0-数组末尾
+ */
+void left_move_arr_step_k_3(int* arr, int length, int k)
+{
+    if(k < 0)
+    {
+        right_move_arr_step_k_3(arr, length, -k);
+        return;
+    }
+    if(NULL == arr || length < 2 || k < 1)
+    {
+        return;
+    }
+    reverse_arr(arr, 0, k-1);
+    printf("第一次反转 => 反转 0到k-1      ：");
+    print_arr(arr, length);
+    reverse_arr(arr, k, length-1);
+    printf("第二次反转 => 反转 k到length-1 ：");
+    print_arr(arr, length);
+    reverse_arr(arr, 0, length-1);
+    printf("第三次反转 => 反转 0到length-1 ：");
+    print_arr(arr, length);
+}
+
+/**
  * 打印数组
  */ 
 void print_arr(int* arr, int length)
 {
 	for(int i = 0; i < length; i++)
 	{
-		printf("%d\n", arr[i]);
+		printf("%d\t", arr[i]);
 	}
+    printf("\n");
 }
 
 /**
@@ -786,17 +952,29 @@ void question_026_cycle_move_arr()
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	int length = sizeof(arr) / sizeof(arr[0]);
     // 向右移动一位
-	//right_move_arr_1(arr, length);
+	//right_move_arr_step_1(arr, length);
     // 向左移动一位
-	//left_move_arr_1(arr, length);
+	//left_move_arr_step_1(arr, length);
 
-    int k = 3;
+    int k = -3;
+    //k = 3;
+    // 向右移动k位：方式一：支持k为正数或负数
+    //right_move_arr_step_k_1(arr, length, k);
 
-    // 向右移动k位
-    //right_move_arr_k(arr, length, k);
+    // 向右移动k位：方式二：支持k为正数或负数
+    //right_move_arr_step_k_2(arr, length, k);
 
-    // 向左移动k位
-    left_move_arr_k(arr, length, k);
+    // 向右移动k位：方式三：支持k为正数或负数
+    right_move_arr_step_k_3(arr, length, k);
+
+    // 向左移动k位：方式一：支持k为正数或负数
+    //left_move_arr_step_k_1(arr, length, k);
+
+    // 向左移动k位：方式二：支持k为正数或负数
+    //left_move_arr_step_k_2(arr, length, k);
+
+    // 向左移动k位：方式三：支持k为正数或负数
+    //left_move_arr_step_k_3(arr, length, k);
 	print_arr(arr, length);
 }
 
