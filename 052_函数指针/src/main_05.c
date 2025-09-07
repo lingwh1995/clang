@@ -13,7 +13,6 @@ double mul_number_2(double, double);
 double div_number_2(double, double);
 
 #if 0
-#endif
 int main()
 {
 	// 解决eclipse无法使用scanf()从控制台接收参数的问题
@@ -42,7 +41,7 @@ int main()
 	}
 	return 0;
 }
-
+#endif
 
 /**
  * 加法
