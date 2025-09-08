@@ -37,7 +37,7 @@ void print_char_arr(const void* vp)
  */
 void print_arr(const void *arr, int size, int data_type_size, void (*print)(const void *))
 {
-	if(NULL == arr || size == 0)
+	if(NULL == arr || NULL == print || size < 1 || data_type_size < 1)
 	{
 		return;
 	}
