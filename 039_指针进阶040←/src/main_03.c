@@ -49,6 +49,7 @@ void pointer_sub_str()
     printf("字符串长度 = %d", len);
 }
 
+#if 0
 int main()
 {
     // 使用整型数组 1.观察遍历数组时指针的变化 2.观察指针的相减
@@ -57,3 +58,4 @@ int main()
     //pointer_sub_str();
     return 0;
 }
+#endif

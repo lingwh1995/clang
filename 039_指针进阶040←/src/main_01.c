@@ -25,19 +25,29 @@
  */
 
 /**
- * 1.整形指针转换为char类型指针
+ * 1.整形指针转换为char类型指针，再将char类型指针换为整形指针转
  * 2.char类型指针的+1
  * 3.大端和小端
  */
-void int_pointer_to_char_pointer()
+void int_pointer_to_char_pointer_and_char_pointer_to_int_pointer()
 {
     int a = 0x12345678;
     int* ip = &a;
     printf("sizeof(ip) = %d\n", sizeof(ip));
-    printf("ip = %p\n", ip);
+    printf("&ip = %p\n", ip);
+    printf("ip = %x\n", *ip);
+    // 整形指针转换为char类型指针
+    printf("整形指针转换为char类型指针：\n");
     char* cp = (char*)&a;
     printf("sizeof(cp) = %d\n", sizeof(cp));
-    printf("cp = %p\n", cp);
+    printf("&cp = %p\n", cp);
+    printf("cp = %x\n", *cp);
+    // 再将char类型指针换为整形指针转
+    printf("再将char类型指针换为整形指针转：\n");
+    ip = (int*)cp;
+    printf("sizeof(ip) = %d\n", sizeof(ip));
+    printf("&ip = %p\n", ip);
+    printf("ip = %x\n", *ip);
     *cp = 'a'; //97  0x61
     cp = cp + 1;
     *cp = 'b'; //98  0x62
@@ -92,12 +102,12 @@ void double_pointer_plus_one()
 }
 
 #if 0
+#endif
 int main()
 {
-	int_pointer_to_char_pointer();
+	int_pointer_to_char_pointer_and_char_pointer_to_int_pointer();
 	//int_pointer_plus_one();
 	//char_pointer_plus_one();
 	//double_pointer_plus_one();
     return 0;
 }
-#endif

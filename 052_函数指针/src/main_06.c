@@ -2,6 +2,8 @@
 
 /**
  * 基于函数指针实现打印不同数据类型的数组
+ * 	注意： int类型指针可以转换为char类型指针，char类型指针也可以再反向转为int类型指针
+ * 		  double类型指针可以转换为char类型指针，char类型指针也可以再反向转为double类型指针
  */
 
 /**
@@ -9,6 +11,7 @@
  */ 
 void print_int_arr(const void* vp)
 {
+	// 将char类型指针还原为泛型指针（具体是int类型指针）
 	printf("%d\t", *((int*)vp));
 }
 
@@ -17,6 +20,7 @@ void print_int_arr(const void* vp)
  */ 
 void print_double_arr(const void* vp)
 {
+	// 将char类型指针还原为泛型指针（具体是double类型指针）
 	printf("%.1f\t", *((double*)vp));
 }
 
@@ -25,16 +29,41 @@ void print_double_arr(const void* vp)
  */ 
 void print_char_arr(const void* vp)
 {
+	// 将char类型指针还原为泛型指针（具体是char类型指针）
 	printf("%c\t", *((char*)vp));
 }
 
 /**
- * 打印数组
+ * 打印数组： 写法一
  * @param arr 要打印的数组
  * @param size 要打印的数组长度
  * @param data_type_size 对应的数据类型的长度
  * @param print 函数指针
  */
+void print_arr(const void *arr, int size, int data_type_size, void (*print)(const void *))
+{
+	if(NULL == arr || NULL == print || size < 1 || data_type_size < 1)
+	{
+		return;
+	}
+	// 将泛型指针转换为char类型指针
+	const char *cp = (const char*)arr;
+	for(int i = 0; i < size; i++)
+	{
+		(*print)(cp);
+		cp += data_type_size;
+	}
+	printf("\n");
+}
+
+/**
+ * 打印数组： 写法二
+ * @param arr 要打印的数组
+ * @param size 要打印的数组长度
+ * @param data_type_size 对应的数据类型的长度
+ * @param print 函数指针
+ */
+/*
 void print_arr(const void *arr, int size, int data_type_size, void (*print)(const void *))
 {
 	if(NULL == arr || NULL == print || size < 1 || data_type_size < 1)
@@ -48,7 +77,7 @@ void print_arr(const void *arr, int size, int data_type_size, void (*print)(cons
 	}
 	printf("\n");
 }
-
+*/
 #if 0
 int main()
 {
@@ -66,4 +95,4 @@ int main()
 	print_arr(cr, cn, sizeof(char), print_char_arr);
 	return 0;
 }
-#endif 0
+#endif
