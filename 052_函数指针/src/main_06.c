@@ -49,6 +49,7 @@ void print_arr(const void *arr, int size, int data_type_size, void (*print)(cons
 	printf("\n");
 }
 
+#if 0
 int main()
 {
 	// 创建一个int类型数组
@@ -65,3 +66,4 @@ int main()
 	print_arr(cr, cn, sizeof(char), print_char_arr);
 	return 0;
 }
+#endif 0
