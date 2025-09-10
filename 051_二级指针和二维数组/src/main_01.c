@@ -168,8 +168,8 @@ void print_td_arr_by_onetd_arr_test()
  * 打印二维字符数组
  * 	注意： 这里实际上是使用下标方式访问数组，使用下标方式访问数组本质就是使用指针方式访问数组
  */
-//void print_td_arr_1(const char **p_str, int n)
-void print_td_arr_1(const char *p_str[], int n)
+//void print_td_arr_1(const char** p_str, int n)
+void print_td_arr_1(const char* p_str[], int n)
 {
 	if(NULL == p_str)
 	{
@@ -185,7 +185,7 @@ void print_td_arr_1(const char *p_str[], int n)
 /**
  * 二维字符数组冒泡排序
  */
-void td_arr_bubble_sort_1(const char *p_str[], int n)
+void td_arr_bubble_sort_1(const char* p_str[], int n)
 {
 	if(NULL == p_str)
 	{

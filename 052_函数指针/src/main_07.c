@@ -63,12 +63,10 @@ void print_char_arr_4(const void* vp)
 
 /**
  * 打印字符串数组
+ * 特别注意： 这里的vp是一个二级指针
  */ 
 void print_str_arr_4(const void* vp)
 {
-//	char* s = (char*)vp;
-//	printf("%p\t", s);
-//	printf("%s\t", *s);
     char** s = (char**)vp;  // 正确的类型转换
     printf("%s\t", *s);     // 打印字符串内容
 }
@@ -102,7 +100,6 @@ void print_arr_4(const void *vp, int size, int data_type_size, void (*print)(con
 }
 
 #if 0
-#endif
 int main()
 {
 	// 定义整型数组
@@ -122,7 +119,7 @@ int main()
 
 
 	// 定义double类型数组
-	double dr[] = { 3.14, 2.71, 1.41, 1.73, 0.57 };
+	double dr[] = { 5.24, 2.18, 3.43, 7.76, 0.58 };
 	int dn = sizeof(dr) / sizeof(dr[0]);
 	// 排序前
 	print_arr_4(dr, dn, sizeof(double), print_double_arr_4);
@@ -137,7 +134,7 @@ int main()
 	// 排序后
 
 
-	//定义字符串数组
+	//定义字符串数组（这里实际上是定义了一个二维数组）
 	char* str[] = { "banana", "apple", "cherry", "orange", "pear" };
 	int sn = sizeof(str) / sizeof(str[0]);
 	// 排序前
@@ -220,3 +217,4 @@ int main()
 
 	return 0;
 }
+#endif
