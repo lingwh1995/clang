@@ -53,7 +53,7 @@ void print_arr_2(int* nums, int n)
 /**
  * 使用指针和while循环打印数组
  */
-void print_array_by_while_loop(int* start, int* end)
+void print_arr_by_while_loop(int* start, int* end)
 {
     if(NULL == start || NULL == end)
     {
@@ -78,7 +78,7 @@ int main()
     int length = sizeof(nums) / sizeof(nums[0]);
     // 参数是数组名，也就是数组首元素地址
     print_arr_2(nums, length);
-    print_array_by_while_loop(nums, nums+length);
+    print_arr_by_while_loop(nums, nums+length);
     return 0;
 }
 #endif

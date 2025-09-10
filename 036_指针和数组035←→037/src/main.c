@@ -122,7 +122,7 @@ void pointer_and_array_test_5()
 /**
  * 使用指针和while循环打印数组
  */
-void print_array_by_while_loop(int* start, int* end)
+void print_arr_by_while_loop(int* start, int* end)
 {
     // 判断指针是否为空
     if(NULL == start || NULL == end)
@@ -165,7 +165,7 @@ void pointer_and_array_test_6()
         printf("%d\n", *(arr + i));
     }
     printf("----------4-----------\n");
-    print_array_by_while_loop(arr,arr+5);
+    print_arr_by_while_loop(arr,arr+5);
     printf("----------5-----------\n");
 }
 

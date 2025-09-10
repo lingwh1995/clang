@@ -5,7 +5,7 @@
 /**
  * 打印数组
  */
-void print_array(int* arr,int length)
+void print_arr(int* arr,int length)
 {
 	for(int i=0; i<length; i++)
 	{
@@ -58,12 +58,12 @@ int main()
 	// 方式一复制数组
 	int* arr_copy = copy_array1(arr, length);
 	// 打印数组
-	print_array(arr_copy, length);
+	print_arr(arr_copy, length);
 
 	// 方式二复制数组
 	arr_copy = copy_array2(arr, length);
 	// 打印数组
-	print_array(arr_copy, length);
+	print_arr(arr_copy, length);
 	return 0;
 }
 #endif

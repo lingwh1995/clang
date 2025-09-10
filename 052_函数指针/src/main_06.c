@@ -9,28 +9,28 @@
 /**
  * 打印int类型数组
  */ 
-void print_int_arr(const void* vp)
+void print_int_arr_3(const void* vp)
 {
 	// 将char类型指针还原为泛型指针（具体是int类型指针）
-	printf("%d\t", *((int*)vp));
+	printf("%d\t", *(int*)vp);
 }
 
 /**
  * 打印double类型数组
  */ 
-void print_double_arr(const void* vp)
+void print_double_arr_3(const void* vp)
 {
 	// 将char类型指针还原为泛型指针（具体是double类型指针）
-	printf("%.1f\t", *((double*)vp));
+	printf("%.1f\t", *(double*)vp);
 }
 
 /**
  * 打印char类型数组
  */ 
-void print_char_arr(const void* vp)
+void print_char_arr_3(const void* vp)
 {
 	// 将char类型指针还原为泛型指针（具体是char类型指针）
-	printf("%c\t", *((char*)vp));
+	printf("%c\t", *(char*)vp);
 }
 
 /**
@@ -40,7 +40,7 @@ void print_char_arr(const void* vp)
  * @param data_type_size 对应的数据类型的长度
  * @param print 函数指针
  */
-void print_arr(const void *arr, int size, int data_type_size, void (*print)(const void *))
+void print_arr_3(const void* arr, int size, int data_type_size, void (*print)(const void *))
 {
 	if(NULL == arr || NULL == print || size < 1 || data_type_size < 1)
 	{
@@ -64,7 +64,7 @@ void print_arr(const void *arr, int size, int data_type_size, void (*print)(cons
  * @param print 函数指针
  */
 /*
-void print_arr(const void *arr, int size, int data_type_size, void (*print)(const void *))
+void print_arr_3(const void* arr, int size, int data_type_size, void (*print)(const void *))
 {
 	if(NULL == arr || NULL == print || size < 1 || data_type_size < 1)
 	{
@@ -78,21 +78,22 @@ void print_arr(const void *arr, int size, int data_type_size, void (*print)(cons
 	printf("\n");
 }
 */
+
 #if 0
 int main()
 {
 	// 创建一个int类型数组
-	int ar[] = { 12, 23, 34, 45, 56, 67, 78, 89 };
-	int in = sizeof(ar) / sizeof(ar[0]);
+	int ir[] = { 12, 23, 34, 45, 56, 67, 78, 89 };
+	int in = sizeof(ir) / sizeof(ir[0]);
 	// 创建一个double类型数组
 	double dr[] = { 1.2, 2.3, 3.4, 4.5, 5.6, 6.7, 7.8, 8.9 };
 	int dn = sizeof(dr) / sizeof(dr[0]);
 	// 创建一个char类型数组
 	char cr[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
 	int cn = sizeof(cr) / sizeof(cr[0]);
-	print_arr(ar, in, sizeof(int), print_int_arr);
-	print_arr(dr, dn, sizeof(double), print_double_arr);
-	print_arr(cr, cn, sizeof(char), print_char_arr);
+	print_arr_3(ir, in, sizeof(int), print_int_arr_3);
+	print_arr_3(dr, dn, sizeof(double), print_double_arr_3);
+	print_arr_3(cr, cn, sizeof(char), print_char_arr_3);
 	return 0;
 }
 #endif
