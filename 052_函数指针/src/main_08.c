@@ -137,7 +137,6 @@ void print_str_arr_5(const char* arr[], int length)
 }
 
 #if 0
-#endif
 int main()
 {
 	// 对整型数组进行快速排序
@@ -165,3 +164,4 @@ int main()
 	print_str_arr_5(str, sn);
 	return 0;
 }
+#endif
