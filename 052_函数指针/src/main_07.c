@@ -18,7 +18,7 @@ struct Student
 };
 
 // 使用typedef简化结构体定义
-typedef struct Person Person;
+typedef struct Student Student;
 */
 
 
@@ -86,9 +86,9 @@ void print_struct_arr_4(const void* vp)
 /**
  * 打印数组（泛型方法）
  */
-void print_arr_4(const void *vp, int size, int data_type_size, void (*print)(const void *), int print_type)
+void print_arr_4(const void *vp, int size, int data_type_size, void (*print)(const void *), char* data_type_name, int print_type)
 {
-	printf("冒泡排序%s => ", print_type == 0 ? "前" : "后");
+	printf("%s类型数组冒泡排序%s => ", data_type_name, print_type == 0 ? "前" : "后");
 	if(NULL == vp || NULL == print || size < 1 || data_type_size < 1)
 	{
 		return;
@@ -125,6 +125,89 @@ bool compare_int(const void* ap, const void* bp)
 	return false;
 }
 
+/**
+ * 比较两个float类型数据的大小
+ */
+bool compare_float(const void* ap, const void* bp)
+{
+	const float* fap = (const float*)ap;
+	const float* fbp = (const float*)bp;
+	if(*fap > *fbp)
+	{
+		return true;
+	}
+	return false;
+}
+
+/**
+ * 比较两个double类型数据的大小
+ */
+bool compare_double(const void* ap, const void* bp)
+{
+	const double* dap = (const double*)ap;
+	const double* dbp = (const double*)bp;
+	if(*dap > *dbp)
+	{
+		return true;
+	}
+	return false;
+}
+
+/**
+ * 比较两个char类型数据的大小
+ */
+bool compare_char(const void* ap, const void* bp)
+{
+	const char* cap = (const char*)ap;
+	const char* cbp = (const char*)bp;
+	if(*cap > *cbp)
+	{
+		return true;
+	}
+	return false;
+}
+
+/**
+ * 比较两个字符串类型数据的大小
+ */
+bool compare_str(const void* ap, const void* bp)
+{
+	const char** sap = (const char**)ap;
+	const char** sbp = (const char**)bp;
+	if(strcmp(*sap, *sbp) > 0)
+	{
+		return true;
+	}
+	return false;
+}
+
+/**
+ * 比较两个结构体类型数据的大小（按id）
+ */
+bool compare_struct_by_id(const void* ap, const void* bp)
+{
+	const Student* stu_ap = (const Student*)ap;
+	const Student* stu_bp = (const Student*)bp;
+	if(stu_ap->id > stu_bp->id)
+	{
+		return true;
+	}
+	return false;
+}
+
+/**
+ * 比较两个结构体类型数据的大小（按姓名）
+ */
+bool compare_struct_by_name(const void* ap, const void* bp)
+{
+	const Student* stu_ap = (const Student*)ap;
+	const Student* stu_bp = (const Student*)bp;
+	if(strcmp(stu_ap->name, stu_bp->name) > 0)
+	{
+		return true;
+	}
+	return false;
+}
 
 /**
  * 泛型冒泡排序
@@ -136,132 +219,86 @@ void bubble_sort_3(const void* vp, int length, int size, bool (*compare)(const v
 	{
 		for(int j = 0; j < length - i -1; j++)
 		{
-			if((*compare)(&cp[j], &cp[j + size]))
-			{
-				swap(&cp[j], &cp[j + size], size);
-			}
+            void* current = cp + j * size;
+            void* next = cp + (j + 1) * size;
+            if((*compare)(current, next))
+            {
+                swap(current, next, size);
+            }
 		}
 	}
 }
 
 #if 0
-#endif
 int main()
 {
 	// 定义整型数组
 	int ir[] = {64, 34, 25, 12, 22, 90, 11};
 	int in = sizeof(ir) / sizeof(ir[0]);
 	// 冒泡排序前
-	print_arr_4(ir, in, sizeof(int), print_int_arr_4, 0);
+	print_arr_4(ir, in, sizeof(int), print_int_arr_4, "int", 0);
 	// 冒泡排序
 	bubble_sort_3(ir, in, sizeof(int), compare_int);
 	// 冒泡排序后
-	print_arr_4(ir, in, sizeof(int), print_int_arr_4, 1);
+	print_arr_4(ir, in, sizeof(int), print_int_arr_4, "int", 1);
 
 	// 定义float类型数组
 	float fr[] = { 3.14f, 2.71f, 1.41f, 1.73f, 0.57f };
 	int fn = sizeof(fr) / sizeof(fr[0]);
 	// 冒泡排序前
-	print_arr_4(fr, fn, sizeof(float), print_float_arr_4, 0);
+	print_arr_4(fr, fn, sizeof(float), print_float_arr_4, "float", 0);
+	// 冒泡排序
+	bubble_sort_3(fr, fn, sizeof(float), compare_float);
 	// 冒泡排序后
+	print_arr_4(fr, fn, sizeof(float), print_float_arr_4, "float", 1);
 
 
 	// 定义double类型数组
 	double dr[] = { 5.24, 2.18, 3.43, 7.76, 0.58 };
 	int dn = sizeof(dr) / sizeof(dr[0]);
 	// 冒泡排序前
-	print_arr_4(dr, dn, sizeof(double), print_double_arr_4, 0);
+	print_arr_4(dr, dn, sizeof(double), print_double_arr_4, "double", 0);
+	// 冒泡排序
+	bubble_sort_3(dr, dn, sizeof(double), compare_double);
 	// 冒泡排序后
+	print_arr_4(dr, dn, sizeof(double), print_double_arr_4, "double", 1);
 
 
 	//定义字符数组
 	char cr[] = { 'k', 'a', 'i', 'b', 'd' };
 	int cn = sizeof(cr) / sizeof(cr[0]);
 	// 冒泡排序前
-	print_arr_4(cr, cn, sizeof(char), print_char_arr_4, 0);
+	print_arr_4(cr, cn, sizeof(char), print_char_arr_4, "char", 0);
+	// 冒泡排序
+	bubble_sort_3(cr, cn, sizeof(char), compare_char);
 	// 冒泡排序后
+	print_arr_4(cr, cn, sizeof(char), print_char_arr_4, "char", 1);
 
 
 	//定义字符串数组（这里实际上是定义了一个二维数组）
-	char* str[] = { "banana", "apple", "cherry", "orange", "pear" };
+	char* str[] = { "ban\0ana", "apple", "cherry", "orange", "pear" };
 	int sn = sizeof(str) / sizeof(str[0]);
 	// 冒泡排序前
-	print_arr_4(str, sn, sizeof(str[0]), print_str_arr_4, 0);
+	print_arr_4(str, sn, sizeof(str[0]), print_str_arr_4, "字符串", 0);
+	// 冒泡排序
+	bubble_sort_3(str, sn, sizeof(str[0]), compare_str);
 	// 冒泡排序后
+	print_arr_4(str, sn, sizeof(str[0]), print_str_arr_4, "字符串", 1);
 
 
 	//定义结构体数组
-	Student persons[] = {
-		{ 1, "张三", 18 },
-		{ 2, "李四", 20 },
-		{ 3, "王五", 22 }
+	Student students[] = {
+		{ 1, "zhangsan", 18 },
+		{ 3, "lisi", 20 },
+		{ 2, "wangwu", 22 }
 	};
-	int structn = sizeof(persons) / sizeof(persons[0]);
+	int structn = sizeof(students) / sizeof(students[0]);
 	// 冒泡排序前
-	print_arr_4(persons, structn, sizeof(persons[0]), print_struct_arr_4, 0);
+	print_arr_4(students, structn, sizeof(students[0]), print_struct_arr_4, "结构体", 0);
+	//bubble_sort_3(students, structn, sizeof(students[0]), compare_struct_by_id);
+	bubble_sort_3(students, structn, sizeof(students[0]), compare_struct_by_name);
 	// 冒泡排序后
-
-
-	// 测试整数数组排序
-    // printf("=== 整数数组排序 ===\n");
-    // int int_arr[] = {64, 34, 25, 12, 22, 11, 90};
-    // size_t int_count = sizeof(int_arr) / sizeof(int_arr[0]);
-    
-    // printf("排序前: ");
-    // print_int_array(int_arr, int_count);
-    
-    // bubble_sort(int_arr, int_count, sizeof(int), compare_int);
-    
-    // printf("排序后: ");
-    // print_int_array(int_arr, int_count);
-    
-    // 测试浮点数组排序
-    // printf("\n=== 浮点数组排序 ===\n");
-    // float float_arr[] = {3.14f, 2.71f, 1.41f, 1.73f, 0.57f};
-    // size_t float_count = sizeof(float_arr) / sizeof(float_arr[0]);
-    
-    // printf("排序前: ");
-    // print_float_array(float_arr, float_count);
-    
-    // bubble_sort(float_arr, float_count, sizeof(float), compare_float);
-    
-    // printf("排序后: ");
-    // print_float_array(float_arr, float_count);
-    
-    // // 测试字符串数组排序
-    // printf("\n=== 字符串数组排序 ===\n");
-    // char* str_arr[] = {"banana", "apple", "cherry", "date", "elderberry"};
-    // size_t str_count = sizeof(str_arr) / sizeof(str_arr[0]);
-    
-    // printf("排序前: ");
-    // print_string_array(str_arr, str_count);
-    
-    // bubble_sort(str_arr, str_count, sizeof(char*), compare_string);
-    
-    // printf("排序后: ");
-    // print_string_array(str_arr, str_count);
-    
-    // // 测试结构体数组排序
-    // printf("\n=== 结构体数组排序 ===\n");
-    // Person people[] = {
-    //     {3, "Charlie"},
-    //     {1, "Alice"},
-    //     {4, "David"},
-    //     {2, "Bob"}
-    // };
-    // size_t person_count = sizeof(people) / sizeof(people[0]);
-    
-    // printf("按ID排序前:\n");
-    // print_person_array(people, person_count);
-    
-    // bubble_sort(people, person_count, sizeof(Person), compare_person_by_id);
-    
-    // printf("按ID排序后:\n");
-    // print_person_array(people, person_count);
-    
-    // printf("按姓名排序:\n");
-    // bubble_sort(people, person_count, sizeof(Person), compare_person_by_name);
-    // print_person_array(people, person_count);
-
+	print_arr_4(students, structn, sizeof(students[0]), print_struct_arr_4, "结构体", 1);
 	return 0;
 }
+#endif

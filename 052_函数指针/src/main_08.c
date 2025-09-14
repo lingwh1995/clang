@@ -2,6 +2,31 @@
 #include<stdlib.h>
 #include<string.h>
 
+
+// 结构体 + typedef简化结构体定义 方式一
+/*
+// 定义一个结构体
+struct Person
+{
+	int id,
+	char[] name,
+	int age
+};
+
+// 使用typedef简化结构体定义
+typedef struct Person Person;
+*/
+
+
+// （匿名）结构体 + typedef简化结构体定义
+typedef struct
+{
+	int id;
+	char name[20];
+	int age;
+} Person;
+
+
 /**
  * 比较两个int类型数据的大小
  * @param pa
@@ -88,6 +113,27 @@ int comp_str(const void* pa, const void* pb)
 }
 
 /**
+ * 比较两个结构体类型数据的大小（按id）
+ */
+int compare_struct(const void* ap, const void* bp)
+{
+	const Person* person_ap = (const Person*)ap;
+	const Person* perosn_bp = (const Person*)bp;
+	if(person_ap->id > perosn_bp->id)
+	{
+		return 1;
+	}
+	else if(person_ap->id < perosn_bp->id)
+	{
+		return -1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+/**
  * 打印整形数组
  */
 void print_int_arr_5(int* arr, int length)
@@ -136,6 +182,20 @@ void print_str_arr_5(const char* arr[], int length)
 	printf("\n");
 }
 
+
+/**
+ * 打印结构体数组
+ */
+void print_struct_arr_5(const void* vp, int length)
+{
+    const Person* pPerson = (const Person*)vp;
+    for(int i = 0; i < length; i++)
+    {
+        printf("%d，%s，%d\t", pPerson[i].id, pPerson[i].name, pPerson[i].age);
+    }
+    printf("\n");
+}
+
 #if 0
 int main()
 {
@@ -162,6 +222,18 @@ int main()
 	int sn = 5;
 	qsort(str, sn, sizeof(char*), comp_str);
 	print_str_arr_5(str, sn);
+
+	// 对结构体数组进行排序
+
+	//定义结构体数组
+	Person persons[] = {
+		{ 1, "zhangsan", 18 },
+		{ 3, "lisi", 20 },
+		{ 2, "wangwu", 22 }
+	};
+	int personn = sizeof(persons) / sizeof(persons[0]);
+	qsort(persons, personn, sizeof(persons[0]), compare_struct);
+	print_struct_arr_5(persons, personn);
 	return 0;
 }
 #endif
