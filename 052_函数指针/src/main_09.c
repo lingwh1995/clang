@@ -22,7 +22,7 @@ int main()
 	printf("sizeof(pfun) = %d\n", sizeof(pfun));
 	printf("sizeof(*pfun) = %d\n ", sizeof(*pfun));
 	printf("sizeof(*pfun) = %d\n ", sizeof(add_num));
-	// 虽然执行+1操作不报错，但是不能这样，因为函数占据空间的大小是不确定的
+	// 函数指针不能执行+1操作，虽然执行+1操作不报错，但是不能这样，因为函数占据空间的大小是不确定的
 	//	pfun = pfun + 1;
 }
 #endif
