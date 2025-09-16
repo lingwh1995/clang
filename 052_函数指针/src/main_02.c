@@ -4,12 +4,16 @@
  * 冒泡排序基础版
  */
 
+/**
+ * 交换两个数字
+ */
 void swap_number_1(int* a, int *b)
 {
 	int temp = *a;
 	*a = *b;
 	*b = temp;
 }
+
 /**
  * 冒泡排序
  */

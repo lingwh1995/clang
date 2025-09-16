@@ -5,6 +5,9 @@
  * 使用函数指针优化冒泡排序
  */
 
+/**
+ * 交换两个数字
+ */
 void swap_number_2(int* a, int *b)
 {
 	int temp = *a;
