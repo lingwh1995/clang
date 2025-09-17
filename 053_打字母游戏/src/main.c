@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <time.h>
+#include <conio.h>
 
 
 /**
@@ -9,7 +11,7 @@
  */
 
 #define ROWSIZE 20
-#define COLSIZE 35
+#define COLSIZE 70
 #define LETSIZE 1
 
 /**
@@ -51,26 +53,59 @@ void show_grid(GridArray ga, struct LetterNode* px, int n)
 	{
 		ga[px[i].row][px[i].col] = px[i].ch;
 	}
-	for(int i=0; i < ROWSIZE; i++)
+	for(int i = 0; i < ROWSIZE; i++)
 	{
 		printf("%s \n", ga[i]);
+	}
+}
+
+/**
+ * 产生随机字符串
+ */
+void rand_letter(struct LetterNode* px, int n)
+{
+	if(NULL == px)
+	{
+		return;
+	}
+	srand(time(NULL));
+	for(int i = 0; i < n; i++)
+	{
+		px[i].ch = rand() % 26 + 'a';
+		px[i].row = 0;
+		px[i].col = rand() % COLSIZE;
 	}
 }
 
 int main()
 {
 	GridArray ga;
+	char ch;
 	struct LetterNode x[LETSIZE] = { 0 };
 
-	x[0].row = 1;
-	x[0].col = 5;
-	x[0].ch = '0';
+	rand_letter(x, LETSIZE);
 
-	for(int i = 0; i < 5; i++)
+	while(1)
 	{
 		show_grid(ga, x, LETSIZE);
-		x[0].row++;
 		Sleep(1000);
+		// _kbhit() 判断键盘是否有输入，有输入输入，返回真
+		if(_kbhit())
+		{
+			//ch = getchar(); // 需要等待输入 \n
+			ch = _getch(); // 无需等待输入 \n
+			if(ch == x[0].ch)
+			{
+				x[0].ch = rand() % 26 + 'a';
+				x[0].row = -1;
+				x[0].col = rand() % COLSIZE;
+			}
+		}
+		x[0].row++;
+		if(x[0].row >= ROWSIZE)
+		{
+			printf("游戏结束\n");
+		}
 	}
 	return 0;
 }
