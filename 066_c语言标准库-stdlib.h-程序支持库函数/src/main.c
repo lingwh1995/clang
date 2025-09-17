@@ -240,11 +240,10 @@ void str2i_test()
     }
 }
 
-
 int main()
 {
 	//atoi_test();
-	my_atoi_test();
+	//my_atoi_test();
 	//strtol_test();
 	//str2i_test();
 	return 0;

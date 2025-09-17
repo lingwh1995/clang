@@ -13,7 +13,7 @@
 /**
  * UDP 服务端
  *
- * ll
+ * gcc udp_server.c -o udp_server
  */
 int main() {
     int sockfd;
