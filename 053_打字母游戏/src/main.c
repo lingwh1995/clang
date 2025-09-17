@@ -3,6 +3,11 @@
 #include <stdlib.h>
 #include <windows.h>
 
+
+/**
+ * 注意：在sublime中运行此测试程序，eclipse控制台中无法正确的展示此程序运行效果
+ */
+
 #define ROWSIZE 20
 #define COLSIZE 35
 #define LETSIZE 1
@@ -40,8 +45,7 @@ void show_grid(GridArray ga, struct LetterNode* px, int n)
 	{
 		return;
 	}
-	//system("cls");
-    printf("------------------\n");
+	system("cls");
 	init_grid(ga);
 	for(int i = 0; i < n; i++)
 	{
@@ -49,11 +53,6 @@ void show_grid(GridArray ga, struct LetterNode* px, int n)
 	}
 	for(int i=0; i < ROWSIZE; i++)
 	{
-//        for(int j = 0; j < COLSIZE + 1; j++)
-//        {
-//            printf("%c", ga[i][j]);
-//        }
-//        printf("\n");
 		printf("%s \n", ga[i]);
 	}
 }
@@ -73,6 +72,5 @@ int main()
 		x[0].row++;
 		Sleep(1000);
 	}
-    //show_grid(ga, x, LETSIZE);
 	return 0;
 }
