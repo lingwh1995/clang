@@ -6,9 +6,10 @@
 #include <conio.h>
 
 #if 0
+#endif
 /**
- * 打字母游戏第一版
- * 		随机产生一个字母从屏幕上方向下落，玩家输入字母，如果和显示的字母相同，就消去字母，游戏会再随机产生一个字母，继续游戏，如果字母落出屏幕，玩家失败，游戏结束。
+ * 打字母游戏第二版
+ * 		随机产生十个字母从屏幕上方向下落，玩家输入字母，如果和显示的字母相同，就消去字母，游戏会再随机产生一个字母，使屏幕中的字母个数保持十个，继续游戏，如果有一个字母落出屏幕，玩家失败，游戏结束。
  *
  * 注意事项
  *		在sublime中运行此测试程序，eclipse控制台中无法正确的展示此程序运行效果
@@ -16,7 +17,7 @@
 
 #define ROWSIZE 20 	   // 行数
 #define COLSIZE 70 	   // 列数
-#define LETSIZE 1  	   // 下落的字母数
+#define LETSIZE 10  	   // 下落的字母数
 #define GRDI_CHAR '.'  // 棋盘填充字符
 
 /**
@@ -98,20 +99,27 @@ int main()
 		{
 			//ch = getchar(); // 需要等待输入 \n
 			ch = _getch(); // 无需等待输入 \n
-			if(ch == letter[0].ch)
+			for(int i = 0; i < LETSIZE; i++)
 			{
-				letter[0].ch = rand() % 26 + 'a';
-				letter[0].row = -1;
-				letter[0].col = rand() % COLSIZE;
+				if(ch == letter[i].ch)
+				{
+					letter[i].ch = rand() % 26 + 'a';
+					letter[i].row = -1;
+					letter[i].col = rand() % COLSIZE;
+				}
 			}
 		}
-		if(letter[0].row >= ROWSIZE)
+		for(int i = 0; i < LETSIZE; i++)
 		{
-			printf("游戏结束\n");
+			if(letter[i].row >= ROWSIZE)
+			{
+				printf("游戏结束\n");
+				return 0;
+			}
+			letter[i].row++;
 		}
-		letter[0].row++;
 		Sleep(1000);
 	}
 	return 0;
 }
-#endif
+
