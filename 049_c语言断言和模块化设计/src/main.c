@@ -91,6 +91,7 @@ void print_arr_1(int* arr, int length)
 }
 
 #if 0
+#endif
 int main()
 {
 	int arr[ARSIZE] = { 0 };
@@ -105,4 +106,3 @@ int main()
 	print_arr_1(p_arr, ARSIZE);
 	return 0;
 }
-#endif

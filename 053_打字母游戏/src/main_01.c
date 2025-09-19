@@ -9,7 +9,7 @@
 #endif
 /**
  * 打字母游戏第二版
- * 		随机产生十个字母从屏幕上方向下落，玩家输入字母，如果和显示的字母相同，就消去字母，游戏会再随机产生一个字母，使屏幕中的字母个数保持十个，继续游戏，如果有一个字母落出屏幕，玩家失败，游戏结束。
+ * 		随机产生十个字母从屏幕上方向下落，玩家输入字母，如果和显示的字母相同，就消去字母，游戏会再随机产生一个字母（小写字母/小写字母和大写字母），使屏幕中的字母个数保持十个，继续游戏，如果有一个字母落出屏幕，玩家失败，游戏结束。
  *
  * 注意事项
  *		在sublime中运行此测试程序，eclipse控制台中无法正确的展示此程序运行效果
@@ -17,8 +17,9 @@
 
 #define ROWSIZE 20 	   // 行数
 #define COLSIZE 70 	   // 列数
-#define LETSIZE 10  	   // 下落的字母数
+#define LETSIZE 10     // 下落的字母数
 #define GRDI_CHAR '.'  // 棋盘填充字符
+#define SPEED 2000 	   // 下落速度
 
 /**
  * 定义字母结构体
@@ -47,9 +48,9 @@ void init_grid(GridArray ga)
 /**
  * 打印网格
  */
-void show_grid(GridArray ga, struct Letter* pl, int n)
+void show_grid(GridArray ga, struct Letter* pla, int n)
 {
-	if(NULL == pl)
+	if(NULL == pla)
 	{
 		return;
 	}
@@ -57,7 +58,7 @@ void show_grid(GridArray ga, struct Letter* pl, int n)
 	init_grid(ga);
 	for(int i = 0; i < n; i++)
 	{
-		ga[pl[i].row][pl[i].col] = pl[i].ch;
+		ga[pla[i].row][pla[i].col] = pla[i].ch;
 	}
 	for(int i = 0; i < ROWSIZE; i++)
 	{
@@ -66,20 +67,33 @@ void show_grid(GridArray ga, struct Letter* pl, int n)
 }
 
 /**
- * 产生随机字符串
+ * 产生随机字符
+ * @param rand
+ * @return
  */
-void rand_letter(struct Letter* pl, int n)
+char rand_letter(int rand_number)
 {
-	if(NULL == pl)
+    return rand_number % 2 == 0 ? rand_number % 26 + 'a' : rand_number % 26 +'A';
+}
+
+/**
+ * 产生随机字符
+ */
+void rand_letters(struct Letter* pla, int n)
+{
+	if(NULL == pla)
 	{
 		return;
 	}
 	srand(time(NULL));
 	for(int i = 0; i < n; i++)
 	{
-		pl[i].ch = rand() % 26 + 'a';
-		pl[i].row = 0;
-		pl[i].col = rand() % COLSIZE;
+        // 随机生成小写字母
+        //letter[i].ch = rand() % 26 + 'a';
+        // 随机生成小写或大写字母
+		pla[i].ch = rand_letter(rand());
+		pla[i].row = 0;
+		pla[i].col = rand() % COLSIZE;
 	}
 }
 
@@ -87,38 +101,43 @@ int main()
 {
 	GridArray ga;
 	char ch;
-	struct Letter letter[LETSIZE] = { 0 };
+	struct Letter letter_arr[LETSIZE] = { 0 };
 
-	rand_letter(letter, LETSIZE);
+	rand_letters(letter_arr, LETSIZE);
 
 	while(1)
 	{
-		show_grid(ga, letter, LETSIZE);
-		// _kbhit() 判断键盘是否有输入，有输入输入，返回真
+		show_grid(ga, letter_arr, LETSIZE);
+		// _kbhit() 判断键盘是否有输入，有输入，返回真
 		if(_kbhit())
 		{
-			//ch = getchar(); // 需要等待输入 \n
-			ch = _getch(); // 无需等待输入 \n
+			//ch = getchar(); // 需要等待输入 \n，才能获取到输入缓冲区中的内容
+			ch = _getch(); // 无需等待输入 \n，直接就可以获取到输入缓冲区中的内容
+			printf("当前输入的字符： %c\n", ch);
 			for(int i = 0; i < LETSIZE; i++)
 			{
-				if(ch == letter[i].ch)
+				if(ch == letter_arr[i].ch)
 				{
-					letter[i].ch = rand() % 26 + 'a';
-					letter[i].row = -1;
-					letter[i].col = rand() % COLSIZE;
+				    // 随机生成小写字母
+					//letter[i].ch = rand() % 26 + 'a';
+					// 随机生成小写或大写字母
+                    letter_arr[i].ch = rand_letter(rand());
+					letter_arr[i].row = -1;
+					letter_arr[i].col = rand() % COLSIZE;
+					break;
 				}
 			}
 		}
 		for(int i = 0; i < LETSIZE; i++)
 		{
-			if(letter[i].row >= ROWSIZE)
+			if(letter_arr[i].row >= ROWSIZE)
 			{
 				printf("游戏结束\n");
 				return 0;
 			}
-			letter[i].row++;
+			letter_arr[i].row++;
 		}
-		Sleep(1000);
+		Sleep(SPEED);
 	}
 	return 0;
 }

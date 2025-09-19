@@ -18,6 +18,7 @@
 #define COLSIZE 70 	   // 列数
 #define LETSIZE 1  	   // 下落的字母数
 #define GRDI_CHAR '.'  // 棋盘填充字符
+#define SPEED 2000     // 下落速度
 
 /**
  * 定义字母结构体
@@ -65,7 +66,7 @@ void show_grid(GridArray ga, struct Letter* pl, int n)
 }
 
 /**
- * 产生随机字符串
+ * 产生随机字符
  */
 void rand_letter(struct Letter* pl, int n)
 {
@@ -93,11 +94,11 @@ int main()
 	while(1)
 	{
 		show_grid(ga, letter, LETSIZE);
-		// _kbhit() 判断键盘是否有输入，有输入输入，返回真
+		// _kbhit() 判断键盘是否有输入，有输入，返回真
 		if(_kbhit())
 		{
-			//ch = getchar(); // 需要等待输入 \n
-			ch = _getch(); // 无需等待输入 \n
+			//ch = getchar(); // 需要等待输入 \n ，才能获取到输入缓冲区中的内容
+			ch = _getch(); // 无需等待输入 \n ，直接就可以获取到输入缓冲区中的内容
 			if(ch == letter[0].ch)
 			{
 				letter[0].ch = rand() % 26 + 'a';
@@ -110,7 +111,7 @@ int main()
 			printf("游戏结束\n");
 		}
 		letter[0].row++;
-		Sleep(1000);
+		Sleep(SPEED);
 	}
 	return 0;
 }
