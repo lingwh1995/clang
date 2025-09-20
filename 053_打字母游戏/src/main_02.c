@@ -6,6 +6,7 @@
 #include <conio.h>
 
 #if 0
+#endif
 /**
  * 打字母游戏第二版
  * 		随机产生十个字母从屏幕上方向下落，玩家输入字母，如果和显示的字母相同，就消去字母，游戏会再随机产生一个字母（小写字母/小写字母和大写字母），使屏幕中的字母个数保持十个，继续游戏，如果有一个字母落出屏幕，玩家失败，游戏结束。
@@ -45,9 +46,9 @@ void init_grid(GridArray ga)
 }
 
 /**
- * 打印网格
+ * 打印网格（添加分数显示功能）
  */
-void show_grid(GridArray ga, struct Letter* pla, int n)
+void show_grid(GridArray ga, struct Letter* pla, int n, int score)
 {
 	if(NULL == pla)
 	{
@@ -55,13 +56,34 @@ void show_grid(GridArray ga, struct Letter* pla, int n)
 	}
 	system("cls");
 	init_grid(ga);
+
+	// 显示下落的字母
 	for(int i = 0; i < n; i++)
 	{
-		ga[pla[i].row][pla[i].col] = pla[i].ch;
+		// 确保字母在有效范围内才显示
+		if(pla[i].row >= 0 && pla[i].row < ROWSIZE &&
+		   pla[i].col >= 0 && pla[i].col < COLSIZE)
+		{
+			ga[pla[i].row][pla[i].col] = pla[i].ch;
+		}
 	}
+
+	// 打印网格和分数
 	for(int i = 0; i < ROWSIZE; i++)
 	{
-		printf("%s \n", ga[i]);
+		// 在每行右侧显示分数信息
+		if(i == 0)
+		{
+			printf("%s  Score: %d\n", ga[i], score);
+		}
+		else if(i == 1)
+		{
+			printf("%s  Letters: %d\n", ga[i], n);
+		}
+		else
+		{
+			printf("%s\n", ga[i]);
+		}
 	}
 }
 
@@ -121,12 +143,13 @@ int main()
 	GridArray ga;
 	char ch;
 	struct Letter letter_arr[LETSIZE] = { 0 };
+	int score = 0;  // 添加分数变量
 
 	rand_letters(letter_arr, LETSIZE);
 
 	while(1)
 	{
-		show_grid(ga, letter_arr, LETSIZE);
+		show_grid(ga, letter_arr, LETSIZE, score);  // 传递分数参数
 		// _kbhit() 判断键盘是否有输入，有输入，返回真
 		if(_kbhit())
 		{
@@ -137,11 +160,10 @@ int main()
 			{
 				if(ch == letter_arr[i].ch)
 				{
-				    // 随机生成小写字母
-					//letter[i].ch = rand() % 26 + 'a';
-					// 随机生成小写或大写字母
+				    // 随机生成小写或大写字母
 					rand_letter(&letter_arr[i]);
-					letter_arr[i].row = -1;
+					letter_arr[i].row = 0;  // 重置行位置
+					score++;  // 增加分数
 					break;
 				}
 			}
@@ -152,6 +174,7 @@ int main()
 			if(letter_arr[i].row >= ROWSIZE)
 			{
 				printf("游戏结束\n");
+				printf("最终得分: %d\n", score);
 				return 0;
 			}
 		}
@@ -159,4 +182,3 @@ int main()
 	}
 	return 0;
 }
-#endif
