@@ -229,9 +229,9 @@ void definition_pointer_data_type()
 
 
 /**
- * 数据类型转换
+ * 数据类型转换案例1
  */
-void data_type_conversion()
+void data_type_conversion_1()
 {
 	int i = 0x12345678;
 	// 显式转换
@@ -245,9 +245,9 @@ void data_type_conversion()
 }
 
 /**
- * 隐式类型转换案例一
+ * 数据类型转换案例2
  */
-void implicit_data_type_conversion_1()
+void data_type_conversion_2()
 {
 	// char a = -5         的二进制 => 原码 1000 0101 => 反码 1111 1010 => 补码 1111 1011 => int a（负数左边补1） => 1111 1111 1111 1111 1111 0101
 	char a = -5;
@@ -268,9 +268,9 @@ void implicit_data_type_conversion_1()
 
 
 /**
- * 隐式类型转换案例二
+ * 数据类型转换案例3
  */
-void implicit_data_type_conversion_2()
+void data_type_conversion_3()
 {
 	/**
 	 * char a = 100 的二进制 => 原码 0110 0100 => 反码 0110 0100 => 补码   0110 0100
@@ -312,9 +312,9 @@ void implicit_data_type_conversion_2()
 
 
 /**
- * 隐式类型转换案例三
+ * 数据类型转换案例4
  */
-void implicit_data_type_conversion_3()
+void data_type_conversion_4()
 {
 	char c = 128;
 	unsigned char uc = 128;
@@ -361,6 +361,75 @@ void implicit_data_type_conversion_3()
 	printf("-------------------------------------\n");
 }
 
+/**
+ * 数据类型转换案例5
+ */
+void data_type_conversion_5()
+{
+	int i = 10;
+	char c = 'a';
+	//printf("c = %d\n", c);
+	// i 和 c 比较时首先把 char类型数据c 转换为整型数据 97，再做比较
+	if(i > c)
+	{
+		printf("i > c\n");
+	}
+	else
+	{
+		printf("i < c\n");
+	}
+}
+
+/**
+ * 数据类型转换案例6
+ */
+void data_type_conversion_6()
+{
+	int i = 10;
+    double d = 12.23;
+	printf("d = %.2f\n", d);
+	// i 和 d 比较时首先把 整形数据 i 转换为double型数据 10.00，再做比较
+	if(i > d)
+	{
+		printf("i > d\n");
+	}
+	else
+	{
+		printf("i < d\n");
+	}
+}
+
+/**
+ * 数据类型转换案例7
+ */
+void data_type_conversion_7()
+{
+	int i = 10;
+    double d = 100.23;
+	char ch = 'a';
+    ch = d;
+    printf("ch = %c\n", ch);
+}
+
+// 运算时 char c 先转换为 int 类型数据 97， int i 转换为 char 类型数据 d
+double fun(int a, char ch)
+{
+    // 然后把 char ch 转换为 int 类型数据 100，最后再把计算结果整形数据 197 转换为 double 类型数据 197.000000
+    double d = a + ch;
+    return d;
+}
+
+/**
+ * 数据类型转换案例8
+ */
+void data_type_conversion_8()
+{
+	char c = 'a';
+	int i = 100;
+    double d = fun(c, i);
+    printf("%f\n", d);
+}
+
 int main()
 {
 	data_type_size();
@@ -369,9 +438,13 @@ int main()
 	definition_struct_data_type();
 	definition_enum_data_type();
 	definition_pointer_data_type();
-    data_type_conversion();
-    implicit_data_type_conversion_1();
-    implicit_data_type_conversion_2();
-    implicit_data_type_conversion_3();
+	data_type_conversion_1();
+	data_type_conversion_2();
+	data_type_conversion_3();
+	data_type_conversion_4();
+	data_type_conversion_5();
+    data_type_conversion_6();
+    data_type_conversion_7();
+    data_type_conversion_8();
     return 0;
 }
