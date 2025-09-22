@@ -241,6 +241,7 @@ void data_type_conversion()
 	short s = i;
 	char c = i;
 	printf("i = %x, s = %x, c = %x\n", i, s ,c);
+	printf("-------------------------------------\n");
 }
 
 /**
@@ -262,6 +263,7 @@ void implicit_data_type_conversion_1()
 		//printf("%x < %x \n", a, b);
 		printf("%d < %d \n", a, b);
 	}
+	printf("-------------------------------------\n");
 }
 
 
@@ -305,6 +307,7 @@ void implicit_data_type_conversion_2()
 	unsigned char y = 200;
 	unsigned char z = x + y;
 	printf("z = %d, x + y = %d\n", z, x + y);
+	printf("-------------------------------------\n");
 }
 
 
@@ -355,6 +358,7 @@ void implicit_data_type_conversion_3()
 	// 特别注意： 符号位的扩展取决于原数据类型而不是目标数据类型，如这里将 char(原数据类型) => unsigned short(目标数据类型)，符号位的扩展取决于 原数据类型char
 	us = (unsigned short)c + uc;
 	printf("us = %x\n", us);
+	printf("-------------------------------------\n");
 }
 
 int main()
