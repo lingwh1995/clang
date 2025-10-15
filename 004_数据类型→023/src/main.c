@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 /**
  * 章节内容：
@@ -430,6 +431,68 @@ void data_type_conversion_8()
     printf("%f\n", d);
 }
 
+
+// 查看float的二进制表示
+void print_float_ieee_754_bits(float f)
+{
+    uint32_t* ptr = (uint32_t*)&f;
+
+    printf("Float value: %f\n", f);
+    printf("Hex representation: 0x%08X\n", *ptr);
+
+    // 解析IEEE 754单精度格式
+    uint32_t sign = (*ptr >> 31) & 1;
+    uint32_t exponent = (*ptr >> 23) & 0xFF;
+    uint32_t mantissa = *ptr & 0x7FFFFF;
+
+    printf("Sign: %u (%s)\n", sign, sign ? "negative" : "positive");
+    printf("Exponent: %u (biased), %d (actual)\n", exponent, (int)exponent - 127);
+    printf("Mantissa: 0x%06X\n", mantissa);
+    printf("Binary: ");
+
+    for (int i = 31; i >= 0; i--) {
+        printf("%d", (*ptr >> i) & 1);
+        if (i == 31 || i == 23) printf(" ");
+    }
+    printf("\n\n");
+}
+
+/**
+ * 使用IEEE 754格式打印浮点数
+ */
+void print_float_ieee_754()
+{
+    float numbers[] = {1.0f, -2.5f, 0.0f, 0.125f};
+    for (int i = 0; i < 4; i++)
+    {
+        print_float_ieee_754_bits(numbers[i]);
+    }
+
+}
+
+typedef struct {
+    unsigned int mantissa : 23;  // 尾数部分
+    unsigned int exponent : 8;   // 指数部分
+    unsigned int sign : 1;       // 符号位
+} FloatComponents;
+
+/**
+ * 用结构体模拟浮点数表示
+ * @param f
+ */
+void print_float_struct()
+{
+    float f = -12.375f;
+    FloatComponents* fc = (FloatComponents*)&f;
+
+    printf("Float value: %f\n", f);
+    printf("Sign: %u\n", fc -> sign);
+    printf("Exponent: %u\n", fc -> exponent);
+    printf("Mantissa: %u\n", fc -> mantissa);
+    // 使用二进制形式表示浮点数
+    print_float_ieee_754_bits(f);
+}
+
 int main()
 {
 	data_type_size();
@@ -446,5 +509,7 @@ int main()
     data_type_conversion_6();
     data_type_conversion_7();
     data_type_conversion_8();
+    //print_float_ieee_754();
+    print_float_struct();
     return 0;
 }
