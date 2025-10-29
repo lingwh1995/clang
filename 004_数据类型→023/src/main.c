@@ -405,7 +405,6 @@ void data_type_conversion_6()
  */
 void data_type_conversion_7()
 {
-	int i = 10;
     double d = 100.23;
 	char ch = 'a';
     ch = d;
@@ -431,6 +430,38 @@ void data_type_conversion_8()
     printf("%f\n", d);
 }
 
+
+/**
+ * 数据类型转换案例9
+ *
+ *
+ * C语言中的数据类型在变量定义时确定后，不能直接更改其类型。这是C语言作为静态类型语言的基本特性之一。
+ * 关键要点：
+ *    类型固定性：一旦声明了变量的数据类型（如 int, float, char 等），该变量的类型在整个作用域内是固定的
+ *    内存分配：不同类型占用不同的内存大小和布局，编译时就已经确定
+ *    类型安全：这种限制保证了类型安全和内存访问的正确性
+ * 示例说明：
+ *   变量定义为 ft 是浮点型后，就一直是浮点类型，变量定义为 i 是整型后，就一直是整型
+ *   即使将 ft 转换为整型，也不会改变 ft 本身的类型，也只是将 ft 的整数部分的值截取下来赋值给i
+ *   	float ft = 3.14;    // ft 是浮点型
+ *   	int i = (int)ft;    // i 是整型，这里是并不是把 ft 转为了 int 类型数据，而是把一个临时变量 (int)ft 赋值给了变量 i ，并不是把 ft 赋值给了变量i
+ */
+
+void data_type_conversion_9()
+{
+	float ft = 12.25;
+	int a = 10;
+	float* fp = &ft;
+	int* ip = &a;
+
+	// 隐式转换
+	a = ft;
+	// 显示转换
+	a = (int)ft;
+
+	ip = fp;
+	ip = (int*)fp;
+}
 
 // 查看float的二进制表示
 void print_float_ieee_754_bits(float f)
@@ -509,6 +540,7 @@ int main()
     data_type_conversion_6();
     data_type_conversion_7();
     data_type_conversion_8();
+    data_type_conversion_9();
     //print_float_ieee_754();
     print_float_struct();
     return 0;
