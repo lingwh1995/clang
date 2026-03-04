@@ -143,7 +143,6 @@ void bitwise_operator()
 	// a = a & b; 可以简写为 a &= b;
 
 	/**
-	 * 或运算 - | - OR
 	 *
 	 * a	8	0000 1000
 	 * |	|	|
