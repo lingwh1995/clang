@@ -379,6 +379,7 @@ void data_type_conversion_5()
 	{
 		printf("i < c\n");
 	}
+	printf("-------------------------------------\n");
 }
 
 /**
@@ -398,6 +399,7 @@ void data_type_conversion_6()
 	{
 		printf("i < d\n");
 	}
+	printf("-------------------------------------\n");
 }
 
 /**
@@ -428,6 +430,7 @@ void data_type_conversion_8()
 	int i = 100;
     double d = fun(c, i);
     printf("%f\n", d);
+	printf("-------------------------------------\n");
 }
 
 
@@ -461,6 +464,8 @@ void data_type_conversion_9()
 
 	ip = fp;
 	ip = (int*)fp;
+	printf("ip = %p\n", ip);
+	printf("-------------------------------------\n");
 }
 
 // 查看float的二进制表示
@@ -485,7 +490,6 @@ void print_float_ieee_754_bits(float f)
         printf("%d", (*ptr >> i) & 1);
         if (i == 31 || i == 23) printf(" ");
     }
-    printf("\n\n");
 }
 
 /**
@@ -498,7 +502,7 @@ void print_float_ieee_754()
     {
         print_float_ieee_754_bits(numbers[i]);
     }
-
+	printf("-------------------------------------\n");
 }
 
 typedef struct {
@@ -522,6 +526,7 @@ void print_float_struct()
     printf("Mantissa: %u\n", fc -> mantissa);
     // 使用二进制形式表示浮点数
     print_float_ieee_754_bits(f);
+	printf("\n-------------------------------------\n");
 }
 
 int main()
