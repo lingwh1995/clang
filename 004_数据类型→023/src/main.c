@@ -132,12 +132,16 @@ void definition_basic_data_type()
     printf("float 值 (默认): f = %f\n", f);
     printf("float 值 (2位小数): f = %.2f\n", f);
     printf("科学计数法: f = %e\n", f);
+    // 特别注意: 下面写法会报错，因为 float 类型数据自身就带有符号位
+    //unsigned float uf = 0.234f;
 
     // double类型
     float d = 0.456;
     printf("double 值 (默认): d = %lf\n", d);
     printf("double 值 (2位小数): d = %.2lf\n", d);
     printf("科学计数法: d = %e\n", d);
+    // 特别注意: 下面写法会报错，因为 double 类型数据自身就带有符号位
+    //unsigned float ud = 0.456;
 
     // char类型
     char c1 = 'A'; // 等同于 char a = 65;
