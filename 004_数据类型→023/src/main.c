@@ -74,6 +74,28 @@ void print_color(enum Color color)
 
 /**
  * 不同数据类型占据的空间大小
+ *
+ * 注意
+ *
+ * 1. c语言标准只规定了各种数据类型的占据空间的大小关系，没有规定各种数据类型占据的具体字节数
+ * 2. long类型在window平台，占据4个字节，在linux/macos平台占据8个字节，因为window为了兼容16位系统中编写的代码，只能将long的长度规定为4字节
+ * 3. 永远不要依赖long是4字节还是8字节，跨平台最安全写法
+ *
+ * 	  #include<stdint.h>
+ *
+ * 	  int32_t // 一定是4字节
+ * 	  int64_t // 一定是8字节
+ * 4. c语言设计时规定
+ * 	  int  尽量接近机器字长(机器字长 = CPU一次能处理的二进制位数，可以理解为CPU的天生带宽)，方便运算
+ * 	  	   16 位机器		int = 16位(2字节)
+ * 	  	   32 位机器	    int = 32位(4字节)
+ * 	  	   64 位机器     int = 32位(4字节，为了兼容旧程序)
+ * 	  long 设计初衷是更长一些
+ * 	  	   windows		4字节
+ * 	  	   linux/unix	8字节
+ * 	  long doubole
+ * 	  	   windows		8字节
+ * 	  	   linux/unix	12或16字节
  */
 void data_type_size()
 {
@@ -104,34 +126,40 @@ void data_type_size()
 void definition_basic_data_type()
 {
     // short类型
-    short s_signed = -100;
-    unsigned short s_unsigned = 100;
-    printf("有符号 short: s_signed = %hd\n", s_signed);
-    printf("无符号 short: s_unsigned = %hu\n", s_unsigned);
+    short s = -100;
+    unsigned short us = 100;
+    printf("有符号 short: s = %hd\n", s);
+    printf("无符号 short: us = %hu\n", us);
 
     // int类型
-    int i_signed = -200;
-    unsigned int i_unsigned = 200;
-    printf("有符号 int: i_signed = %d\n", i_signed);
-    printf("无符号 int: i_unsigned = %u\n", i_unsigned);
+    int i = -200;
+    unsigned int ui = 200;
+    printf("有符号 int: i = %d\n", i);
+    printf("无符号 int: ui = %u\n", ui);
 
     // long类型
-    long l_signed = -300L;  // 后缀L表示long类型
-    unsigned long l_unsigned = 300L;  // 后缀L表示long类型
-    printf("有符号 long: l_signed = %ld\n", l_signed);
-    printf("无符号 long: l_unsigned = %lu\n", l_unsigned);
+    long l = -300L;  // 后缀L表示long类型
+    unsigned long ul = 300L;  // 后缀L表示long类型
+    printf("有符号 long: l = %ld\n", l);
+    printf("无符号 long: ul = %lu\n", ul);
 
     // long long类型
-    long long ll_signed = -400LL;  // 后缀LL表示long long类型
-    unsigned long long ll_unsigned = 400LL;  // 后缀LL表示long long类型
-    printf("有符号 long long: ll_signed = %lld\n", ll_signed);
-    printf("无符号 long long: ll_signed = %llu\n", ll_unsigned);
+    long long ll = -400LL;  // 后缀LL表示long long类型
+    unsigned long long ull = 400LL;  // 后缀LL表示long long类型
+    printf("有符号 long long: ul = %lld\n", ul);
+    printf("无符号 long long: ull = %llu\n", ull);
 
     // float类型
     float f = 0.234f;
     printf("float 值 (默认): f = %f\n", f);
     printf("float 值 (2位小数): f = %.2f\n", f);
     printf("科学计数法: f = %e\n", f);
+    float fa = 0.1f;
+    float fb = 0.2f;
+    float fc = fa + fb;
+    printf("float 值 (默认): fc = %f\n", fc);
+    printf("float 值 (2位小数): fc = %.2f\n", fc);
+    printf("科学计数法: fc = %e\n", fc);
     // 特别注意: 下面写法会报错，因为 float 类型数据自身就带有符号位
     //unsigned float uf = 0.234f;
 
@@ -254,40 +282,133 @@ void data_type_conversion_1()
  */
 void data_type_conversion_2()
 {
-	// char a = -5         的二进制 => 原码 1000 0101 => 反码 1111 1010 => 补码 1111 1011 => int a（负数左边补1） => 1111 1111 1111 1111 1111 0101
+	/**
+	 * char a = -5         的二进制 => char a         => 原码 1000 0101
+	 * 							   => char a         => 反码 1111 1010
+	 * 							   => char a         => 补码 1111 1011
+	 * 							   => 负数 char a 的补码左边补齐位数(位数不够时，正数补0，负数补1)后转为 unsigned int a 的补码
+	 * 							   => unsigned int a => 补码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 							   => unsigned int a => 反码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 							   => unsigned int a => 原码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 							   => unsigned int a = 4294967291
+	 *
+	 * unsigned int b = 10 的二进制 => unsigned int b = 10
+	 *
+	 * 进行比较					   => 4294967291 > 10 => 得出 unsigned a > unsigned b => 打印 a > b
+	 */
 	char a = -5;
-	// unsigned int b = 10 的二进制 => 原码 0000 1010 => 反码 0111 0101 => 补码 0111 0111 => int b（正数左边补0） => 0000 0000 0000 0000 0000 1010
 	unsigned int b = 10;
 	if(a > b)
 	{
-		//printf("%x > %x \n", a, b);
-		printf("%d > %d \n", a, b);
+		printf("unsigned int a = %u, unsigned int b = %u\n", a, b);
+		printf("%u > %u => unsigned int a > unsigned int b => a > b\n", a, b);
 	}
 	else
 	{
-		//printf("%x < %x \n", a, b);
-		printf("%d < %d \n", a, b);
+		printf("unsigned int a = %u, unsigned int b = %u\n", a, b);
+		printf("%u < %u => unsigned int a < unsigned int b => a < b\n", a, b);
+	}
+	printf("-------------------------------------\n");
+}
+
+/**
+ * 数据类型转换案例3
+ * 	   先把有符号数转换为无符号数，再进行运算或比较
+ * 为什么是把有符号数转换为无符号数，而不是把无符号数转换为有符号数?
+ *     因为这个整数运算依赖于ALU运算器完成，而ALU运算器只支持补码加法运算，首先要把被操作转换为补码，才能进行加法运算
+ * 	   而-1由原码转换成补码后，ALU会将所有位视为数值位，就相当于把有符号数转换为无符号数，类型转换不是修改补码，而是
+ * 	   改变补码的解析规则
+ */
+void data_type_conversion_3()
+{
+	/**
+	 * int a = -5          的二进制 => int a          => 原码 1000 0000 0000 0000 0000 0000 0000 0101
+	 * 					           => int a          => 反码 1111 1111 1111 1111 1111 1111 1111 1010
+	 * 					           => int a          => 补码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 							   => 负数 int a 的补码左边补齐位数(位数不够时，正数补0，负数补1)后转为 unsigned int a 的补码
+	 * 							   => unsigned int a => 补码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 							   => unsigned int a => 反码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 							   => unsigned int a => 原码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 					           => unsigned int a = 4294967291
+	 *
+	 * unsigned int b = 10 的二进制 => unsigned int b = 10
+	 *
+	 * 进行比较					   => 4294967291 > 10 => 得出 unsigned int a > unsigned int b => 打印 a > b
+	 */
+	int a = -5;
+	unsigned int b = 10;
+	if(a > b)
+	{
+		printf("unsigned int a = %u, unsigned int b = %u\n", a, b);
+		printf("%u > %u => unsigned int a > unsigned int b => a > b\n", a, b);
+	}
+	else
+	{
+		printf("unsigned int a = %u, unsigned int b = %u\n", a, b);
+		printf("%u < %u => unsigned int a < unsigned int b => a < b\n", a, b);
+	}
+	printf("-------------------------------------\n");
+}
+
+/**
+ * 数据类型转换案例4: 操作数为char/unsigned char或short/unsigned short时，转为int进行操作，结果也为int
+ * 					注意：是转为int，不是 unsigned int
+ */
+void data_type_conversion_4()
+{
+	/**
+	 * char a = -5           的二进制 => char a           => 原码 1000 0101
+	 * 							     => char a           => 反码 1111 1010
+	 * 							     => char a           => 补码 1111 1011
+	 * 							     => 负数 char a 的补码左边补齐位数(位数不够时，正数补0，负数补1)后转为 int a 的补码
+	 * 							     => int a 		     => 补码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 							     => int a 		     => 反码 1000 0000 0000 0000 0000 0000 0000 0100
+	 * 							     => int a 		     => 原码 1000 0000 0000 0000 0000 0000 0000 0101
+	 * 						 	     => int a = -5
+	 *
+	 * unsigned short b = 10 的二进制 => unsigned short b => 原码 0000 0000 0000 1010
+	 * 								 => unsigned short b => 反码 0000 0000 0000 1010
+	 * 								 => unsigned short b => 补码 0000 0000 0000 1010
+	 * 								 => 正数 unsigned short b 的补码左边补齐位数后(正数补0，负数补1)转为 int b 的补码
+	 * 								 => int b            => 补码 0000 0000 0000 0000 0000 0000 0000 1010
+	 * 								 => int b            => 反码 0000 0000 0000 0000 0000 0000 0000 1010
+	 * 								 => int b            => 原码 0000 0000 0000 0000 0000 0000 0000 1010
+	 * 								 => int b = 10
+	 *
+	 * 进行比较					     => -5 < 10 => 得出 int a < int b => 打印 a < b
+	 */
+	char a = -5;
+	unsigned short b = 10;
+	if(a > b)
+	{
+		printf("int a = %d, int b = %d\n", a, b);
+		printf("%d > %d => int a > int b => a > b\n", a, b);
+	}
+	else
+	{
+		printf("int a = %d, int b = %d\n", a, b);
+		printf("%d < %d => int a < int b => a < b\n", a, b);
 	}
 	printf("-------------------------------------\n");
 }
 
 
 /**
- * 数据类型转换案例3
+ * 数据类型转换案例5
  */
-void data_type_conversion_3()
+void data_type_conversion_5()
 {
 	/**
 	 * char a = 100 的二进制 => 原码 0110 0100 => 反码 0110 0100 => 补码   0110 0100
 	 * 																	  +
 	 * char b = 200 的二进制 => 原码 1100 1000 => 反码 1100 1000 => 补码   1100 1000
-	 *
-	 * 运算结果  c 												=> 补码 1 0010 1100 => 截取最低位1个字节 => 0010 1100 => 十进制的44
+	 *																	  =
+	 * 运算结果  c 											   => 补码 1 0010 1100 => 截取最低8位 => 0010 1100 => 十进制的44
 	 *
 	 * char a = 100 的二进制 => 补码 0110 0100 => int a 的二进制补码  0000 0000 0000 0000 0000 0000 0110 0100
 	 * 															     +
 	 * char b = 200 的二进制 => 补码 1100 1000 => int b 的二进制补码  1111 1111 1111 1111 1111 1111 1100 1000
-	 *
+	 *																 =
 	 * 运算结果  a + b 		 		 		  => int c 的二进制补码 10000 0000 0000 0000 0000 0000 0010 1100  => 十进制的44
 	 */
 	char a = 100;
@@ -315,11 +436,43 @@ void data_type_conversion_3()
 	printf("-------------------------------------\n");
 }
 
+/**
+ * 数据类型转换案例6
+ */
+void data_type_conversion_6()
+{
+	// 可以打印出 -4 到 3 之间的整数
+	for(int i = -4; i < 4; i++)
+	{
+		printf("%d\n", i);
+	}
+	printf("---------\n");
+	/**
+	 * for 循环一次也无法执行，所以无法打印出任何内容
+	 *
+	 * 因为 sizeof(int) 返回的数据类型是 unsigned int 类型，i 和 sizeof(int)比较时，首先要把 i 转换为 unsigned int 类型
+	 * int i = -4 => int i          => 原码 1000 0000 0000 0000 0000 0000 0000 0100
+	 *            => int i          => 反码 1111 1111 1111 1111 1111 1111 1111 1011
+	 *            => int i          => 补码 1111 1111 1111 1111 1111 1111 1111 1100
+	 *            => 转换为 unsigned int i
+	 *            => unsigned int i => 补码 1111 1111 1111 1111 1111 1111 1111 1100
+	 *            => unsigned int i => 反码 1111 1111 1111 1111 1111 1111 1111 1100
+	 *            => unsigned int i => 原码 1111 1111 1111 1111 1111 1111 1111 1100
+	 *            => unsigned int i = 4294967292
+	 *
+	 * 比较结果    => 4294967292 < 4 => i < 4 不成立 => i < sizeof(int) 不成立 => for 循环一次也无法执行
+	 */
+	for(int i = -4; i < sizeof(int); i++)
+	{
+		printf("%d\n", i);
+	}
+	printf("-------------------------------------\n");
+}
 
 /**
- * 数据类型转换案例4
+ * 数据类型转换案例7
  */
-void data_type_conversion_4()
+void data_type_conversion_7()
 {
 	char c = 128;
 	unsigned char uc = 128;
@@ -367,9 +520,9 @@ void data_type_conversion_4()
 }
 
 /**
- * 数据类型转换案例5
+ * 数据类型转换案例8
  */
-void data_type_conversion_5()
+void data_type_conversion_8()
 {
 	int i = 10;
 	char c = 'a';
@@ -387,9 +540,9 @@ void data_type_conversion_5()
 }
 
 /**
- * 数据类型转换案例6
+ * 数据类型转换案例9
  */
-void data_type_conversion_6()
+void data_type_conversion_9()
 {
 	int i = 10;
     double d = 12.23;
@@ -407,9 +560,9 @@ void data_type_conversion_6()
 }
 
 /**
- * 数据类型转换案例7
+ * 数据类型转换案例10
  */
-void data_type_conversion_7()
+void data_type_conversion_10()
 {
     double d = 100.23;
 	char ch = 'a';
@@ -426,9 +579,9 @@ double fun(int a, char ch)
 }
 
 /**
- * 数据类型转换案例8
+ * 数据类型转换案例11
  */
-void data_type_conversion_8()
+void data_type_conversion_11()
 {
 	char c = 'a';
 	int i = 100;
@@ -437,9 +590,8 @@ void data_type_conversion_8()
 	printf("-------------------------------------\n");
 }
 
-
 /**
- * 数据类型转换案例9
+ * 数据类型转换案例12
  *
  *
  * C语言中的数据类型在变量定义时确定后，不能直接更改其类型。这是C语言作为静态类型语言的基本特性之一。
@@ -454,7 +606,7 @@ void data_type_conversion_8()
  *   	int i = (int)ft;    // i 是整型，这里是并不是把 ft 转为了 int 类型数据，而是把一个临时变量 (int)ft 赋值给了变量 i ，并不是把 ft 赋值给了变量i
  */
 
-void data_type_conversion_9()
+void data_type_conversion_12()
 {
 	float ft = 12.25;
 	int a = 10;
@@ -550,6 +702,9 @@ int main()
     data_type_conversion_7();
     data_type_conversion_8();
     data_type_conversion_9();
+    data_type_conversion_10();
+    data_type_conversion_11();
+    data_type_conversion_12();
     //print_float_ieee_754();
     print_float_struct();
     return 0;
