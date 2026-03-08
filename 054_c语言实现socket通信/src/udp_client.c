@@ -16,14 +16,16 @@
  *
  * gcc udp_client.c -o udp_client
  */
-int main() {
+int main()
+{
     int sockfd;
     char buffer[BUFFER_SIZE];
     char client_message[BUFFER_SIZE];
     struct sockaddr_in servaddr;
 
     // 创建UDP socket
-    if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
+    if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
+    {
         perror("socket creation failed");
         exit(EXIT_FAILURE);
     }
@@ -35,7 +37,8 @@ int main() {
     servaddr.sin_port = htons(PORT);
 
     // 将IPv4地址从文本转换为二进制形式
-    if (inet_pton(AF_INET, SERVER_IP, &servaddr.sin_addr) <= 0) {
+    if (inet_pton(AF_INET, SERVER_IP, &servaddr.sin_addr) <= 0)
+    {
         perror("invalid address/address not supported");
         exit(EXIT_FAILURE);
     }
@@ -45,14 +48,16 @@ int main() {
 
     socklen_t len = sizeof(servaddr);
 
-    while (1) {
+    while (1)
+    {
         // 清空缓冲区
         memset(buffer, 0, BUFFER_SIZE);
         memset(client_message, 0, BUFFER_SIZE);
 
         // 从控制台读取客户端要发送的消息
         printf("Client: ");
-        if (fgets(client_message, BUFFER_SIZE, stdin) == NULL) {
+        if (fgets(client_message, BUFFER_SIZE, stdin) == NULL)
+        {
             perror("fgets failed");
             break;
         }
@@ -65,14 +70,16 @@ int main() {
                MSG_CONFIRM, (const struct sockaddr *)&servaddr, sizeof(servaddr));
 
         // 检查是否要退出
-        if (strcmp(client_message, "exit") == 0) {
+        if (strcmp(client_message, "exit") == 0)
+        {
             break;
         }
 
         // 接收服务器的响应
         ssize_t n = recvfrom(sockfd, (char *)buffer, BUFFER_SIZE,
                              MSG_WAITALL, (struct sockaddr *)&servaddr, &len);
-        if (n < 0) {
+        if (n < 0)
+        {
             perror("recvfrom failed");
             break;
         }
@@ -81,7 +88,8 @@ int main() {
         printf("Server: %s\n", buffer);
 
         // 检查服务器是否发送退出命令
-        if (strcmp(buffer, "exit") == 0) {
+        if (strcmp(buffer, "exit") == 0)
+        {
             printf("Server requested exit\n");
             break;
         }

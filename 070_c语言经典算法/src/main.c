@@ -344,7 +344,9 @@ int binary_search_find_value(const int* arr, int n, int val)
 		else if(arr[mid] < val)
 		{
 			left = mid + 1;
-		}else {
+		}
+		else
+		{
 			position = mid;
 			break;
 		}

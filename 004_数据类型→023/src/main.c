@@ -3,25 +3,49 @@
 #include <stdint.h>
 
 /**
- * 章节内容：
- *   C语言数据类型
- *     1.基本数据类型：
- *       整型数据类型：short、int、long、long long
- *       	注意：short就是short int, long就是long int, long long就是long long int
- *       字符数据类型：char
- *       浮点型数据类型：float、double
- *       布尔类型：false=0、 true=1/非0
- *     2.构造数据类型
- *		 数组(Array)：一组相同类型元素的集合，可以是一维或多维。
- *		 结构体(Struct)：允许将不同类型的数据组合在一起，每个成员拥有独立的内存空间。
- *		 联合体(Union)：所有成员共享同一块内存空间，同一时间只能存储一种类型的数据。
- *		 ‌枚举(Enum)：用于定义一组命名的整数常量。
- *	   3.指针类型
- *	   	 指针(Pointer)：指向特定类型数据的指针，用于存储变量的内存地址，如int *p表示指向整数的指针。
- *	   4.空类型
- *	   	 void‌：表示没有类型，通常用于函数返回值、函数参数或通用指针。
- *	   5.数据类型转换
- *	   	 从小范围数据类型转换为大范围数据类型，符号位扩展取决于原数据类型，而不是目标数据类型
+ * 章节内容：C语言数据类型
+ *
+ * 1. 基本数据类型
+ *    - 整型数据类型：short、int、long、long long
+ *      注意：short就是short int, long就是long int, long long就是long long int
+ *    - 字符数据类型：char
+ *    - 浮点型数据类型：float、double
+ *    - 布尔类型：false=0、 true=1/非0
+ *
+ * 2. 构造数据类型
+ *    - 数组(Array)：一组相同类型元素的集合，可以是一维或多维。
+ *    - 结构体(Struct)：允许将不同类型的数据组合在一起，每个成员拥有独立的内存空间。
+ *    - 联合体(Union)：所有成员共享同一块内存空间，同一时间只能存储一种类型的数据。
+ *    - 枚举(Enum)：用于定义一组命名的整数常量。
+ *
+ * 3. 指针类型
+ *    - 指针(Pointer)：指向特定类型数据的指针，用于存储变量的内存地址，如int *p表示指向整数的指针。
+ *
+ * 4. 空类型
+ *    - void：表示没有类型，通常用于函数返回值、函数参数或通用指针。
+ *
+ * 5. 数据类型转换注意事项和转换方式
+ *    - 从小范围数据类型转换为大范围数据类型，符号位扩展取决于原数据类型，而不是目标数据类型
+ *    - 小类型转大类型时，要转换为补码后再给补码的左边补齐，无符号数一律补0，有符号数，最高位为0补0，最高位为1补1
+ *    - 同一种数据类型从有符号转换为无符号数，二进制完全不变，只是把最高位从符号位变成数值位
+ *      如 char => unsigned char
+ *    - 同一种数据类型从无符号转换为有符号数，二进制完全不变，只是把最高位从数值位变成符号位
+ *      如 unsigned char => char
+ *    - 不同数据类型从有符号转换为无符号数(小类型转为大类型时)，先扩展小类型为合理的大类型(如有需要，要截取扩展后的大类型为目标小类型)，再把最高位从符号位变成数值位
+ *      如 char => unsigned short 需要先把 char 转换为 int 作为中转类型，而不能直接把 char 转换为 unsigned short
+ *         char => int => unsigned short
+ *
+ * 6. 比 int 范围小的整数数(char、unsigned char、short、unsigned short)，会自动提升为 int 然后再进行计算
+ * 	  - 程序代码
+ * 	    char a = 10;
+ * 	    char b = 20;
+ * 	    char c = a + b;
+ *
+ * 	  - 执行过程
+ * 	    char a => 自动提升为 int a
+ * 	    char b => 自动提升为 int b
+ * 	    在 int 里完成加法
+ * 	    结果再赋值回 char c
  */
 
 
@@ -96,27 +120,28 @@ void print_color(enum Color color)
  * 	  long doubole
  * 	  	   windows		8字节
  * 	  	   linux/unix	12或16字节
+ * 5. sizeof()返回的数据类型是size_t，输出时使用 %zu
  */
 void data_type_size()
 {
 
 	// short就是short int
-    printf("short类型所占字节大小: %d\n", sizeof(short));
-    printf("int类型所占字节大小: %d\n", sizeof(int));
+    printf("short类型所占字节大小: %zu\n", sizeof(short));
+    printf("int类型所占字节大小: %zu\n", sizeof(int));
     // long就是long int
-    printf("long类型所占字节大小: %d\n", sizeof(long));
-    printf("long int类型所占字节大小: %d\n", sizeof(long int));
+    printf("long类型所占字节大小: %zu\n", sizeof(long));
+    printf("long int类型所占字节大小: %zu\n", sizeof(long int));
     // long long就是long long int
-    printf("long long类型所占字节大小: %d\n", sizeof(long long));
-    printf("long long int类型所占字节大小: %d\n", sizeof(long long int));
+    printf("long long类型所占字节大小: %zu\n", sizeof(long long));
+    printf("long long int类型所占字节大小: %zu\n", sizeof(long long int));
     // 字符数据类型
-    printf("char类型所占字节大小: %d\n", sizeof(char));
+    printf("char类型所占字节大小: %zu\n", sizeof(char));
     // 浮点型数据类型
-    printf("float类型所占字节大小: %d\n", sizeof(float));
-    printf("double类型所占字节大小: %d\n", sizeof(double));
-    printf("long double类型所占字节大小: %d\n", sizeof(long double));
+    printf("float类型所占字节大小: %zu\n", sizeof(float));
+    printf("double类型所占字节大小: %zu\n", sizeof(double));
+    printf("long double类型所占字节大小: %zu\n", sizeof(long double));
     // 使用bool类型,C99中要引用 stdbool.h
-    printf("bool类型所占字节大小: %d\n", sizeof(bool));
+    printf("bool类型所占字节大小: %zu\n", sizeof(bool));
     printf("-------------------------------------\n");
 }
 
@@ -278,23 +303,23 @@ void data_type_conversion_1()
 }
 
 /**
- * 数据类型转换案例2
+ * 数据类型转换案例2: char 和 unsigned int 运算或比较时，char 先转换为 unsigned int，再进行运算或比较
  */
 void data_type_conversion_2()
 {
 	/**
-	 * char a = -5         的二进制 => char a         => 原码 1000 0101
-	 * 							   => char a         => 反码 1111 1010
-	 * 							   => char a         => 补码 1111 1011
-	 * 							   => 负数 char a 的补码左边补齐位数(位数不够时，正数补0，负数补1)后转为 unsigned int a 的补码
-	 * 							   => unsigned int a => 补码 1111 1111 1111 1111 1111 1111 1111 1011
-	 * 							   => unsigned int a => 反码 1111 1111 1111 1111 1111 1111 1111 1011
-	 * 							   => unsigned int a => 原码 1111 1111 1111 1111 1111 1111 1111 1011
-	 * 							   => unsigned int a = 4294967291
+	 * char a = -5         => char a         => 原码 1000 0101
+	 * 					   => char a         => 反码 1111 1010
+	 * 					   => char a         => 补码 1111 1011
+	 * 					   => char a 的补码左边补齐位数(小类型转大类型时，无符号数一律补0，有符号数，最高位为0补0，最高位为1补1)后转为 unsigned int a 的补码
+	 * 					   => unsigned int a => 补码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 					   => unsigned int a => 反码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 					   => unsigned int a => 原码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 					   => unsigned int a = 4294967291
 	 *
-	 * unsigned int b = 10 的二进制 => unsigned int b = 10
+	 * unsigned int b = 10 => unsigned int b = 10
 	 *
-	 * 进行比较					   => 4294967291 > 10 => 得出 unsigned a > unsigned b => 打印 a > b
+	 * 进行比较			   => 4294967291 > 10 => 得出 unsigned a > unsigned b => 打印 a > b
 	 */
 	char a = -5;
 	unsigned int b = 10;
@@ -312,8 +337,8 @@ void data_type_conversion_2()
 }
 
 /**
- * 数据类型转换案例3
- * 	   先把有符号数转换为无符号数，再进行运算或比较
+ * 数据类型转换案例3: int 和 unsigned int 运算或比较时，int 先转换为 unsigned int，再进行运算或比较
+ *
  * 为什么是把有符号数转换为无符号数，而不是把无符号数转换为有符号数?
  *     因为这个整数运算依赖于ALU运算器完成，而ALU运算器只支持补码加法运算，首先要把被操作转换为补码，才能进行加法运算
  * 	   而-1由原码转换成补码后，ALU会将所有位视为数值位，就相当于把有符号数转换为无符号数，类型转换不是修改补码，而是
@@ -322,18 +347,18 @@ void data_type_conversion_2()
 void data_type_conversion_3()
 {
 	/**
-	 * int a = -5          的二进制 => int a          => 原码 1000 0000 0000 0000 0000 0000 0000 0101
-	 * 					           => int a          => 反码 1111 1111 1111 1111 1111 1111 1111 1010
-	 * 					           => int a          => 补码 1111 1111 1111 1111 1111 1111 1111 1011
-	 * 							   => 负数 int a 的补码左边补齐位数(位数不够时，正数补0，负数补1)后转为 unsigned int a 的补码
-	 * 							   => unsigned int a => 补码 1111 1111 1111 1111 1111 1111 1111 1011
-	 * 							   => unsigned int a => 反码 1111 1111 1111 1111 1111 1111 1111 1011
-	 * 							   => unsigned int a => 原码 1111 1111 1111 1111 1111 1111 1111 1011
-	 * 					           => unsigned int a = 4294967291
+	 * int a = -5          => int a          => 原码 1000 0000 0000 0000 0000 0000 0000 0101
+	 * 					   => int a          => 反码 1111 1111 1111 1111 1111 1111 1111 1010
+	 * 					   => int a          => 补码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 					   => int a 的补码左边补齐位数(小类型转大类型时，无符号数一律补0，有符号数，最高位为0补0，最高位为1补1)后转为 unsigned int a 的补码
+	 * 					   => unsigned int a => 补码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 					   => unsigned int a => 反码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 					   => unsigned int a => 原码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 					   => unsigned int a = 4294967291
 	 *
-	 * unsigned int b = 10 的二进制 => unsigned int b = 10
+	 * unsigned int b = 10 => unsigned int b = 10
 	 *
-	 * 进行比较					   => 4294967291 > 10 => 得出 unsigned int a > unsigned int b => 打印 a > b
+	 * 进行比较			   => 4294967291 > 10 => 得出 unsigned int a > unsigned int b => 打印 a > b
 	 */
 	int a = -5;
 	unsigned int b = 10;
@@ -351,31 +376,30 @@ void data_type_conversion_3()
 }
 
 /**
- * 数据类型转换案例4: 操作数为char/unsigned char或short/unsigned short时，转为int进行操作，结果也为int
- * 					注意：是转为int，不是 unsigned int
+ * 数据类型转换案例4: char/unsigned char 和 short/unsigned short 运算或比较时，两个操作数先转换为 int，再进行运算或比较
  */
 void data_type_conversion_4()
 {
 	/**
-	 * char a = -5           的二进制 => char a           => 原码 1000 0101
-	 * 							     => char a           => 反码 1111 1010
-	 * 							     => char a           => 补码 1111 1011
-	 * 							     => 负数 char a 的补码左边补齐位数(位数不够时，正数补0，负数补1)后转为 int a 的补码
-	 * 							     => int a 		     => 补码 1111 1111 1111 1111 1111 1111 1111 1011
-	 * 							     => int a 		     => 反码 1000 0000 0000 0000 0000 0000 0000 0100
-	 * 							     => int a 		     => 原码 1000 0000 0000 0000 0000 0000 0000 0101
-	 * 						 	     => int a = -5
+	 * char a = -5           => char a           => 原码 1000 0101
+	 * 						 => char a           => 反码 1111 1010
+	 * 						 => char a           => 补码 1111 1011
+	 * 						 => char a 的补码左边补齐位数(小类型转大类型时，无符号数一律补0，有符号数，最高位为0补0，最高位为1补1)后转为 int a 的补码
+	 * 						 => int a 		     => 补码 1111 1111 1111 1111 1111 1111 1111 1011
+	 * 						 => int a 		     => 反码 1000 0000 0000 0000 0000 0000 0000 0100
+	 * 						 => int a 		     => 原码 1000 0000 0000 0000 0000 0000 0000 0101
+	 * 						 => int a = -5
 	 *
-	 * unsigned short b = 10 的二进制 => unsigned short b => 原码 0000 0000 0000 1010
-	 * 								 => unsigned short b => 反码 0000 0000 0000 1010
-	 * 								 => unsigned short b => 补码 0000 0000 0000 1010
-	 * 								 => 正数 unsigned short b 的补码左边补齐位数后(正数补0，负数补1)转为 int b 的补码
-	 * 								 => int b            => 补码 0000 0000 0000 0000 0000 0000 0000 1010
-	 * 								 => int b            => 反码 0000 0000 0000 0000 0000 0000 0000 1010
-	 * 								 => int b            => 原码 0000 0000 0000 0000 0000 0000 0000 1010
-	 * 								 => int b = 10
+	 * unsigned short b = 10 => unsigned short b => 原码 0000 0000 0000 1010
+	 * 						 => unsigned short b => 反码 0000 0000 0000 1010
+	 * 						 => unsigned short b => 补码 0000 0000 0000 1010
+	 * 						 => unsigned short b 的补码左边补齐位数后(小类型转大类型时，无符号数一律补0，有符号数，最高位为0补0，最高位为1补1)转为 int b 的补码
+	 * 						 => int b            => 补码 0000 0000 0000 0000 0000 0000 0000 1010
+	 * 						 => int b            => 反码 0000 0000 0000 0000 0000 0000 0000 1010
+	 * 						 => int b            => 原码 0000 0000 0000 0000 0000 0000 0000 1010
+	 * 						 => int b = 10
 	 *
-	 * 进行比较					     => -5 < 10 => 得出 int a < int b => 打印 a < b
+	 * 进行比较				 => -5 < 10 => 得出 int a < int b => 打印 a < b
 	 */
 	char a = -5;
 	unsigned short b = 10;
@@ -394,22 +418,37 @@ void data_type_conversion_4()
 
 
 /**
- * 数据类型转换案例5
+ * 数据类型转换案例5: char 和 char, unsigned char 和 unsigned char 运算或比较时，两个操作数先转换为 int，再进行运算或比较
  */
 void data_type_conversion_5()
 {
 	/**
-	 * char a = 100 的二进制 => 原码 0110 0100 => 反码 0110 0100 => 补码   0110 0100
-	 * 																	  +
-	 * char b = 200 的二进制 => 原码 1100 1000 => 反码 1100 1000 => 补码   1100 1000
-	 *																	  =
-	 * 运算结果  c 											   => 补码 1 0010 1100 => 截取最低8位 => 0010 1100 => 十进制的44
+	 * char a = 100 => char a => 原码   0110 0100
+	 * 			    => char a => 反码   0110 0100
+	 * 				=> char a => 补码   0110 0100
+	 * 				=> char a 的补码左边补齐位数后(小类型转大类型时，无符号数一律补0，有符号数，最高位为0补0，最高位为1补1)转为 int a 的补码
+	 * 				=> int a  => 补码   0000 0000 0000 0000 0000 0000 0110 0100
+     *
+	 * char b = 200 => char b => 原码   1100 1000
+	 * 				=> char b => 反码   1100 1000
+	 * 				=> char b => 补码   1100 1000
+	 *				=> char b 的补码左边补齐位数后(小类型转大类型时，无符号数一律补0，有符号数，最高位为0补0，最高位为1补1)转为 int b 的补码
+	 *				=> int b  => 补码   1111 1111 1111 1111 1111 1111 1100 1000
 	 *
-	 * char a = 100 的二进制 => 补码 0110 0100 => int a 的二进制补码  0000 0000 0000 0000 0000 0000 0110 0100
-	 * 															     +
-	 * char b = 200 的二进制 => 补码 1100 1000 => int b 的二进制补码  1111 1111 1111 1111 1111 1111 1100 1000
-	 *																 =
-	 * 运算结果  a + b 		 		 		  => int c 的二进制补码 10000 0000 0000 0000 0000 0000 0010 1100  => 十进制的44
+	 * int a        => int a  => 补码   0000 0000 0000 0000 0000 0000 0110 0100
+	 * 	+								 								    +
+	 * int b	    => int b  => 补码   1111 1111 1111 1111 1111 1111 1100 1000
+	 *	=							 									    =
+	 * 运算结果  	=> int c  => 补码 1 0000 0000 0000 0000 0000 0000 0010 1100
+	 * 				=> int c  => 反码 1 0000 0000 0000 0000 0000 0000 0010 1100
+	 * 				=> int c  => 原码 1 0000 0000 0000 0000 0000 0000 0010 1100
+	 *				=> int c = 44
+	 *
+	 *				=> int c 的补码截取低8位后 转换为 char c 的补码
+	 *				=> char c => 补码 0010 1100
+	 *				=> char c => 反码 0010 1100
+	 *				=> char c => 原码 0010 1100
+	 *				=> char c = 44
 	 */
 	char a = 100;
 	char b = 200;
@@ -417,17 +456,38 @@ void data_type_conversion_5()
 	printf("c = %d, a + b = %d\n", c, a + b);
 
 	/**
-	 * unsigned char x = 100 的二进制 => 原码 0110 0100 => 反码 0110 0100 => 补码   0110 0100
-	 * 																	 	       +
-	 * unsigned char y = 200 的二进制 => 原码 1100 1000 => 反码 1100 1000 => 补码   1100 1000
+	 * unsigned char x = 100 => unsigned char x => 原码   0110 0100
+	 * 			             => unsigned char x => 反码   0110 0100
+	 * 				         => unsigned char x => 补码   0110 0100
+	 * 				         => unsigned char x 的补码左边补齐位数后(小类型转大类型时，无符号数一律补0，有符号数，最高位为0补0，最高位为1补1)转为 int x 的补码
+	 * 				         => int a  => 补码   0000 0000 0000 0000 0000 0000 0110 0100
+     *
+	 * unsigned char y = 200 => unsigned char y => 原码   1100 1000
+	 * 				         => unsigned char y => 反码   1100 1000
+	 * 				         => unsigned char y => 补码   1100 1000
+	 *				         => unsigned char y 的补码左边补齐位数后(小类型转大类型时，无符号数补0，有符号数，最高位为0补0，最高位为1补1)转为 int y 的补码
+	 *				         => int b           => 补码   0000 0000 0000 0000 0000 0000 1100 1000
 	 *
-	 * 运算结果												             => 补码 1 0010 1100 => 截取最低位1个字节 => 0010 1100 => 十进制的44
+	 * int x                 => int x           => 补码   0000 0000 0000 0000 0000 0000 0110 0100
+	 * 	+								 								                      +
+	 * int y	             => int y           => 补码   0000 0000 0000 0000 0000 0000 1100 1000
+	 *	=							 									                      =
+	 * 运算结果  	         => int z           => 补码   0000 0000 0000 0000 0000 0001 0010 1100
+	 * 				         => int z           => 反码   0000 0000 0000 0000 0000 0001 0010 1100
+	 * 				         => int z           => 原码   0000 0000 0000 0000 0000 0001 0010 1100
+	 *				         => int z = 300
 	 *
-	 * unsigned char x = 100 的二进制 => 补码 0110 0100 => int x 的二进制补码 0000 0000 0000 0000 0000 0000 0110 0100
-	 * 															             +
-	 * unsigned char x = 200 的二进制 => 补码 1100 1000 => int x 的二进制补码 0000 0000 0000 0000 0000 0000 1100 1000
+	 *						 => int z 的补码截取低8位后 转换为 unsigned char z 的补码
+	 *						 => unsigned char z => 补码 0010 1100
+	 *						 => unsigned char z => 反码 0010 1100
+	 *						 => unsigned char z => 原码 0010 1100
+	 *						 => unsigned char z = 44
 	 *
-	 * 运算结果  x + y 		 		 		  	       => int z 的二进制补码 0000 0000 0000 0000 0000 0001 0010 1100  => 十进制的300
+	 *						 => unsigned char z 的补码左边补齐位数后(小类型转大类型时，无符号数一律补0，有符号数，最高位为0补0，最高位为1补1)转为 int z 的补码
+	 *						 => int z           => 补码   0000 0000 0000 0000 0000 0000 0010 1100
+	 *						 => int z           => 反码   0000 0000 0000 0000 0000 0000 0010 1100
+	 *						 => int z           => 原码   0000 0000 0000 0000 0000 0000 0010 1100
+	 *						 => int z = 44
 	 */
 	unsigned char x = 100;
 	unsigned char y = 200;
@@ -454,7 +514,7 @@ void data_type_conversion_6()
 	 * int i = -4 => int i          => 原码 1000 0000 0000 0000 0000 0000 0000 0100
 	 *            => int i          => 反码 1111 1111 1111 1111 1111 1111 1111 1011
 	 *            => int i          => 补码 1111 1111 1111 1111 1111 1111 1111 1100
-	 *            => 转换为 unsigned int i
+	 *            => int i 的补码左边补齐位数后(小类型转大类型时，无符号数补0，有符号数，最高位为0补0，最高位为1补1)转为 unsigned int i 的补码
 	 *            => unsigned int i => 补码 1111 1111 1111 1111 1111 1111 1111 1100
 	 *            => unsigned int i => 反码 1111 1111 1111 1111 1111 1111 1111 1100
 	 *            => unsigned int i => 原码 1111 1111 1111 1111 1111 1111 1111 1100
@@ -478,40 +538,121 @@ void data_type_conversion_7()
 	unsigned char uc = 128;
 	unsigned short us = 0;
 	/**
-	 * 			 char c => 1000 0000 => short  c   1111 1111 1000 0000
-	 *       			   						   +
-	 * unsigned char uc => 1000 0000 => short uc   0000 0000 1000 0000
-	 * unsigned short us  			 =>			 1 0000 0000 0000 0000 => 截最取低位2个字节 => 0000 0000 0000 0000 => 十六进制 0
+	 * char c = 128 	      => char c 		  => 原码   1000 0000
+	 * 					      => char c 		  => 反码   1000 0000
+	 * 						  => char c 		  => 补码   1000 0000
+	 * 						  => char c 的补码左边补齐位数后(小类型转大类型时，无符号数补0，有符号数，最高位为0补0，最高位为1补1)转为 int c 的补码
+	 * 						  => int c  		  => 补码   1111 1111 1111 1111 1111 1111 1000 0000
+	 *
+	 * unsigned char uc = 128 => unsigned char uc => 原码   1000 0000
+	 * 						  => unsigned char uc => 反码   1000 0000
+	 * 						  => unsigned char uc => 补码   1000 0000
+	 * 						  => unsigned char c 的补码左边补齐位数后(小类型转大类型时，无符号数补0，有符号数，最高位为0补0，最高位为1补1)转为 int uc 的补码
+	 * 						  => int uc			  => 补码   0000 0000 0000 0000 0000 0000 1000 0000
+	 *
+	 * int c				  => int c			  => 补码   1111 1111 1111 1111 1111 1111 1000 0000
+	 *  +													  								    +
+	 * int uc       		  => int uc			  => 补码   0000 0000 0000 0000 0000 0000 1000 0000
+	 *  =																					    =
+	 * 计算结果 				  => int us		      => 补码 1 0000 0000 0000 0000 0000 0000 0000 0000
+	 *
+	 *  					  => int us 的补码截取低16位后 转换为 unsigned short us 的补码
+	 *  					  => unsigned short us => 补码  0000 0000 0000 0000
+	 *  					  => unsigned short us => 反码  0000 0000 0000 0000
+	 *  					  => unsigned short us => 原码  0000 0000 0000 0000
+	 *  					  => int us = 0x0
 	 */
 	us = c + uc;
 	printf("us = %x\n", us);
 
-
 	/**
-	 *           char c => 1000 0000 => unsigned char  c => 1000 0000 => short  c  0000 0000 1000 0000
-	 *       			                          						           +
-	 * unsigned char uc => 1000 0000 => unsigned char uc => 1000 0000 => short uc  0000 0000 1000 0000
-	 * unsigned short us  						                      =>		   0000 0001 0000 0000 => 截最取低位2个字节 => 0000 0001 0000 0000 => 十六进制 100
+	 * char c = 128 	      => char c 		  => 原码   1000 0000
+	 * 					      => char c 		  => 反码   1000 0000
+	 * 						  => char c 		  => 补码   1000 0000
+	 * 						  => char c 转换为 unsigned char c(同一数据类型由有符号转换为无符号类型时，二进制完全不变，只是把最高位从符号位变成数值位)
+	 * 						  => unsigned char c  => 补码   1000 0000
+	 * 						  => unsigned char c 的补码左边补齐位数后(小类型转大类型时，无符号数补0，有符号数，最高位为0补0，最高位为1补1)转为 int c 的补码
+	 * 						  => int c  		  => 补码   0000 0000 0000 0000 0000 0000 1000 0000
+	 *
+	 * unsigned char uc = 128 => unsigned char uc => 原码   1000 0000
+	 * 						  => unsigned char uc => 反码   1000 0000
+	 * 						  => unsigned char uc => 补码   1000 0000
+	 * 						  => unsigned char c 的补码左边补齐位数后(小类型转大类型时，无符号数补0，有符号数，最高位为0补0，最高位为1补1)转为 int uc 的补码
+	 * 						  => int uc			  => 补码   0000 0000 0000 0000 0000 0000 1000 0000
+	 *
+	 * int c				  => int c			  => 补码   0000 0000 0000 0000 0000 0000 1000 0000
+	 *  +													  								    +
+	 * int uc       		  => int uc			  => 补码   0000 0000 0000 0000 0000 0000 1000 0000
+	 *  =																					    =
+	 * 计算结果 				  => int us		      => 补码   0000 0000 0000 0000 0000 0001 0000 0000
+	 *
+	 *  					  => int us 的补码截取低16位后 转换为 unsigned short us 的补码
+	 *  					  => unsigned short us => 补码  0000 0001 0000 0000
+	 *  					  => unsigned short us => 反码  0000 0001 0000 0000
+	 *  					  => unsigned short us => 原码  0000 0001 0000 0000
+	 *  					  => int us = 0x100
 	 */
 	us = (unsigned char)c + uc;
 	printf("us = %x\n", us);
 
-
 	/**
-	 * 		    char  c => 1000 0000 => char  c => 1000 0000 => short  c   1111 1111 1000 0000
-	 *       			                           						   +
-	 * unsigned char uc => 1000 0000 => char uc => 1000 0000 => short uc   1111 1111 1000 0000
-	 * unsigned short us  			 						 =>			 1 1111 1111 0000 0000 => 截最取低位2个字节 => 1111 1111 0000 0000 => 十六进制 ff00
+	 * char c = 128 	      => char c 		  => 原码   1000 0000
+	 * 					      => char c 		  => 反码   1000 0000
+	 * 						  => char c 		  => 补码   1000 0000
+	 * 						  => char c 的补码左边补齐位数后(小类型转大类型时，无符号数补0，有符号数，最高位为0补0，最高位为1补1)转为 int c 的补码
+	 * 						  => int c  		  => 补码   1111 1111 1111 1111 1111 1111 1000 0000
+	 *
+	 * unsigned char uc = 128 => unsigned char uc => 原码   1000 0000
+	 * 						  => unsigned char uc => 反码   1000 0000
+	 * 						  => unsigned char uc => 补码   1000 0000
+	 * 						  => unsigned char uc 转换为 char uc(同一数据类型由无符号转换为有符号类型时，二进制完全不变，只是把最高位从数值位变成符号位)
+	 * 						  => char uc		  => 补码   1000 0000
+	 * 						  => char uc 的补码左边补齐位数后(小类型转大类型时，无符号数补0，有符号数，最高位为0补0，最高位为1补1)转为 int uc 的补码
+	 * 						  => int uc			  => 补码   1111 1111 1111 1111 1111 1111 1000 0000
+	 *
+	 * int c				  => int c			  => 补码   1111 1111 1111 1111 1111 1111 1000 0000
+	 *  +													  								    +
+	 * int uc       		  => int uc			  => 补码   1111 1111 1111 1111 1111 1111 1000 0000
+	 *  =																					    =
+	 * 计算结果 				  => int us		      => 补码 1 1111 1111 1111 1111 1111 1111 0000 0000
+	 *
+	 *  					  => int us 的补码截取低16位后 转换为 unsigned short us 的补码
+	 *  					  => unsigned short us => 补码  1111 1111 0000 0000
+	 *  					  => unsigned short us => 反码  1111 1111 0000 0000
+	 *  					  => unsigned short us => 原码  1111 1111 0000 0000
+	 *  					  => int us = 0xFF00
 	 */
 	us = c + (char)uc;
 	printf("us = %x\n", us);
 
-
 	/**
-	 * 			char  c => 1000 0000 => unsigned short c => 1111 1111 1000 0000 => unsigned short  c   1111 1111 1000 0000
-	 *       			                          		    +
-	 * unsigned char uc => 1000 0000 => unsigned char uc => 1000 0000 		    => unsigned short uc   0000 0000 1000 0000
-	 * unsigned short us  			 											=>		             1 0000 0000 0000 0000 => 截最取低位2个字节 => 0000 0000 0000 0000 => 十六进制 100
+	 * char c = 128 	      => char c 		   => 原码   1000 0000
+	 * 					      => char c 		   => 反码   1000 0000
+	 * 						  => char c 		   => 补码   1000 0000
+	 * 						  => char c 的补码左边补齐位数后(小类型转大类型时，无符号数补0，有符号数，最高位为0补0，最高位为1补1)转为 int c 的补码
+	 * 						  => int c  		   => 补码   1111 1111 1111 1111 1111 1111 1000 0000
+	 * 						  => int c 的补码截取低16位后 转换为 unsigned short c 的补码
+	 * 						  => unsigned short c  => 补码   1111 1111 1000 0000
+	 * 						  => unsigned short c 的补码左边补齐位数后(小类型转大类型时，无符号数补0，有符号数，最高位为0补0，最高位为1补1)转为 int c 的补码
+	 * 				          => int c			   => 补码   0000 0000 0000 0000 1111 1111 1000 0000
+	 *
+	 * unsigned char uc = 128 => unsigned char uc  => 原码   1000 0000
+	 * 						  => unsigned char uc  => 反码   1000 0000
+	 * 						  => unsigned char uc  => 补码   1000 0000
+	 * 						  => unsigned char uc 的补码左边补齐位数后(小类型转大类型时，无符号数补0，有符号数，最高位为0补0，最高位为1补1)转为 int uc 的补码
+	 * 						  => int uc			   => 补码   0000 0000 0000 0000 0000 0000 1000 0000
+	 *
+	 * int c				  => int c			   => 补码   0000 0000 0000 0000 1111 1111 1000 0000
+	 *  +													  								    +
+	 * int uc       		  => int uc			   => 补码   0000 0000 0000 0000 0000 0000 1000 0000
+	 *  =																					    =
+	 * 计算结果 				  => int us		       => 补码   0000 0000 0000 0001 0000 0000 0000 0000
+	 *
+	 *  					  => int us 的补码截取低16位后 转换为 unsigned short us 的补码
+	 *  					  => unsigned short us  => 补码  0000 0000 0000 0000
+	 *  					  => unsigned short us  => 反码  0000 0000 0000 0000
+	 *  					  => unsigned short us  => 原码  0000 0000 0000 0000
+	 *  					  => int us = 0x0
 	 */
 	// 特别注意： 符号位的扩展取决于原数据类型而不是目标数据类型，如这里将 char(原数据类型) => unsigned short(目标数据类型)，符号位的扩展取决于 原数据类型char
 	us = (unsigned short)c + uc;
@@ -642,7 +783,8 @@ void print_float_ieee_754_bits(float f)
     printf("Mantissa: 0x%06X\n", mantissa);
     printf("Binary: ");
 
-    for (int i = 31; i >= 0; i--) {
+    for (int i = 31; i >= 0; i--)
+    {
         printf("%d", (*ptr >> i) & 1);
         if (i == 31 || i == 23) printf(" ");
     }

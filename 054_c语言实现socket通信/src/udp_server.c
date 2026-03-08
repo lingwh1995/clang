@@ -15,14 +15,16 @@
  *
  * gcc udp_server.c -o udp_server
  */
-int main() {
+int main()
+{
     int sockfd;
     char buffer[BUFFER_SIZE];
     char server_message[BUFFER_SIZE];
     struct sockaddr_in servaddr, cliaddr;
 
     // 创建UDP socket
-    if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
+    if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
+    {
         perror("socket creation failed");
         exit(EXIT_FAILURE);
     }
@@ -36,7 +38,8 @@ int main() {
     servaddr.sin_port = htons(PORT);  // 端口号
 
     // 绑定socket到指定端口
-    if (bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr)) < 0) {
+    if (bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr)) < 0)
+    {
         perror("bind failed");
         exit(EXIT_FAILURE);
     }
@@ -46,7 +49,8 @@ int main() {
 
     socklen_t len = sizeof(cliaddr);  // 客户端地址长度
 
-    while (1) {
+    while (1)
+    {
         // 清空缓冲区
         memset(buffer, 0, BUFFER_SIZE);
         memset(server_message, 0, BUFFER_SIZE);
@@ -54,7 +58,8 @@ int main() {
         // 接收客户端消息
         ssize_t n = recvfrom(sockfd, (char *)buffer, BUFFER_SIZE,
                              MSG_WAITALL, (struct sockaddr *)&cliaddr, &len);
-        if (n < 0) {
+        if (n < 0)
+        {
             perror("recvfrom failed");
             break;
         }
@@ -65,14 +70,16 @@ int main() {
                ntohs(cliaddr.sin_port), buffer);
 
         // 检查是否收到退出命令
-        if (strcmp(buffer, "exit") == 0) {
+        if (strcmp(buffer, "exit") == 0)
+        {
             printf("Client requested exit\n");
             break;
         }
 
         // 从控制台读取服务器要发送的消息
         printf("Server: ");
-        if (fgets(server_message, BUFFER_SIZE, stdin) == NULL) {
+        if (fgets(server_message, BUFFER_SIZE, stdin) == NULL)
+        {
             perror("fgets failed");
             break;
         }
@@ -81,7 +88,8 @@ int main() {
         server_message[strcspn(server_message, "\n")] = '\0';
 
         // 检查服务器是否输入退出命令
-        if (strcmp(server_message, "exit") == 0) {
+        if (strcmp(server_message, "exit") == 0)
+        {
             sendto(sockfd, (const char *)server_message, strlen(server_message),
                    MSG_CONFIRM, (const struct sockaddr *)&cliaddr, len);
             break;
