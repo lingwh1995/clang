@@ -13,9 +13,9 @@
  *
  */
 
- /*
-  * 逻辑运算符测试
-  */
+/*
+ * 逻辑运算符测试
+ */
 void relational_operator_test()
 {
 	int a = 1, b = 2, c = 3;
