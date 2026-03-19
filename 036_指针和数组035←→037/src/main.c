@@ -178,7 +178,7 @@ void pointer_and_array_test_6()
         printf("%d\n", *(arr + i));
     }
     printf("----------4-----------\n");
-    print_arr_by_while_loop(arr,arr+5);
+    print_arr_by_while_loop(arr, arr+5);
     printf("----------5-----------\n");
 }
 

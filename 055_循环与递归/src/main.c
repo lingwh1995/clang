@@ -135,11 +135,6 @@ int fib_recursion(int n)
 	}
 }
 
-int get_max_num(int arr)
-{
-
-	return 0;
-}
 
 /**
  * for循环打印数组
@@ -197,7 +192,7 @@ void print_arr_recursion(const int* arr, int len)
 /**
  * 递归逆序打印数组
  */
-void print_arr_recursion_reverse(const int* arr, int len)
+void print_arr_reverse_recursion(const int* arr, int len)
 {
     if (arr == NULL || len <= 0) {
         return;
@@ -207,7 +202,21 @@ void print_arr_recursion_reverse(const int* arr, int len)
     printf("%d ", arr[len - 1]);
 
     // 再递归
-    print_arr_recursion_reverse(arr, len - 1);
+    print_arr_reverse_recursion(arr, len - 1);
+}
+
+/**
+ * 获取数组中值最大的数
+ */
+int get_max_num_recursion(const int* arr, int len)
+{
+    if (len == 1)
+    {
+    	return arr[0];
+    }
+
+    int max = get_max_num_recursion(arr, len-1);
+    return arr[len-1] > max ? arr[len-1] : max;
 }
 
 int main()
@@ -224,11 +233,20 @@ int main()
 
 	int arr[] = { 1, 5, 3, 9, 7, 6 };
 	int len = sizeof(arr) / sizeof(int);
+	// for循环打印数组
 	print_arr_for_loop(arr, len);
+	// while循环打印数组
 	print_arr_while_loop(arr, len);
 
+	// 递归打印数组
 	print_arr_recursion(arr, len);
 	printf("\n");
-	print_arr_recursion_reverse(arr, len);
+	// 递归逆序打印数组
+	print_arr_reverse_recursion(arr, len);
+	printf("\n");
+
+	// 递归获取数组中的最大元素
+	int max = get_max_num_recursion(arr, len);
+	printf("递归实现求数组中最大的数 max = %d\n", max);
 	return 0;
 }
