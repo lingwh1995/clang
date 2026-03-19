@@ -177,6 +177,39 @@ void print_arr_while_loop(const int* arr, const int len)
     printf("\n");
 }
 
+/**
+ * 递归正序打印数组
+ */
+void print_arr_recursion(const int* arr, int len)
+{
+    // 安全判断
+    if (arr == NULL || len <= 0) {
+        return;
+    }
+
+    // 先递归打印前面的元素
+    print_arr_recursion(arr, len - 1);
+
+    // 再打印当前最后一个元素（正序输出）
+    printf("%d ", arr[len - 1]);
+}
+
+/**
+ * 递归逆序打印数组
+ */
+void print_arr_recursion_reverse(const int* arr, int len)
+{
+    if (arr == NULL || len <= 0) {
+        return;
+    }
+
+    // 先打印当前最后一个
+    printf("%d ", arr[len - 1]);
+
+    // 再递归
+    print_arr_recursion_reverse(arr, len - 1);
+}
+
 int main()
 {
 	int sum = sum_loop(5);
@@ -193,5 +226,9 @@ int main()
 	int len = sizeof(arr) / sizeof(int);
 	print_arr_for_loop(arr, len);
 	print_arr_while_loop(arr, len);
+
+	print_arr_recursion(arr, len);
+	printf("\n");
+	print_arr_recursion_reverse(arr, len);
 	return 0;
 }
