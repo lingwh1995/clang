@@ -206,7 +206,7 @@ void print_arr_reverse_recursion(const int* arr, int len)
 }
 
 /**
- * 获取数组中值最大的数
+ * 递归获取数组中值最大的数
  */
 int get_max_num_recursion(const int* arr, int len)
 {
@@ -217,6 +217,50 @@ int get_max_num_recursion(const int* arr, int len)
 
     int max = get_max_num_recursion(arr, len-1);
     return arr[len-1] > max ? arr[len-1] : max;
+}
+
+/**
+ * 递归获取数组中元素的累加和
+ */
+int get_arr_sum_recursion(const int* arr, int len)
+{
+    if(arr == NULL || len <= 0)
+    {
+        return 0;
+    }
+
+    return arr[len - 1] + get_arr_sum_recursion(arr, len - 1);
+}
+
+/**
+ * 递归实现二分查找
+ */
+int binary_search_recursion(const int* arr, int left, int right, int target)
+{
+    // 递归结束条件：区间不存在，没找到
+    if (left > right)
+    {
+    	return -1;
+    }
+
+    // 中间位置
+    int mid = (left + right) / 2;
+
+    if (target == arr[mid])
+    {
+    	// 找到了
+    	return mid;
+    }
+    else if (target > arr[mid])
+    {
+        // 去右边找
+        return binary_search_recursion(arr, mid + 1, right, target);
+    }
+    else
+    {
+        // 去左边找
+        return binary_search_recursion(arr, left, mid - 1, target);
+    }
 }
 
 int main()
@@ -231,7 +275,7 @@ int main()
 	fib = fib_recursion(5);
 	printf("递归实现求第 n 个斐波那契数 fib = %d\n", fib);
 
-	int arr[] = { 1, 5, 3, 9, 7, 6 };
+	int arr[] = { 1, 3, 5, 7, 9, 11 };
 	int len = sizeof(arr) / sizeof(int);
 	// for循环打印数组
 	print_arr_for_loop(arr, len);
@@ -247,6 +291,23 @@ int main()
 
 	// 递归获取数组中的最大元素
 	int max = get_max_num_recursion(arr, len);
-	printf("递归实现求数组中最大的数 max = %d\n", max);
+	printf("递归获取数组中的最大元素 max = %d\n", max);
+
+	// 递归获取数组中元素的累加和
+	int arr_sum = get_arr_sum_recursion(arr, len);
+	printf("递归获取数组中元素的累加和 arr_sum = %d\n", arr_sum);
+
+
+	// 递归实现二分查找
+    int target = 7;
+    int pos = binary_search_recursion(arr, 0, len - 1, target);
+    if(pos != -1)
+    {
+    	printf("找到了，下标是：%d\n", pos);
+    }
+    else
+    {
+    	printf("没找到\n");
+    }
 	return 0;
 }
