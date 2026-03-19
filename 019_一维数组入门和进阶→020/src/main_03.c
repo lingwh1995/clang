@@ -5,9 +5,9 @@
 /**
  * 打印数组
  */
-void print_arr(const int* arr,int len)
+void print_arr(const int* arr, const int len)
 {
-	for(int i=0; i<len; i++)
+	for(int i = 0; i < len; i++)
 	{
 		printf("%d\n", arr[i]);
 	}

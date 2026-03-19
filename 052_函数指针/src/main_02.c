@@ -38,7 +38,7 @@ void bubble_sort_1(int* arr, int len)
 /**
  * 打印数组
  */
-void print_arr_1(const int* arr, int len)
+void print_arr_1(const int* arr, const int len)
 {
 	for(int i = 0; i < len; i++)
 	{

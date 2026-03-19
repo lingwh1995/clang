@@ -40,7 +40,7 @@ void print_char_arr_3(const void* vp)
  * @param element_size 对应的数据类型的长度
  * @param print 函数指针
  */
-void print_arr_3(const void* arr, int len, int element_size, void (*print)(const void *))
+void print_arr_3(const void* arr, const int len, int element_size, void (*print)(const void *))
 {
 	if(NULL == arr || NULL == print || len < 1 || element_size < 1)
 	{
@@ -64,7 +64,7 @@ void print_arr_3(const void* arr, int len, int element_size, void (*print)(const
  * @param print 函数指针
  */
 /*
-void print_arr_3(const void* arr, int len, int element_size, void (*print)(const void *))
+void print_arr_3(const void* arr, const int len, int element_size, void (*print)(const void *))
 {
 	if(NULL == arr || NULL == print || len < 1 || element_size < 1)
 	{

@@ -37,7 +37,7 @@ void print_arr_1(const int* nums)	  // 写法三	推荐
  * @param nums 代表数组的指针
  * @param n 数组的长度
  */
-void print_arr_2(const int* nums, int n)
+void print_arr_2(const int* nums, const int n)
 {
     if(NULL == nums)
     {

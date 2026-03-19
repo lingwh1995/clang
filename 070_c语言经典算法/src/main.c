@@ -12,7 +12,7 @@
 
 void left_move_arr_step_k_2(int*, int, int);
 void right_move_arr_step_k_2(int*, int, int);
-void print_arr(const int*, int);
+void print_arr(const int*, const int);
 void reverse_arr(int*, int, int);
 void left_move_arr_step_k_3(int*, int, int);
 
@@ -34,7 +34,7 @@ void swap_number(int* ap, int* bp)
 /**
  * 打印数组
  */
-void print_arr(const int* arr, int len)
+void print_arr(const int* arr, const int len)
 {
     for(int i = 0; i < len; i++)
     {

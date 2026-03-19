@@ -64,7 +64,7 @@ void bubble_sort_2(int* arr, int len)
  * @param *arr 代表数组的指针
  * @param len 数组长度
  */
-void print_arr_2(const int* arr, int len)
+void print_arr_2(const int* arr, const int len)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || len < 1) return;

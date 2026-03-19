@@ -144,7 +144,7 @@ int get_max_num(int arr)
 /**
  * for循环打印数组
  */
-void print_arr_for_loop(const int* arr, int len)
+void print_arr_for_loop(const int* arr, const int len)
 {
 	if(arr == NULL || len < 0)
 	{
@@ -153,28 +153,28 @@ void print_arr_for_loop(const int* arr, int len)
 
 	for(int i = 0; i < len; i++)
 	{
-		printf("%d\n", arr[i]);
+		printf("%d ", arr[i]);
 	}
+	printf("\n");
 }
 
 /**
  * while循环打印数组
  */
-void print_arr_while_loop(const int* arr, int len)
+void print_arr_while_loop(const int* arr, const int len)
 {
 	if(arr == NULL || len < 0)
 	{
 		return;
 	}
 
-	while(len--)
-	{
-
-	}
-	for(int i = 0; i < len; i++)
-	{
-		printf("%d\n", arr[i]);
-	}
+    int i = 0;
+    // 最清晰、最安全
+    while (i < len)
+    {
+        printf("%d ", arr[i++]);
+    }
+    printf("\n");
 }
 
 int main()

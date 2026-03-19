@@ -121,14 +121,27 @@ void pointer_and_array_test_5()
 
 /**
  * 使用指针和while循环打印数组
+ *
+ * const int* start 到底限制什么？
+ *   限制的是：不能修改 *start（指向的值）
+ *   不限制：修改 start 本身（指针地址）
+ *
+ *   *start = 10;  // ❌ 报错（不能改值）
+ *   start++;      // ✅ 允许（只改指针位置，不改值）
  */
-void print_arr_by_while_loop(const int* start, int* end)
+void print_arr_by_while_loop(const int* start, const int* end)
 {
     // 判断指针是否为空
     if(NULL == start || NULL == end)
     {
         return;
     }
+
+    // 地址区间判断（防止 start 在 end 后面）
+    if (start > end) {
+        return;
+    }
+
 	while(start < end)
 	{
 		printf("%d\n", *start);
