@@ -580,7 +580,8 @@ void bitwise_operator_case_05()
 	 *	  			   => 结果 把 a = 10 的最右边的1消除了
 	 */
 	int a = 10, c = 0;
-	while(a) {
+	while(a)
+	{
 	    a &= a-1;
 	    c++;
 	}

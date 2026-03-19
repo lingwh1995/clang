@@ -87,7 +87,8 @@ int fib_loop(int n)
     int b = 1;
     int c;
 
-    for (int i = 2; i <= n; ++i) {
+    for (int i = 2; i <= n; ++i)
+    {
     	// F(i) = F(i-1) + F(i-2)
         c = a + b;
         a = b;
@@ -140,13 +141,36 @@ int get_max_num(int arr)
 	return 0;
 }
 
-void print_arr(const int* arr, int len)
+/**
+ * for循环打印数组
+ */
+void print_arr_for_loop(const int* arr, int len)
 {
 	if(arr == NULL || len < 0)
 	{
 		return;
 	}
 
+	for(int i = 0; i < len; i++)
+	{
+		printf("%d\n", arr[i]);
+	}
+}
+
+/**
+ * while循环打印数组
+ */
+void print_arr_while_loop(const int* arr, int len)
+{
+	if(arr == NULL || len < 0)
+	{
+		return;
+	}
+
+	while(len--)
+	{
+
+	}
 	for(int i = 0; i < len; i++)
 	{
 		printf("%d\n", arr[i]);
@@ -167,6 +191,7 @@ int main()
 
 	int arr[] = { 1, 5, 3, 9, 7, 6 };
 	int len = sizeof(arr) / sizeof(int);
-	print_arr(arr, len);
+	print_arr_for_loop(arr, len);
+	print_arr_while_loop(arr, len);
 	return 0;
 }
