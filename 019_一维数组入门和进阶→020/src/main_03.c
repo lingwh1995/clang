@@ -5,7 +5,7 @@
 /**
  * 打印数组
  */
-void print_arr(int* arr,int length)
+void print_arr(const int* arr,int length)
 {
 	for(int i=0; i<length; i++)
 	{

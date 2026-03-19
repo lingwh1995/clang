@@ -19,7 +19,7 @@
  */
 //void print_arr_1(int nums[])  // 写法一 不推荐
 //void print_arr_1(int nums[5]) // 写法二 不推荐
-void print_arr_1(int* nums)	  // 写法三	推荐
+void print_arr_1(const int* nums)	  // 写法三	推荐
 {
 	// 这里实际上求的是指针的长度
 	printf("sizeof(nums) = %d\n", sizeof(nums));
@@ -37,7 +37,7 @@ void print_arr_1(int* nums)	  // 写法三	推荐
  * @param nums 代表数组的指针
  * @param n 数组的长度
  */
-void print_arr_2(int* nums, int n)
+void print_arr_2(const int* nums, int n)
 {
     if(NULL == nums)
     {
@@ -53,7 +53,7 @@ void print_arr_2(int* nums, int n)
 /**
  * 使用指针和while循环打印数组
  */
-void print_arr_by_while_loop(int* start, int* end)
+void print_arr_by_while_loop(const int* start, const int* end)
 {
     if(NULL == start || NULL == end)
     {

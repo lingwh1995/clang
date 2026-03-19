@@ -26,5 +26,5 @@ extern void bubble_sort_2(int* arr, int length);
  * @param *arr 代表数组的指针
  * @param length 数组长度
  */
-extern void print_arr_2(int* arr, int length);
+extern void print_arr_2(const int* arr, int length);
 #endif // !MYLIB_1_H

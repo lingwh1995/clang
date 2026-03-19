@@ -55,7 +55,7 @@ void bubble_sort_2(int* arr, int length, int (*compare)(int, int))
 /**
  * 打印数组
  */
-void print_arr_2(int* arr, int length)
+void print_arr_2(const int* arr, int length)
 {
 	for(int i = 0; i < length; i++)
 	{
