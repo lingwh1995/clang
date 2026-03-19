@@ -88,10 +88,10 @@ void dec_to_bin_greedy(int dec)
 	}while((2 << n) < dec);
 
 	// 数组长度每4位一补齐，确保 (数组长度-1)%4 == 0
-	int length = (n+2) % 4 == 0 ? n + 2 : 4 - (n+2) % 4 + n + 2;
-	printf("length = %d\n",length);
+	int len = (n+2) % 4 == 0 ? n + 2 : 4 - (n+2) % 4 + n + 2;
+	printf("len = %d\n", len);
 	// 数组的长度 +1 是为了存放字符串的结束标识 '\0'
-	char bin[length + 1];
+	char bin[len + 1];
 
 	int i = 0;
 	printf("n = %d\n",n);

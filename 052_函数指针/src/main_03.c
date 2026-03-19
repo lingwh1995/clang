@@ -34,15 +34,15 @@ bool less(int a, int b)
 /**
  * 冒泡排序
  */
-void bubble_sort_2(int* arr, int length, int (*compare)(int, int))
+void bubble_sort_2(int* arr, int len, int (*compare)(int, int))
 {
-	if(NULL == arr || length < 2)
+	if(NULL == arr || len < 2)
 	{
 		return;
 	}
-	for(int i = 0; i < length - 1; i++)
+	for(int i = 0; i < len - 1; i++)
 	{
-		for(int j = 0; j < length - i - 1; j++)
+		for(int j = 0; j < len - i - 1; j++)
 		{
 			if(compare(arr[j], arr[j + 1]))
 			{
@@ -55,9 +55,9 @@ void bubble_sort_2(int* arr, int length, int (*compare)(int, int))
 /**
  * 打印数组
  */
-void print_arr_2(const int* arr, int length)
+void print_arr_2(const int* arr, int len)
 {
-	for(int i = 0; i < length; i++)
+	for(int i = 0; i < len; i++)
 	{
 		printf("%d\n", arr[i]);
 	}
@@ -67,12 +67,12 @@ void print_arr_2(const int* arr, int length)
 int main()
 {
 	int arr[] = { 5, 1, 9, 7, 3 };
-	int length = sizeof(arr)/sizeof(arr[0]);
+	int len = sizeof(arr)/sizeof(arr[0]);
 	// 冒泡排序
-	//bubble_sort_2(arr, length, greater);
-	bubble_sort_2(arr, length, less);
+	//bubble_sort_2(arr, len, greater);
+	bubble_sort_2(arr, len, less);
 	// 打印数组
-	print_arr_2(arr, length);
+	print_arr_2(arr, len);
 	return 0;
 }
 #endif

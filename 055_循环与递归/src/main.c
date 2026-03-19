@@ -140,14 +140,14 @@ int get_max_num(int arr)
 	return 0;
 }
 
-void print_arr(const int* arr, int length)
+void print_arr(const int* arr, int len)
 {
-	if(arr == NULL || length < 0)
+	if(arr == NULL || len < 0)
 	{
 		return;
 	}
 
-	for(int i = 0; i < length; i++)
+	for(int i = 0; i < len; i++)
 	{
 		printf("%d\n", arr[i]);
 	}
@@ -166,7 +166,7 @@ int main()
 	printf("递归实现求第 n 个斐波那契数 fib = %d\n", fib);
 
 	int arr[] = { 1, 5, 3, 9, 7, 6 };
-	int length = sizeof(arr) / sizeof(int);
-	print_arr(arr, length);
+	int len = sizeof(arr) / sizeof(int);
+	print_arr(arr, len);
 	return 0;
 }

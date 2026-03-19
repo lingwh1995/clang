@@ -136,9 +136,9 @@ int compare_struct(const void* ap, const void* bp)
 /**
  * 打印整形数组
  */
-void print_int_arr_5(int* arr, int length)
+void print_int_arr_5(int* arr, int len)
 {
-	for(int i = 0; i < length; i++)
+	for(int i = 0; i < len; i++)
 	{
 		printf("%d\t", arr[i]);
 	}
@@ -148,9 +148,9 @@ void print_int_arr_5(int* arr, int length)
 /**
  * 打印double类型数组
  */
-void print_double_arr_5(double* arr, int length)
+void print_double_arr_5(double* arr, int len)
 {
-	for(int i = 0; i < length; i++)
+	for(int i = 0; i < len; i++)
 	{
 		printf("%.2f\t", arr[i]);
 	}
@@ -161,9 +161,9 @@ void print_double_arr_5(double* arr, int length)
 /**
  * 打印char类型数组
  */
-void print_char_arr_5(char* arr, int length)
+void print_char_arr_5(char* arr, int len)
 {
-	for(int i = 0; i < length; i++)
+	for(int i = 0; i < len; i++)
 	{
 		printf("%c\t", arr[i]);
 	}
@@ -173,9 +173,9 @@ void print_char_arr_5(char* arr, int length)
 /*
  * 打印字符串类型数组
  */
-void print_str_arr_5(const char* arr[], int length)
+void print_str_arr_5(const char* arr[], int len)
 {
-	for(int i = 0; i < length; i++)
+	for(int i = 0; i < len; i++)
 	{
 		printf("%s\t", arr[i]);
 	}
@@ -186,10 +186,10 @@ void print_str_arr_5(const char* arr[], int length)
 /**
  * 打印结构体数组
  */
-void print_struct_arr_5(const void* vp, int length)
+void print_struct_arr_5(const void* vp, int len)
 {
     const Person* pPerson = (const Person*)vp;
-    for(int i = 0; i < length; i++)
+    for(int i = 0; i < len; i++)
     {
         printf("%d，%s，%d\t", pPerson[i].id, pPerson[i].name, pPerson[i].age);
     }

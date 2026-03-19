@@ -175,8 +175,8 @@ void view_memory_physical_address_of_one_dimensional_array()
 
     // 可以清晰观察到一个int类型数据占4个字节
     int nums[] = { 1, 2, 3, 4, 5 };
-    int length = sizeof(nums) / sizeof(nums[0]);
-    for (int i = 0; i < length; i++)
+    int len = sizeof(nums) / sizeof(nums[0]);
+    for (int i = 0; i < len; i++)
     {
         printf("%p => %d\n", &nums[i], nums[i]);
     }

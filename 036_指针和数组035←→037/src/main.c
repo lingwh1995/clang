@@ -95,8 +95,8 @@ void pointer_and_array_test_3()
 void pointer_and_array_test_4()
 {
     int arr[] = { 1, 2, 3, 4, 5 };
-    int length = sizeof(arr) / sizeof(arr[0]);
-    for (int i = 0; i < length; i++)
+    int len = sizeof(arr) / sizeof(arr[0]);
+    for (int i = 0; i < len; i++)
     {
         printf("数组里面第%d个元素的地址 = %p\n", i, (arr + i));
         printf("数组里面第%d个元素 = %d\n", i, arr[i]);
@@ -142,25 +142,25 @@ void print_arr_by_while_loop(const int* start, int* end)
 void pointer_and_array_test_6()
 {
     int arr[] = { 1, 2, 3, 4, 5 };
-    int length = sizeof(arr) / sizeof(arr[0]);
-    for (int i = 0; i < length; i++)
+    int len = sizeof(arr) / sizeof(arr[0]);
+    for (int i = 0; i < len; i++)
     {
         printf("%d\n", arr[i]);
     }
     printf("----------1-----------\n");
 
     // 重点掌握，此用法非常巧妙，arr[i] 等同于 *(arr+i) 等同于 i[arr] 等同于 *(i+arr)
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < len; i++)
     {
         printf("%d\n", arr[i]);
     }
     printf("----------2-----------\n");
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < len; i++)
     {
         printf("%p\n", arr + i);
     }
     printf("----------3-----------\n");
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < len; i++)
     {
         printf("%d\n", *(arr + i));
     }

@@ -23,8 +23,8 @@ void print_arr_1(const int* nums)	  // 写法三	推荐
 {
 	// 这里实际上求的是指针的长度
 	printf("sizeof(nums) = %d\n", sizeof(nums));
-    int length = sizeof(nums) / sizeof(nums[0]);
-    for (int i = 0; i < length; i++)
+    int len = sizeof(nums) / sizeof(nums[0]);
+    for (int i = 0; i < len; i++)
     {
         printf("%d\n", nums[i]);
     }
@@ -75,10 +75,10 @@ int main()
     int nums[] = { 1, 2, 3, 4, 5 };
     // 参数是数组名，也就是数组首元素地址
     print_arr_1(nums);
-    int length = sizeof(nums) / sizeof(nums[0]);
+    int len = sizeof(nums) / sizeof(nums[0]);
     // 参数是数组名，也就是数组首元素地址
-    print_arr_2(nums, length);
-    print_arr_by_while_loop(nums, nums+length);
+    print_arr_2(nums, len);
+    print_arr_by_while_loop(nums, nums+len);
     return 0;
 }
 #endif

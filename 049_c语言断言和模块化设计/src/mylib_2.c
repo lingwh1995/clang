@@ -39,14 +39,14 @@ int find_value_3(const int* arr, int n, int val)
 /*
  * 初始化数组
  * @param *arr 代表数组的指针
- * @param length 数组长度
+ * @param len 数组长度
  */
-void init_arr_3(int* arr, int length)
+void init_arr_3(int* arr, int len)
 {
 	//使用传统if else 判断参数是否合法
-	//if (NULL == arr || length < 1) return;
+	//if (NULL == arr || len < 1) return;
 	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
-	assert(NULL != arr && length >= 1);
+	assert(NULL != arr && len >= 1);
 	srand((unsigned)time(NULL));
 	int i = 0;
 	while (i < 100)
@@ -80,17 +80,17 @@ void swap_number_3(int* ap, int* bp)
 /*
  * 冒泡排序
  * @param *arr 代表数组的指针
- * @param length 数组长度
+ * @param len 数组长度
  */
-void bubble_sort_3(int* arr, int length)
+void bubble_sort_3(int* arr, int len)
 {
 	//使用传统if else 判断参数是否合法
-	//if (NULL == arr || length < 1) return;
+	//if (NULL == arr || len < 1) return;
 	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
-	assert(NULL != arr && length >= 1);
-	for (int i = 0; i < length - 1; i++)
+	assert(NULL != arr && len >= 1);
+	for (int i = 0; i < len - 1; i++)
 	{
-		for (int j = 0; j < length - 1 - i; j++)
+		for (int j = 0; j < len - 1 - i; j++)
 		{
 			if (arr[j] > arr[j + 1])
 			{
@@ -103,15 +103,15 @@ void bubble_sort_3(int* arr, int length)
 /*
  * 打印数组
  * @param *arr 代表数组的指针
- * @param length 数组长度
+ * @param len 数组长度
  */
-void print_arr_3(const int* arr, int length)
+void print_arr_3(const int* arr, int len)
 {
 	//使用传统if else 判断参数是否合法
-	//if (NULL == arr || length < 1) return;
+	//if (NULL == arr || len < 1) return;
 	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
-	assert(NULL != arr && length >= 1);
-	for (int i = 0; i < length; i++)
+	assert(NULL != arr && len >= 1);
+	for (int i = 0; i < len; i++)
 	{
 		printf("%d\n", arr[i]);
 	}

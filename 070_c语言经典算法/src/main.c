@@ -34,9 +34,9 @@ void swap_number(int* ap, int* bp)
 /**
  * 打印数组
  */
-void print_arr(const int* arr, int length)
+void print_arr(const int* arr, int len)
 {
-    for(int i = 0; i < length; i++)
+    for(int i = 0; i < len; i++)
     {
         printf("%-4d", arr[i]);
         if ((i + 1) % 10 == 0)
@@ -54,13 +54,13 @@ void print_arr(const int* arr, int length)
 void bubble_sort_1()
 {
 	int nums[] = { 3, 9, 7, 1, 5 };
-	int length = sizeof(nums) / sizeof(nums[0]);
+	int len = sizeof(nums) / sizeof(nums[0]);
 	// 获取比较轮数
-	int round = length - 1;
+	int round = len - 1;
 	for(int r = 0; r < round; r++)
 	{
         // 获取每一轮比较次数
-        int compareTimes = length - r - 1;
+        int compareTimes = len - r - 1;
         for(int c = 0; c < compareTimes; c++)
         {
             if(nums[c] > nums[c+1])
@@ -71,7 +71,7 @@ void bubble_sort_1()
 	}
 
 	// 打印数组
-	print_arr(nums, length);
+	print_arr(nums, len);
 }
 
 /**
@@ -80,17 +80,17 @@ void bubble_sort_1()
 void bubble_sort_2()
 {
     int nums[100] = { 0 };
-    int length = sizeof(nums) / sizeof(nums[0]);
+    int len = sizeof(nums) / sizeof(nums[0]);
     srand((unsigned)time(NULL));
     // 生成100个可重复随机数
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < len; i++)
     {
-        nums[i] = rand() % length + 1;
+        nums[i] = rand() % len + 1;
     }
     // 冒泡排序
-    for (int i = 0; i < length - 1; i++)
+    for (int i = 0; i < len - 1; i++)
     {
-        for (int j = 0; j < length - i - 1; j++)
+        for (int j = 0; j < len - i - 1; j++)
         {
             if (nums[j] > nums[j + 1])
             {
@@ -100,7 +100,7 @@ void bubble_sort_2()
     }
 
 	// 打印数组
-	print_arr(nums, length);
+	print_arr(nums, len);
 }
 
 /**
@@ -109,19 +109,19 @@ void bubble_sort_2()
 void bubble_sort_3()
 {
     int nums[100] = { 0 };
-    int length = sizeof(nums) / sizeof(nums[0]);
+    int len = sizeof(nums) / sizeof(nums[0]);
     // 生成100个可重复随机数
     srand((unsigned)time(NULL));
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < len; i++)
     {
-        nums[i] = rand() % length + 1;
+        nums[i] = rand() % len + 1;
     }
     // 冒泡排序
-    for (int i = 0; i < length - 1; i++)
+    for (int i = 0; i < len - 1; i++)
     {
     	// 本轮循环是否没有进行元素交换，如果没有进行元素交换，说明当前数组是有序数组
     	bool isNotExchange = true;
-        for (int j = 0; j < length - i - 1; j++)
+        for (int j = 0; j < len - i - 1; j++)
         {
             if (nums[j] > nums[j + 1])
             {
@@ -136,7 +136,7 @@ void bubble_sort_3()
     }
 
 	// 打印数组
-	print_arr(nums, length);
+	print_arr(nums, len);
 }
 
 /**
@@ -163,12 +163,12 @@ int find_value(int* nums, int k, int value)
 void bubble_sort_4()
 {
 	int nums[100] = { 0 };
-	int length = sizeof(nums) / sizeof(nums[0]);
+	int len = sizeof(nums) / sizeof(nums[0]);
 	// 生成100个不重复随机数
 	srand((unsigned)time(NULL));
-	for(int i = 0; i < length; i++)
+	for(int i = 0; i < len; i++)
 	{
-		int r = rand() % length + 1;
+		int r = rand() % len + 1;
 		if(find_value(nums,i,r) == -1)
 		{
 			nums[i] = r;
@@ -180,9 +180,9 @@ void bubble_sort_4()
 		}
 	}
 	// 冒泡排序
-	for(int i = 0; i < length - 1; i++)
+	for(int i = 0; i < len - 1; i++)
 	{
-		for(int j = 0; j < length - i - 1; j++)
+		for(int j = 0; j < len - i - 1; j++)
 		{
 			if(nums[j] > nums[j+1])
 			{
@@ -192,7 +192,7 @@ void bubble_sort_4()
 	}
 
 	// 打印数组
-	print_arr(nums, length);
+	print_arr(nums, len);
 }
 
 /**
@@ -201,13 +201,13 @@ void bubble_sort_4()
 void bubble_sort_5()
 {
 	int nums[100] = { 0 };
-	int length = sizeof(nums) / sizeof(nums[0]);
+	int len = sizeof(nums) / sizeof(nums[0]);
 	// 生成100个不重复随机数
 	srand((unsigned)time(NULL));
 	int i = 0;
-	while(i < length)
+	while(i < len)
 	{
-		int r = rand() % length + 1;
+		int r = rand() % len + 1;
 		if(find_value(nums,i,r) == -1)
 		{
 			nums[i] = r;
@@ -216,9 +216,9 @@ void bubble_sort_5()
 	}
 
 	// 冒泡排序
-	for(i = 0; i < length - 1; i++)
+	for(i = 0; i < len - 1; i++)
 	{
-		for(int j = 0; j < length - i - 1; j++)
+		for(int j = 0; j < len - i - 1; j++)
 		{
 			if(nums[j] > nums[j+1])
 			{
@@ -228,7 +228,7 @@ void bubble_sort_5()
 	}
 
 	// 打印数组
-	print_arr(nums, length);
+	print_arr(nums, len);
 }
 
 /**
@@ -237,16 +237,16 @@ void bubble_sort_5()
 void bubble_sort_6()
 {
 	int nums[100] = { 0 };
-	int length = sizeof(nums) / sizeof(nums[0]);
+	int len = sizeof(nums) / sizeof(nums[0]);
 	// 创建表
 	int table[101] = { 0 };
 
 	// 生成100个不重复随机数
 	srand((unsigned)time(NULL));
 	int i = 0;
-	while(i < length)
+	while(i < len)
 	{
-		int r = rand() % length + 1;
+		int r = rand() % len + 1;
 		if(table[r] == 0)
 		{
 			nums[i] = r;
@@ -256,9 +256,9 @@ void bubble_sort_6()
 	}
 
 	// 冒泡排序
-	for(i = 0; i < length - 1; i++)
+	for(i = 0; i < len - 1; i++)
 	{
-		for(int j = 0; j < length - i - 1; j++)
+		for(int j = 0; j < len - i - 1; j++)
 		{
 			if(nums[j] > nums[j+1])
 			{
@@ -268,7 +268,7 @@ void bubble_sort_6()
 	}
 
 	// 打印数组
-	print_arr(nums, length);
+	print_arr(nums, len);
 }
 
 /**
@@ -277,16 +277,16 @@ void bubble_sort_6()
 void bubble_sort_7()
 {
 	int nums[100] = { 0 };
-	int length = sizeof(nums) / sizeof(nums[0]);
+	int len = sizeof(nums) / sizeof(nums[0]);
 	// 创建表
 	int table[101] = { 0 };
 
 	// 生成100个不重复随机数
 	srand((unsigned)time(NULL));
 	int i = 0;
-	while(i < length)
+	while(i < len)
 	{
-		int r = rand() % length + 1;
+		int r = rand() % len + 1;
 		if(table[r] == 0)
 		{
 			i++;
@@ -297,14 +297,14 @@ void bubble_sort_7()
 	// 不需要排序，因为按照上面的操作流程，table数组中存放的数据天然是有序的
 
 	// 复制数组
-	for(i = 0; i < length; i++)
+	for(i = 0; i < len; i++)
 	{
 		nums[i] = table[i+1];
 	}
 
 
 	// 打印数组
-	print_arr(nums, length);
+	print_arr(nums, len);
 }
 
 /**
@@ -428,30 +428,30 @@ void reverse_arr_2(int *arr, int left, int right)
 void algorithm_03_reverse_arr()
 {
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	int length = sizeof(arr) / sizeof(arr[0]);
+	int len = sizeof(arr) / sizeof(arr[0]);
 	// 反转数组方式一
-//	reverse_arr_1(arr, 2, length);
-//	print_arr(arr, length);
+//	reverse_arr_1(arr, 2, len);
+//	print_arr(arr, len);
 
 	// 反转数组方式二
-	reverse_arr_2(arr, 2, length);
-	print_arr(arr, length);
+	reverse_arr_2(arr, 2, len);
+	print_arr(arr, len);
 }
 
 /**
  * 数组元素整体向右移动一位
  */
-void right_move_arr_step_1(int* arr, int length)
+void right_move_arr_step_1(int* arr, int len)
 {
-   if(NULL == arr || length < 2)
+   if(NULL == arr || len < 2)
    {
 	   return;
    }
    // 保存最后一个元素，因为它会被覆盖
-   int temp = arr[length - 1];
+   int temp = arr[len - 1];
 
    // 从后往前移动元素（避免数据覆盖）
-   for(int i = length - 1; i > 0; i--)
+   for(int i = len - 1; i > 0; i--)
    {
         arr[i] = arr[i - 1];
    }
@@ -463,9 +463,9 @@ void right_move_arr_step_1(int* arr, int length)
 /**
  * 数组元素整体向左移动一位
  */
-void left_move_arr_step_1(int* arr, int length)
+void left_move_arr_step_1(int* arr, int len)
 {
-   if(NULL == arr || length < 2)
+   if(NULL == arr || len < 2)
    {
 	   return;
    }
@@ -473,37 +473,37 @@ void left_move_arr_step_1(int* arr, int length)
    int temp = arr[0];
 
    // 从前往后移动元素（避免数据覆盖）
-   for(int i = 0; i < length; i++)
+   for(int i = 0; i < len; i++)
    {
         arr[i] = arr[i + 1];
    }
 
    // 将原来的第一个元素放到最后一个位置
-   arr[length - 1] = temp;
+   arr[len - 1] = temp;
 }
 
 /**
  * 数组元素整体向右移动k位：方式一
  */
-void right_move_arr_step_k_1(int* arr, int length, int k)
+void right_move_arr_step_k_1(int* arr, int len, int k)
 {
-	if(NULL == arr || length < 2)
+	if(NULL == arr || len < 2)
 	{
 		return;
 	}
-	k = k % length;
+	k = k % len;
 	if(k > 0)
 	{
 		while(k--)
 		{
-			right_move_arr_step_1(arr, length);
+			right_move_arr_step_1(arr, len);
 		}
 	}
 	else
 	{
 		while(k++) // => 这行代码写的真牛逼
 		{
-			left_move_arr_step_1(arr, length);
+			left_move_arr_step_1(arr, len);
 		}
 	}
 }
@@ -511,20 +511,20 @@ void right_move_arr_step_k_1(int* arr, int length, int k)
 /**
  * 数组元素整体向右移动k位：方式二
  */
-void right_move_arr_step_k_2(int* arr, int length, int k)
+void right_move_arr_step_k_2(int* arr, int len, int k)
 {
 	// 如果 k < 0，则调用左移的方法
 	if(k < 0)
 	{
-		left_move_arr_step_k_2(arr, length, -k);
+		left_move_arr_step_k_2(arr, len, -k);
         return;
 	}
-    if(NULL == arr || length < 2)
+    if(NULL == arr || len < 2)
     {
 	    return;
     }
     // 处理k值大于数组长度的情况
-    k = k % length;
+    k = k % len;
 
     // 创建一个数组用于保存最后k个元素
     int* arr_temp = (int*)malloc(k * sizeof(int));
@@ -532,11 +532,11 @@ void right_move_arr_step_k_2(int* arr, int length, int k)
     // 把最后k个元素保存到临时数组中
     for(int i = 0; i < k; i++)
     {
-        arr_temp[i] = arr[length - k + i];
+        arr_temp[i] = arr[len - k + i];
     }
 
     // 从后往前移动元素（避免数据覆盖）
-    for(int i = length; i > 0; i--)
+    for(int i = len; i > 0; i--)
     {
         arr[i] = arr[i - k];
     }
@@ -551,25 +551,25 @@ void right_move_arr_step_k_2(int* arr, int length, int k)
 /**
  * 数组元素整体向左移动k位：方式一
  */
-void left_move_arr_step_k_1(int* arr, int length, int k)
+void left_move_arr_step_k_1(int* arr, int len, int k)
 {
-	if(NULL == arr || length < 2)
+	if(NULL == arr || len < 2)
 	{
 		return;
 	}
-	k = k % length;
+	k = k % len;
 	if(k > 0)
 	{
 		while(k--)
 		{
-			left_move_arr_step_1(arr, length);
+			left_move_arr_step_1(arr, len);
 		}
 	}
 	else
 	{
 		while(k++) // => 这行代码写的真牛逼
 		{
-			right_move_arr_step_1(arr, length);
+			right_move_arr_step_1(arr, len);
 		}
 	}
 }
@@ -577,20 +577,20 @@ void left_move_arr_step_k_1(int* arr, int length, int k)
 /**
  * 数组元素整体向左移动k位：方式二
  */
-void left_move_arr_step_k_2(int* arr, int length, int k)
+void left_move_arr_step_k_2(int* arr, int len, int k)
 {
 	// 如果 k < 0，则调用右移的方法
 	if(k < 0)
 	{
-		right_move_arr_step_k_2(arr, length, -k);
+		right_move_arr_step_k_2(arr, len, -k);
         return;
 	}
-    if(NULL == arr || length < 2)
+    if(NULL == arr || len < 2)
     {
 	    return;
     }
     // 处理k值大于数组长度的情况
-    k = k % length;
+    k = k % len;
 
     // 创建一个数组用于保存前k个元素
     int* arr_temp = (int*)malloc(k * sizeof(int));
@@ -602,7 +602,7 @@ void left_move_arr_step_k_2(int* arr, int length, int k)
     }
 
     // 从前往后移动元素（避免数据覆盖）
-    for(int i = 0; i < length; i++)
+    for(int i = 0; i < len; i++)
     {
         arr[i] = arr[i + k];
     }
@@ -610,34 +610,34 @@ void left_move_arr_step_k_2(int* arr, int length, int k)
     // 把前k个元素放到数组的结尾
     for(int i = 0; i < k; i++)
     {
-        arr[length - k + i] = arr_temp[i];
+        arr[len - k + i] = arr_temp[i];
     }
 }
 
 /**
  * 数组元素整体向左移动k位：方式三
  */
-void right_move_arr_step_k_3(int* arr, int length, int k)
+void right_move_arr_step_k_3(int* arr, int len, int k)
 {
     if(k < 0)
     {
-        left_move_arr_step_k_3(arr, length, -k);
+        left_move_arr_step_k_3(arr, len, -k);
         return;
     }
-    if(NULL == arr || length < 2 || k < 1)
+    if(NULL == arr || len < 2 || k < 1)
     {
         return;
     }
-    k = k % length;
-    reverse_arr(arr, length-k, length-1);
-    printf("第一次反转 => 反转 length-k到length-1 ：");
-    print_arr(arr, length);
-    reverse_arr(arr, 0, length-k-1);
-    printf("第二次反转 => 反转 0到length-k-1      ：");
-    print_arr(arr, length);
-    reverse_arr(arr, 0, length-1);
-    printf("第三次反转 => 反转 0到length-1        ：");
-    print_arr(arr, length);
+    k = k % len;
+    reverse_arr(arr, len-k, len-1);
+    printf("第一次反转 => 反转 len-k到len-1 ：");
+    print_arr(arr, len);
+    reverse_arr(arr, 0, len-k-1);
+    printf("第二次反转 => 反转 0到len-k-1      ：");
+    print_arr(arr, len);
+    reverse_arr(arr, 0, len-1);
+    printf("第三次反转 => 反转 0到len-1        ：");
+    print_arr(arr, len);
 }
 
 /**
@@ -662,26 +662,26 @@ void reverse_arr(int* arr, int left, int right)
  * 数组元素整体向右移动k位：方式三
  *  k = 3 => 反转 0-2 => 反转 3-数组末尾 => 反转 0-数组末尾
  */
-void left_move_arr_step_k_3(int* arr, int length, int k)
+void left_move_arr_step_k_3(int* arr, int len, int k)
 {
     if(k < 0)
     {
-        right_move_arr_step_k_3(arr, length, -k);
+        right_move_arr_step_k_3(arr, len, -k);
         return;
     }
-    if(NULL == arr || length < 2 || k < 1)
+    if(NULL == arr || len < 2 || k < 1)
     {
         return;
     }
     reverse_arr(arr, 0, k-1);
     printf("第一次反转 => 反转 0到k-1      ：");
-    print_arr(arr, length);
-    reverse_arr(arr, k, length-1);
-    printf("第二次反转 => 反转 k到length-1 ：");
-    print_arr(arr, length);
-    reverse_arr(arr, 0, length-1);
-    printf("第三次反转 => 反转 0到length-1 ：");
-    print_arr(arr, length);
+    print_arr(arr, len);
+    reverse_arr(arr, k, len-1);
+    printf("第二次反转 => 反转 k到len-1 ：");
+    print_arr(arr, len);
+    reverse_arr(arr, 0, len-1);
+    printf("第三次反转 => 反转 0到len-1 ：");
+    print_arr(arr, len);
 }
 
 /**
@@ -690,32 +690,32 @@ void left_move_arr_step_k_3(int* arr, int length, int k)
 void algorithm_04_cycle_move_arr()
 {
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	int length = sizeof(arr) / sizeof(arr[0]);
+	int len = sizeof(arr) / sizeof(arr[0]);
     // 向右移动一位
-	//right_move_arr_step_1(arr, length);
+	//right_move_arr_step_1(arr, len);
     // 向左移动一位
-	//left_move_arr_step_1(arr, length);
+	//left_move_arr_step_1(arr, len);
 
     int k = -3;
     //k = 3;
     // 向右移动k位：方式一：支持k为正数或负数
-    //right_move_arr_step_k_1(arr, length, k);
+    //right_move_arr_step_k_1(arr, len, k);
 
     // 向右移动k位：方式二：支持k为正数或负数
-    //right_move_arr_step_k_2(arr, length, k);
+    //right_move_arr_step_k_2(arr, len, k);
 
     // 向右移动k位：方式三：支持k为正数或负数
-    right_move_arr_step_k_3(arr, length, k);
+    right_move_arr_step_k_3(arr, len, k);
 
     // 向左移动k位：方式一：支持k为正数或负数
-    //left_move_arr_step_k_1(arr, length, k);
+    //left_move_arr_step_k_1(arr, len, k);
 
     // 向左移动k位：方式二：支持k为正数或负数
-    //left_move_arr_step_k_2(arr, length, k);
+    //left_move_arr_step_k_2(arr, len, k);
 
     // 向左移动k位：方式三：支持k为正数或负数
-    //left_move_arr_step_k_3(arr, length, k);
-	print_arr(arr, length);
+    //left_move_arr_step_k_3(arr, len, k);
+	print_arr(arr, len);
 }
 
 int main()

@@ -86,10 +86,10 @@ void print_struct_arr_4(const void* vp)
 /**
  * 打印数组（泛型方法）
  */
-void print_arr_4(const void *vp, int size, int data_type_size, void (*print)(const void *), char* data_type_name, int print_type)
+void print_arr_4(const void *vp, int size, int element_size, void (*print)(const void *), char* element_type_name, int print_type)
 {
-	printf("%s类型数组冒泡排序%s => ", data_type_name, print_type == 0 ? "前" : "后");
-	if(NULL == vp || NULL == print || size < 1 || data_type_size < 1)
+	printf("%s类型数组冒泡排序%s => ", element_type_name, print_type == 0 ? "前" : "后");
+	if(NULL == vp || NULL == print || size < 1 || element_size < 1)
 	{
 		return;
 	}
@@ -97,7 +97,7 @@ void print_arr_4(const void *vp, int size, int data_type_size, void (*print)(con
 	for(int i = 0; i < size; i++)
 	{
 		(*print)(cp);
-		cp += data_type_size;
+		cp += element_size;
 	}
 	printf("\n");
 }
@@ -212,18 +212,18 @@ bool compare_struct_by_name(const void* ap, const void* bp)
 /**
  * 泛型冒泡排序
  */
-void bubble_sort_3(const void* vp, int length, int size, bool (*compare)(const void*, const void*))
+void bubble_sort_3(const void* vp, int len, int element_size, bool (*compare)(const void*, const void*))
 {
 	char* cp = (char*)vp;
-	for(int i = 0; i < length - 1; i++)
+	for(int i = 0; i < len - 1; i++)
 	{
-		for(int j = 0; j < length - i -1; j++)
+		for(int j = 0; j < len - i -1; j++)
 		{
-            void* current = cp + j * size;
-            void* next = cp + (j + 1) * size;
+            void* current = cp + j * element_size;
+            void* next = cp + (j + 1) * element_size;
             if((*compare)(current, next))
             {
-                swap(current, next, size);
+                swap(current, next, element_size);
             }
 		}
 	}

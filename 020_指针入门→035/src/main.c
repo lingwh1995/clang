@@ -37,8 +37,8 @@ int main()
     printf("---------------------------------------------\n");
 
     // 通过打印结果可以看出: 1.数组在内存中是连续存储的 2.一个int类型数据在内存中占据四个字节
-    int length = sizeof(nums) / sizeof(nums[0]);
-    for(int i = 0; i < length; i++)
+    int len = sizeof(nums) / sizeof(nums[0]);
+    for(int i = 0; i < len; i++)
     {
     	printf("nums[%d] = %d, &nums[%d] = %p\n", i, nums[i], i, &nums[i]);
     }

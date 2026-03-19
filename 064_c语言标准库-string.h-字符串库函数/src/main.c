@@ -49,8 +49,8 @@ int my_strlen_1(const char* str)
 void my_strlen_1_test()
 {
     const char* str = "hello world";
-    int length = my_strlen_1(str);
-    printf("自定义函数 length = %d\n", length);
+    int len = my_strlen_1(str);
+    printf("自定义函数 len = %d\n", len);
 }
 
 /**
@@ -81,8 +81,8 @@ int my_strlen_2(const char* str)
 void my_strlen_2_Test()
 {
     const char* str = "hello world";
-    int length = my_strlen_2(str);
-    printf("自定义函数 length = %d\n", length);
+    int len = my_strlen_2(str);
+    printf("自定义函数 len = %d\n", len);
 }
 
 /**

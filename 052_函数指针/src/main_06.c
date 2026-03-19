@@ -36,22 +36,22 @@ void print_char_arr_3(const void* vp)
 /**
  * 打印数组： 写法一
  * @param arr 要打印的数组
- * @param count 要打印的数组长度
- * @param size 对应的数据类型的长度
+ * @param len 要打印的数组长度
+ * @param element_size 对应的数据类型的长度
  * @param print 函数指针
  */
-void print_arr_3(const void* arr, int length, int size, void (*print)(const void *))
+void print_arr_3(const void* arr, int len, int element_size, void (*print)(const void *))
 {
-	if(NULL == arr || NULL == print || length < 1 || size < 1)
+	if(NULL == arr || NULL == print || len < 1 || element_size < 1)
 	{
 		return;
 	}
 	// 将泛型指针转换为char类型指针
 	const char *cp = (const char*)arr;
-	for(int i = 0; i < length; i++)
+	for(int i = 0; i < len; i++)
 	{
 		(*print)(cp);
-		cp += size;
+		cp += element_size;
 	}
 	printf("\n");
 }
@@ -59,21 +59,21 @@ void print_arr_3(const void* arr, int length, int size, void (*print)(const void
 /**
  * 打印数组： 写法二
  * @param arr 要打印的数组
- * @param size 要打印的数组长度
+ * @param len 要打印的数组长度
  * @param data_type_size 对应的数据类型的长度
  * @param print 函数指针
  */
 /*
-void print_arr_3(const void* arr, int length, int size, void (*print)(const void *))
+void print_arr_3(const void* arr, int len, int element_size, void (*print)(const void *))
 {
-	if(NULL == arr || NULL == print || length < 1 || size < 1)
+	if(NULL == arr || NULL == print || len < 1 || element_size < 1)
 	{
 		return;
 	}
-	for(int i = 0; i < length; i++)
+	for(int i = 0; i < len; i++)
 	{
 		(*print)(arr);
-		arr += size;
+		arr += element_size;
 	}
 	printf("\n");
 }
