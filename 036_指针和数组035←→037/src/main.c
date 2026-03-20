@@ -138,7 +138,8 @@ void print_arr_by_while_loop(const int* start, const int* end)
     }
 
     // 地址区间判断（防止 start 在 end 后面）
-    if (start > end) {
+    if (start > end)
+    {
         return;
     }
 
