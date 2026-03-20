@@ -2,10 +2,10 @@
 #include <string.h>
 
 /*
- * 1.结构体是属性的集合
- * 2.结构体定义时最后必须加分号，否则会报错
- * 3.定义在main()之外的结构体称为全局结构体，定义在main()里面的结构体称为局部结构体 
- * 4.定义结构体、结构体类型变量、结构体类型指针变量有以下几种方式
+ * 1. 结构体是属性的集合
+ * 2. 结构体定义时最后必须加分号，否则会报错
+ * 3. 定义在main()之外的结构体称为全局结构体，定义在main()里面的结构体称为局部结构体
+ * 4. 定义结构体、结构体类型变量、结构体类型指针变量有以下几种方式
  * 		方式一：先定义结构体,再定义结构体变量(或结构体类型指针变量)
  *			// 定义结构体
  *			struct Student
@@ -52,7 +52,7 @@
  *				int age;
  *			} student, * pStudent;
  *
- * 5.给结构体变量赋值有以下几种方式
+ * 5. 给结构体变量赋值有以下几种方式
  *		方式一：直接赋值(使用.运算符赋值)
  *			// 定义结构体
  *			struct Student
@@ -63,7 +63,7 @@
  *			};
  *
  *			// 定义结构体类型变量并赋值
- *			struct Student student = { 1,"张三", 18 };
+ *			struct Student student = { 1, "张三", 18 };
  *
  *		方式二：先定义结构体类型变量，后赋值(使用.运算符赋值)
  *			// 定义结构体
@@ -129,7 +129,7 @@
  *			strcpy(pStudent->name, "张三");
  *			pStudent->age = 23;
  *
- * 6.访问结构体变量有以下几种方式
+ * 6. 访问结构体变量有以下几种方式
  * 		方式一：使用.运算符访问
  *			// 定义结构体
  *			struct Student
@@ -170,10 +170,13 @@
  *			struct Student student = { 1,"张三", 18 };
  *			struct Student* pStudent = &student;
  *			printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+ * 7. 结构体名和结构体类型名
+ *    结构体名		Student
+ *    结构体类型名	struct Student
  */
 
 /**
- * 定义结构体、结构体类型变量(或结构体类型指针变量)方式一：先定义结构体,再定义结构体类型变量(或结构体类型指针变量)
+ * 定义结构体、结构体类型变量(或结构体类型指针变量)方式一：先定义结构体，再定义结构体类型变量(或结构体类型指针变量)
  */ 
 void define_struct_1()
 {
@@ -200,6 +203,7 @@ void define_struct_1()
 	strcpy(pStudent->name, "李四");
 	pStudent->age = 23;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -226,6 +230,7 @@ void define_struct_2()
 	strcpy(pStudent->name, "李四");
 	pStudent->age = 23;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -257,6 +262,7 @@ void define_struct_3()
 	strcpy(pStudent->name, "李四");
 	pStudent->age = 23;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -283,6 +289,7 @@ void define_struct_4()
 	strcpy(pStudent->name, "李四");
 	pStudent->age = 23;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -300,8 +307,9 @@ void assignment_struct_1()
 	};
 
 	// 定义结构体类型变量并赋值
-	struct Student student = { 1,"张三", 18 };
+	struct Student student = { 1, "张三", 18 };
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", student.id, student.name, student.age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -325,6 +333,7 @@ void assignment_struct_2()
 	strcpy(student.name, "张三");
 	student.age = 18;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", student.id, student.name, student.age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -342,8 +351,9 @@ void assignment_struct_3()
 	};
 
 	// 定义结构体类型变量并使用C99指定初始化器赋值
-	struct Student student = {.id=1, .age=18, .name="张三"};
+	struct Student student = { .id=1, .age=18, .name="张三" };
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", student.id, student.name, student.age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -370,6 +380,7 @@ void assignment_struct_4()
 	(*pStudent).age = 23;
 
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", (*pStudent).id, (*pStudent).name, (*pStudent).age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -396,6 +407,7 @@ void assignment_struct_5()
 	pStudent->age = 23;
 
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", (*pStudent).id, (*pStudent).name, (*pStudent).age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -413,8 +425,9 @@ void visit_struct_1()
 	};
 
 	// 定义结构体类型变量并赋值
-	struct Student student = { 1,"张三", 18 };
+	struct Student student = { 1, "张三", 18 };
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", student.id, student.name, student.age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -432,9 +445,10 @@ void visit_struct_2()
 	};
 
 	// 定义结构体类型变量并赋值
-	struct Student student = { 1,"张三", 18 };
+	struct Student student = { 1, "张三", 18 };
 	struct Student* pStudent = &student;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", (*pStudent).id, (*pStudent).name, (*pStudent).age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -452,9 +466,10 @@ void visit_struct_3()
 	};
 
 	// 定义结构体类型变量并赋值
-	struct Student student = { 1,"张三", 18 };
+	struct Student student = { 1, "张三", 18 };
 	struct Student* pStudent = &student;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+	printf("-------------------------------------\n");
 }
 
 
@@ -469,9 +484,9 @@ void struct_array()
 		char name[20];
 		int age;
 	};
-	struct Student student1 = { 1,"张三", 18 };
-	struct Student student2 = { 2,"李四", 23 };
-	struct Student student3 = { 3,"王五", 25 };
+	struct Student student1 = { 1, "张三", 18 };
+	struct Student student2 = { 2, "李四", 23 };
+	struct Student student3 = { 3, "王五", 25 };
 
 	// 定义一个结构体数组
 	struct Student students[] = { student1, student2, student3 };
@@ -480,8 +495,75 @@ void struct_array()
 	{
 		printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", students[i].id, students[i].name, students[i].age);
 	}
+	printf("-------------------------------------\n");
 }
 
+/**
+ * 内存对齐
+ */
+void memory_alignment()
+{
+	/**
+	 * 结构体名		Student
+	 * 结构体类型名	struct Student
+	 * 特别注意		最后的分号必须写，否则会报错
+	 */
+	struct Student
+	{
+		char id[20];	// 20字节
+		char name[20];	// 20字节
+		char sex[10];	// 10字节
+		int age;		// 4字节
+	};
+
+	struct Student student = { "001", "张三", "男", 20 };
+	printf("id = %s, name = %s, sex = %s, age = %d\n", student.id, student.name, student.sex, student.age);
+
+	/**
+	 * 为什么 sizeof(student) = 56 而不是 54 ?
+	 *
+	 * 核心原因：内存对齐（结构体补齐）
+	 * 计算出来的 20+20+10+4 = 54 是纯数据大小，但 C 语言会自动做内存对齐：
+	 *
+	 * 	  int 类型要求起始地址是 4 的倍数
+	 *    前三个成员总大小：20+20+10 = 50
+	 *    50 不是 4 的倍数，编译器自动补齐 2 个空字节 → 变成 52
+	 *    再加上 age 的 4 字节 → 56 字节
+	 *
+	 */
+	printf("sizeof(student) = %d\n", sizeof(student));
+	printf("-------------------------------------\n");
+}
+
+/**
+ * 结构体成员初始值
+ */
+void struct_member_initval()
+{
+	/**
+	 * 结构体名		Student
+	 * 结构体类型名	struct Student
+	 * 特别注意		最后的分号必须写，否则会报错
+	 */
+	struct Student
+	{
+		char id[20];	// 20字节
+		char name[20];	// 20字节
+		char sex[10];	// 10字节
+		int age;		// 4字节
+	};
+
+	struct Student s1 = { "001", "张三", "男", 20 };
+	printf("s1 => id = %s, name = %s, sex = %s, age = %d\n", s1.id, s1.name, s1.sex, s1.age);
+
+	// 如果不赋初始值，打印时会打印出随机值
+	struct Student s2;
+	printf("s2 => id = %s, name = %s, sex = %s, age = %d\n", s2.id, s2.name, s2.sex, s2.age);
+	// 把s1的值赋给s2
+	s2 = s1;
+	printf("s2 => id = %s, name = %s, sex = %s, age = %d\n", s2.id, s2.name, s2.sex, s2.age);
+	printf("-------------------------------------\n");
+}
 
 int main()
 {
@@ -504,5 +586,9 @@ int main()
 
 	// 结构体类型数组
 	//struct_array();
+	// 内存补齐
+	memory_alignment();
+	// 结构体成员初始值
+	struct_member_initval();
 	return 0;
 }
