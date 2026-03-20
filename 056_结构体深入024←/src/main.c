@@ -7,6 +7,9 @@ struct Date
 	int day;
 };
 
+/**
+ * 在结构体中使用另一个结构体作为成员变量
+ */
 struct Student
 {
 	char id[20];
