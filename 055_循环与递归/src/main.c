@@ -178,7 +178,8 @@ void print_arr_while_loop(const int* arr, const int len)
 void print_arr_recursion(const int* arr, int len)
 {
     // 安全判断
-    if (arr == NULL || len <= 0) {
+    if (arr == NULL || len <= 0)
+    {
         return;
     }
 
@@ -194,7 +195,8 @@ void print_arr_recursion(const int* arr, int len)
  */
 void print_arr_reverse_recursion(const int* arr, int len)
 {
-    if (arr == NULL || len <= 0) {
+    if (arr == NULL || len <= 0)
+    {
         return;
     }
 
@@ -263,6 +265,52 @@ int binary_search_recursion(const int* arr, int left, int right, int target)
     }
 }
 
+/**
+ * 打印数字 先递归 → 后打印(回溯打印)
+ * 	 输入 n，从 1 正序打印到 n
+ */
+void print_num_recursion(int n)
+{
+	if(n <= 0)
+	{
+		return;
+	}
+	print_num_recursion(n-1);
+	printf("%d ", n);
+}
+
+/**
+ * 打印数字 先打印 → 后递归(递推打印)
+ * 	 输入 n，从 n 倒序打印到 1
+ */
+void print_num_reverse_recursion(int n)
+{
+	if(n <= 0)
+	{
+		return;
+	}
+	printf("%d ", n);
+	print_num_reverse_recursion(n-1);
+}
+
+/**
+ * 求一个数字的位数(如 1234 → 4 位)
+ */
+int get_num_count_recursion(int n)
+{
+    // 处理负数
+    if(n < 0)
+    {
+    	n = -n;
+    }
+
+	if(n < 10)
+	{
+		return 1;
+	}
+	return 1 + get_num_count_recursion(n / 10);
+}
+
 int main()
 {
 	int sum = sum_loop(5);
@@ -297,17 +345,20 @@ int main()
 	int arr_sum = get_arr_sum_recursion(arr, len);
 	printf("递归获取数组中元素的累加和 arr_sum = %d\n", arr_sum);
 
-
 	// 递归实现二分查找
     int target = 7;
     int pos = binary_search_recursion(arr, 0, len - 1, target);
-    if(pos != -1)
-    {
-    	printf("找到了，下标是：%d\n", pos);
-    }
-    else
-    {
-    	printf("没找到\n");
-    }
+    pos != -1 ? printf("找到了，下标是：%d\n", pos) : printf("没找到\n");
+
+    // 输入 n，从 1 正序打印到 n
+    print_num_recursion(5);
+    printf("\n");
+    // 输入 n，从 n 倒序打印到 1
+    print_num_reverse_recursion(5);
+    printf("\n");
+
+    // 求一个数字的位数(如 1234 → 4 位)
+    int num_count = get_num_count_recursion(12345);
+    printf("num_count = %d", num_count);
 	return 0;
 }
