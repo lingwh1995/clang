@@ -538,7 +538,7 @@ void memory_alignment()
 /**
  * 结构体成员初始值
  */
-void struct_member_initval()
+void struct_member_init_val()
 {
 	/**
 	 * 结构体名		Student
@@ -589,6 +589,6 @@ int main()
 	// 内存补齐
 	memory_alignment();
 	// 结构体成员初始值
-	struct_member_initval();
+	struct_member_init_val();
 	return 0;
 }
