@@ -2,12 +2,15 @@
 #include <string.h>
 
 /*
+ * 结构体专题
+ *
  * 1. 结构体是属性的集合
  * 2. 结构体定义时最后必须加分号，否则会报错
  * 3. 定义在main()之外的结构体称为全局结构体，定义在main()里面的结构体称为局部结构体
- * 4. 定义结构体、结构体类型变量、结构体类型指针变量有以下几种方式
- * 		方式一：先定义结构体,再定义结构体变量(或结构体类型指针变量)
- *			// 定义结构体
+ * 4. typedef 定义的结构体类型首字母大写为 C 语言标准命名规范，用于与变量命名区分，直观标识该名称为自定义类型而非一个变量
+ * 5. 定义结构体、结构体类型变量、结构体类型指针变量有以下几种方式
+ * 		方式一：先定义结构体，再定义 结构体变量 和 结构体类型指针变量
+ *			// 定义结构体(这个 Student 是结构体标签，不是别名)
  *			struct Student
  *			{
  *				int id;
@@ -15,42 +18,49 @@
  *				int age;
  *			};
  *
- *			// 定义结构体类型变量
+ *			// 定义 结构体类型变量
  *			struct Student student;
- *			// 定义结构体类型指针变量
- *			struct Student* pStudent;
+ *			// 定义 结构体类型指针变量
+ *			struct Student *p_student;
  *
- *		方式二：定义结构体的同时定义结构体变量(或结构体类型指针变量)
- *			// 定义结构体的同时定义结构体类型变量(或结构体类型指针变量)
- *			struct Student
- *			{
- *				int id;
- *				char name[20];
- *				int age;
- *			} student, * pStudent;
- *
- *		方式三：使用typedef关键字定义结构体，定义结构体变量(或结构体类型指针变量)时可以使用简化的方式声明
- * 			// 定义结构体
- *			typedef struct
- *			{
- *				int id;
- *				char name[20];
- *				int age;
- *			} Student;
- *
- *			// 定义结构体类型变量
- *			Student student;
- *			// 定义结构体类型指针变量
- *			Student* pStudent;
- *
- *		方式四：定义匿名结构体(适用于临时使用结构体的情况)
- *			// 定义匿名结构体类型变量(或结构体类型指针变量)
+ *		方式二：定义结构体的同时定义 结构体变量 和 结构体类型指针变量
+ *			// 匿名结构体(省略了标签名)
  *			struct
  *			{
  *				int id;
  *				char name[20];
  *				int age;
- *			} student, * pStudent;
+ *			} student, *p_student;
+ *
+ *			// 带标签结构体(没有省略标签名) => 更推荐
+ *			struct Student  // 标签名(可省略)
+ *			{
+ *				int id;
+ *	 			char name[20];
+ *				int age;
+ *			} student, *p_student;
+ *
+ *		方式三：使用typedef关键字定义结构体，定义 结构体变量 和 结构体类型指针变量 时可以使用简化的方式声明
+ * 			// 同时定义 结构体类型 和 结构体指针类型 (typedef + 匿名结构体) => 更推荐
+ *			typedef struct
+ *			{
+ *				int id;
+ *				char name[20];
+ *				int age;
+ *			} Student, *PStudent;
+ *
+ *			// 同时定义 结构体类型 和 结构体指针类型 (typedef + 带标签结构体) => 不推荐，只有结构体自引用(如：链表)才加标签
+ *			typedef struct Student
+ *			{
+ *				int id;
+ *				char name[20];
+ *				int age;
+ *			} Student, *PStudent; ;
+ *
+ *			// 定义结构体类型变量
+ *			Student student;
+ *			// 定义结构体类型指针变量
+ *			PStudent p_student;
  *
  * 5. 给结构体变量赋值有以下几种方式
  *		方式一：直接赋值(使用.运算符赋值)
@@ -78,6 +88,7 @@
  *			struct Student student;
  *			// 给结构体类型变量赋值
  *			student.id = 1;
+ *			// 给字符串类型成员变量赋值
  *			strcpy(student.name, "张三");
  *			student.age = 18;
  *
@@ -105,13 +116,14 @@
  *			struct Student student = {};
  *
  *			// 定义结构体类型指针变量
- *			struct Student* pStudent = &student;
+ *			struct Student *p_student = &student;
  *			// 使用指针解引用赋值
- *			(*pStudent).id = 1;
- *			strcpy((*pStudent).name, "张三");
- *			(*pStudent).age = 23;
+ *			(*p_student).id = 1;
+ *			// 给字符串类型成员变量赋值
+ *			strcpy((*p_student).name, "张三");
+ *			(*p_student).age = 23;
  *
- *		方式五：使用指针配合箭头函数赋值
+ *		方式五：使用指针配合箭头函数(成员选择符)赋值
  *			// 定义结构体
  *			struct Student
  *			{
@@ -123,11 +135,12 @@
  *			struct Student student = {};
  *
  *			// 定义结构体类型指针变量
- *			struct Student* pStudent = &student;
- *			// 使用指针配合箭头函数赋值
- *			pStudent->id = 1;
- *			strcpy(pStudent->name, "张三");
- *			pStudent->age = 23;
+ *			struct Student *p_student = &student;
+ *			// 使用指针配合箭头函数(成员选择符)赋值
+ *			p_student->id = 1;
+ *			// 给字符串类型成员变量赋值
+ *			strcpy(p_student->name, "张三");
+ *			p_student->age = 23;
  *
  * 6. 访问结构体变量有以下几种方式
  * 		方式一：使用.运算符访问
@@ -154,10 +167,10 @@
  *
  *			// 定义结构体类型变量并赋值
  *			struct Student student = { 1,"张三", 18 };
- *			struct Student* pStudent = &student;
- *			printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", (*pStudent).id, (*pStudent).name, (*pStudent).age);
+ *			struct Student *p_student = &student;
+ *			printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", (*p_student).id, (*p_student).name, (*p_student).age);
  *
- *		方式三：使用指针配合箭头函数访问
+ *		方式三：使用指针配合箭头函数(成员选择符)访问
  *			// 定义结构体
  *			struct Student
  *			{
@@ -168,8 +181,8 @@
  *
  *			// 定义结构体类型变量并赋值
  *			struct Student student = { 1,"张三", 18 };
- *			struct Student* pStudent = &student;
- *			printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+ *			struct Student *p_student = &student;
+ *			printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", p_student->id, p_student->name, p_student->age);
  * 7. 结构体名和结构体类型名
  *    结构体名		Student
  *    结构体类型名	struct Student
@@ -191,18 +204,20 @@ void define_struct_1()
 	// 定义结构体类型变量
 	struct Student student;
 	// 定义结构体类型指针变量
-	struct Student* pStudent;
+	struct Student *p_student;
 
 	student.id = 1;
+	// 给字符串类型成员变量赋值
 	strcpy(student.name, "张三");
 	student.age = 18;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", student.id, student.name, student.age);
 
-	pStudent = &student;
-	pStudent->id = 2;
-	strcpy(pStudent->name, "李四");
-	pStudent->age = 23;
-	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+	p_student = &student;
+	p_student->id = 2;
+	// 给字符串类型成员变量赋值
+	strcpy(p_student->name, "李四");
+	p_student->age = 23;
+	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", p_student->id, p_student->name, p_student->age);
 	printf("-------------------------------------\n");
 }
 
@@ -218,18 +233,20 @@ void define_struct_2()
 		int id;
 		char name[20];
 		int age;
-	} student, * pStudent;
+	} student, *p_student;
 
 	student.id = 1;
+	// 给字符串类型成员变量赋值
 	strcpy(student.name, "张三");
 	student.age = 18;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", student.id, student.name, student.age);
 
-	pStudent = &student;
-	pStudent->id = 2;
-	strcpy(pStudent->name, "李四");
-	pStudent->age = 23;
-	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+	p_student = &student;
+	p_student->id = 2;
+	// 给字符串类型成员变量赋值
+	strcpy(p_student->name, "李四");
+	p_student->age = 23;
+	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", p_student->id, p_student->name, p_student->age);
 	printf("-------------------------------------\n");
 }
 
@@ -250,18 +267,20 @@ void define_struct_3()
 	// 定义结构体类型变量
 	Student student;
 	// 定义结构体类型指针变量
-	Student* pStudent;
+	Student *p_student;
 
 	student.id = 1;
+	// 给字符串类型成员变量赋值
 	strcpy(student.name, "张三");
 	student.age = 18;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", student.id, student.name, student.age);
 
-	pStudent = &student;
-	pStudent->id = 2;
-	strcpy(pStudent->name, "李四");
-	pStudent->age = 23;
-	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+	p_student = &student;
+	p_student->id = 2;
+	// 给字符串类型成员变量赋值
+	strcpy(p_student->name, "李四");
+	p_student->age = 23;
+	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", p_student->id, p_student->name, p_student->age);
 	printf("-------------------------------------\n");
 }
 
@@ -277,18 +296,20 @@ void define_struct_4()
 		int id;
 		char name[20];
 		int age;
-	} student, * pStudent;
+	} student, *p_student;
 
 	student.id = 1;
+	// 给字符串类型成员变量赋值
 	strcpy(student.name, "张三");
 	student.age = 18;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", student.id, student.name, student.age);
 
-	pStudent = &student;
-	pStudent->id = 2;
-	strcpy(pStudent->name, "李四");
-	pStudent->age = 23;
-	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+	p_student = &student;
+	p_student->id = 2;
+	// 给字符串类型成员变量赋值
+	strcpy(p_student->name, "李四");
+	p_student->age = 23;
+	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", p_student->id, p_student->name, p_student->age);
 	printf("-------------------------------------\n");
 }
 
@@ -330,6 +351,7 @@ void assignment_struct_2()
 	struct Student student;
 	// 给结构体类型变量赋值
 	student.id = 1;
+	// 给字符串类型成员变量赋值
 	strcpy(student.name, "张三");
 	student.age = 18;
 	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", student.id, student.name, student.age);
@@ -373,19 +395,20 @@ void assignment_struct_4()
 	struct Student student = {};
 
 	// 定义结构体类型指针变量
-	struct Student* pStudent = &student;
+	struct Student *p_student = &student;
 	// 使用指针解引用赋值
-	(*pStudent).id = 1;
-	strcpy((*pStudent).name, "张三");
-	(*pStudent).age = 23;
+	(*p_student).id = 1;
+	// 给字符串类型成员变量赋值
+	strcpy((*p_student).name, "张三");
+	(*p_student).age = 23;
 
-	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", (*pStudent).id, (*pStudent).name, (*pStudent).age);
+	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", (*p_student).id, (*p_student).name, (*p_student).age);
 	printf("-------------------------------------\n");
 }
 
 
 /**
- * 给结构体变量赋值方式五：使用指针配合箭头函数赋值
+ * 给结构体变量赋值方式五：使用指针配合箭头函数(成员选择符)赋值
  */ 
 void assignment_struct_5()
 {
@@ -400,13 +423,14 @@ void assignment_struct_5()
 	struct Student student = {};
 
 	// 定义结构体类型指针变量
-	struct Student* pStudent = &student;
-	// 使用指针配合箭头函数赋值
-	pStudent->id = 1;
-	strcpy(pStudent->name, "张三");
-	pStudent->age = 23;
+	struct Student *p_student = &student;
+	// 使用指针配合箭头函数(成员选择符)赋值
+	p_student->id = 1;
+	// 给字符串类型成员变量赋值
+	strcpy(p_student->name, "张三");
+	p_student->age = 23;
 
-	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", (*pStudent).id, (*pStudent).name, (*pStudent).age);
+	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", (*p_student).id, (*p_student).name, (*p_student).age);
 	printf("-------------------------------------\n");
 }
 
@@ -446,14 +470,14 @@ void visit_struct_2()
 
 	// 定义结构体类型变量并赋值
 	struct Student student = { 1, "张三", 18 };
-	struct Student* pStudent = &student;
-	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", (*pStudent).id, (*pStudent).name, (*pStudent).age);
+	struct Student *p_student = &student;
+	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", (*p_student).id, (*p_student).name, (*p_student).age);
 	printf("-------------------------------------\n");
 }
 
 
 /**
- * 访问结构体变量方式三：使用指针配合箭头函数访问
+ * 访问结构体变量方式三：使用指针配合箭头函数(成员选择符)访问
  */ 
 void visit_struct_3()
 {
@@ -467,8 +491,8 @@ void visit_struct_3()
 
 	// 定义结构体类型变量并赋值
 	struct Student student = { 1, "张三", 18 };
-	struct Student* pStudent = &student;
-	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", pStudent->id, pStudent->name, pStudent->age);
+	struct Student *p_student = &student;
+	printf("学号 = %d, 姓名 = %s, 年龄 = %d\n", p_student->id, p_student->name, p_student->age);
 	printf("-------------------------------------\n");
 }
 
@@ -568,24 +592,24 @@ void struct_member_init_val()
 int main()
 {
 	// 定义结构体、结构体类型变量、结构体类型指针变量有以下几种方式
-	//define_struct_2();
-	//define_struct_3();
-	//define_struct_4();
+	define_struct_2();
+	define_struct_3();
+	define_struct_4();
 
 	// 给结构体变量赋值有以下几种方式
-	//assignment_struct_1();
-	//assignment_struct_2();
-	//assignment_struct_3();
-	//assignment_struct_4();
-	//assignment_struct_5();
+	assignment_struct_1();
+	assignment_struct_2();
+	assignment_struct_3();
+	assignment_struct_4();
+	assignment_struct_5();
 
 	// 访问结构体变量有以下几种方式
-	//visit_struct_1();
-	//visit_struct_2();
+	visit_struct_1();
+	visit_struct_2();
 	visit_struct_3();
 
 	// 结构体类型数组
-	//struct_array();
+	struct_array();
 	// 内存补齐
 	memory_alignment();
 	// 结构体成员初始值
