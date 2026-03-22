@@ -368,3 +368,4 @@ FodyWeavers.xsd
 *.exe
 main
 cmake-build-debug/
+main.dSYM/
