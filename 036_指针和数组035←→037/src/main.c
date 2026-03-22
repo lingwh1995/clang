@@ -31,7 +31,7 @@ void pointer_and_array_test_2()
     int a = 1, b = 2, c = 3, d = 4;
     //定义一个指针数组
     int *arr[5] = { &a, &b, &c, &d };
-    //使用*+变量名为变量(数组中的元素)赋值,下面两种写法都是可以的
+    //使用*+变量名为变量(数组中的元素)赋值，下面两种写法都是可以的
     *(arr[0]) = 100;
     *arr[1] = 200;
     printf("%d,%d\n", *arr[0], *arr[1]);
@@ -86,9 +86,9 @@ void pointer_and_array_test_3()
  * 通过数组下标访问数组元素的本质是通过指针访问数组元素
  *
  * 测试arr[i]和i[arr]的执行效果是相同的
- * arr[i]之所以能正确的指向某一个元素,本质上是编译器把 arr[i]翻译成了 *(arr+i)
+ * arr[i]之所以能正确的指向某一个元素，本质上是编译器把 arr[i]翻译成了 *(arr+i)
  * arr[i]和i[arr]都可以正确的打印出数组中的元素的原因?
- *  因为在编译器看来,arr[i]等同于 *(arr+i), i[arr] 等同于 *(i+arr)，所以说通过下标(arr[i])访问数组的方式实际上是通过指针访问数组
+ *  因为在编译器看来，arr[i]等同于 *(arr+i), i[arr] 等同于 *(i+arr)，所以说通过下标(arr[i])访问数组的方式实际上是通过指针访问数组
  *
  * 总结：	a[b] == *(a + b)
  */
@@ -112,11 +112,25 @@ void pointer_and_array_test_4()
 void pointer_and_array_test_5()
 {
     int arr[] = { 1, 2, 3, 4, 5 };
-    //在sizeof()表达式中,数组名代表的是整个数组的意义,这包含了两个意义,即数组的类型+数组的大小
+    //在sizeof()表达式中，数组名代表的是整个数组的意义，这包含了两个意义，即数组的类型+数组的大小
     int size = sizeof(arr);
     //在sizeof()表达式除外的其他地方,数组名都代表的是数组的首元素地址值
     printf("size = %d\n", size);
     printf("&arr = %p\n", arr);
+}
+
+void print_arr_by_while_pointer(const int *arr, int len)
+{
+	if(arr == NULL || len == 0)
+	{
+		return;
+	}
+    for (int i = 0; i < len; i++)
+    {
+        printf("%d\n", *arr);
+        // arr++;  等同于  arr = arr + 1 * sizeof(int);
+        arr++;
+    }
 }
 
 /**
@@ -126,8 +140,8 @@ void pointer_and_array_test_5()
  *   限制的是：不能修改 *start（指向的值）
  *   不限制：修改 start 本身（指针地址）
  *
- *   *start = 10;  // ❌ 报错（不能改值）
- *   start++;      // ✅ 允许（只改指针位置，不改值）
+ *   *start = 10;  //  报错（不能改值）
+ *   start++;      //  允许（只改指针位置，不改值）
  */
 void print_arr_by_while_loop(const int *start, const int *end)
 {
@@ -155,30 +169,33 @@ void print_arr_by_while_loop(const int *start, const int *end)
  */
 void pointer_and_array_test_6()
 {
+	// 数组名arr：常量地址，不能修改，a++会报错
     int arr[] = { 1, 2, 3, 4, 5 };
     int len = sizeof(arr) / sizeof(arr[0]);
-    for (int i = 0; i < len; i++)
-    {
-        printf("%d\n", arr[i]);
-    }
-    printf("----------1-----------\n");
 
     // 重点掌握，此用法非常巧妙，arr[i] 等同于 *(arr+i) 等同于 i[arr] 等同于 *(i+arr)
     for (int i = 0; i < len; i++)
     {
         printf("%d\n", arr[i]);
     }
+    printf("----------1-----------\n");
+
+    // 指针变量arr：数组首元素地址，可以修改，a++不会报错
+    print_arr_by_while_pointer(arr, len);
     printf("----------2-----------\n");
+
     for (int i = 0; i < len; i++)
     {
         printf("%p\n", arr + i);
     }
     printf("----------3-----------\n");
+
     for (int i = 0; i < len; i++)
     {
         printf("%d\n", *(arr + i));
     }
     printf("----------4-----------\n");
+
     print_arr_by_while_loop(arr, arr+5);
     printf("----------5-----------\n");
 }

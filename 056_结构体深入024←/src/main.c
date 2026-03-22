@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /**
  * 嵌套结构体测试
@@ -56,7 +57,7 @@ typedef struct
 /**
  * 使用指针打印结构体
  */
-void pointer_print_structure(Student *student)
+void pointer_print_structure(const Student *student)
 {
 	if(student == NULL)
 	{
@@ -74,7 +75,7 @@ void pointer_print_structure(Student *student)
 /**
  * 使用指针给结构体赋值
  */
-void pointer_input_structure(Student *student)
+void pointer_input_structure(const Student *student)
 {
 	if(student == NULL)
 	{
@@ -83,9 +84,11 @@ void pointer_input_structure(Student *student)
 	/**
 	 * 特别注意
 	 *
-	 * 1. student->id 的意思是：用结构体指针，访问它指向的结构体里的 id 成员，所以 student->id = 指针指向的结构体中的 id 成员
-	 * 2. 之所以是student->name而不是&student->name，因为student->name 类型是 char[20]，在传参时，自动退化成指针，所以直接写 student->name 就等于传了地址
-	 * 3. ->的优先级高于&，所以 &student->age 实际上相当于 &(student->age)
+	 * 1. student->id 的意思是：用结构体指针，访问它指向的结构体里的 id 成员，所以 student->id = 指针指向的结构体
+	 *    中的 id 成员
+	 * 2. 之所以是student->name而不是&student->name，因为student->name 类型是 char[20]，在传参时，自动退化成指
+	 *    针，所以直接写 student->name 就等于传了地址
+	 * 3. ->(成员选择符)的优先级高于&(取地址符)，所以 &student->age 实际上相当于 &(student->age)
 	 */
 	printf("请输入student id:\n");
 	scanf("%s", student->id);
@@ -119,9 +122,11 @@ void pointer_input_and_print_structure_test()
 }
 // -----------------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------------
 // 使用指针打印结构体数组 方式一
 /*
-void pointer_print_structure_arr(Student *p_student_arr, int len)
+void pointer_print_structure_arr(const Student *p_student_arr, int len)
 {
 	if(p_student_arr == NULL)
 	{
@@ -138,7 +143,7 @@ void pointer_print_structure_arr(Student *p_student_arr, int len)
 */
 
 // 使用指针打印结构体数组 方式二
-void pointer_print_structure_arr(Student *p_student_arr, int len)
+void pointer_print_structure_arr(const Student *p_student_arr, int len)
 {
 	if(p_student_arr == NULL)
 	{
@@ -178,10 +183,12 @@ void pointer_print_structure_arr_test()
 }
 // -----------------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------------
 /**
  * 使用指针查找结构体测试
  */
-int pointer_find_structure(Student *p_student_arr, int len, char *name)
+int pointer_find_structure(const Student *p_student_arr, int len, char *name)
 {
 	int position = -1;
 	if(p_student_arr == NULL || name == NULL)
@@ -223,6 +230,7 @@ void pointer_find_structure_test()
 	printf("索引位置 = %d\n", position);
 	printf("-------------------------------------\n");
 }
+// -----------------------------------------------------------------------------------
 
 
 int main()
