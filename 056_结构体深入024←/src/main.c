@@ -224,7 +224,7 @@ void pointer_find_structure_test()
 	 * 	   PStudent p_student_arr = &student_arr; 错误写法  &student_arr代表的是整个数组的地址
 	 * 	   PStudent p_student_arr = student_arr;  正确写法  student_arr 代表的是数组首元素地址
 	 */
-	PStudent p_student_arr = student_arr;
+	const PStudent p_student_arr = student_arr;
 	char *name = "王五";
 	int position = pointer_find_structure(p_student_arr, len, name);
 	printf("索引位置 = %d\n", position);
