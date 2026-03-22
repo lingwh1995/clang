@@ -21,7 +21,7 @@
  * @param *arr 代表数组的指针
  * @param len 数组长度
  */
-void init_arr_1(int* arr, int len)
+void init_arr_1(int *arr, int len)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || len < 1) return;
@@ -39,7 +39,7 @@ void init_arr_1(int* arr, int len)
  * @param *ap 代表第一个数的指针
  * @param *bp 代表第二个数的指针
  */
-void swap_number_1(int* ap, int* bp)
+void swap_number_1(int *ap, int *bp)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == ap || NULL == bp) return;
@@ -55,7 +55,7 @@ void swap_number_1(int* ap, int* bp)
  * @param *arr 代表数组的指针
  * @param len 数组长度
  */
-void bubble_sort_1(int* arr, int len)
+void bubble_sort_1(int *arr, int len)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || len < 1) return;
@@ -78,7 +78,7 @@ void bubble_sort_1(int* arr, int len)
  * @param *arr 代表数组的指针
  * @param len 数组长度
  */
-void print_arr_1(const int* arr, const int len)
+void print_arr_1(const int *arr, const int len)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || len < 1) return;
@@ -95,7 +95,7 @@ void print_arr_1(const int* arr, const int len)
 int main()
 {
 	int arr[ARSIZE] = { 0 };
-	int* p_arr = NULL;
+	int *p_arr = NULL;
 	int val = 0;
 	if (0 == val)
 	{

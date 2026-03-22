@@ -37,12 +37,12 @@ void double_pointer_test()
 	int a = 10, b = 20;
 	printf("a = %d, &a = %p\n", a, &a);
 	printf("b = %d, &b = %p\n", b, &b);
-	int* p1 = &a;
+	int *p1 = &a;
 	printf("p1 = %p, &p1 = %d\n", p1, &p1);
-	int* p2 = NULL;
+	int *p2 = NULL;
 	printf("p2 = %d, &p2 = %d\n", p2, &p2);
 
-	int** s = &p1;
+	int **s = &p1;
 	printf("*s = %p\n", *s);
 	printf("**s = %d\n", **s);
 
@@ -63,7 +63,7 @@ void double_pointer_test()
 
 	s = &p1;
 	printf("s = %p\n", s);
-	// s + 1 = s + sizeof(int*) * 1
+	// s + 1 = s + sizeof(int *) * 1
 	printf("s + 1 = %p\n", s + 1);
 	printf("**s = %d\n", **s);
 
@@ -117,7 +117,7 @@ void one_dimensional_arr_add_one_pointer_test()
 	int arr[4] = { 1, 2, 3, 4 };
 	printf("sizeof(arr) = %d\n", sizeof(arr));
 	// p指向的是数组首元素地址，而非整个数组
-	int* p = arr; // 等同于 int* p = &arr;
+	int *p = arr; // 等同于 int *p = &arr;
 	printf("sizeof(p) = %d\n", sizeof(p)); // 4个字节，32位系统指针占据4个字节，64位系统指针占据8个字节
 	printf("sizeof(*p) = %d\n", sizeof(*p)); // 4个字节，*p 这里代表一维数组中第一个元素
 	printf("p = %p\n", p);
@@ -143,7 +143,7 @@ void two_dimensional_arr_add_double_pointer_test_1()
     // p代表二维数组首元素地址，使用debug模式观察可以看到 *p 的值就是二维数组中第一个元素
     int (*p)[4] = &arr[1];
     // s代表二维数组中第一个一维数组的首元素的地址，使用debug模式观察可以看到 *s 的值就是二维数组中第一个一维数组的首元素
-    int* s = arr[1];
+    int *s = arr[1];
     printf("二维数组中第一个一维数组的首元素 = %d\n", *s);
     printf("p[1][3] = %d \n", p[1][3]); // p[1][3] => *(p[1] + 3) => *(*(p + 1) + 3)
     printf("s[3] = %d \n", s[3]); // s[3] => *(s + 3)
@@ -331,7 +331,7 @@ void two_dimensional_arr_and_string_test()
 
 
 	// 数组中每个元素存放的是一个指向只读数据区首元素地址的指针变量，最直观的方式是使用debug模式观察 arr[0] 代表的值
-	const char* p_arr[N] = { "tulun", "complex", "newdata", "math", "locale" };
+	const char *p_arr[N] = { "tulun", "complex", "newdata", "math", "locale" };
 	/**
 	 *  二维数组p_arr内存结构图简化版
 	 *

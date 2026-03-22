@@ -23,7 +23,7 @@
 void atoi_test()
 {
 	// 将字符串类型正整数转换为int类型正整数
-	char* str = "100";
+	char *str = "100";
 	int i = atoi(str);
 	printf("i = %d\n", i);
 
@@ -53,7 +53,7 @@ void atoi_test()
  *
  * @param 要转换成数字的字符串
  */
-int my_atoi_dec(const char* str)
+int my_atoi_dec(const char *str)
 {
 	int sum = 0;
 	while(isdigit(*str))
@@ -69,7 +69,7 @@ int my_atoi_dec(const char* str)
  *
  * @param 要转换成数字的字符串
  */
-int my_atoi_oct(const char* str)
+int my_atoi_oct(const char *str)
 {
 	int sum = 0;
 	while(isdigit(*str) && *str != '8' && *str != '9')
@@ -85,7 +85,7 @@ int my_atoi_oct(const char* str)
  *
  * @param 要转换成数字的字符串
  */
-int my_atoi_hex(const char* str)
+int my_atoi_hex(const char *str)
 {
 	int sum = 0;
 	// 0-9、a-f、A-F
@@ -112,7 +112,7 @@ int my_atoi_hex(const char* str)
  *
  * @param 要转换成数字的字符串
  */
-int my_atoi(const char* str)
+int my_atoi(const char *str)
 {
 	int sum = 0;
 	assert(NULL != str);
@@ -155,7 +155,7 @@ int my_atoi(const char* str)
  */
 void my_atoi_test()
 {
-	char* str = "1234";
+	char *str = "1234";
 	printf("str => %d\n", my_atoi(str));
 	str = "12.43";
 	printf("str => %d\n", my_atoi(str));
@@ -178,7 +178,7 @@ void my_atoi_test()
  *
  * long int strtol(const char *str, char **endptr, int base)
  * @param str 要转换为长整数的字符串
- * @param endptr 对类型为 char* 的对象的引用，其值由函数设置为 str 中数值后的下一个字符
+ * @param endptr 对类型为 char * 的对象的引用，其值由函数设置为 str 中数值后的下一个字符
  * @param base 基数，必须介于2和36（包含）之间，或者是特殊值0。如果base为0，则会根据字符串的前缀来判断进制：如果字符串以 '0x' 或 '0X' 开头，则将其视为十六进制；如果字符串以 '0' 开头，则将其视为八进制；否则将其视为十进制。
  */
 void strtol_test()
@@ -201,7 +201,7 @@ void strtol_test()
 /**
  * strtol()函数应用案例
  */
-int str2i(const char* str, char split, char **endptr)
+int str2i(const char *str, char split, char **endptr)
 {
 	if(NULL == str || NULL == endptr)
 	{
@@ -223,10 +223,10 @@ int str2i(const char* str, char split, char **endptr)
  */
 void str2i_test()
 {
-    char* str = "1,2,3,4,5";
-    char* end = NULL;
+    char *str = "1,2,3,4,5";
+    char *end = NULL;
     int res[5] = { 0 };
-    char* p_str = str;
+    char *p_str = str;
 
     for (int i = 0; i < 5; i++)
     {

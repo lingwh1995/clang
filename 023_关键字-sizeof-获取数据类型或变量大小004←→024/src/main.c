@@ -11,15 +11,15 @@ int main()
 {
     int a = 10;
     //指针类型的数据在32位系统下占4个字节，64位系统下占8个字节
-    char* cp = NULL;
-    double* dp = NULL;
+    char *cp = NULL;
+    double *dp = NULL;
     char str[10];
     int arr[10];
     printf("sizeof(a) = %d\n", sizeof(a));
     printf("sizeof(cp) = %d\n", sizeof(cp));
     printf("sizeof(char *) = %d\n", sizeof(char *));
     printf("sizeof(dp) = %d\n", sizeof(dp));
-    printf("sizeof(double*) = %d\n", sizeof(double*));
+    printf("sizeof(double *) = %d\n", sizeof(double *));
     printf("sizeof(str) = %d\n", sizeof(str));
     //字符串(字符数组)类型末尾有一个额外的\0,会多占据一个字节
     printf("sizeof(\"ufe\") = %d\n", sizeof("ufe"));

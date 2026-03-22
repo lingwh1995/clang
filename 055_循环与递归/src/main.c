@@ -139,7 +139,7 @@ int fib_recursion(int n)
 /**
  * for循环打印数组
  */
-void print_arr_for_loop(const int* arr, const int len)
+void print_arr_for_loop(const int *arr, const int len)
 {
 	if(arr == NULL || len < 0)
 	{
@@ -156,7 +156,7 @@ void print_arr_for_loop(const int* arr, const int len)
 /**
  * while循环打印数组
  */
-void print_arr_while_loop(const int* arr, const int len)
+void print_arr_while_loop(const int *arr, const int len)
 {
 	if(arr == NULL || len < 0)
 	{
@@ -175,7 +175,7 @@ void print_arr_while_loop(const int* arr, const int len)
 /**
  * 递归正序打印数组
  */
-void print_arr_recursion(const int* arr, int len)
+void print_arr_recursion(const int *arr, int len)
 {
     // 安全判断
     if (arr == NULL || len <= 0)
@@ -193,7 +193,7 @@ void print_arr_recursion(const int* arr, int len)
 /**
  * 递归逆序打印数组
  */
-void print_arr_reverse_recursion(const int* arr, int len)
+void print_arr_reverse_recursion(const int *arr, int len)
 {
     if (arr == NULL || len <= 0)
     {
@@ -210,7 +210,7 @@ void print_arr_reverse_recursion(const int* arr, int len)
 /**
  * 递归获取数组中值最大的数
  */
-int get_max_num_recursion(const int* arr, int len)
+int get_max_num_recursion(const int *arr, int len)
 {
     if (len == 1)
     {
@@ -224,7 +224,7 @@ int get_max_num_recursion(const int* arr, int len)
 /**
  * 递归获取数组中元素的累加和
  */
-int get_arr_sum_recursion(const int* arr, int len)
+int get_arr_sum_recursion(const int *arr, int len)
 {
     if(arr == NULL || len <= 0)
     {
@@ -237,7 +237,7 @@ int get_arr_sum_recursion(const int* arr, int len)
 /**
  * 递归实现二分查找
  */
-int binary_search_recursion(const int* arr, int left, int right, int target)
+int binary_search_recursion(const int *arr, int left, int right, int target)
 {
     // 递归结束条件：区间不存在，没找到
     if (left > right)

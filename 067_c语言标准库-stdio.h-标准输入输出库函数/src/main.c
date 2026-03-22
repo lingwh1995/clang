@@ -19,8 +19,8 @@ void sprintf_test()
 	printf("写入字节数 = %d\n", n); // 11（注意：两个%s之间的空格占据了一个字符，所以返回的长度是 str1长度 + str2长度 + 1 ）
 	printf("字符串s1 = %s\n", s1); // hello world
 
-	char* str3 = "hello";
-	char* str4 = "world~";
+	char *str3 = "hello";
+	char *str4 = "world~";
 	char s2[20];
 	n = sprintf(s2, "%s %s", str3, str4);
 	printf("写入字节数 = %d\n", n); // 12（注意：两个%s之间的空格占据了一个字符，所以返回的长度是 str1长度 + str2长度 + 1 ）
@@ -83,8 +83,8 @@ void snprintf_test()
 	printf("写入字节数 = %d\n", n); // 11（注意：两个%s之间的空格占据了一个字符，所以返回的长度是 str1长度 + str2长度 + 1 ）
 	printf("字符串s1 = %s\n", s1); // hello world
 
-	char* str3 = "hello";
-	char* str4 = "world~";
+	char *str3 = "hello";
+	char *str4 = "world~";
 	char s2[20];
 	n = snprintf(s2, 3, "%s %s", str3, str4);
 	printf("写入字节数 = %d\n", n); // 12（注意：两个%s之间的空格占据了一个字符，所以返回的长度是 str1长度 + str2长度 + 1 ）

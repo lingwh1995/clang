@@ -23,7 +23,7 @@ void pointer_senior_test_1()
 	 */
 
     int a = 10, b =20;
-    int* p = &a;
+    int *p = &a;
     *p = 100;
     printf("a = %d, %p => *p %d\n", a, p, *p);
 
@@ -35,15 +35,15 @@ void pointer_senior_test_1()
     // &*p = p; 等式不成立，原因是 指针是一个常量，不能给常量赋值
     printf("&*p = %p, p = %p\n", &*p, p);
 
-    int* s = NULL;
+    int *s = NULL;
     s = &*p; // 等价于 s = &a;
 }
 
 void pointer_senior_test_2()
 {
     int a = 10, b = 20;
-    int* ap = &a;
-    int* bp = &b;
+    int *ap = &a;
+    int *bp = &b;
     printf("ap = %p, bp = %p\n", ap, bp);
     if (ap > bp)
     {
@@ -64,7 +64,7 @@ void pointer_senior_test_2()
     }
 }
 
-void fun(int* p)
+void fun(int *p)
 {
     int b = 200;
     *p = 100;
@@ -78,7 +78,7 @@ void fun(int* p)
 void pointer_senior_test_3()
 {
     int a = 1;
-    int* p = &a;
+    int *p = &a;
     fun(p);
     printf("a = %d, %p => *p %d\n", a, p, *p);
 }
@@ -98,10 +98,10 @@ void pointer_senior_test_3()
 void pointer_senior_test_4()
 {
     int a; //随机值
-    int* p; //野指针:非常危险，要杜绝野指针的使用
+    int *p; //野指针:非常危险，要杜绝野指针的使用
 
     //定义指针时赋值为NULL(NULL: c语言中的空地址,实际上是0地址)
-    int* ap = NULL;
+    int *ap = NULL;
     printf("ap = %p\n", ap);
     //使用指针前先进行判空处理
     if (ap != NULL)
@@ -122,18 +122,18 @@ int g;
 static int sg;
 
 // 定义一个全局空指针
-int* gp = NULL;
+int *gp = NULL;
 // 定义一个静态类型的全局空指针
-static int* sgp = NULL;
+static int *sgp = NULL;
 void pointer_senior_test_5()
 {
     int i;
     static int si = 0;
 
     // 定义一个局部空指针
-    int* ip = NULL;
+    int *ip = NULL;
     // 定义一个静态类型的局部空指针
-    static int* sip = NULL;
+    static int *sip = NULL;
 
     printf("全局变量g = %d\n", g);
     printf("全局静态变量sg = %d\n", sg);
@@ -152,11 +152,11 @@ void pointer_senior_test_5()
  * 返回指针类型数据，栈帧回收后，这个返回值存放在一个临时变量中
  */
 /**/
-int* get_pointer_1()
+int *get_pointer_1()
 {
 	int a = 100;
     //相当于把主函数中的 变量a 复制一份放在get_pointer_1()这个函数中执行
-    int* p = &a;
+    int *p = &a;
     //返回的p是当前栈帧中的 变量a 的地址
     printf("变量a的地址 = %p\n", &a);
     return p;
@@ -164,12 +164,12 @@ int* get_pointer_1()
 
 //解决失效指针(空悬指针)
 /*
-int* get_pointer_1()
+int *get_pointer_1()
 {
     //使用static修饰，修改变量a的声明周期，本质是因为静态变量不在栈区，不会在栈帧被回收时同时回收
     static int a = 100;
     //相当于把主函数中的 变量a 复制一份放在get_pointer_1()这个函数中执行
-    int* p = &a;
+    int *p = &a;
     //返回的p是当前栈帧中的 变量a 的地址
     printf("变量a的地址 = %p\n", &a);
     return p;
@@ -179,7 +179,7 @@ void pointer_senior_test_6()
 {
     //指针的判断正确定义
     int i = 5;
-    int* p = NULL;
+    int *p = NULL;
     printf("变量i的地址 = %p\n", &i);
     printf("对变量i解引用 = %d\n", *&i);
     p = get_pointer_1();
@@ -195,7 +195,7 @@ void pointer_senior_test_6()
     }
 }
 
-int* get_pointer_2(int* p)
+int *get_pointer_2(int *p)
 {
     if (p != NULL)
     {
@@ -207,8 +207,8 @@ int* get_pointer_2(int* p)
 void pointer_senior_test_7()
 {
     int a = 10;
-    int* p = &a;
-    int* s = NULL;
+    int *p = &a;
+    int *s = NULL;
     s = get_pointer_2(p);
     printf("a = %d\n", a);
     printf("*s = %d\n", *s);
@@ -225,11 +225,11 @@ struct Student {
  */
 void pointer_senior_test_8()
 {
-    int* ip = NULL;
-    char* cp = NULL;
-    double* dp = NULL;
-    int** sp = NULL;
-    struct Student* studentp;
+    int *ip = NULL;
+    char *cp = NULL;
+    double *dp = NULL;
+    int **sp = NULL;
+    struct Student *studentp;
     printf("ip = %d\n", sizeof(ip));
     printf("cp = %d\n", sizeof(cp));
     printf("dp = %d\n", sizeof(dp));
@@ -244,7 +244,7 @@ void pointer_senior_test_8()
 void pointer_senior_test_9()
 {
     int arr[5] = { 12, 23, 34, 45, 56 };
-    int* p = arr;
+    int *p = arr;
     int x = 0;//12
     int y = 0;//23
     x = *p++; // p++先用后加，相当于 x = *p; p++; 特别注意，不等同于：x = *p; (*p)++;
@@ -264,7 +264,7 @@ void pointer_senior_test_9()
 void pointer_senior_test_10()
 {
     int a = 10;
-    int* p = &a;
+    int *p = &a;
     printf("*&a = %d\n", *&a); // 10
     printf("p = %p\n", p);
     printf("*&p = %p\n", *&p); // *&p = p

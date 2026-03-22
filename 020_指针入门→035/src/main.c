@@ -21,11 +21,12 @@ int main()
 	/**
 	 * 1. 指针定义语法增强
 	 *    - 以下三种定义指针的语法都是正确的，推荐第三种，这样可以体现，指针变量就是一个普通变量，只不过它的类型是指针类型，值是内存地址而已
-	 * 	    int  *p;
+	 * 	    int  *p; => 最推荐
 	 * 	    int * p;
 	 * 	    int*  p;
 	 * 2. 一次定义多个指针
 	 *    int * foo, * bar;	//正确
+	 *    int *foo, *bar;	//正确
 	 *    int * foo, bar;	//错误
 	 * 3. &和*在指针中的作用
 	 *    &运算符是取地址，*运算符是解地址引用，&运算符与*运算符互为逆运算
@@ -45,7 +46,7 @@ int main()
     printf("---------------------------------------------\n");
 
     // 指针变量的声明，一般初始时声明为空指针
-    int* p = NULL;
+    int *p = NULL;
     // 在指针变量中存储变量a的地址
     p = &a;
     // 注意: 1.指针p本身也会有一个物理内存地址 2.32位系统中指针占据4个字节，64位系统中指针占据8个字节
@@ -77,7 +78,7 @@ int main()
      */
     int c = 100, d = 200;
     // 一次性定义两个指针变量: 正确写法
-    int* p1, * p2;
+    int *p1, *p2;
     // 一次性定义两个指针变量: 错误写法,这种写法p2不是指针类型变量,是int类型变量
     //int* p1,p2;
     p1 = &c;
@@ -89,7 +90,7 @@ int main()
     /**
      * C语言中的NULL指针
      */
-    int* p_null = NULL;
+    int *p_null = NULL;
     printf("pNULL的内存地址 = %p\n", p_null);
     printf("---------------------------------------------\n");
 
@@ -100,19 +101,19 @@ int main()
     /**
      * 早期没有引入const关键字，所以声明指针类型的字符串变量时前面不加const关键字，这是历史遗留问题，按规范定义，指针要使用const关键字修饰
      */
-    char* spa = "hello"; // 存放在只读数据区 .rdata
+    char *spa = "hello"; // 存放在只读数据区 .rdata
     // 最规范的定义
-    //const char* spa = "hello"; // 存放在只读数据区 .rdata
-    char* spb = "hello"; // 存放在只读数据区 .rdata
+    //const char *spa = "hello"; // 存放在只读数据区 .rdata
+    char *spb = "hello"; // 存放在只读数据区 .rdata
     // 最规范的定义
-    //const char* spb = "hello"; // 存放在只读数据区 .rdata
+    //const char *spb = "hello"; // 存放在只读数据区 .rdata
 
-    char* spc = { "hello" }; // 存放在只读数据区 .rdata
+    char *spc = { "hello" }; // 存放在只读数据区 .rdata
     // 最规范的定义
-    //const char* spc = { "hello" }; // 存放在只读数据区 .rdata
-    char* spd = { "hello" }; // 存放在只读数据区 .rdata
+    //const char *spc = { "hello" }; // 存放在只读数据区 .rdata
+    char *spd = { "hello" }; // 存放在只读数据区 .rdata
     // 最规范的定义
-    //const char* spd = { "hello" }; // 存放在只读数据区 .rdata
+    //const char *spd = { "hello" }; // 存放在只读数据区 .rdata
 
     printf("%d \n", (stra == strb));
     printf("%d \n", (spa == spb));
@@ -123,13 +124,13 @@ int main()
     // j的值 从右往左: 低位数->高位数(这是16进制,可以像理解10进制数据一样来理解,从右往左依次是 个位->十位->百位->千位,位数是从低到高)
     // 地址的值 从右往左: 高地址->低地址(因为地址是二进制数据,只是在显示时将4个二进制数据合并为一个16进制数据)
     int j = 0x12345678;
-    int* pj = &j;
+    int *pj = &j;
     printf("j的物理地址 = %p\n", pj);
 
     // 指针是一个常量
     int m =10, n = 20;
-    int* mp = &m;
-    int* np = &n;
+    int *mp = &m;
+    int *np = &n;
     // 指针是一个常量，所以放开会报错
     //&m = &n;
 
@@ -137,6 +138,6 @@ int main()
     char str1[] = "hello";
     printf("str1 = %s\n", str1);
     // 打印指针类型字符串
-    char* str2 = "world";
+    char *str2 = "world";
     printf("str2 = %s\n", str2);
 }

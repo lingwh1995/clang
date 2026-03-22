@@ -12,7 +12,7 @@
  */
 void strlen_test()
 {
-    char* s1 = "hello";
+    char *s1 = "hello";
     printf("strlen(s1) = %u\n", strlen(s1));
 
     // 特别注意：使用strlen()计算下面字符串的长度，返回的是50而不是5
@@ -27,7 +27,7 @@ void strlen_test()
  * @param  str 要计算长度的字符串
  * @return 字符串str的长度
  */
-int my_strlen_1(const char* str)
+int my_strlen_1(const char *str)
 {
     if(NULL == str)
     {
@@ -48,7 +48,7 @@ int my_strlen_1(const char* str)
  */
 void my_strlen_1_test()
 {
-    const char* str = "hello world";
+    const char *str = "hello world";
     int len = my_strlen_1(str);
     printf("自定义函数 len = %d\n", len);
 }
@@ -59,7 +59,7 @@ void my_strlen_1_test()
  * @param  str 要计算长度的字符串
  * @return 返回字符串str的长度
  */
-int my_strlen_2(const char* str)
+int my_strlen_2(const char *str)
 {
     if(NULL == str)
     {
@@ -67,7 +67,7 @@ int my_strlen_2(const char* str)
     }
     // 或
     //assert(NULL != str);
-    char* cp = (char*)str;
+    char *cp = (char *)str;
     while(*cp != '\0')
     {
         cp++;
@@ -80,7 +80,7 @@ int my_strlen_2(const char* str)
  */
 void my_strlen_2_Test()
 {
-    const char* str = "hello world";
+    const char *str = "hello world";
     int len = my_strlen_2(str);
     printf("自定义函数 len = %d\n", len);
 }
@@ -107,15 +107,15 @@ void strcpy_test()
 
     // 错误的字符串复制方式二：只是将s1所代表的地址值赋值给s2了，并没有将s1指向的内容复制给s2
     /*
-    char* s1;
-    char* s2;
+    char *s1;
+    char *s2;
     s1 = "abc";
     s2 = s1;
     printf("s1 = %s\n", s1);
     printf("s2 = %s\n", s2);
     */
 
-    char* p = NULL;
+    char *p = NULL;
 
     // 使用strcpy()完成字符串赋值
     char src_1[] = "Hello, world!";
@@ -136,7 +136,7 @@ void strcpy_test()
     printf("---------------------\n");
 
     // 使用strcpy()完成字符串赋值：从s2的第7个位置开始接收拷贝过来的字符串 BEST
-    char* src_2 = "BEST";
+    char *src_2 = "BEST";
     char dest_2[40] = "Be the best that you can be.";
     p = strcpy(dest_2 + 7, src_2);
     // 使用puts()输出字符串
@@ -154,7 +154,7 @@ void strcpy_test()
      * strcpy()的第一个参数最好是一个已经声明的数组，而不是声明后没有进行初始化的字符指针。
      */
     /*
-    char* str;
+    char *str;
     strcpy(str, "hello world"); // 错误
     */
     /**/
@@ -176,7 +176,7 @@ void strcpy_test()
  * @tips   1.必须要保证第一个参数的长度不小于第二个参数，否则虽然不会报错，但会溢出第一个字符串变量的边界，发生难以预料的结果。
  * @tips   2.第二个参数被const修饰，表示这个函数不会修改第二个字符串。
  */
-char* my_strcpy_1(char* dest, const char* src)
+char *my_strcpy_1(char *dest, const char *src)
 {
     if(NULL == dest || NULL == src)
     {
@@ -214,7 +214,7 @@ void my_strcpy_1_test()
  * @tips   1.必须要保证第一个参数的长度不小于第二个参数，否则虽然不会报错，但会溢出第一个字符串变量的边界，发生难以预料的结果。
  * @tips   2.第二个参数被const修饰，表示这个函数不会修改第二个字符串。
  */
-char* my_strcpy_2(char* dest, const char* src)
+char *my_strcpy_2(char *dest, const char *src)
 {
     if(NULL == dest || NULL == src)
     {
@@ -222,8 +222,8 @@ char* my_strcpy_2(char* dest, const char* src)
     }
     // 或
     //assert(NULL != str1 && NULL != str2);
-    // 把const char*类型转为char*
-    char* ptr = (char*)dest;
+    // 把const char *类型转为char *
+    char *ptr = (char *)dest;
     // 当复制到结尾符 '\0' 的时候，代码相当于 while('\0')， '\0' 的ASCII码是0，所以为假
     while (*dest++ = *src++);
     return ptr;
@@ -256,7 +256,7 @@ void my_strcpy_2_test()
  */
 void strncpy_test_1()
 {
-    char* p = NULL;
+    char *p = NULL;
 
     // 使用strncpy()完成字符串赋值
     char src_1[] = "Hello, world!";
@@ -277,7 +277,7 @@ void strncpy_test_1()
     printf("---------------------\n");
 
     // 使用strncpy()完成字符串赋值：从s2的第7个位置开始接收拷贝过来的字符串 BEST
-    char* src_2 = "BEST";
+    char *src_2 = "BEST";
     char dest_2[40] = "Be the best that you can be.";
     p = strncpy(dest_2 + 7, src_2, 4);
     // 使用puts()输出字符串
@@ -344,7 +344,7 @@ void strncpy_test_3()
 /**
  * 字符串拼接函数（接受两个字符串作为参数，把第二个字符串的副本添加到第一个字符串的末尾。这个函数会改变第一个字符串，但是第二个字符串不变。）
  *
- * char* strcat(char* str1, const char* str2);
+ * char *strcat(char *str1, const char *str2);
  * @param  dest 目的字符串
  * @param  src 源字符串
  * @return 该函数返回一个指向最终的目标字符串 dest 的指针
@@ -371,13 +371,13 @@ void strcat_test()
  * @param  src 源字符串
  * @return 该函数返回一个指向最终的目标字符串 dest 的指针
  */
-char* my_strcat_1(char* dest, const char* src)
+char *my_strcat_1(char *dest, const char *src)
 {
     if(NULL == dest || NULL == src)
     {
         return NULL;
     }
-    char* cp = dest + strlen(dest);
+    char *cp = dest + strlen(dest);
     strcpy(cp, src);
     return dest;
 }
@@ -402,7 +402,7 @@ void my_strcat_1_test()
  * @param  src 源字符串
  * @return 该函数返回一个指向最终的目标字符串 dest 的指针
  */
-char* my_strcat_2(char* dest, const char* src)
+char *my_strcat_2(char *dest, const char *src)
 {
     if(NULL == dest || NULL == src)
     {
@@ -477,9 +477,9 @@ void strncat_test_2()
 /**
  * 内存拷贝函数（将指定内存空间的内容拷贝到你想要存放的内存空间处。但前提是你想要存放的内存空间大小得容纳得下待拷贝的内容。）
  *
- * void* memcpy(void *dest, const void *src, size_t n)
- * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
- * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * void *memcpy(void *dest, const void *src, size_t n)
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void * 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void * 指针
  * @param n    要被复制的字节数
  */
 void memcpy_test_1()
@@ -497,20 +497,20 @@ void memcpy_test_1()
 /**
  * 内存拷贝函数（将指定内存空间的内容拷贝到你想要存放的内存空间处。但前提是你想要存放的内存空间大小得容纳得下待拷贝的内容。）
  *
- * void* memcpy(void *dest, const void *src, size_t n)
- * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
- * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * void *memcpy(void *dest, const void *src, size_t n)
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void * 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void * 指针
  * @param n    要被复制的字节数
  */
 void memcpy_test_2()
 {
 	char src[] = "hello world";
-	char* dest = (char*)malloc((int)sizeof(char) * (int)sizeof(src));;
+	char *dest = (char *)malloc((int)sizeof(char) * (int)sizeof(src));;
 
 	/**
-	 * void* memcpy(void *dest, const void *src, size_t n)
-	 * dest-- 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
-     * src -- 指向要复制的数据源，类型强制转换为 void* 指针
+	 * void *memcpy(void *dest, const void *src, size_t n)
+	 * dest-- 指向用于存储复制内容的目标数组，类型强制转换为 void * 指针
+     * src -- 指向要复制的数据源，类型强制转换为 void * 指针
      * n-- 要被复制的字节数
 	 */
 	memcpy(dest, src, (int)sizeof(char) * (int)sizeof(src));
@@ -526,9 +526,9 @@ struct Student
 /**
  * 内存拷贝函数（将指定内存空间的内容拷贝到你想要存放的内存空间处。但前提是你想要存放的内存空间大小得容纳得下待拷贝的内容。）
  *
- * void* memcpy(void *dest, const void *src, size_t n)
- * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
- * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * void *memcpy(void *dest, const void *src, size_t n)
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void * 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void * 指针
  * @param n    要被复制的字节数
  */
 void memcpy_test_3()
@@ -562,19 +562,19 @@ void memcpy_test_3()
 /**
  * 自定义的内存拷贝函数
  *
- * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
- * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void * 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void * 指针
  * @param n    要被复制的字节数
  */
-char* my_memcpy(void * dest,const void * src,size_t n)
+char *my_memcpy(void *dest,const void *src, size_t n)
 {
     assert(dest != NULL && src != NULL);
     if(0 == n)
     {
         return dest;
     }
-    char* dcp = (char *)dest;
-    const char* scp = (const char *)src;
+    char *dcp = (char *)dest;
+    const char *scp = (const char *)src;
     while(n != 0)
     {
         *dcp = *scp;
@@ -664,21 +664,21 @@ void memmove_test()
 /**
  * 自定义的内存移动函数1：正向自拷贝功能正常，反向自拷贝功能错误
  *
- * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
- * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void * 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void * 指针
  * @param n    要被复制的字节数
  * @tips       正向自拷贝 => dest < src
  * @tips       反向自拷贝 => dest > src
  */
-char* my_memove_1(void * dest,const void * src,size_t n)
+char *my_memove_1(void *dest,const void *src,size_t n)
 {
     assert(dest != NULL && src != NULL);
     if(0 == n)
     {
         return dest;
     }
-    char* dcp = (char *)dest;
-    const char* scp = (const char *)src;
+    char *dcp = (char *)dest;
+    const char *scp = (const char *)src;
     while(n--)
     {
         *dcp = *scp;
@@ -743,21 +743,21 @@ void my_memove_1_test()
  * 自定义的内存移动函数2：正向拷贝功能错误，反向拷贝功能正常
  * 核心解决思路：从后向前拷贝，而不是从前向后拷贝（这个思路非常好，没有使用多余的内存空间，而是优化了算法）
  *
- * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
- * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void * 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void * 指针
  * @param n    要被复制的字节数
  * @tips       正向自拷贝 => dest < src
  * @tips       反向自拷贝 => dest > src
  */
-char* my_memove_2(void * dest,const void * src,size_t n)
+char *my_memove_2(void * dest,const void * src,size_t n)
 {
     assert(dest != NULL && src != NULL);
     if(0 == n)
     {
         return dest;
     }
-    char* dcp = (char *)dest + n - 1;
-    const char* scp = (const char *)src + n - 1;
+    char *dcp = (char *)dest + n - 1;
+    const char *scp = (const char *)src + n - 1;
     while(n--)
     {
         *dcp = *scp;
@@ -824,21 +824,21 @@ void my_memove_2_test()
  * 自定义的内存移动函数2：正向拷贝功能错误，反向拷贝功能正常
  * 核心解决思路：从后向前拷贝，而不是从前向后拷贝（这个思路非常好，没有使用多余的内存空间，而是优化了算法）
  *
- * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void* 指针
- * @param src  指向要复制的数据源，类型强制转换为 void* 指针
+ * @param dest 指向用于存储复制内容的目标数组，类型强制转换为 void * 指针
+ * @param src  指向要复制的数据源，类型强制转换为 void * 指针
  * @param n    要被复制的字节数
  * @tips       正向自拷贝 => dest < src
  * @tips       反向自拷贝 => dest > src
  */
-char* my_memove_3(void * dest,const void * src,size_t n)
+char *my_memove_3(void * dest,const void * src,size_t n)
 {
     assert(dest != NULL && src != NULL);
     if(0 == n)
     {
         return dest;
     }
-    char* dcp = (char *)dest;
-    const char* scp = (const char *)src;
+    char *dcp = (char *)dest;
+    const char *scp = (const char *)src;
     if(dcp <= scp || dcp >= (scp + n)) // 正向拷贝
     {
         while(n--)
@@ -904,8 +904,8 @@ void my_memove_3_test()
  */
 void strcmp_test()
 {
-    const char* str1 = "abcde";
-    const char* str2 = "abcde";
+    const char *str1 = "abcde";
+    const char *str2 = "abcde";
     int r = strcmp(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
@@ -935,7 +935,7 @@ void strcmp_test()
  *         如果返回值大于 0，则表示 str1 大于 str2。
  *         如果返回值等于 0，则表示 str1 等于 str2。
  */
-int my_strcmp_1(const char* str1, const char* str2)
+int my_strcmp_1(const char *str1, const char *str2)
 {
     if(NULL == str1 || NULL == str2)
     {
@@ -956,8 +956,8 @@ int my_strcmp_1(const char* str1, const char* str2)
  */
 void my_strcmp_1_test()
 {
-    const char* str1 = "abcde";
-    const char* str2 = "abcde";
+    const char *str1 = "abcde";
+    const char *str2 = "abcde";
     int r = my_strcmp_1(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
@@ -987,7 +987,7 @@ void my_strcmp_1_test()
  *         如果返回值大于 0，则表示 str1 大于 str2。
  *         如果返回值等于 0，则表示 str1 等于 str2。
  */
-int my_strcmp_2(const char* str1, const char* str2)
+int my_strcmp_2(const char *str1, const char *str2)
 {
     if(NULL == str1 || NULL == str2)
     {
@@ -1005,8 +1005,8 @@ int my_strcmp_2(const char* str1, const char* str2)
  */
 void my_strcmp_2_test()
 {
-    const char* str1 = "abcde";
-    const char* str2 = "abcde";
+    const char *str1 = "abcde";
+    const char *str2 = "abcde";
     int r = my_strcmp_2(str1, str2);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
@@ -1040,8 +1040,8 @@ void my_strcmp_2_test()
  */
 void strncmp_test()
 {
-    const char* str1 = "abcde";
-    const char* str2 = "abcde";
+    const char *str1 = "abcde";
+    const char *str2 = "abcde";
     int r = strncmp(str1, str2, 3);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
@@ -1072,7 +1072,7 @@ void strncmp_test()
 *         如果返回值大于 0，则表示 str1 大于 str2。
 *         如果返回值等于 0，则表示 str1 等于 str2。
 */
-int my_strncmp(const char* str1, const char* str2, size_t n)
+int my_strncmp(const char *str1, const char *str2, size_t n)
 {
     if(NULL == str1 || NULL == str2 || 0 == n)
     {
@@ -1093,8 +1093,8 @@ int my_strncmp(const char* str1, const char* str2, size_t n)
  */
 void my_strncmp_test()
 {
-    const char* str1 = "abcde";
-    const char* str2 = "abcde";
+    const char *str1 = "abcde";
+    const char *str2 = "abcde";
     int r = my_strncmp(str1, str2, 3);
     printf("str1和str2比较结果： %d\n", r);
     str1 = "abcde";
@@ -1126,8 +1126,8 @@ void my_strncmp_test()
  */
 void strchr_test()
 {
-    const char* str = "abccde";
-    char* p = strchr(str, 'c');
+    const char *str = "abccde";
+    char *p = strchr(str, 'c');
     printf("数组地址 = %p\n", str);
     printf("字符地址 = %p\n", p);
     if(NULL != p)
@@ -1147,14 +1147,14 @@ void strchr_test()
  * @param c   给定字符
  * @return 如果在字符串 str 中找到字符 c，则函数返回指向该字符的指针，如果未找到该字符则返回 NULL。
  */
-char* my_strchr(const char *str, int c)
+char *my_strchr(const char *str, int c)
 {
     if(NULL == str)
     {
         return NULL;
     }
-    // 特别注意这个写法：需要把str做一个类型转化，把const char*转成char*类型
-    char* p = (char*)str;
+    // 特别注意这个写法：需要把str做一个类型转化，把const char *转成char *类型
+    char *p = (char *)str;
     while ('\0' != *p && *p != c)
     {
         p++;
@@ -1171,8 +1171,8 @@ char* my_strchr(const char *str, int c)
  */
 void my_strchr_test()
 {
-    const char* str = "abccde";
-    char* p = my_strchr(str, 'c');
+    const char *str = "abccde";
+    char *p = my_strchr(str, 'c');
     printf("数组地址 = %p\n", str);
     printf("字符地址 = %p\n", p);
     if(NULL != p)
@@ -1195,8 +1195,8 @@ void my_strchr_test()
  */
 void strrchr_test()
 {
-    const char* str = "abccde";
-    char* p = strrchr(str, 'c');
+    const char *str = "abccde";
+    char *p = strrchr(str, 'c');
     printf("数组地址 = %p\n", str);
     printf("字符地址 = %p\n", p);
     if(NULL != p)
@@ -1216,14 +1216,14 @@ void strrchr_test()
  * @param c   给定字符
  * @return 从字符串的末尾开始向前搜索，直到找到指定的字符或搜索完整个字符串。如果找到字符，它将返回一个指向该字符的指针，否则返回 NULL。
  */
-char* my_strrchr_1(const char *str, int c)
+char *my_strrchr_1(const char *str, int c)
 {
     if(NULL == str)
     {
         return NULL;
     }
-    // 特别注意这个写法：需要把str做一个类型转化，把const char*转成char*类型
-    char* p = (char*)str;
+    // 特别注意这个写法：需要把str做一个类型转化，把const char *转成char *类型
+    char *p = (char *)str;
     p = p + strlen(str) - 1;
     // 注意：字符串是以 '\0' 结尾的，所以最后一个字符 = *(str-1)
     while ((str-1) != p)
@@ -1242,8 +1242,8 @@ char* my_strrchr_1(const char *str, int c)
  */
 void my_strrchr_1_test()
 {
-    const char* str = "abccde";
-    char* p = my_strrchr_1(str, 'c');
+    const char *str = "abccde";
+    char *p = my_strrchr_1(str, 'c');
     printf("数组地址 = %p\n", str);
     printf("字符地址 = %p\n", p);
     if(NULL != p)
@@ -1263,14 +1263,14 @@ void my_strrchr_1_test()
  * @param c   给定字符
  * @return 从字符串的末尾开始向前搜索，直到找到指定的字符或搜索完整个字符串。如果找到字符，它将返回一个指向该字符的指针，否则返回 NULL。
  */
-char* my_strrchr_2(const char *str, int c)
+char *my_strrchr_2(const char *str, int c)
 {
     if(NULL == str)
     {
         return NULL;
     }
-    // 特别注意这个写法：需要把str做一个类型转化，把const char*转成char*类型
-    char* p = (char*)str;
+    // 特别注意这个写法：需要把str做一个类型转化，把const char *转成char *类型
+    char *p = (char *)str;
     p = p + strlen(str);
     // 注意：字符串是以 '\0' 结尾的，所以最后一个字符 = *(str-1)
     while (str != p)
@@ -1289,8 +1289,8 @@ char* my_strrchr_2(const char *str, int c)
  */
 void my_strrchr_2_test()
 {
-    const char* str = "abccde";
-    char* p = my_strrchr_2(str, 'c');
+    const char *str = "abccde";
+    char *p = my_strrchr_2(str, 'c');
     printf("数组地址 = %p\n", str);
     printf("字符地址 = %p\n", p);
     if(NULL != p)
@@ -1315,7 +1315,7 @@ void strstr_test()
 {
     const char *str = "onetwothree";
     const char *substr = "two";
-    char* p = strstr(str,substr);
+    char *p = strstr(str,substr);
     if(NULL != p)
     {
         printf("%s\n", p);
@@ -1333,7 +1333,7 @@ void strstr_test()
  * @param substr 给定子字符串
  * @return 返回的是从匹配的子字符串开始到原字符串结束的部分
  */
-char* my_strstr_1(const char *str, const char *substr)
+char *my_strstr_1(const char *str, const char *substr)
 {
     if (NULL == str || NULL == substr)
     {
@@ -1372,7 +1372,7 @@ void my_strstr_1_test()
 {
     const char *str = "abccabcabbc";
     const char *substr = "abca";
-    char* p = my_strstr_1(str,substr);
+    char *p = my_strstr_1(str,substr);
     if(NULL != p)
     {
         printf("%s\n", p);
@@ -1390,7 +1390,7 @@ void my_strstr_1_test()
  * @param substr 给定子字符串
  * @return 返回的是从匹配的子字符串开始到原字符串结束的部分
  */
-char* my_strstr_2(const char *str, const char *substr)
+char *my_strstr_2(const char *str, const char *substr)
 {
     if (NULL == str || NULL == substr)
     {
@@ -1430,7 +1430,7 @@ void my_strstr_2_test()
 {
     const char *str = "abccabcabbc";
     const char *substr = "cca";
-    char* p = my_strstr_2(str,substr);
+    char *p = my_strstr_2(str,substr);
     if(NULL != p)
     {
         printf("%s\n", p);
@@ -1444,7 +1444,7 @@ void my_strstr_2_test()
 /**
  * 字符串转为小写格式函数
  *
- * char* strlwr(char* str)
+ * char *strlwr(char *str)
  * @param str 要转成小写格式的字符串
  * @return 小写格式的字符串
  */
@@ -1457,7 +1457,7 @@ void strlwr_test()
 /**
  * 字符串转为大写格式函数
  *
- * char* strupr(char* str)
+ * char *strupr(char *str)
  * @param str 要转成大写格式的字符串
  * @return 大写格式的字符串
  */
@@ -1479,7 +1479,7 @@ void strupr_test()
  */
 void strdup_test()
 {
-    const char* original = "Hello World!";
+    const char *original = "Hello World!";
     char *duplicate = strdup(original);
     if(NULL != duplicate)
     {
@@ -1503,14 +1503,14 @@ void strdup_test()
 * @tips  2.strdup可能出现内存泄漏：strdup返回的指针必须用free()释放
 * @tips  3.strdup可能返回NULL，需检查后再使用
 */
-char* my_strdup(const char* str)
+char *my_strdup(const char *str)
 {
     if(NULL == str)
     {
         return NULL;
     }
     int len = strlen(str) + 1;
-    char* dest = (char*)malloc(sizeof(char) * len);
+    char *dest = (char *)malloc(sizeof(char) * len);
     strcpy(dest, str);
     return dest;
 }
@@ -1520,7 +1520,7 @@ char* my_strdup(const char* str)
  */
 void my_strdup_test()
 {
-    const char* original = "Hello World!";
+    const char *original = "Hello World!";
     char *duplicate = my_strdup(original);
     if(NULL != duplicate)
     {
@@ -1578,9 +1578,9 @@ void memset_test()
  * @param ch 要设置的值，虽然它是一个int类型，但实际上它会被解释为unsigned char，即只会用到这个值的最低8位。
  * @param n  要设置的字节数
  */
-void my_memset(void* vp, unsigned char ch, size_t n)
+void my_memset(void *vp, unsigned char ch, size_t n)
 {
-    unsigned char* cp = (unsigned char*)vp;
+    unsigned char *cp = (unsigned char *)vp;
     for(int i = 0; i < n; i++)
     {
         /*
@@ -1657,8 +1657,8 @@ int my_memcmp(const void *buf1, const void *buf2, size_t n)
     {
         return 0;
     }
-    const char* p_buf1 = (const char*)buf1;
-    const char* p_buf2 = (const char*)buf2;
+    const char *p_buf1 = (const char *)buf1;
+    const char *p_buf2 = (const char *)buf2;
     while (n != 1 && *p_buf1 == *p_buf2)
     {
         n--;

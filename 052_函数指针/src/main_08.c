@@ -33,10 +33,10 @@ typedef struct
  * @param pb
  * @return
  */
-int comp_int(const void* pa, const void* pb)
+int comp_int(const void *pa, const void *pb)
 {
-	const int* ipa = (const int*)pa;
-	const int* ipb = (const int*)pb;
+	const int *ipa = (const int *)pa;
+	const int *ipb = (const int *)pb;
 	if(*ipa > *ipb)
 	{
 		return 1;
@@ -57,10 +57,10 @@ int comp_int(const void* pa, const void* pb)
  * @param pb
  * @return
  */
-int comp_double(const void* pa, const void* pb)
+int comp_double(const void *pa, const void *pb)
 {
-	const double* dpa = (const double*)pa;
-	const double* dpb = (const double*)pb;
+	const double *dpa = (const double *)pa;
+	const double *dpb = (const double *)pb;
 	if(*dpa > *dpb)
 	{
 		return 1;
@@ -81,10 +81,10 @@ int comp_double(const void* pa, const void* pb)
  * @param pb
  * @return
  */
-int comp_char(const void* pa, const void* pb)
+int comp_char(const void *pa, const void *pb)
 {
-	const char* cpa = (const char*)pa;
-	const char* cpb = (const char*)pb;
+	const char *cpa = (const char *)pa;
+	const char *cpb = (const char *)pb;
 	if(*cpa > *cpb)
 	{
 		return 1;
@@ -105,17 +105,17 @@ int comp_char(const void* pa, const void* pb)
  * @param pb
  * @return
  */
-int comp_str(const void* pa, const void* pb)
+int comp_str(const void *pa, const void *pb)
 {
-	const char** spa = (const char**)pa;
-	const char** spb = (const char**)pb;
+	const char **spa = (const char **)pa;
+	const char **spb = (const char **)pb;
 	return strcmp(*spa, *spb);
 }
 
 /**
  * 比较两个结构体类型数据的大小（按id）
  */
-int compare_struct(const void* ap, const void* bp)
+int compare_struct(const void *ap, const void *bp)
 {
 	const Person* person_ap = (const Person*)ap;
 	const Person* perosn_bp = (const Person*)bp;
@@ -136,7 +136,7 @@ int compare_struct(const void* ap, const void* bp)
 /**
  * 打印整形数组
  */
-void print_int_arr_5(int* arr, int len)
+void print_int_arr_5(int *arr, int len)
 {
 	for(int i = 0; i < len; i++)
 	{
@@ -148,7 +148,7 @@ void print_int_arr_5(int* arr, int len)
 /**
  * 打印double类型数组
  */
-void print_double_arr_5(double* arr, int len)
+void print_double_arr_5(double *arr, int len)
 {
 	for(int i = 0; i < len; i++)
 	{
@@ -161,7 +161,7 @@ void print_double_arr_5(double* arr, int len)
 /**
  * 打印char类型数组
  */
-void print_char_arr_5(char* arr, int len)
+void print_char_arr_5(char *arr, int len)
 {
 	for(int i = 0; i < len; i++)
 	{
@@ -173,7 +173,7 @@ void print_char_arr_5(char* arr, int len)
 /*
  * 打印字符串类型数组
  */
-void print_str_arr_5(const char* arr[], int len)
+void print_str_arr_5(const char *arr[], int len)
 {
 	for(int i = 0; i < len; i++)
 	{
@@ -186,7 +186,7 @@ void print_str_arr_5(const char* arr[], int len)
 /**
  * 打印结构体数组
  */
-void print_struct_arr_5(const void* vp, int len)
+void print_struct_arr_5(const void *vp, int len)
 {
     const Person* pPerson = (const Person*)vp;
     for(int i = 0; i < len; i++)
@@ -218,9 +218,9 @@ int main()
 	print_char_arr_5(cr, cn);
 
 	// 对字符串数组进行排序
-	const char* str[] = { "bcd", "acd", "abc", "efg", "def"};
+	const char *str[] = { "bcd", "acd", "abc", "efg", "def"};
 	int sn = 5;
-	qsort(str, sn, sizeof(char*), comp_str);
+	qsort(str, sn, sizeof(char *), comp_str);
 	print_str_arr_5(str, sn);
 
 	// 对结构体数组进行排序

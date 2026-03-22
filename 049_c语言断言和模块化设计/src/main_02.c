@@ -19,7 +19,7 @@
 int main()
 {
 	int arr[ARSIZE] = { 0 };
-	int* p_arr = NULL;
+	int *p_arr = NULL;
 	int val = 0;
 	if (0 == val)
 	{

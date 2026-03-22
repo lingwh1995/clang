@@ -34,42 +34,42 @@ typedef struct
 /**
  * 打印整型数组
  */ 
-void print_int_arr_4(const void* vp)
+void print_int_arr_4(const void *vp)
 {
-	printf("%d\t", *(int*)vp);
+	printf("%d\t", *(int *)vp);
 }
 
 /**
  * 打印float类型数组
  */ 
-void print_float_arr_4(const void* vp)
+void print_float_arr_4(const void *vp)
 {
-	printf("%.2f\t", *(float*)vp);
+	printf("%.2f\t", *(float *)vp);
 }
 
 /**
  * 打印double类型数组
  */ 
-void print_double_arr_4(const void* vp)
+void print_double_arr_4(const void *vp)
 {
-	printf("%.2f\t", *(double*)vp);
+	printf("%.2f\t", *(double *)vp);
 }
 
 /**
  * 打印字符数组
  */ 
-void print_char_arr_4(const void* vp)
+void print_char_arr_4(const void *vp)
 {
-	printf("%c\t", *(char*)vp);
+	printf("%c\t", *(char *)vp);
 }
 
 /**
  * 打印字符串数组
  * 特别注意： 这里的vp是一个二级指针
  */ 
-void print_str_arr_4(const void* vp)
+void print_str_arr_4(const void *vp)
 {
-    char** s = (char**)vp;  // 正确的类型转换
+    char **s = (char **)vp;  // 正确的类型转换
     printf("%s\t", *s);     // 打印字符串内容
 }
 
@@ -77,16 +77,16 @@ void print_str_arr_4(const void* vp)
 /**
  * 打印结构体数组
  */ 
-void print_struct_arr_4(const void* vp)
+void print_struct_arr_4(const void *vp)
 {
-	const Student* pStudent = (const Student*)vp;
+	const Student *pStudent = (const Student *)vp;
 	printf("%d，%s，%d\t", pStudent -> id, pStudent -> name, pStudent -> age);
 }
 
 /**
  * 打印数组（泛型方法）
  */
-void print_arr_4(const void *vp, const int size, int element_size, void (*print)(const void *), char* element_type_name, int print_type)
+void print_arr_4(const void *vp, const int size, int element_size, void (*print)(const void *), char *element_type_name, int print_type)
 {
 	printf("%s类型数组冒泡排序%s => ", element_type_name, print_type == 0 ? "前" : "后");
 	if(NULL == vp || NULL == print || size < 1 || element_size < 1)
@@ -103,7 +103,7 @@ void print_arr_4(const void *vp, const int size, int element_size, void (*print)
 }
 
 // 交换函数
-void swap(void* ap, void* bp, int size)
+void swap(void *ap, void *bp, int size)
 {
     char temp[size];
     memcpy(temp, ap, size);
@@ -114,10 +114,10 @@ void swap(void* ap, void* bp, int size)
 /**
  * 比较两个int类型数据的大小
  */
-bool compare_int(const void* ap, const void* bp)
+bool compare_int(const void *ap, const void *bp)
 {
-	const int* iap = (const int*)ap;
-	const int* ibp = (const int*)bp;
+	const int *iap = (const int *)ap;
+	const int *ibp = (const int *)bp;
 	if(*iap > *ibp)
 	{
 		return true;
@@ -128,10 +128,10 @@ bool compare_int(const void* ap, const void* bp)
 /**
  * 比较两个float类型数据的大小
  */
-bool compare_float(const void* ap, const void* bp)
+bool compare_float(const void *ap, const void *bp)
 {
-	const float* fap = (const float*)ap;
-	const float* fbp = (const float*)bp;
+	const float *fap = (const float *)ap;
+	const float *fbp = (const float *)bp;
 	if(*fap > *fbp)
 	{
 		return true;
@@ -142,10 +142,10 @@ bool compare_float(const void* ap, const void* bp)
 /**
  * 比较两个double类型数据的大小
  */
-bool compare_double(const void* ap, const void* bp)
+bool compare_double(const void *ap, const void *bp)
 {
-	const double* dap = (const double*)ap;
-	const double* dbp = (const double*)bp;
+	const double *dap = (const double *)ap;
+	const double *dbp = (const double *)bp;
 	if(*dap > *dbp)
 	{
 		return true;
@@ -156,10 +156,10 @@ bool compare_double(const void* ap, const void* bp)
 /**
  * 比较两个char类型数据的大小
  */
-bool compare_char(const void* ap, const void* bp)
+bool compare_char(const void *ap, const void *bp)
 {
-	const char* cap = (const char*)ap;
-	const char* cbp = (const char*)bp;
+	const char *cap = (const char *)ap;
+	const char *cbp = (const char *)bp;
 	if(*cap > *cbp)
 	{
 		return true;
@@ -170,10 +170,10 @@ bool compare_char(const void* ap, const void* bp)
 /**
  * 比较两个字符串类型数据的大小
  */
-bool compare_str(const void* ap, const void* bp)
+bool compare_str(const void *ap, const void *bp)
 {
-	const char** sap = (const char**)ap;
-	const char** sbp = (const char**)bp;
+	const char **sap = (const char **)ap;
+	const char **sbp = (const char **)bp;
 	if(strcmp(*sap, *sbp) > 0)
 	{
 		return true;
@@ -184,10 +184,10 @@ bool compare_str(const void* ap, const void* bp)
 /**
  * 比较两个结构体类型数据的大小（按id）
  */
-bool compare_struct_by_id(const void* ap, const void* bp)
+bool compare_struct_by_id(const void *ap, const void *bp)
 {
-	const Student* stu_ap = (const Student*)ap;
-	const Student* stu_bp = (const Student*)bp;
+	const Student *stu_ap = (const Student *)ap;
+	const Student *stu_bp = (const Student *)bp;
 	if(stu_ap->id > stu_bp->id)
 	{
 		return true;
@@ -198,10 +198,10 @@ bool compare_struct_by_id(const void* ap, const void* bp)
 /**
  * 比较两个结构体类型数据的大小（按姓名）
  */
-bool compare_struct_by_name(const void* ap, const void* bp)
+bool compare_struct_by_name(const void *ap, const void *bp)
 {
-	const Student* stu_ap = (const Student*)ap;
-	const Student* stu_bp = (const Student*)bp;
+	const Student *stu_ap = (const Student *)ap;
+	const Student *stu_bp = (const Student *)bp;
 	if(strcmp(stu_ap->name, stu_bp->name) > 0)
 	{
 		return true;
@@ -212,15 +212,15 @@ bool compare_struct_by_name(const void* ap, const void* bp)
 /**
  * 泛型冒泡排序
  */
-void bubble_sort_3(const void* vp, int len, int element_size, bool (*compare)(const void*, const void*))
+void bubble_sort_3(const void *vp, int len, int element_size, bool (*compare)(const void *, const void *))
 {
-	char* cp = (char*)vp;
+	char *cp = (char *)vp;
 	for(int i = 0; i < len - 1; i++)
 	{
 		for(int j = 0; j < len - i -1; j++)
 		{
-            void* current = cp + j * element_size;
-            void* next = cp + (j + 1) * element_size;
+            void *current = cp + j * element_size;
+            void *next = cp + (j + 1) * element_size;
             if((*compare)(current, next))
             {
                 swap(current, next, element_size);
@@ -276,7 +276,7 @@ int main()
 
 
 	//定义字符串数组（这里实际上是定义了一个二维数组）
-	char* str[] = { "ban\0ana", "apple", "cherry", "orange", "pear" };
+	char *str[] = { "ban\0ana", "apple", "cherry", "orange", "pear" };
 	int sn = sizeof(str) / sizeof(str[0]);
 	// 冒泡排序前
 	print_arr_4(str, sn, sizeof(str[0]), print_str_arr_4, "字符串", 0);

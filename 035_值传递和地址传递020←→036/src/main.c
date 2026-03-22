@@ -24,7 +24,7 @@ void swap_number_1(int a, int b)
  * 地址传递
  *  是一种间接改变值的方案
  */
-void swap_number_2(int* x, int* y)
+void swap_number_2(int *x, int *y)
 {
     //使用指针变量前正确的做法是先对指针进行判空处理
     if (NULL == x || NULL == y)

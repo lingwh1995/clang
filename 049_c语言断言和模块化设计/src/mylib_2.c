@@ -9,7 +9,7 @@
  * @param val 要确定是否存在于当前数组中的值
  */
 /*
-int find_value_3(const int* arr, int n, int val)
+int find_value_3(const int *arr, int n, int val)
 {
 	assert(NULL != arr);
 	if (n < 1) return -1;
@@ -24,7 +24,7 @@ int find_value_3(const int* arr, int n, int val)
 	return position;
 }
 */
-int find_value_3(const int* arr, int n, int val)
+int find_value_3(const int *arr, int n, int val)
 {
 	assert(NULL != arr);
 	if (n < 1) return -1;
@@ -41,7 +41,7 @@ int find_value_3(const int* arr, int n, int val)
  * @param *arr 代表数组的指针
  * @param len 数组长度
  */
-void init_arr_3(int* arr, int len)
+void init_arr_3(int *arr, int len)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || len < 1) return;
@@ -66,7 +66,7 @@ void init_arr_3(int* arr, int len)
  * @param *ap 代表第一个数的指针
  * @param *bp 代表第二个数的指针
  */
-void swap_number_3(int* ap, int* bp)
+void swap_number_3(int *ap, int *bp)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == ap || NULL == bp) return;
@@ -82,7 +82,7 @@ void swap_number_3(int* ap, int* bp)
  * @param *arr 代表数组的指针
  * @param len 数组长度
  */
-void bubble_sort_3(int* arr, int len)
+void bubble_sort_3(int *arr, int len)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || len < 1) return;
@@ -105,7 +105,7 @@ void bubble_sort_3(int* arr, int len)
  * @param *arr 代表数组的指针
  * @param len 数组长度
  */
-void print_arr_3(const int* arr, const int len)
+void print_arr_3(const int *arr, const int len)
 {
 	//使用传统if else 判断参数是否合法
 	//if (NULL == arr || len < 1) return;

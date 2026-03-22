@@ -7,7 +7,7 @@
 /**
  * 交换两个数字
  */
-void swap_number_1(int* a, int *b)
+void swap_number_1(int *a, int *b)
 {
 	int temp = *a;
 	*a = *b;
@@ -17,7 +17,7 @@ void swap_number_1(int* a, int *b)
 /**
  * 冒泡排序
  */
-void bubble_sort_1(int* arr, int len)
+void bubble_sort_1(int *arr, int len)
 {
 	if(NULL == arr || len < 2)
 	{
@@ -38,7 +38,7 @@ void bubble_sort_1(int* arr, int len)
 /**
  * 打印数组
  */
-void print_arr_1(const int* arr, const int len)
+void print_arr_1(const int *arr, const int len)
 {
 	for(int i = 0; i < len; i++)
 	{

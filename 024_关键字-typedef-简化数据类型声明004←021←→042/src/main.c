@@ -67,7 +67,7 @@ struct Student
     int age;
 };
 typedef struct Student Student;
-typedef struct Student* PStudent;
+typedef struct Student *PStudent;
 
 /**
  * typedef和结构体结合使用方式二:

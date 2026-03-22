@@ -9,28 +9,28 @@
 /**
  * 打印int类型数组
  */ 
-void print_int_arr_3(const void* vp)
+void print_int_arr_3(const void *vp)
 {
 	// 将char类型指针还原为泛型指针（具体是int类型指针）
-	printf("%d\t", *(int*)vp);
+	printf("%d\t", *(int *)vp);
 }
 
 /**
  * 打印double类型数组
  */ 
-void print_double_arr_3(const void* vp)
+void print_double_arr_3(const void *vp)
 {
 	// 将char类型指针还原为泛型指针（具体是double类型指针）
-	printf("%.1f\t", *(double*)vp);
+	printf("%.1f\t", *(double *)vp);
 }
 
 /**
  * 打印char类型数组
  */ 
-void print_char_arr_3(const void* vp)
+void print_char_arr_3(const void *vp)
 {
 	// 将char类型指针还原为泛型指针（具体是char类型指针）
-	printf("%c\t", *(char*)vp);
+	printf("%c\t", *(char *)vp);
 }
 
 /**
@@ -40,14 +40,14 @@ void print_char_arr_3(const void* vp)
  * @param element_size 对应的数据类型的长度
  * @param print 函数指针
  */
-void print_arr_3(const void* arr, const int len, int element_size, void (*print)(const void *))
+void print_arr_3(const void *arr, const int len, int element_size, void (*print)(const void *))
 {
 	if(NULL == arr || NULL == print || len < 1 || element_size < 1)
 	{
 		return;
 	}
 	// 将泛型指针转换为char类型指针
-	const char *cp = (const char*)arr;
+	const char *cp = (const char *)arr;
 	for(int i = 0; i < len; i++)
 	{
 		(*print)(cp);
@@ -64,7 +64,7 @@ void print_arr_3(const void* arr, const int len, int element_size, void (*print)
  * @param print 函数指针
  */
 /*
-void print_arr_3(const void* arr, const int len, int element_size, void (*print)(const void *))
+void print_arr_3(const void *arr, const int len, int element_size, void (*print)(const void *))
 {
 	if(NULL == arr || NULL == print || len < 1 || element_size < 1)
 	{

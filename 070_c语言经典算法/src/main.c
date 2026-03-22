@@ -10,17 +10,17 @@
  *    3.反转一维数组
  */
 
-void left_move_arr_step_k_2(int*, int, int);
-void right_move_arr_step_k_2(int*, int, int);
-void print_arr(const int*, const int);
-void reverse_arr(int*, int, int);
-void left_move_arr_step_k_3(int*, int, int);
+void left_move_arr_step_k_2(int *, int, int);
+void right_move_arr_step_k_2(int *, int, int);
+void print_arr(const int *, const int);
+void reverse_arr(int *, int, int);
+void left_move_arr_step_k_3(int *, int, int);
 
 /**
  * @param ap a元素的地址
  * @param bp b元素的地址
  */
-void swap_number(int* ap, int* bp)
+void swap_number(int *ap, int *bp)
 {
 	if(ap == NULL || bp == NULL)
 	{
@@ -34,7 +34,7 @@ void swap_number(int* ap, int* bp)
 /**
  * 打印数组
  */
-void print_arr(const int* arr, const int len)
+void print_arr(const int *arr, const int len)
 {
     for(int i = 0; i < len; i++)
     {
@@ -144,7 +144,7 @@ void bubble_sort_3()
  * @param k 查找重复元素结束索引
  * @param value 需要判断是否重复的元素
  */
-int find_value(int* nums, int k, int value)
+int find_value(int *nums, int k, int value)
 {
 	int position = -1;
 	for(int i = 0; i < k; i++)
@@ -324,7 +324,7 @@ void algorithm_01_bubble_sort()
 /**
  * 二分查找法：在数组中查询输入值的索引位置，如果没有查询到返回-1
  */
-int binary_search_find_value(const int* arr, int n, int val)
+int binary_search_find_value(const int *arr, int n, int val)
 {
 	if(NULL == arr || n < 1)
 	{
@@ -441,7 +441,7 @@ void algorithm_03_reverse_arr()
 /**
  * 数组元素整体向右移动一位
  */
-void right_move_arr_step_1(int* arr, int len)
+void right_move_arr_step_1(int *arr, int len)
 {
    if(NULL == arr || len < 2)
    {
@@ -463,7 +463,7 @@ void right_move_arr_step_1(int* arr, int len)
 /**
  * 数组元素整体向左移动一位
  */
-void left_move_arr_step_1(int* arr, int len)
+void left_move_arr_step_1(int *arr, int len)
 {
    if(NULL == arr || len < 2)
    {
@@ -485,7 +485,7 @@ void left_move_arr_step_1(int* arr, int len)
 /**
  * 数组元素整体向右移动k位：方式一
  */
-void right_move_arr_step_k_1(int* arr, int len, int k)
+void right_move_arr_step_k_1(int *arr, int len, int k)
 {
 	if(NULL == arr || len < 2)
 	{
@@ -511,7 +511,7 @@ void right_move_arr_step_k_1(int* arr, int len, int k)
 /**
  * 数组元素整体向右移动k位：方式二
  */
-void right_move_arr_step_k_2(int* arr, int len, int k)
+void right_move_arr_step_k_2(int *arr, int len, int k)
 {
 	// 如果 k < 0，则调用左移的方法
 	if(k < 0)
@@ -527,7 +527,7 @@ void right_move_arr_step_k_2(int* arr, int len, int k)
     k = k % len;
 
     // 创建一个数组用于保存最后k个元素
-    int* arr_temp = (int*)malloc(k * sizeof(int));
+    int *arr_temp = (int *)malloc(k * sizeof(int));
 
     // 把最后k个元素保存到临时数组中
     for(int i = 0; i < k; i++)
@@ -551,7 +551,7 @@ void right_move_arr_step_k_2(int* arr, int len, int k)
 /**
  * 数组元素整体向左移动k位：方式一
  */
-void left_move_arr_step_k_1(int* arr, int len, int k)
+void left_move_arr_step_k_1(int *arr, int len, int k)
 {
 	if(NULL == arr || len < 2)
 	{
@@ -577,7 +577,7 @@ void left_move_arr_step_k_1(int* arr, int len, int k)
 /**
  * 数组元素整体向左移动k位：方式二
  */
-void left_move_arr_step_k_2(int* arr, int len, int k)
+void left_move_arr_step_k_2(int *arr, int len, int k)
 {
 	// 如果 k < 0，则调用右移的方法
 	if(k < 0)
@@ -593,7 +593,7 @@ void left_move_arr_step_k_2(int* arr, int len, int k)
     k = k % len;
 
     // 创建一个数组用于保存前k个元素
-    int* arr_temp = (int*)malloc(k * sizeof(int));
+    int *arr_temp = (int *)malloc(k * sizeof(int));
 
     // 把前k个元素保存到临时数组中
     for(int i = 0; i < k; i++)
@@ -617,7 +617,7 @@ void left_move_arr_step_k_2(int* arr, int len, int k)
 /**
  * 数组元素整体向左移动k位：方式三
  */
-void right_move_arr_step_k_3(int* arr, int len, int k)
+void right_move_arr_step_k_3(int *arr, int len, int k)
 {
     if(k < 0)
     {
@@ -643,7 +643,7 @@ void right_move_arr_step_k_3(int* arr, int len, int k)
 /**
  * 反转数组
  */
-void reverse_arr(int* arr, int left, int right)
+void reverse_arr(int *arr, int left, int right)
 {
     if(NULL == arr || left >= right)
     {
@@ -662,7 +662,7 @@ void reverse_arr(int* arr, int left, int right)
  * 数组元素整体向右移动k位：方式三
  *  k = 3 => 反转 0-2 => 反转 3-数组末尾 => 反转 0-数组末尾
  */
-void left_move_arr_step_k_3(int* arr, int len, int k)
+void left_move_arr_step_k_3(int *arr, int len, int k)
 {
     if(k < 0)
     {

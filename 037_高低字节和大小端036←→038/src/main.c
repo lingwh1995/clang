@@ -14,11 +14,11 @@ void big_end_or_little_end_1()
 {
 	int i = 1;
 	// 获取整形指针
-	int* ip = &i;
+	int *ip = &i;
 	// 整形指针转为char类型指针
-	char* cp = (char*)ip;
+	char *cp = (char *)ip;
 	char c = *cp;
-	// 等同于 char* cp = (char*)&ip;
+	// 等同于 char *cp = (char *)&ip;
 
 	if(c == 0)
 	{
@@ -69,7 +69,7 @@ void big_end_and_little_end_test()
 /**
  * 通用的大小端转换函数：将 src 中的 n 字节反转到 dst 中
  */
-void swap_endian(void* dst, const void* src, size_t n)
+void swap_endian(void *dst, const void *src, size_t n)
 {
     uint8_t* dst_bytes = (uint8_t*)dst;
     const uint8_t* src_bytes = (const uint8_t*)src;

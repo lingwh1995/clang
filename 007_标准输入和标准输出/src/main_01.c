@@ -5,7 +5,6 @@
  * 标准输入和EOF
  */
 
-
  /**
  * 标准输入测试
  */
@@ -19,7 +18,6 @@ void stdin_and_eof_test_1()
     }
     printf("sum = %d\n", sum);
 }
-
 
 /**
  * 标准输入和EOF测试
@@ -35,7 +33,6 @@ void stdin_and_eof_test_2()
     printf("sum = %d\n", sum);
 }
 
-
 /**
  * 标准输入测试
  *  接收单个字符: 不管输入多少个字符,都只会接收第一个字符
@@ -46,7 +43,6 @@ void stdin_and_eof_test_3()
     char ch = getchar();
     printf("ch = %c\n", ch);
 }
-
 
 /**
  * 标准输入测试：接收多个字符(输入Ctrl+C结束)
@@ -70,7 +66,6 @@ void stdin_and_eof_test_4()
     }
 }
 
-
 /**
  * 标准输入测试：接收多个字符串(输入Ctrl+C结束)
  *    输入水果名称，通过水果名称判断是不是最喜爱的运动，如果输入的是 apple 就是最喜爱的水果
@@ -91,7 +86,6 @@ void stdin_and_eof_test_5()
         }
     }
 }
-
 
 /**
  * 标准输入测试：接收多个数字(输入Ctrl+C结束)

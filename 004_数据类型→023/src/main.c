@@ -275,7 +275,7 @@ void definition_pointer_data_type()
 {
     int a = 100;
     // 指针
-    int* p = &a;
+    int *p = &a;
     printf("a的地址 = %p\n", p);
     int arr[5] = { 1, 2, 3, 4, 5 };
     // 数组的地址
@@ -749,8 +749,8 @@ void data_type_conversion_12()
 {
 	float ft = 12.25;
 	int a = 10;
-	int* ip = &a;
-	float* fp = &ft;
+	int *ip = &a;
+	float *fp = &ft;
 
 	printf("i = %d\n", a);
 	printf("f = %f\n", ft);
@@ -763,13 +763,13 @@ void data_type_conversion_12()
 	a = (int)ft;
 
 	/**
-	 * int* 和 float* 是不同类型的指针，编译器不允许隐式转换（会直接报错），即使通过强制类型转换 (int*)fp 编译通过，也会产生未定义行为。
+	 * int * 和 float * 是不同类型的指针，编译器不允许隐式转换（会直接报错），即使通过强制类型转换 (int *)fp 编译通过，也会产生未定义行为。
 	 * 例如： 对赋值后的 ip 解引用得到的不是 ft 的整数部分12，而是一个很大数
 	 *
 	 */
 	ip = fp; // 错误语法，即使能通过运行，得出的结果也是错误的，c语言不支持指针类型隐式转换为另一个指针类型
 	printf("*ip = %d\n", *ip);
-	ip = (int*)fp; // 错误语法，即使能通过运行，得出的结果也是错误的，c语言不支持指针类型显式转换为另一个指针类型
+	ip = (int *)fp; // 错误语法，即使能通过运行，得出的结果也是错误的，c语言不支持指针类型显式转换为另一个指针类型
 	printf("*ip = %d\n", *ip);
 	printf("-------------------------------------\n");
 }
@@ -780,8 +780,8 @@ void data_type_conversion_12()
 void float_hello_world()
 {
 	int a = 0x41440000;
-	int* ip = &a;
-	float* fp = (float*)&a;
+	int *ip = &a;
+	float *fp = (float *)&a;
 
 	printf("%x \n", *ip);
 	printf("%f \n", *fp);

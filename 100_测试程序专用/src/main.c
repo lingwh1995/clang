@@ -10,7 +10,7 @@
 /**
  * 从尾到头在一个字符串中查找给定子串的第一个匹配之处
  */ 
-char* my_strstr(const char* str, const char* substr)
+char *my_strstr(const char *str, const char *substr)
 {
     if(NULL == str || NULL == substr)
     {
@@ -29,7 +29,7 @@ char* my_strstr(const char* str, const char* substr)
 		}
 		if(j == n)
 		{
-			return (char*)str + i;
+			return (char *)str + i;
 		}
 	}
 	return NULL;
@@ -37,9 +37,9 @@ char* my_strstr(const char* str, const char* substr)
 
 void my_strstr_test()
 {
-	const char* str = "abccabcabbc";
-	const char* substr = "abc";
-	char* result = my_strstr(str,substr);
+	const char *str = "abccabcabbc";
+	const char *substr = "abc";
+	char *result = my_strstr(str,substr);
 	printf("result = %s\n", result);
 }
 

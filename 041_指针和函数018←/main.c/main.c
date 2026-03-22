@@ -13,7 +13,7 @@ int main()
 	/**
 	 * 1.c语言可以通过指针获取函数，注意接收类型
 	 * 2.变量print_ptr是一个函数指针，它指向函数print()的地址，函数print()的地址可以用&print获得
-	 * 3.(*print_ptr)一定要写在圆括号里面，否则函数参数(int)的优先级高于*，整个式子就会变成void* print_ptr(int)
+	 * 3.(*print_ptr)一定要写在圆括号里面，否则函数参数(int)的优先级高于*，整个式子就会变成void * print_ptr(int)
 	 */
 	void (*print_ptr)(int) = &print;
 	

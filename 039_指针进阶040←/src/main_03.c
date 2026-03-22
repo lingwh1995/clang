@@ -13,14 +13,14 @@ void pointer_subInt_arr()
 {
     int arr[] = { 1, 2, 3, 4, 5 };
     // 数组首元素地址
-    int* p_first = &arr[0];
+    int *p_first = &arr[0];
     // 数组尾元素地址
-    int* p_last = &arr[4];
+    int *p_last = &arr[4];
     printf("pL - pF = %d\n", (int)(p_last - p_first));
     printf("pF - pL = %d\n", (int)(p_first - p_last));
 
     // 数组结束位置（尾元素地址+1）地址
-    int* p_end = &arr[5];
+    int *p_end = &arr[5];
     printf("pE - pF = %d\n", (int)(p_end - p_first));
 }
 
@@ -29,8 +29,8 @@ void pointer_subInt_arr()
  */
 void pointer_sub_str()
 {
-    const char* str = "hello";
-    char* cp = (char*)str;
+    const char *str = "hello";
+    char *cp = (char *)str;
     // 这个变量和循环遍历无关，只是为了更方便的查看打印信息
     int index = 0;
     // 注意观察字符串中最后一个字符的地址

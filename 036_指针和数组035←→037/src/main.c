@@ -10,7 +10,7 @@ void pointer_and_array_test_1()
     printf("获取数组（首元素）的地址（方式一：数组名arr即为数组（首元素）的地址） = %p\n", arr);
     printf("获取数组（首元素）的地址（方式二：直接获取数组（首元素）的地址） = %p\n", &arr[0]);
     //数组的首元素地址
-    int* p = &arr[0];
+    int *p = &arr[0];
     printf("数组的首元素地址 = %p\n", p);
     printf("数组的首元素 = %d\n", *p);
     p = p + 1;
@@ -29,8 +29,8 @@ void pointer_and_array_test_1()
 void pointer_and_array_test_2()
 {
     int a = 1, b = 2, c = 3, d = 4;
-    //定义一个数组指针
-    int* arr[5] = { &a, &b, &c, &d };
+    //定义一个指针数组
+    int *arr[5] = { &a, &b, &c, &d };
     //使用*+变量名为变量(数组中的元素)赋值,下面两种写法都是可以的
     *(arr[0]) = 100;
     *arr[1] = 200;
@@ -44,8 +44,8 @@ void pointer_and_array_test_3()
 {
     int arr_1[5] = { 1, 2, 3, 4, 5 };
     int size_1 = sizeof(arr_1) / sizeof(arr_1[0]);
-    //int* ip = &arr_1[0];
-    int* ip = arr_1;
+    //int *ip = &arr_1[0];
+    int *ip = arr_1;
     for (int i = 0; i < size_1; i++)
     {
         printf("arr_1[%d] = %d, ip = %p\n", i, *ip, ip);
@@ -57,8 +57,8 @@ void pointer_and_array_test_3()
 
     double arr_2[5] = { 1.1, 2.2, 3.3, 4.4, 5.5 };
     int size_2 = sizeof(arr_2) / sizeof(arr_2[0]);
-    //double* dp = &arr_2[0];
-    double* dp = arr_2;
+    //double *dp = &arr_2[0];
+    double *dp = arr_2;
     for (int i = 0; i < size_2; i++)
     {
         printf("arr_2[%d] = %f, dp = %p\n", i, *dp, dp);
@@ -70,8 +70,8 @@ void pointer_and_array_test_3()
 
     char arr_3[5] = { 'h', 'e', 'l', 'l', 'o' };
     int size_3 = sizeof(arr_3) / sizeof(arr_3[0]);
-    //char* cp = &arr_3[0];
-    char* cp = arr_3;
+    //char *cp = &arr_3[0];
+    char *cp = arr_3;
     for (int i = 0; i < size_3; i++)
     {
         printf("arr_3[%d] = %c, cp = %p\n", i, *cp, cp);
@@ -122,14 +122,14 @@ void pointer_and_array_test_5()
 /**
  * 使用指针和while循环打印数组
  *
- * const int* start 到底限制什么？
+ * const int *start 到底限制什么？
  *   限制的是：不能修改 *start（指向的值）
  *   不限制：修改 start 本身（指针地址）
  *
  *   *start = 10;  // ❌ 报错（不能改值）
  *   start++;      // ✅ 允许（只改指针位置，不改值）
  */
-void print_arr_by_while_loop(const int* start, const int* end)
+void print_arr_by_while_loop(const int *start, const int *end)
 {
     // 判断指针是否为空
     if(NULL == start || NULL == end)

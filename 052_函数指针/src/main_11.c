@@ -12,7 +12,7 @@ int main()
 	int a = 10;
 	printf("&a = %p\n", &a);
 	// 把字面常量（十六进制地址）转换为整形指针，注意：每次运行这个字面常量会改变，取的是 &a 的值
-	*((int*)0x0064FF1C) = 100;
+	*((int *)0x0064FF1C) = 100;
 	printf("a = %d\n", a);
 
 	printf("&sum = %p\n", sum);

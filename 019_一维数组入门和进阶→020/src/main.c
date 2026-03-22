@@ -209,7 +209,7 @@ void pointIs_const()
 	// 创建变量a、b
 	int a = 10, b = 20;
 	// 把变量a的内存地址存放在指针变量p中
-	int* p = &a;
+	int *p = &a;
 	// 把变量b的内存地址存放在指针变量p中
 	p = &b;
 

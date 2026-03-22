@@ -8,7 +8,7 @@
 /**
  * 交换两个数字
  */
-void swap_number_2(int* a, int *b)
+void swap_number_2(int *a, int *b)
 {
 	int temp = *a;
 	*a = *b;
@@ -34,7 +34,7 @@ bool less(int a, int b)
 /**
  * 冒泡排序
  */
-void bubble_sort_2(int* arr, int len, int (*compare)(int, int))
+void bubble_sort_2(int *arr, int len, int (*compare)(int, int))
 {
 	if(NULL == arr || len < 2)
 	{
@@ -55,7 +55,7 @@ void bubble_sort_2(int* arr, int len, int (*compare)(int, int))
 /**
  * 打印数组
  */
-void print_arr_2(const int* arr, const int len)
+void print_arr_2(const int *arr, const int len)
 {
 	for(int i = 0; i < len; i++)
 	{

@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-unsigned char* hex2byte_arr(char *puchMsg);
+unsigned char *hex2byte_arr(char *puchMsg);
 void print_dec_and_hex(int crcDec);
 unsigned short crc_ccitt_xmodem(unsigned char *puchMsg, unsigned int usDataLen);
 unsigned short crc16(unsigned char *puchMsg, unsigned int usDataLen);
@@ -31,11 +31,11 @@ int main()
  * 十六进制字符串转字节数组
  * @param puchMsg	要进行crc计算的字符串
  */ 
-unsigned char* hex2byte_arr(char *puchMsg)
+unsigned char *hex2byte_arr(char *puchMsg)
 {
 	int len = strlen(puchMsg);
 	// 分配足够的空间存储字节数组
-	unsigned char* bytes = malloc(len / 2);
+	unsigned char *bytes = malloc(len / 2);
 	for(int i = 0; i < len; i = i + 2)
 	{
 		// 把十六进制字符每两位组成一个字符串

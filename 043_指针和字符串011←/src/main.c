@@ -20,7 +20,7 @@ int main()
     char s1[20] = "Hello, world!";  // 等价于  char s1[] = "Hello, world!";
     printf("s1 = %s\n", s1);
     // 方式二：将字符串声明成一个指针
-    char* s2 = "Hello, world! s2~";
+    char *s2 = "Hello, world! s2~";
     printf("s2 = %s\n", s2);
 
     /**
@@ -42,7 +42,7 @@ int main()
      *   想要重新赋值，必须使用C语言原生提供的strcpy()函数，通过字符串拷贝完成赋值。这样做以后，数组变量的地址还是不变的，即strcpy()
      *   只是在原地址写入新的字符串，而不是让数组变量指向新的地址。
      */
-    char* s3 = "Hello, world! s3~";
+    char *s3 = "Hello, world! s3~";
     // 指针s3所指向的内容是常量，如果要改变这个常量的值，会报错
     //s3[0] = 'z'; // 错误
     printf("s3 = %s\n", s3);
@@ -52,13 +52,13 @@ int main()
     printf("s4 = %s\n", s4);
 
     // 为了提醒用户，字符串声明为指针后指向的内容不能修改，可以在声明时使用const说明符，保证该字符串是只读的
-    const char* s5 = "Hello, world! s5~";
+    const char *s5 = "Hello, world! s5~";
     printf("s5 = %s\n", s5);
 
     // 验证 指针变量可以指向其它字符串 s6指向的内容 "Hello, world!" 这个字符串是不能被改变的，但是 s6 可以指向一个新的字符串
-    const char* s6 = "Hello, world!";
+    const char *s6 = "Hello, world!";
     s6 = "Hello, world! s6~";
-    char* s7 = "Hello, world!";
+    char *s7 = "Hello, world!";
     s7 = "Hello, world! s7~";
     printf("s6 = %s\n", s6);
     printf("s7 = %s\n", s7);

@@ -89,13 +89,13 @@ void double_pointer_simulate_td_arr_test()
     int rows = 3, cols = 4;
 
     // 1. 分配二级指针数组
-    int** arr = (int**)malloc(rows * sizeof(int*));
+    int **arr = (int **)malloc(rows * sizeof(int *));
     printf("分配了 %d 个指针的空间\n", rows);
 
     // 2. 为每一行分配内存
     for(int i = 0; i < rows; i++)
     {
-    	arr[i] = (int*)malloc(cols * sizeof(int));
+    	arr[i] = (int *)malloc(cols * sizeof(int));
         printf("第 %d 行分配了 %d 个整数的空间\n", i, cols);
     }
 
@@ -168,8 +168,8 @@ void print_td_arr_by_onetd_arr_test()
  * 打印二维字符数组
  * 	注意： 这里实际上是使用下标方式访问数组，使用下标方式访问数组本质就是使用指针方式访问数组
  */
-//void print_td_arr_1(const char** p_str, int n)
-void print_td_arr_1(const char* p_str[], int n)
+//void print_td_arr_1(const char **p_str, int n)
+void print_td_arr_1(const char *p_str[], int n)
 {
 	if(NULL == p_str)
 	{
@@ -185,7 +185,7 @@ void print_td_arr_1(const char* p_str[], int n)
 /**
  * 二维字符数组冒泡排序
  */
-void td_arr_bubble_sort_1(const char* p_str[], int n)
+void td_arr_bubble_sort_1(const char *p_str[], int n)
 {
 	if(NULL == p_str)
 	{
@@ -210,7 +210,7 @@ void td_arr_bubble_sort_1(const char* p_str[], int n)
  */
 void td_arr_bubble_sort_test_1()
 {
-	const char* p_str[N] = { "tulun", "complex", "newdata", "math", "locale" };
+	const char *p_str[N] = { "tulun", "complex", "newdata", "math", "locale" };
 	/**
 	 *  二维数组p_str内存结构图简化版
 	 *
@@ -263,7 +263,7 @@ void td_arr_bubble_sort_2(char (*p_str)[LEN], int rows, int len)
 	{
 		return;
 	}
-	char *temp = (char*)malloc(sizeof(char) * len);
+	char *temp = (char *)malloc(sizeof(char) * len);
 	for(int i = 0; i < rows - 1; i++)
 	{
 		for(int j = 0; j < rows - 1 - i; j++)

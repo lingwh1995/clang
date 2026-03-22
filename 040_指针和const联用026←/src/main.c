@@ -11,7 +11,7 @@
 void pointer_and_const_test_1()
 {
     int a = 10, b = 20;
-    const int* p = &a;
+    const int *p = &a;
     // 等价写法一
     //const int *p = &a;
     // 等价写法二
@@ -31,7 +31,7 @@ void pointer_and_const_test_1()
 void pointer_and_const_test_2()
 {
     int a = 10, b = 20;
-    int* const p = &a;
+    int *const p = &a;
 
     int c = *p;
     printf("c = %d\n", c);
@@ -48,9 +48,10 @@ void pointer_and_const_test_2()
 void pointer_and_const_test_3()
 {
     int a = 10, b = 20;
-    const int* const p = &a;
+    const int *const p = &a;
+
     //这种写法等价于上面一行
-    //int const * const p = &a;
+    //int const *const p = &a;
 
     int c = *p;
     printf("c = %d\n", c);
@@ -69,18 +70,18 @@ void pointer_and_const_test_4()
 {
     int a = 10, b = 20;
     const int c = 30;
-    int* ap = &a;
+    int *ap = &a;
     printf("a = %d\n", *ap);
     *ap = 100;
     printf("a = %d\n", *ap);
 
-    const int* bp = &b;
+    const int *bp = &b;
     printf("b = %d\n", *bp);
     //不能改变指针指向的值，这对指针指向的值起到保护作用
     //*bp = 200;
 
     //指针修改常量的值
-    int* cp = &c;
+    int *cp = &c;
     printf("cp = %p\n", cp);
     *cp = 300;
     printf("c = %d\n", *cp);

@@ -4,8 +4,8 @@ int main()
 {
     int a = 10;
     int b = 20;
-    int* ap = &a;
-    int* bp = &b;
+    int *ap = &a;
+    int *bp = &b;
 
     /**
      * 开口向上: b的地址 > a的地址,a放在下面,b 放在上面 ;

@@ -12,7 +12,7 @@ int main()
     //i = 20;
 
     //使用指针修改常量的值
-    int* p = &i;
+    int *p = &i;
     *p = 20;
     printf("i = %d\n", i);
 
@@ -26,9 +26,9 @@ int main()
     arr[0] + 1;
     arr + 1;
 
-    int* p1 = &arr;
+    int *p1 = &arr;
     p1 = p1 + 1;
-    int* p2 = &arr[0];
+    int *p2 = &arr[0];
     p2 = p2 + 1;
     return 0;
 }

@@ -5,7 +5,7 @@
  *  1.指针的类型决定了取址的范围（指针对象+1的能力，指针对象 p+1 = p + 1 * sizeof(类型)）
  *  	int类型指针+1地址偏移4个字节
  *  		{
- *  			int* p = 0x00000004;
+ *  			int *p = 0x00000004;
  *  			p+1;
  *  		}
  *  		p + 1 => p + 1 * sizeof(int) => p + 4 => 0x00000004 + 4 => 0x00000008
@@ -32,19 +32,19 @@
 void int_pointer_to_char_pointer_and_char_pointer_to_int_pointer()
 {
     int a = 0x12345678;
-    int* ip = &a;
+    int *ip = &a;
     printf("sizeof(ip) = %d\n", sizeof(ip));
     printf("&ip = %p\n", ip);
     printf("ip = %x\n", *ip);
     // 整形指针转换为char类型指针
     printf("整形指针转换为char类型指针：\n");
-    char* cp = (char*)&a;
+    char *cp = (char *)&a;
     printf("sizeof(cp) = %d\n", sizeof(cp));
     printf("&cp = %p\n", cp);
     printf("cp = %x\n", *cp);
     // 再将char类型指针换为整形指针转
     printf("再将char类型指针换为整形指针转：\n");
-    ip = (int*)cp;
+    ip = (int *)cp;
     printf("sizeof(ip) = %d\n", sizeof(ip));
     printf("&ip = %p\n", ip);
     printf("ip = %x\n", *ip);

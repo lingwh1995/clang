@@ -19,7 +19,7 @@ int main()
 	setbuf(stdout, NULL);
 
 //	int a = 10, b = 20, c = 30, d = 40;
-//	int* arr[] = { &a, &b, &c, &d };
+//	int *arr[] = { &a, &b, &c, &d };
 
 	double a = 12.0, b = 6.0, c = 0.0;
 	// 普通方式定义函数指针数组：注意 函数指针数组这个 [] 的书写位置
