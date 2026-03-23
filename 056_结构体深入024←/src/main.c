@@ -75,7 +75,7 @@ void pointer_print_structure(const Student *student)
 /**
  * 使用指针给结构体赋值
  */
-void pointer_input_structure(const Student *student)
+void pointer_input_structure(Student *student)
 {
 	if(student == NULL)
 	{
@@ -174,8 +174,8 @@ void pointer_print_structure_arr_test()
 	int len = sizeof(student_arr) / sizeof(student_arr[0]);
 	/**
 	 * 特别注意：
-	 * 	   PStudent p_student_arr = &student_arr; 错误写法  &student_arr代表的是整个数组的地址
-	 * 	   PStudent p_student_arr = student_arr;  正确写法  student_arr 代表的是数组首元素地址
+	 * 	  PStudent p_student_arr = &student_arr; 错误写法  &student_arr代表的是整个数组的地址
+	 * 	  PStudent p_student_arr = student_arr;  正确写法  student_arr 代表的是数组首元素地址
 	 */
 	PStudent p_student_arr = student_arr;
 	pointer_print_structure_arr(p_student_arr, len);
@@ -221,8 +221,8 @@ void pointer_find_structure_test()
 	int len = sizeof(student_arr) / sizeof(student_arr[0]);
 	/**
 	 * 特别注意：
-	 * 	   PStudent p_student_arr = &student_arr; 错误写法  &student_arr代表的是整个数组的地址
-	 * 	   PStudent p_student_arr = student_arr;  正确写法  student_arr 代表的是数组首元素地址
+	 * 	  PStudent p_student_arr = &student_arr; 错误写法  &student_arr代表的是整个数组的地址
+	 * 	  PStudent p_student_arr = student_arr;  正确写法  student_arr 代表的是数组首元素地址
 	 */
 	const PStudent p_student_arr = student_arr;
 	char *name = "王五";
@@ -233,6 +233,7 @@ void pointer_find_structure_test()
 // -----------------------------------------------------------------------------------
 
 
+#if 0
 int main()
 {
 	nested_structure_test();
@@ -242,3 +243,4 @@ int main()
 	pointer_find_structure_test();
 	return 0;
 }
+#endif

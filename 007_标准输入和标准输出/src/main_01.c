@@ -111,21 +111,28 @@ void stdin_and_eof_test_6()
 /**
  * 打印时左对齐和右对齐
  */
-void stdin_and_eof_test_7()
+void stdin_and_format_output_test_7()
 {
 	// 左对齐
 	printf("%2d\n", 1);
 	printf("%2d\n", 5);
 	printf("%2d\n", 10);
 	printf("%2d\n", 20);
+	printf("----------------------\n");
+
 	// 右对齐
 	printf("%-2d\n", 1);
 	printf("%-2d\n", 5);
 	printf("%-2d\n", 10);
 	printf("%-2d\n", 20);
+	printf("----------------------\n");
+
+	printf("%-10s -%-20s %-10s\n", "姓名", "学校", "分数");
+	printf("%-10s -%-20s %-10d\n", "张三", "西安财经大学", 100);
 }
 
 #if 0
+#endif
 int main()
 {
     //stdin_and_eof_test_1();
@@ -134,6 +141,5 @@ int main()
     //stdin_and_eof_test_4();
 	//stdin_and_eof_test_5();
 	//stdin_and_eof_test_6();
-	stdin_and_eof_test_7();
+	stdin_and_format_output_test_7();
 }
-#endif

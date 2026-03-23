@@ -317,11 +317,13 @@ int main()
 	printf("循环实现累加计算 sum = %d\n", sum);
 	sum = sum_recursion(5);
 	printf("递归实现累加计算 sum = %d\n", sum);
+	printf("-------------------------------------\n");
 
 	int fib = fib_loop(5);
 	printf("循环实现求第 n 个斐波那契数 fib = %d\n", fib);
 	fib = fib_recursion(5);
 	printf("递归实现求第 n 个斐波那契数 fib = %d\n", fib);
+	printf("-------------------------------------\n");
 
 	int arr[] = { 1, 3, 5, 7, 9, 11 };
 	int len = sizeof(arr) / sizeof(int);
@@ -329,26 +331,29 @@ int main()
 	print_arr_for_loop(arr, len);
 	// while循环打印数组
 	print_arr_while_loop(arr, len);
-
 	// 递归打印数组
 	print_arr_recursion(arr, len);
 	printf("\n");
 	// 递归逆序打印数组
 	print_arr_reverse_recursion(arr, len);
 	printf("\n");
+	printf("-------------------------------------\n");
 
 	// 递归获取数组中的最大元素
 	int max = get_max_num_recursion(arr, len);
 	printf("递归获取数组中的最大元素 max = %d\n", max);
+	printf("-------------------------------------\n");
 
 	// 递归获取数组中元素的累加和
 	int arr_sum = get_arr_sum_recursion(arr, len);
 	printf("递归获取数组中元素的累加和 arr_sum = %d\n", arr_sum);
+	printf("-------------------------------------\n");
 
 	// 递归实现二分查找
     int target = 7;
     int pos = binary_search_recursion(arr, 0, len - 1, target);
     pos != -1 ? printf("找到了，下标是：%d\n", pos) : printf("没找到\n");
+    printf("-------------------------------------\n");
 
     // 输入 n，从 1 正序打印到 n
     print_num_recursion(5);
@@ -356,9 +361,11 @@ int main()
     // 输入 n，从 n 倒序打印到 1
     print_num_reverse_recursion(5);
     printf("\n");
+    printf("-------------------------------------\n");
 
     // 求一个数字的位数(如 1234 → 4 位)
     int num_count = get_num_count_recursion(12345);
-    printf("num_count = %d", num_count);
+    printf("num_count = %d\n", num_count);
+    printf("-------------------------------------\n");
 	return 0;
 }

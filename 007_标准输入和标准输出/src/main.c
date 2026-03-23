@@ -299,7 +299,6 @@ void calc_area_of_triangle()
 
 
 #if 0
-#endif
 // 标准输入输出的基本测试
 int main()
 {
@@ -321,3 +320,4 @@ int main()
     //calc_area_of_triangle();
 	return 0;
 }
+#endif

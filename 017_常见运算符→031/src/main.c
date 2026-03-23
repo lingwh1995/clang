@@ -422,8 +422,7 @@ void bitwise_operator()
 
 /**
  * 位运算和逻辑运算
- *
- * 位运算不会短路，逻辑运算会短路
+ *   位运算不会短路，逻辑运算会短路
  */
 void bitwise_operator_and_logic_operator()
 {
@@ -839,6 +838,40 @@ void bit_utils_test()
     printf("bit2=%d, bit5=%d\n", get_bit(state,2), get_bit(state,5));
 }
 
+/**
+ * 逗号运算符测试
+ * 	  执行顺序 => 加不加括号都是从左到右依次计算
+ */
+void comma_operator()
+{
+	int a;
+	a = (3, 5, 7);
+	printf("a = %d\n", a);
+
+	// 结果是3是因为逗号运算符的优先级低于等号
+	int b;
+	b = 3, 5, 7;
+	printf("b = %d\n", b);
+
+	/**
+	 * x++ → x = 2
+	 * y+3 → 5
+	 */
+	int x = 1;
+	x = (x++, x+3);
+	printf("x = %d\n", x);
+
+	/**
+	 * y++ → y = 2
+	 * y+3 → 不算结果
+	 * y*5 → 10
+	 */
+	int y = 1;
+	y = (y++, y+3, y*5);
+	printf("y = %d\n", y);
+	printf("-------------------------------------\n");
+}
+
 int main()
 {
 	increment_operator();
@@ -868,4 +901,5 @@ int main()
 	bitwise_operator_case_16();
 	bitwise_operator_case_17();
 	bit_utils_test();
+	comma_operator();
 }
