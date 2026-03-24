@@ -120,16 +120,16 @@ void bubble_sort_3()
     for (int i = 0; i < len - 1; i++)
     {
     	// 本轮循环是否没有进行元素交换，如果没有进行元素交换，说明当前数组是有序数组
-    	bool isNotExchange = true;
+    	bool swapped = true;
         for (int j = 0; j < len - i - 1; j++)
         {
             if (nums[j] > nums[j + 1])
             {
-            	isNotExchange = false;
+            	swapped = false;
                 swap_number(&nums[j], &nums[j + 1]);
             }
         }
-        if (isNotExchange)
+        if (swapped)
         {
             break;
         }
@@ -169,7 +169,7 @@ void bubble_sort_4()
 	for(int i = 0; i < len; i++)
 	{
 		int r = rand() % len + 1;
-		if(find_value(nums,i,r) == -1)
+		if(find_value(nums, i, r) == -1)
 		{
 			nums[i] = r;
 		}
@@ -308,17 +308,17 @@ void bubble_sort_7()
 }
 
 /**
- * 冒泡排序
+ * 冒泡排序 => 相邻两两比，一直交换
  */
 void algorithm_01_bubble_sort()
 {
 	//bubble_sort_1();
 	//bubble_sort_2();
-	//bubble_sort_3();
+	bubble_sort_3();
 	//bubble_sort_4();
 	//bubble_sort_5();
 	//bubble_sort_6();
-	bubble_sort_7();
+	//bubble_sort_7();
 }
 
 /**
@@ -718,11 +718,35 @@ void algorithm_04_cycle_move_arr()
 	print_arr(arr, len);
 }
 
+/**
+ * 选择排序 => 找到最小或最大值下标，最后只交换一次
+ */
+void algorithm_05_select_sort()
+{
+	int arr[] = { 64, 25, 12, 22, 11 };
+	int len = sizeof(arr)/sizeof(arr[0]);
+
+	for(int i = 0; i < len - 1; i++)
+	{
+		int minIndex = i;
+		for(int j = i + 1; j < len; j++)
+		{
+			if(arr[j] < arr[minIndex])
+			{
+				minIndex = j;
+			}
+		}
+		swap_number(&arr[i], &arr[minIndex]);
+	}
+	print_arr(arr, len);
+}
+
 int main()
 {
 	//algorithm_01_bubble_sort();
 	//algorithm_02_binary_search_find_value();
 	//algorithm_03_reverse_arr();
-	algorithm_04_cycle_move_arr();
+	//algorithm_04_cycle_move_arr();
+	algorithm_05_select_sort();
 	return 0;
 }

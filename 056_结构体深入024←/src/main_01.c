@@ -20,7 +20,8 @@ void vote_for_candidate(Candidate *candidates, int len)
 		return;
 	}
 	char name[20];
-	while(printf("请输入候选人姓名:\n"), scanf("%s", &name), name[0] != '#')
+	// 1. 最多读取19个字符 2. scanf中使用 name 而非 &name 因为字符数组的名称本身就代表它的地址，再取地址就成了指针的地址
+	while(printf("请输入候选人姓名:\n"), scanf("%19s", name), name[0] != '#')
 	{
 		for(int i = 0; i < len; i++)
 		{
@@ -66,8 +67,16 @@ void vote()
 	printf_vote_result(candidates, len);
 }
 
+/**
+ * 根据分数排序
+ */
+void select_sort_by_scores()
+{
+}
+
 int main()
 {
 	//vote();
+	select_sort_by_scores();
 	return 0;
 }
