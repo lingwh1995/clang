@@ -235,7 +235,7 @@ void pointer_find_structure_test()
 }
 // -----------------------------------------------------------------------------------
 
-
+#if 0
 int main()
 {
 	nested_structure_test();
@@ -245,3 +245,4 @@ int main()
 	pointer_find_structure_test();
 	return 0;
 }
+#endif
