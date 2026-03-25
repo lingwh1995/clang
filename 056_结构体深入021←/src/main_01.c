@@ -151,9 +151,11 @@ void select_sort_by_scores_test()
 	print_sort_by_scores_result(students, len);
 }
 
+#if 0
 int main()
 {
 	//vote_test();
 	select_sort_by_scores_test();
 	return 0;
 }
+#endif
