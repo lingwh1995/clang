@@ -583,9 +583,28 @@ void struct_array()
 }
 
 /**
- * 内存对齐
+ * 结构体对齐
+ *  和 int类型 4字节对齐
  */
-void memory_alignment()
+void structure_alignment_1()
+{
+    typedef struct
+    {
+        char ca;
+        int i;
+        char cb;
+    } Node;
+
+    Node node = { 'a', 1, 'b' };
+    printf("sizeof (node) = %d\n", sizeof (node));
+    printf("&(node.ca) = %p, &(node.i) = %p, &(node.cb) = %p\n", &(node.ca), &(node.i), &(node.cb));
+}
+
+/**
+ * 结构体对齐
+ *   和 int类型 4字节对齐
+ */
+void structure_alignment_2()
 {
 	/**
 	 * 结构体名		Student
@@ -601,7 +620,7 @@ void memory_alignment()
 	};
 
 	struct Student student = { "001", "张三", "男", 20 };
-	printf("id = %s, name = %s, sex = %s, age = %d\n", student.id, student.name, student.sex, student.age);
+	//printf("id = %s, name = %s, sex = %s, age = %d\n", student.id, student.name, student.sex, student.age);
 
 	/**
 	 * 为什么 sizeof(student) = 56 而不是 54 ?
@@ -617,6 +636,38 @@ void memory_alignment()
 	 */
 	printf("sizeof(student) = %d\n", sizeof(student));
 	printf("-------------------------------------\n");
+}
+
+/**
+ * 结构体对齐
+ *   和 double类型 8字节对齐
+ */
+void structure_alignment_3()
+{
+    typedef struct
+    {
+        // 学科编号
+        int no;
+        // 学科排名
+        int rank;
+        // 学科分数
+        double scores;
+    } Subject;
+
+    typedef struct
+    {
+        int no;
+        int age;
+        char name[10];
+        Subject subject;
+    } Student;
+
+    Subject subject = { 1, 1, 100 };
+    Student student = { 1, 18, "张三", subject };
+    printf("sizeof(subject) = %d\n", sizeof(subject));
+    printf("sizeof(student) = %d\n", sizeof(student));
+    printf("&(student.no) = %p, &(student.age) = %p, &(student.name) = %p, &(student.subject) = %p\n",
+           &(student.no), &(student.age), &(student.name), &(student.subject));
 }
 
 /**
@@ -671,8 +722,10 @@ int main()
 
 	//  结构体类型 数组
 	struct_array();
-	// 内存补齐
-	memory_alignment();
+	// 结构体对齐
+    structure_alignment_1();
+    structure_alignment_2();
+    structure_alignment_3();
 	// 结构体成员初始值
 	struct_member_init_val();
 	return 0;
