@@ -668,6 +668,26 @@ void structure_alignment_3()
            &(student.no), &(student.age), &(student.name), &(student.subject));
 }
 
+#pragma pack(1)
+/**
+ * 结构体对齐
+ * 使用预编译指令设置内存对齐宽度
+ */
+void structure_alignment_4()
+{
+    typedef struct
+    {
+        char ca;
+        int i;
+        char cb;
+    } Node;
+
+    Node node = { 'a', 1, 'b' };
+    printf("sizeof (node) = %d\n", sizeof (node));
+    printf("&(node.ca) = %p, &(node.i) = %p, &(node.cb) = %p\n", &(node.ca), &(node.i), &(node.cb));
+}
+#pragma pack()
+
 /**
  * 结构体成员初始值
  */
@@ -725,6 +745,7 @@ int main()
     structure_alignment_1();
     structure_alignment_2();
     structure_alignment_3();
+    structure_alignment_4();
 
     // 结构体成员初始值
 	struct_member_init_val();

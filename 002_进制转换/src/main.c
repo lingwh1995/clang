@@ -26,9 +26,10 @@
  *
  */
 
-
 /**
- * 十进制数转换成二进制数
+ * 将输入的十进制整数转换为对应的二进制表示并输出
+ *
+ * @param dec 待转换的十进制整数
  */
 void dec_to_bin(int dec)
 {
@@ -55,10 +56,12 @@ void dec_to_bin(int dec)
 	printf("%s\n", binary_str);
 }
 
-
 /**
- * 二进制数转换成十进制数
- */
+* 将输入的二进制字符串转换为对应的十进制整数
+*
+* @param binary_str 待转换的二进制字符串
+* @return 返回转换后的十进制整数
+*/
 int bin_to_dec(char *binary_str)
 {
 	int len = strlen(binary_str);
@@ -74,11 +77,13 @@ int bin_to_dec(char *binary_str)
 	return dec;
 }
 
-
 /**
- * 十进制数转换成二进制数贪心算法版
- * TODO 将二进制字符串转为八进制数和十六进制数
- */
+* 十进制数转换成二进制数贪心算法版
+* 使用贪心策略，从高位到低位依次确定每一位的值
+* 通过比较当前数值与 2 的幂次大小来决定该位是 0 还是 1
+*
+* @param dec 待转换的十进制整数
+*/
 void dec_to_bin_greedy(int dec)
 {
 	int n = 0;
@@ -136,6 +141,8 @@ void dec_to_bin_greedy(int dec)
  * 	  0.8 * 2 = 1.6  取整数部分 1
  * 	  0.6 * 2 = 1.2  取整数部分 1
  * 结果 00110011
+ *
+ * @param f 待转换的浮点数小数部分（小于 1 的正数）
  */
 void float_to_bin(float f)
 {
