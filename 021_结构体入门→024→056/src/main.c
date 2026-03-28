@@ -584,7 +584,6 @@ void struct_array()
 
 /**
  * 结构体对齐
- *  和 int类型 4字节对齐
  */
 void structure_alignment_1()
 {
@@ -602,7 +601,6 @@ void structure_alignment_1()
 
 /**
  * 结构体对齐
- *   和 int类型 4字节对齐
  */
 void structure_alignment_2()
 {
@@ -623,16 +621,17 @@ void structure_alignment_2()
 	//printf("id = %s, name = %s, sex = %s, age = %d\n", student.id, student.name, student.sex, student.age);
 
 	/**
-	 * 为什么 sizeof(student) = 56 而不是 54 ?
+	 * 1. 为什么 sizeof(student) = 56 而不是 54 ?
+	 *    为了提高 CPU 处理速度，CPU 读取数据之前就做了内存对齐(结构体补齐)
+	 * 2. 如何内存对齐?
+	 * 	  看下一个成员变量的数据类型，前面的成员变量数据类型连续的都是char，这些成员变量视为一个整体
+	 * 3. 案例说明
+	 * 	  计算出来的 20+20+10+4 = 54 是纯数据大小，但C语言会自动做内存对齐
 	 *
-	 * 核心原因：内存对齐（结构体补齐）
-	 * 计算出来的 20+20+10+4 = 54 是纯数据大小，但 C 语言会自动做内存对齐：
-	 *
-	 * 	  int 类型要求起始地址是 4 的倍数
+	 * 	  int 类型要求起始地址是4的倍数
 	 *    前三个成员总大小：20+20+10 = 50
 	 *    50 不是 4 的倍数，编译器自动补齐 2 个空字节 → 变成 52
 	 *    再加上 age 的 4 字节 → 56 字节
-	 *
 	 */
 	printf("sizeof(student) = %d\n", sizeof(student));
 	printf("-------------------------------------\n");
@@ -640,7 +639,6 @@ void structure_alignment_2()
 
 /**
  * 结构体对齐
- *   和 double类型 8字节对齐
  */
 void structure_alignment_3()
 {
@@ -720,13 +718,15 @@ int main()
 	visit_struct_2();
 	visit_struct_3();
 
-	//  结构体类型 数组
+	// 结构体类型 数组
 	struct_array();
-	// 结构体对齐
+
+	// 结构体对齐(本质是为了不浪费CPU的计算资源)
     structure_alignment_1();
     structure_alignment_2();
     structure_alignment_3();
-	// 结构体成员初始值
+
+    // 结构体成员初始值
 	struct_member_init_val();
 	return 0;
 }

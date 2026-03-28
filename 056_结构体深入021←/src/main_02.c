@@ -11,7 +11,8 @@ typedef struct node {
 // 推荐单独链表指针别名
 typedef node *linked_list;
 
-void print_linked_list(const node *head) {
+void print_linked_list(const node *head)
+{
     if (head == NULL) {
         printf("链表为空\n");
         return;
@@ -29,11 +30,12 @@ void print_linked_list(const node *head) {
     printf("\n");
 }
 
-int main() {
+int main()
+{
     // 静态创建链表节点
-    node node_1 = {1, NULL};
-    node node_2 = {2, NULL};
-    node node_3 = {3, NULL};
+    node node_1 = { 1, NULL };
+    node node_2 = { 2, NULL };
+    node node_3 = { 3, NULL };
 
     // 构建链表关系
     node_1.next = &node_2;
