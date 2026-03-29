@@ -583,112 +583,6 @@ void struct_array()
 }
 
 /**
- * 结构体对齐
- */
-void structure_alignment_1()
-{
-    typedef struct
-    {
-        char ca;
-        int i;
-        char cb;
-    } Node;
-
-    Node node = { 'a', 1, 'b' };
-    printf("sizeof (node) = %d\n", sizeof (node));
-    printf("&(node.ca) = %p, &(node.i) = %p, &(node.cb) = %p\n", &(node.ca), &(node.i), &(node.cb));
-}
-
-/**
- * 结构体对齐
- */
-void structure_alignment_2()
-{
-	/**
-	 * 结构体名		Student
-	 *  结构体类型 名	struct Student
-	 * 特别注意		最后的分号必须写，否则会报错
-	 */
-	struct Student
-	{
-		char id[20];	// 20字节
-		char name[20];	// 20字节
-		char sex[10];	// 10字节
-		int age;		// 4字节
-	};
-
-	struct Student student = { "001", "张三", "男", 20 };
-	//printf("id = %s, name = %s, sex = %s, age = %d\n", student.id, student.name, student.sex, student.age);
-
-	/**
-	 * 1. 为什么 sizeof(student) = 56 而不是 54 ?
-	 *    为了提高 CPU 处理速度，CPU 读取数据之前就做了内存对齐(结构体补齐)
-	 * 2. 如何内存对齐?
-	 * 	  看下一个成员变量的数据类型，前面的成员变量数据类型连续的都是char，这些成员变量视为一个整体
-	 * 3. 案例说明
-	 * 	  计算出来的 20+20+10+4 = 54 是纯数据大小，但C语言会自动做内存对齐
-	 *
-	 * 	  int 类型要求起始地址是4的倍数
-	 *    前三个成员总大小：20+20+10 = 50
-	 *    50 不是 4 的倍数，编译器自动补齐 2 个空字节 → 变成 52
-	 *    再加上 age 的 4 字节 → 56 字节
-	 */
-	printf("sizeof(student) = %d\n", sizeof(student));
-	printf("-------------------------------------\n");
-}
-
-/**
- * 结构体对齐
- */
-void structure_alignment_3()
-{
-    typedef struct
-    {
-        // 学科编号
-        int no;
-        // 学科排名
-        int rank;
-        // 学科分数
-        double scores;
-    } Subject;
-
-    typedef struct
-    {
-        int no;
-        int age;
-        char name[10];
-        Subject subject;
-    } Student;
-
-    Subject subject = { 1, 1, 100 };
-    Student student = { 1, 18, "张三", subject };
-    printf("sizeof(subject) = %d\n", sizeof(subject));
-    printf("sizeof(student) = %d\n", sizeof(student));
-    printf("&(student.no) = %p, &(student.age) = %p, &(student.name) = %p, &(student.subject) = %p\n",
-           &(student.no), &(student.age), &(student.name), &(student.subject));
-}
-
-#pragma pack(1)
-/**
- * 结构体对齐
- * 使用预编译指令设置内存对齐宽度
- */
-void structure_alignment_4()
-{
-    typedef struct
-    {
-        char ca;
-        int i;
-        char cb;
-    } Node;
-
-    Node node = { 'a', 1, 'b' };
-    printf("sizeof (node) = %d\n", sizeof (node));
-    printf("&(node.ca) = %p, &(node.i) = %p, &(node.cb) = %p\n", &(node.ca), &(node.i), &(node.cb));
-}
-#pragma pack()
-
-/**
  * 结构体成员初始值
  */
 void struct_member_init_val()
@@ -740,12 +634,6 @@ int main()
 
 	// 结构体类型 数组
 	struct_array();
-
-	// 结构体对齐(本质是为了不浪费CPU的计算资源)
-    structure_alignment_1();
-    structure_alignment_2();
-    structure_alignment_3();
-    structure_alignment_4();
 
     // 结构体成员初始值
 	struct_member_init_val();

@@ -30,6 +30,7 @@ void print_linked_list(const node *head)
     printf("\n");
 }
 
+#if 0
 int main()
 {
     // 静态创建链表节点
@@ -49,3 +50,4 @@ int main()
 
     return 0;
 }
+#endif
