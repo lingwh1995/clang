@@ -723,7 +723,7 @@ int main()
 	//question_021_get_max_input_value();
     //question_022_guess_number();
     //question_023_get_earliest_Input_date();
-	//question_024_get_earliest_input_date();
-	question_025_pascals_triangle();
+	question_024_get_earliest_input_date();
+	//question_025_pascals_triangle();
 	return 0;
 }
