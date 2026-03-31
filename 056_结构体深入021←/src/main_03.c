@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 /**
  * 结构体成员变量内存对齐专题
  * 1. 每个成员的偏移量，必须是「自身类型大小」的整数倍。
@@ -152,6 +151,7 @@ void structure_alignment_4()
 }
 #pragma pack()
 
+#if 0
 int main()
 {
 	// 结构体对齐(本质是为了不浪费CPU的计算资源)
@@ -159,6 +159,6 @@ int main()
     structure_alignment_2();
     structure_alignment_3();
     structure_alignment_4();
-
     return 0;
 }
+#endif
