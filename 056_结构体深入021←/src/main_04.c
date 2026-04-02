@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define my_offset(type, exp) (int)(&((type*)0) -> exp)
+#define my_offset(type, exp) ((int)(&((type*)0) -> exp))
 
 struct Node {
     char cha;
@@ -34,8 +34,11 @@ int main()
     offset = (int)(&((struct Node*)0) -> ib);
     printf("offset = %d \n", offset);
 
-    int my_offset = my_offset(struct Node, ib);
-    printf("my_offset = %d \n", my_offset);
+    int my_offset_ia = my_offset(struct Node, ia);
+    printf("my_offset_ia = %d \n", my_offset_ia);
+
+    int my_offset_ib = my_offset(struct Node, ib);
+    printf("my_offset_ib = %d \n", my_offset_ib);
     return 0;
 }
 // 00 13 38
