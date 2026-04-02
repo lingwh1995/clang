@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define my_offset(type, exp) (int)(&((type*)0) -> exp)
+
 struct Node {
     char cha;
     int ia;
@@ -14,8 +16,8 @@ int main()
     struct Node x;
     // 不使用 sizeof() 求结构体结构体成员的字节偏移量的方式一
     // 为什么要把指针类型转化为 char* 类型，因为两个指针类型不同，不能相减
-    int offsetof = (char*)&x.ib - (char*)&x;
-    printf("offsetof = %d \n", offsetof);
+    int offset = (char*)&x.ib - (char*)&x;
+    printf("offset = %d \n", offset);
 
     /**
 	 *	1. (struct Node*)0
@@ -29,8 +31,11 @@ int main()
 	 *	把地址强制转成整数，就是最终偏移量。
      */
     // 不使用 sizeof() 求结构体结构体成员的字节偏移量的方式二
-    offsetof = (int)(&((struct Node*)0) -> ib);
-    printf("offsetof = %d \n", offsetof);
+    offset = (int)(&((struct Node*)0) -> ib);
+    printf("offset = %d \n", offset);
+
+    int my_offset = my_offset(struct Node, ib);
+    printf("my_offset = %d \n", my_offset);
     return 0;
 }
 // 00 13 38
