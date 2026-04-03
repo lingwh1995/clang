@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// 使用宏定义简化求结构体成员变量偏移量
 #define my_offset(type, exp) ((int)(&((type*)0) -> exp))
 
 struct Node {
@@ -11,6 +12,7 @@ struct Node {
     int ib;
 };
 
+#if 0
 int main()
 {
     struct Node x;
@@ -41,4 +43,4 @@ int main()
     printf("my_offset_ib = %d \n", my_offset_ib);
     return 0;
 }
-// 00 13 38
+#endif

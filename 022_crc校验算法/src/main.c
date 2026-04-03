@@ -99,7 +99,7 @@ unsigned short crc16(unsigned char *puchMsg, unsigned int usDataLen)
     unsigned char wChar = 0;
     while (usDataLen--)
     {
-        wChar = *(puchMsg++); wCRCin ^= (wChar << 8); for(int i = 0;i < 8;i++)
+        wChar = *(puchMsg++); wCRCin ^= (wChar << 8); for(int i = 0; i < 8; i++)
         {
             if(wCRCin & 0x8000)
                 wCRCin = (wCRCin << 1) ^ wCPoly; else
@@ -116,12 +116,12 @@ unsigned int MathCrc16(unsigned  char  *ptr, unsigned  int  len)
 	unsigned int tmp;
 	unsigned int i;
 
-	while (len>0)
+	while (len > 0)
 
 	{
 		crc_val ^= *ptr;
 		ptr++;
-		for(i=0;i<8;i++)
+		for(i = 0; i < 8; i++)
 		{
 			tmp = crc_val;
 			crc_val >>= 1;		// CRC校验字节的右移，最低位到C，最高位补0

@@ -18,7 +18,7 @@ char *my_strstr(const char *str, const char *substr)
     }
 	int m = strlen(str);
 	int n = strlen(substr);
-	for(int i=0; i < m - n + 1; i++)
+	for(int i = 0; i < m - n + 1; i++)
 	{
 		int k = i;
 		int j = 0;

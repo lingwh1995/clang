@@ -29,7 +29,7 @@ int *copy_array1(int *src,int len)
 
 	// 动态分配空间
 	int *dest = (int *)malloc(sizeof(int) * len);
-	for(int i=0; i<len; i++)
+	for(int i = 0; i < len; i++)
 	{
 		dest[i] = src[i];
 	}

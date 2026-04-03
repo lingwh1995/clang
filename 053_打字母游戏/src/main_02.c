@@ -38,7 +38,7 @@ typedef char GridArray[ROWSIZE][COLSIZE+1];
  */
 void init_grid(GridArray ga)
 {
-	for(int i=0; i < ROWSIZE; i++)
+	for(int i = 0; i < ROWSIZE; i++)
 	{
 		memset(ga[i], GRDI_CHAR, sizeof(char) * COLSIZE);
 		ga[i][COLSIZE] = '\0';

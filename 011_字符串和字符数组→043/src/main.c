@@ -86,7 +86,7 @@ void string_and_char_array()
 void foreach_string_1()
 {
     char str[] = "hello";
-    for (int i= 0; i < strlen(str); i++)
+    for (int i = 0; i < strlen(str); i++)
     {
         printf("%c\n", str[i]);
         printf("%p\n", &str[i]);

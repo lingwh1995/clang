@@ -64,9 +64,9 @@
  */
 void print_binary_string(int n)
 {
-	for(int i=7; i>=0; i--)
+	for(int i = 7; i >= 0; i--)
 	{
-		printf("%d", (n>>i) & 1);
+		printf("%d", (n >> i) & 1);
 	}
 	printf("\n");
 }

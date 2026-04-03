@@ -48,7 +48,7 @@ void dec_to_bin(int dec)
 	char binary_str[len+1];
 	// 设置字符串以 '\0' 结尾
 	binary_str[len] = '\0';
-	for(i=1; i<=len; i++)
+	for(i = 1; i <= len; i++)
 	{
 	    // 把整型数组转换成字符串
 		sprintf(binary_str, "%s%d", binary_str, binary[len-i]);

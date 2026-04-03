@@ -261,7 +261,7 @@ void definition_enum_data_type()
     printf("%d\n", color);
     print_color(color);
     // 注意：枚举可以像整型数组一样使用
-    for(int i=RED; i <= BLUE; i++)
+    for(int i = RED; i <= BLUE; i++)
     {
     	printf("%d\n", i);
     }
