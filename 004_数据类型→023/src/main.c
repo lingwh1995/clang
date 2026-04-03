@@ -13,13 +13,13 @@
  *    - 布尔类型：false=0、 true=1/非0
  *
  * 2. 构造数据类型
- *    - 数组(Array)：一组相同类型元素的集合，可以是一维或多维。
- *    - 结构体(Struct)：允许将不同类型的数据组合在一起，每个成员拥有独立的内存空间。
- *    - 联合体(Union)：所有成员共享同一块内存空间，同一时间只能存储一种类型的数据。
- *    - 枚举(Enum)：用于定义一组命名的整数常量。
+ *    - 数组(array)：一组相同类型元素的集合，可以是一维或多维。
+ *    - 结构体(struct)：允许将不同类型的数据组合在一起，每个成员拥有独立的内存空间。
+ *    - 联合体(union)：所有成员共享同一块内存空间，同一时间只能存储一种类型的数据。
+ *    - 枚举(enum)：用于定义一组命名的整数常量。
  *
  * 3. 指针类型
- *    - 指针(Pointer)：指向特定类型数据的指针，用于存储变量的内存地址，如int *p表示指向整数的指针。
+ *    - 指针(pointer)：指向特定类型数据的指针，用于存储变量的内存地址，如int *p表示指向整数的指针。
  *
  * 4. 空类型
  *    - void：表示没有类型，通常用于函数返回值、函数参数或通用指针。
@@ -52,7 +52,7 @@
 /**
  * 定义一个结构体Person
  */
-struct Student
+struct student_s
 {
 	// 学生id
 	int id;
@@ -66,11 +66,11 @@ struct Student
 /**
  * 颜色枚举
  */
-enum Color
+enum color_e
 {
-	RED,	//默认为 0
-	GREEN,	//默认为 1
-	BLUE	//默认为 2
+	COLOR_RED,	//默认为 0
+	COLOR_GREEN,	//默认为 1
+	COLOR_BLUE	//默认为 2
 };
 
 
@@ -78,17 +78,17 @@ enum Color
  * 打印颜色
  *   使用枚举约束了case后面的值
  */
-void print_color(enum Color color)
+void print_color(enum color_e color)
 {
     switch (color)
     {
-        case RED:
+        case COLOR_RED:
             printf("红色\n");
             break;
-        case GREEN:
+        case COLOR_GREEN:
             printf("绿色\n");
             break;
-        case BLUE:
+        case COLOR_BLUE:
             printf("蓝色\n");
             break;
         default:
@@ -235,10 +235,10 @@ void definition_array_data_type()
  */
 void definition_struct_data_type()
 {
-    // 结构体(Struct)
-    struct Student alice = { 1,"Alice",18 };
-    struct Student bob = { 2,"Bob",23 };
-    struct Student student_arr[] = {
+    // 结构体(struct)
+    struct student_s alice = { 1,"Alice",18 };
+    struct student_s bob = { 2,"Bob",23 };
+    struct student_s student_arr[] = {
     		alice,
     		bob,
     		{ 3, "Charile", 29 }
@@ -256,12 +256,12 @@ void definition_struct_data_type()
  */
 void definition_enum_data_type()
 {
-    // 枚举(Enum)
-    enum Color color = RED;
+    // 枚举(enum)
+    enum color_e color = COLOR_RED;
     printf("%d\n", color);
     print_color(color);
     // 注意：枚举可以像整型数组一样使用
-    for(int i = RED; i <= BLUE; i++)
+    for(int i = COLOR_RED; i <= COLOR_BLUE; i++)
     {
     	printf("%d\n", i);
     }
@@ -749,13 +749,13 @@ void data_type_conversion_12()
 {
 	float ft = 12.25;
 	int a = 10;
-	int *ip = &a;
-	float *fp = &ft;
+	int *pi = &a;
+	float *pf = &ft;
 
 	printf("i = %d\n", a);
 	printf("f = %f\n", ft);
-	printf("ip = %p\n", ip);
-	printf("fp = %p\n", fp);
+	printf("pi = %p\n", pi);
+	printf("pf = %p\n", pf);
 
 	// 隐式转换
 	a = ft;
@@ -767,10 +767,10 @@ void data_type_conversion_12()
 	 * 例如： 对赋值后的 ip 解引用得到的不是 ft 的整数部分12，而是一个很大数
 	 *
 	 */
-	ip = fp; // 错误语法，即使能通过运行，得出的结果也是错误的，c语言不支持指针类型隐式转换为另一个指针类型
-	printf("*ip = %d\n", *ip);
-	ip = (int *)fp; // 错误语法，即使能通过运行，得出的结果也是错误的，c语言不支持指针类型显式转换为另一个指针类型
-	printf("*ip = %d\n", *ip);
+	pi = pf; // 错误语法，即使能通过运行，得出的结果也是错误的，c语言不支持指针类型隐式转换为另一个指针类型
+	printf("*pi = %d\n", *pi);
+	pi = (int *)pf; // 错误语法，即使能通过运行，得出的结果也是错误的，c语言不支持指针类型显式转换为另一个指针类型
+	printf("*pi = %d\n", *pi);
 	printf("-------------------------------------\n");
 }
 
@@ -780,11 +780,11 @@ void data_type_conversion_12()
 void float_hello_world()
 {
 	int a = 0x41440000;
-	int *ip = &a;
-	float *fp = (float *)&a;
+	int *pi = &a;
+	float *pf = (float *)&a;
 
-	printf("%x \n", *ip);
-	printf("%f \n", *fp);
+	printf("%x \n", *pi);
+	printf("%f \n", *pf);
 	printf("-------------------------------------\n");
 }
 
@@ -870,11 +870,12 @@ void print_float_ieee_754()
 	printf("-------------------------------------\n");
 }
 
-typedef struct {
+typedef struct
+{
     unsigned int mantissa : 23;  // 尾数部分
     unsigned int exponent : 8;   // 指数部分
     unsigned int sign : 1;       // 符号位
-} FloatComponents;
+} float_components_t;
 
 /**
  * 用结构体模拟浮点数表示
@@ -883,7 +884,7 @@ typedef struct {
 void print_float_struct()
 {
     float f = -12.375f;
-    FloatComponents* fc = (FloatComponents*)&f;
+    float_components_t* fc = (float_components_t*)&f;
 
     printf("Float value: %f\n", f);
     printf("Sign: %u\n", fc -> sign);

@@ -9,10 +9,10 @@ extern void init_arr_2(int *arr, int len);
 
 /*
  * 交换两个数
- * @param *ap 代表第一个数的指针
- * @param *bp 代表第二个数的指针
+ * @param *pa 代表第一个数的指针
+ * @param *pb 代表第二个数的指针
  */
-extern void swap_number_2(int *ap, int *bp);
+extern void swap_number_2(int *pa, int *pb);
 
 /*
  * 冒泡排序

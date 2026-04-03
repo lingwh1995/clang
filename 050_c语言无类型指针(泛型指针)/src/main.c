@@ -8,18 +8,18 @@ void void_type_pointer_1()
     int a = 10;
     int arr[10] = { 12, 23, 34, 45, 56 };
     double dx = 12.23;
-    char *cp = NULL;
+    char *pc;
     int *s = &a;
 
     // 定义一个无类型指针
-    void *vp = NULL;
-    vp = &a;
-    vp = &arr;
-    vp = arr;
-    vp = &dx;
+    void *pv = NULL;
+    pv = &a;
+    pv = &arr;
+    pv = arr;
+    pv = &dx;
 
-    vp = cp;
-    vp = &s; // 二级指针
+    pv = pc;
+    pv = &s; // 二级指针
 }
 
 /**
@@ -28,24 +28,24 @@ void void_type_pointer_1()
 void void_type_pointer_2()
 {
     int a = 10;
-    int *ip = NULL;
+    int *pi = NULL;
     char ch = 'a';
-    char *cp = NULL;
+    char *pc = NULL;
     // 定义一个无类型指针
-    void *vp = NULL;
+    void *pv = NULL;
 
-    //*vp = 100;    // void * 不能解引用
-    //vp = vp + 1;  // vp不能加1
+    //*pv = 100;    // void * 不能解引用
+    //pv = pv + 1;  // pv不能加1
 
-    vp = &a;
+    pv = &a;
     // 把无类型指针转为int *类型指针
-    ip = (int *)vp;
-    printf("ip = %p\n", ip);
+    pi = (int *)pv;
+    printf("pi = %p\n", pi);
 
-    vp = &ch;
+    pv = &ch;
     // 把无类型指针转为char *类型指针
-    cp = (char *)vp;
-    printf("cp = %p\n", cp);
+    pc = (char *)pv;
+    printf("pc = %p\n", pc);
 }
 
 int main()

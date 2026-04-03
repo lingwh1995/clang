@@ -9,10 +9,10 @@ int main()
 	printf("Current time: %s", ctime(&current_time));
 
 	// 格式化时间
-	struct tm *time_info;
+	struct tm *time_info_t;
 	char buffer[80];
-	time_info = localtime(&current_time);
-	strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", time_info);
+	time_info_t = localtime(&current_time);
+	strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", time_info_t);
 	printf("Formatted time: %s\n", buffer);
 
 	// 计算时间差

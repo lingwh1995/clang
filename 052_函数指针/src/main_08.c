@@ -6,7 +6,7 @@
 // 结构体 + typedef简化结构体定义 方式一
 /*
 // 定义一个结构体
-struct Person
+struct person_s
 {
 	int id,
 	char[] name,
@@ -14,9 +14,8 @@ struct Person
 };
 
 // 使用typedef简化结构体定义
-typedef struct Person Person;
+typedef struct person_s person;
 */
-
 
 // （匿名）结构体 + typedef简化结构体定义
 typedef struct
@@ -24,7 +23,7 @@ typedef struct
 	int id;
 	char name[20];
 	int age;
-} Person;
+} person_t;
 
 
 /**
@@ -35,13 +34,13 @@ typedef struct
  */
 int comp_int(const void *pa, const void *pb)
 {
-	const int *ipa = (const int *)pa;
-	const int *ipb = (const int *)pb;
-	if(*ipa > *ipb)
+	const int *pia = (const int *)pa;
+	const int *pib = (const int *)pb;
+	if(*pia > *pib)
 	{
 		return 1;
 	}
-	else if(*ipa < *ipb)
+	else if(*pia < *pib)
 	{
 		return -1;
 	}
@@ -59,13 +58,13 @@ int comp_int(const void *pa, const void *pb)
  */
 int comp_double(const void *pa, const void *pb)
 {
-	const double *dpa = (const double *)pa;
-	const double *dpb = (const double *)pb;
-	if(*dpa > *dpb)
+	const double *pda = (const double *)pa;
+	const double *pdb = (const double *)pb;
+	if(*pda > *pdb)
 	{
 		return 1;
 	}
-	else if(*dpa < *dpb)
+	else if(*pda < *pdb)
 	{
 		return -1;
 	}
@@ -83,13 +82,13 @@ int comp_double(const void *pa, const void *pb)
  */
 int comp_char(const void *pa, const void *pb)
 {
-	const char *cpa = (const char *)pa;
-	const char *cpb = (const char *)pb;
-	if(*cpa > *cpb)
+	const char *pca = (const char *)pa;
+	const char *pcb = (const char *)pb;
+	if(*pca > *pcb)
 	{
 		return 1;
 	}
-	else if(*cpa < *cpb)
+	else if(*pca < *pcb)
 	{
 		return -1;
 	}
@@ -107,23 +106,23 @@ int comp_char(const void *pa, const void *pb)
  */
 int comp_str(const void *pa, const void *pb)
 {
-	const char **spa = (const char **)pa;
-	const char **spb = (const char **)pb;
-	return strcmp(*spa, *spb);
+	const char **psa = (const char **)pa;
+	const char **psb = (const char **)pb;
+	return strcmp(*psa, *psb);
 }
 
 /**
  * 比较两个结构体类型数据的大小（按id）
  */
-int compare_struct(const void *ap, const void *bp)
+int compare_struct(const void *pa, const void *pb)
 {
-	const Person* person_ap = (const Person*)ap;
-	const Person* perosn_bp = (const Person*)bp;
-	if(person_ap->id > perosn_bp->id)
+	const person_t *p_person_a = (const person_t*)pa;
+	const person_t *p_person_b = (const person_t*)pb;
+	if(p_person_a->id > p_person_b->id)
 	{
 		return 1;
 	}
-	else if(person_ap->id < perosn_bp->id)
+	else if(p_person_a->id < p_person_b->id)
 	{
 		return -1;
 	}
@@ -186,12 +185,12 @@ void print_str_arr_5(const char *arr[], int len)
 /**
  * 打印结构体数组
  */
-void print_struct_arr_5(const void *vp, int len)
+void print_struct_arr_5(const void *pv, int len)
 {
-    const Person* pPerson = (const Person*)vp;
+    const person_t *p_person = (const person_t*)pv;
     for(int i = 0; i < len; i++)
     {
-        printf("%d，%s，%d\t", pPerson[i].id, pPerson[i].name, pPerson[i].age);
+        printf("%d，%s，%d\t", p_person[i].id, p_person[i].name, p_person[i].age);
     }
     printf("\n");
 }
@@ -226,7 +225,7 @@ int main()
 	// 对结构体数组进行排序
 
 	//定义结构体数组
-	Person persons[] = {
+	person_t persons[] = {
 		{ 1, "zhangsan", 18 },
 		{ 3, "lisi", 20 },
 		{ 2, "wangwu", 22 }

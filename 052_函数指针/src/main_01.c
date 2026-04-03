@@ -4,7 +4,7 @@
  * 基于函数指针实现函数回调（即把函数作为参数传递）
  */
 
-typedef int (*PFUN)(int, int);
+typedef int (*p_fun_t)(int, int);
 
 // 声明min()函数
 int min(int, int);
@@ -13,12 +13,13 @@ int min(int, int);
 int max(int, int);
 
 // 声明call_fun_1()函数
-int call_fun_1(int, int, int (*pfun)(int, int));
+int call_fun_1(int, int, int (*p_fun)(int, int));
 
 // 声明call_fun_2()函数
-int call_fun_2(int, int, PFUN pfun);
+int call_fun_2(int, int, p_fun_t p_fun);
 
 #if 0
+#endif
 int main()
 {
 	int a = 10, b = 20;
@@ -38,38 +39,38 @@ int main()
 	printf("typedef简化函数指针定义版 max_value = %d\n", max_value);
 	return 0;
 }
-#endif
+
 
 /**
  * 函数回调1：正常定义函数指针版
  * @param a
  * @param b
- * @param pfun 被回调的函数
+ * @param p_fun 被回调的函数
  */
-int call_fun_1(int a, int b, int (*pfun)(int, int))
+int call_fun_1(int a, int b, int (*p_fun)(int, int))
 {
-	if(NULL == pfun)
+	if(NULL == p_fun)
 	{
 		return -1;
 	}
 	// 通过函数指针调用函数
-	return (*pfun)(a, b); // => return pfun(a, b);
+	return (*p_fun)(a, b); // => return p_fun(a, b);
 }
 
 /**
  * 函数回调2： typedef简化函数指针定义版
  * @param a
  * @param b
- * @param pfun 被回调的函数
+ * @param p_fun 被回调的函数
  */
-int call_fun_2(int a, int b, PFUN pfun)
+int call_fun_2(int a, int b, p_fun_t p_fun)
 {
-	if(NULL == pfun)
+	if(NULL == p_fun)
 	{
 		return -1;
 	}
 	// 通过函数指针调用函数
-	return (*pfun)(a, b); // => return pfun(a, b);
+	return (*p_fun)(a, b); // => return p_fun(a, b);
 }
 
 /**

@@ -20,15 +20,15 @@ void left_move_arr_step_k_3(int *, int, int);
  * @param ap a元素的地址
  * @param bp b元素的地址
  */
-void swap_number(int *ap, int *bp)
+void swap_number(int *pa, int *pb)
 {
-	if(ap == NULL || bp == NULL)
+	if(pa == NULL || pb == NULL)
 	{
 		return;
 	}
-	int temp = *ap;
-	*ap = *bp;
-	*bp = temp;
+	int temp = *pa;
+	*pa = *pb;
+	*pb = temp;
 }
 
 /**

@@ -44,40 +44,40 @@ void pointer_and_array_test_3()
 {
     int arr_1[5] = { 1, 2, 3, 4, 5 };
     int size_1 = sizeof(arr_1) / sizeof(arr_1[0]);
-    //int *ip = &arr_1[0];
-    int *ip = arr_1;
+    //int *pi = &arr_1[0];
+    int *pi = arr_1;
     for (int i = 0; i < size_1; i++)
     {
-        printf("arr_1[%d] = %d, ip = %p\n", i, *ip, ip);
+        printf("arr_1[%d] = %d, pi = %p\n", i, *pi, pi);
         //相当于地址的值+4(个字节)
-        //ip = ip + 1;
-        ip++;
+        //pi = pi + 1;
+        pi++;
     }
     printf("------------------------\n");
 
     double arr_2[5] = { 1.1, 2.2, 3.3, 4.4, 5.5 };
     int size_2 = sizeof(arr_2) / sizeof(arr_2[0]);
-    //double *dp = &arr_2[0];
-    double *dp = arr_2;
+    //double *pd = &arr_2[0];
+    double *pd = arr_2;
     for (int i = 0; i < size_2; i++)
     {
-        printf("arr_2[%d] = %f, dp = %p\n", i, *dp, dp);
+        printf("arr_2[%d] = %f, pd = %p\n", i, *pd, pd);
         //相当于地址的值+8(个字节)
-        //dp = dp + 1;
-        dp++;
+        //pd = pd + 1;
+        pd++;
     }
     printf("------------------------\n");
 
     char arr_3[5] = { 'h', 'e', 'l', 'l', 'o' };
     int size_3 = sizeof(arr_3) / sizeof(arr_3[0]);
-    //char *cp = &arr_3[0];
-    char *cp = arr_3;
+    //char *pc = &arr_3[0];
+    char *pc = arr_3;
     for (int i = 0; i < size_3; i++)
     {
-        printf("arr_3[%d] = %c, cp = %p\n", i, *cp, cp);
+        printf("arr_3[%d] = %c, pc = %p\n", i, *pc, pc);
         //相当于地址的值+1(个字节)
-        //cp = cp + 1;
-        cp++;
+        //pc = pc + 1;
+        pc++;
     }
 }
 

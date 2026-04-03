@@ -3,15 +3,15 @@
 /**
  * 链表节点结构体
  */
-typedef struct node {
+typedef struct node_s {
     int data;
-    struct node *next;
-} node;
+    struct node_s *next;
+} node_t;
 
 // 推荐单独链表指针别名
-typedef node *linked_list;
+typedef node_t *linked_list;
 
-void print_linked_list(const node *head)
+void print_linked_list(const node_t *head)
 {
     if (head == NULL) {
         printf("链表为空\n");
@@ -22,7 +22,7 @@ void print_linked_list(const node *head)
      * 1. 不推荐直接用 head，因为会丢失头指针位置
      * 2. 遍历指针的类型，必须和链表头指针的类型完全一致！
      */
-    const node *current = head;
+    const node_t *current = head;
     while (current != NULL) {
         printf("%d ", current->data);
         current = current->next;

@@ -9,12 +9,12 @@ typedef struct
 {
 	char name[20];
 	int votes;
-} Candidate;
+} candidate_t;
 
 /**
  * 给候选人投票
  */
-void vote_for_candidate(Candidate *candidates, int len)
+void vote_for_candidate(candidate_t *candidates, int len)
 {
 	if(candidates == NULL || len == 0)
 	{
@@ -38,7 +38,7 @@ void vote_for_candidate(Candidate *candidates, int len)
 /**
  * 打印投票结果
  */
-void printf_vote_result(Candidate *candidates, int len)
+void printf_vote_result(candidate_t *candidates, int len)
 {
 	printf("投票结果\n");
 	if(candidates == NULL || len == 0)
@@ -56,7 +56,7 @@ void printf_vote_result(Candidate *candidates, int len)
  */
 void vote_test()
 {
-	Candidate candidates[3] = {
+	candidate_t candidates[3] = {
 		{ "zs", 0 },
 		{ "ls", 0 },
 		{ "ww", 0 },
@@ -77,16 +77,16 @@ typedef struct
 	char id[20];
 	char name[20];
 	float scores;
-} Student;
+} student_t;
 
 /**
  * 交换两个学生对象
  * @param student_1
  * @param student_2
  */
-void swap(Student* student_1, Student* student_2)
+void swap(student_t *student_1, student_t *student_2)
 {
-	Student temp_student = *student_1;
+	student_t temp_student = *student_1;
 	*student_1 = *student_2;
 	*student_2 = temp_student;
 }
@@ -96,7 +96,7 @@ void swap(Student* student_1, Student* student_2)
  * @param student
  * @param len
  */
-void select_sort_by_scores(Student *student, int len)
+void select_sort_by_scores(student_t *student, int len)
 {
 	if (student == NULL || len == 0)
 	{
@@ -121,7 +121,7 @@ void select_sort_by_scores(Student *student, int len)
  * @param students
  * @param len
  */
-void print_sort_by_scores_result(Student *students, int len)
+void print_sort_by_scores_result(student_t *students, int len)
 {
 	if (students == NULL || len == 0)
 	{
@@ -139,7 +139,7 @@ void print_sort_by_scores_result(Student *students, int len)
 void select_sort_by_scores_test()
 {
 	// 学生数组
-	Student students[] = {
+	student_t students[] = {
 		{ "001", "zhangsan", 88.8},
 		{ "002", "lisi", 85.5},
 		{ "003", "wangwu", 92.3},

@@ -101,23 +101,23 @@ int main()
     /**
      * 早期没有引入const关键字，所以声明指针类型的字符串变量时前面不加const关键字，这是历史遗留问题，按规范定义，指针要使用const关键字修饰
      */
-    char *spa = "hello"; // 存放在只读数据区 .rdata
+    char *psa = "hello"; // 存放在只读数据区 .rdata
     // 最规范的定义
-    //const char *spa = "hello"; // 存放在只读数据区 .rdata
-    char *spb = "hello"; // 存放在只读数据区 .rdata
+    //const char *psa = "hello"; // 存放在只读数据区 .rdata
+    char *psb = "hello"; // 存放在只读数据区 .rdata
     // 最规范的定义
-    //const char *spb = "hello"; // 存放在只读数据区 .rdata
+    //const char *psb = "hello"; // 存放在只读数据区 .rdata
 
-    char *spc = { "hello" }; // 存放在只读数据区 .rdata
+    char *psc = { "hello" }; // 存放在只读数据区 .rdata
     // 最规范的定义
-    //const char *spc = { "hello" }; // 存放在只读数据区 .rdata
-    char *spd = { "hello" }; // 存放在只读数据区 .rdata
+    //const char *psc = { "hello" }; // 存放在只读数据区 .rdata
+    char *psd = { "hello" }; // 存放在只读数据区 .rdata
     // 最规范的定义
-    //const char *spd = { "hello" }; // 存放在只读数据区 .rdata
+    //const char *psd = { "hello" }; // 存放在只读数据区 .rdata
 
     printf("%d \n", (stra == strb));
-    printf("%d \n", (spa == spb));
-    printf("%d \n", (spc == spd));
+    printf("%d \n", (psa == psb));
+    printf("%d \n", (psc == psd));
     printf("---------------------------------------------\n");
 
     // 数据的小端存储:高位数存放在高地址,低位数存放在低地址,变量的首地址就是变量的低地址

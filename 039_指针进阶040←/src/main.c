@@ -42,10 +42,10 @@ void pointer_senior_test_1()
 void pointer_senior_test_2()
 {
     int a = 10, b = 20;
-    int *ap = &a;
-    int *bp = &b;
-    printf("ap = %p, bp = %p\n", ap, bp);
-    if (ap > bp)
+    int *pa = &a;
+    int *pb = &b;
+    printf("pa = %p, pb = %p\n", pa, pb);
+    if (pa > pb)
     {
     	printf("a的地址比b的地址高\n");
     }
@@ -54,7 +54,7 @@ void pointer_senior_test_2()
     	printf("a的地址比b的地址低\n");
     }
 
-    if (*ap > *bp)
+    if (*pa > *pb)
     {
     	printf("a的值比b的值大\n");
     }
@@ -101,12 +101,12 @@ void pointer_senior_test_4()
     int *p; //野指针:非常危险，要杜绝野指针的使用
 
     //定义指针时赋值为NULL(NULL: c语言中的空地址,实际上是0地址)
-    int *ap = NULL;
-    printf("ap = %p\n", ap);
+    int *pa = NULL;
+    printf("pa = %p\n", pa);
     //使用指针前先进行判空处理
-    if (ap != NULL)
+    if (pa != NULL)
     {
-        a = *ap;
+        a = *pa;
     }
     printf("a = %d\n", a);
 }
@@ -131,9 +131,9 @@ void pointer_senior_test_5()
     static int si = 0;
 
     // 定义一个局部空指针
-    int *ip = NULL;
+    int *pi = NULL;
     // 定义一个静态类型的局部空指针
-    static int *sip = NULL;
+    static int *spi = NULL;
 
     printf("全局变量g = %d\n", g);
     printf("全局静态变量sg = %d\n", sg);
@@ -142,8 +142,8 @@ void pointer_senior_test_5()
 
     printf("全局指针变量gp = %p\n", gp);
     printf("全局静态指针变量sgp = %p\n", sgp);
-    printf("局部指针变量ip = %p\n", ip);
-    printf("局部静态指针变量sip = %p\n", sip);
+    printf("局部指针变量pi = %p\n", pi);
+    printf("局部静态指针变量spi = %p\n", spi);
 }
 
 
@@ -214,7 +214,7 @@ void pointer_senior_test_7()
     printf("*s = %d\n", *s);
 }
 
-struct Student {
+struct student_s {
     char id[32];
     int age;
     char name[50];
@@ -225,16 +225,16 @@ struct Student {
  */
 void pointer_senior_test_8()
 {
-    int *ip = NULL;
-    char *cp = NULL;
-    double *dp = NULL;
-    int **sp = NULL;
-    struct Student *studentp;
-    printf("ip = %d\n", sizeof(ip));
-    printf("cp = %d\n", sizeof(cp));
-    printf("dp = %d\n", sizeof(dp));
-    printf("sp = %d\n", sizeof(sp));
-    printf("studentp = %d\n", sizeof(studentp));
+    int *pi = NULL;
+    char *pc = NULL;
+    double *pd = NULL;
+    int **ps = NULL;
+    struct student_s *p_student;
+    printf("pi = %d\n", sizeof(pi));
+    printf("pc = %d\n", sizeof(pc));
+    printf("pd = %d\n", sizeof(pd));
+    printf("sp = %d\n", sizeof(ps));
+    printf("p_student = %d\n", sizeof(p_student));
 }
 
 

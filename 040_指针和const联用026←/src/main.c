@@ -70,21 +70,21 @@ void pointer_and_const_test_4()
 {
     int a = 10, b = 20;
     const int c = 30;
-    int *ap = &a;
-    printf("a = %d\n", *ap);
-    *ap = 100;
-    printf("a = %d\n", *ap);
+    int *pa = &a;
+    printf("a = %d\n", *pa);
+    *pa = 100;
+    printf("a = %d\n", *pa);
 
-    const int *bp = &b;
-    printf("b = %d\n", *bp);
+    const int *pb = &b;
+    printf("b = %d\n", *pb);
     //不能改变指针指向的值，这对指针指向的值起到保护作用
-    //*bp = 200;
+    //*pb = 200;
 
     //指针修改常量的值
-    int *cp = &c;
-    printf("cp = %p\n", cp);
-    *cp = 300;
-    printf("c = %d\n", *cp);
+    int *pc = &c;
+    printf("pc = %p\n", pc);
+    *pc = 300;
+    printf("c = %d\n", *pc);
 }
 
 #if 0

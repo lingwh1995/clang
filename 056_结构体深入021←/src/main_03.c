@@ -3,7 +3,7 @@
 /**
  * 结构体成员变量内存对齐专题
  * 1. 每个成员的偏移量，必须是「自身类型大小」的整数倍。
- *    struct Test
+ *    struct test_s
  *    {
  *    	char a;    // 1 字节
  *    	int b;     // 4 字节
@@ -14,7 +14,7 @@
  *    ---------------------------------------------
  *
  * 2. 结构体的最终总大小，必须是「结构体里最大的成员类型大小」的整数倍。
- * 	  struct Test
+ * 	  struct test_s
  * 	  {
  *    	int a;     // 4
  *    	char b;    // 1
@@ -26,7 +26,7 @@
  *    ------------------------------------------
  *
  * 3. 嵌套的结构体，它的偏移量必须是「嵌套结构体内部最大成员类型大小」的整数倍；同时，整个结构体的总大小，必须是「所有成员里最大的类型大小」的整数倍。
- *	  struct Test
+ *	  struct test_s
  *	  {
  *      char a;           // 1
  *
@@ -52,9 +52,9 @@ void structure_alignment_1()
         char ca;
         int i;
         char cb;
-    } Node;
+    } node_t;
 
-    Node node = { 'a', 1, 'b' };
+    node_t node = { 'a', 1, 'b' };
     printf("sizeof (node) = %d\n", sizeof (node));
     printf("&(node.ca) = %p, &(node.i) = %p, &(node.cb) = %p\n", &(node.ca), &(node.i), &(node.cb));
     printf("-------------------------------------\n");
@@ -66,11 +66,11 @@ void structure_alignment_1()
 void structure_alignment_2()
 {
 	/**
-	 * 结构体名		Student
-	 *  结构体类型 名	struct Student
+	 * 结构体名		student_s
+	 * 结构体类型 名	struct student_s
 	 * 特别注意		最后的分号必须写，否则会报错
 	 */
-	struct Student
+	struct student_s
 	{
 		char id[20];	// 20字节
 		char name[20];	// 20字节
@@ -78,7 +78,7 @@ void structure_alignment_2()
 		int age;		// 4字节
 	};
 
-	struct Student student = { "001", "张三", "男", 20 };
+	struct student_s student = { "001", "张三", "男", 20 };
 	//printf("id = %s, name = %s, sex = %s, age = %d\n", student.id, student.name, student.sex, student.age);
 
 	/**
@@ -111,18 +111,18 @@ void structure_alignment_3()
         int rank;
         // 学科分数
         double scores;
-    } Subject;
+    } subject_t;
 
     typedef struct
     {
         int no;
         int age;
         char name[10];
-        Subject subject;
-    } Student;
+        subject_t subject;
+    } student_t;
 
-    Subject subject = { 1, 1, 100 };
-    Student student = { 1, 18, "张三", subject };
+    subject_t subject = { 1, 1, 100 };
+    student_t student = { 1, 18, "张三", subject };
     printf("sizeof(subject) = %d\n", sizeof(subject));
     printf("sizeof(student) = %d\n", sizeof(student));
     printf("&(student.no) = %p, &(student.age) = %p, &(student.name) = %p, &(student.subject) = %p\n",
@@ -142,9 +142,9 @@ void structure_alignment_4()
         char ca;
         int i;
         char cb;
-    } Node;
+    } node_t;
 
-    Node node = { 'a', 1, 'b' };
+    node_t node = { 'a', 1, 'b' };
     printf("sizeof (node) = %d\n", sizeof (node));
     printf("&(node.ca) = %p, &(node.i) = %p, &(node.cb) = %p\n", &(node.ca), &(node.i), &(node.cb));
     printf("-------------------------------------\n");

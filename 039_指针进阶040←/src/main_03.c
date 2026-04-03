@@ -30,22 +30,22 @@ void pointer_subInt_arr()
 void pointer_sub_str()
 {
     const char *str = "hello";
-    char *cp = (char *)str;
+    char *pc = (char *)str;
     // 这个变量和循环遍历无关，只是为了更方便的查看打印信息
     int index = 0;
     // 注意观察字符串中最后一个字符的地址
-    while(*cp != '\0')
+    while(*pc != '\0')
     {
-        // printf("str[%d] = %c\n", index, *cp);
-        printf("str[%d] = %p\n", index, cp);
-        cp++;
+        // printf("str[%d] = %c\n", index, *pc);
+        printf("str[%d] = %p\n", index, pc);
+        pc++;
         index++;
     }
     printf("str = %p\n", str);
-    // 注意观察cp的地址是字符串中最后一个字符的地址再+1
-    printf("cp = %p\n", cp);
-    // 所以这里可以直接使用 cp 和 str 的差值作为字符串长度
-    int len = (int)(cp - str);
+    // 注意观察pc的地址是字符串中最后一个字符的地址再+1
+    printf("pc = %p\n", pc);
+    // 所以这里可以直接使用 pc 和 str 的差值作为字符串长度
+    int len = (int)(pc - str);
     printf("字符串长度 = %d", len);
 }
 

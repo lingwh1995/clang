@@ -21,11 +21,11 @@ void big_end_or_little_end_1()
 {
 	int i = 1;
 	// 获取整形指针
-	int *ip = &i;
+	int *pi = &i;
 	// 整形指针转为char类型指针
-	char *cp = (char *)ip;
-	char c = *cp;
-	// 等同于 char *cp = (char *)&ip;
+	char *pc = (char *)pi;
+	char c = *pc;
+	// 等同于 char *pc = (char *)&pi;
 
 	if(c == 0)
 	{

@@ -32,31 +32,31 @@
 void int_pointer_to_char_pointer_and_char_pointer_to_int_pointer()
 {
     int a = 0x12345678;
-    int *ip = &a;
-    printf("sizeof(ip) = %d\n", sizeof(ip));
-    printf("&ip = %p\n", ip);
-    printf("ip = %x\n", *ip);
+    int *pi = &a;
+    printf("sizeof(pi) = %d\n", sizeof(pi));
+    printf("&pi = %p\n", pi);
+    printf("pi = %x\n", *pi);
     // 整形指针转换为char类型指针
     printf("整形指针转换为char类型指针：\n");
-    char *cp = (char *)&a;
-    printf("sizeof(cp) = %d\n", sizeof(cp));
-    printf("&cp = %p\n", cp);
-    printf("cp = %x\n", *cp);
+    char *pc = (char *)&a;
+    printf("sizeof(pc) = %d\n", sizeof(pc));
+    printf("&pc = %p\n", pc);
+    printf("pc = %x\n", *pc);
     // 再将char类型指针换为整形指针转
     printf("再将char类型指针换为整形指针转：\n");
-    ip = (int *)cp;
-    printf("sizeof(ip) = %d\n", sizeof(ip));
-    printf("&ip = %p\n", ip);
-    printf("ip = %x\n", *ip);
-    *cp = 'a'; //97  0x61
-    cp = cp + 1;
-    *cp = 'b'; //98  0x62
-    cp = cp + 1;
-    *cp = 'c'; //99  0x63
-    cp = cp + 1;
-    *cp = 'd'; //100  0x64
-    printf("ip = %x\n", *ip);
-    printf("*cp = %x\n", *cp);
+    pi = (int *)pc;
+    printf("sizeof(pi) = %d\n", sizeof(pi));
+    printf("&pi = %p\n", pi);
+    printf("pi = %x\n", *pi);
+    *pc = 'a'; //97  0x61
+    pc = pc + 1;
+    *pc = 'b'; //98  0x62
+    pc = pc + 1;
+    *pc = 'c'; //99  0x63
+    pc = pc + 1;
+    *pc = 'd'; //100  0x64
+    printf("pi = %x\n", *pi);
+    printf("*pc = %x\n", *pc);
 }
 
 /**

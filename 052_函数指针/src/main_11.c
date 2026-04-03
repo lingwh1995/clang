@@ -7,6 +7,7 @@ int sum(int a, int b)
 
 typedef int (*pfun_2)(int, int);
 
+#if 0
 int main()
 {
 	int a = 10;
@@ -28,3 +29,4 @@ int main()
 	printf("a = %d\n", a);
 	return 0;
 }
+#endif

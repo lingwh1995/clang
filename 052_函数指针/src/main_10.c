@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-typedef void (*PFUN)(void);
+typedef void (*p_fun_t)(void);
 
 void (*g_pfun)(void) = NULL;
 
@@ -18,7 +18,7 @@ void funb()
  * 这种写法用来解决内存不足的问题
  */
 //void (*get_pfun(void (*p)(void)))(void)
-PFUN get_pfun(PFUN p)
+p_fun_t get_pfun(p_fun_t p)
 {
 	void (*old)(void) = g_pfun;
 	g_pfun = p;

@@ -26,7 +26,7 @@
  */
 #define ROWSSIZE 3
 #define COLSSIZE 4
-typedef int GradType[ROWSSIZE][COLSSIZE];
+typedef int grad_type_t[ROWSSIZE][COLSSIZE];
 #define N 5
 
 /**
@@ -265,7 +265,7 @@ void two_dimensional_arr_traverse_3(int *arr, int rows, int cols)
 /**
  * 遍历二维数组方式四-使用typedef简化二维数组定义并且遍历该二维数组
  */
-void two_dimensional_arr_traverse_4(GradType matrix, int rows, int cols)
+void two_dimensional_arr_traverse_4(grad_type_t matrix, int rows, int cols)
 {
 	printf("方式4:\n");
     for(int i = 0; i < rows; i++)
@@ -292,8 +292,8 @@ void two_dimensional_arr_traverse_test()
     two_dimensional_arr_traverse_2(arr, 3);
     two_dimensional_arr_traverse_3(*arr, 3, 4);
 
-    // 使用GradType类型定义二维数组
-	GradType matrix = {
+    // 使用grad_type_t类型定义二维数组
+    grad_type_t matrix = {
         { 1, 2, 3, 4 },
         { 5, 6, 7, 8 },
         { 9, 10, 11, 12 }

@@ -22,18 +22,18 @@ void init_arr_2(int *arr, int len)
 
 /*
  * 交换两个数
- * @param *ap 代表第一个数的指针
- * @param *bp 代表第二个数的指针
+ * @param *pa 代表第一个数的指针
+ * @param *pb 代表第二个数的指针
  */
-void swap_number_2(int *ap, int *bp)
+void swap_number_2(int *pa, int *pb)
 {
 	//使用传统if else 判断参数是否合法
-	//if (NULL == ap || NULL == bp) return;
+	//if (NULL == pa || NULL == pb) return;
 	//使用断言判断参数是否合法,表达式为真，继续向下执行，表达式为假，弹出窗提示
-	assert(NULL != ap && NULL != bp);
-	int temp = *ap;
-	*ap = *bp;
-	*bp = temp;
+	assert(NULL != pa && NULL != pb);
+	int temp = *pa;
+	*pa = *pb;
+	*pb = temp;
 }
 
 /*

@@ -24,19 +24,19 @@
 /**
  * 定义字母结构体
  */
-struct Letter
+struct letter_s
 {
 	char ch;
 	int row;
 	int col;
 };
 
-typedef char GridArray[ROWSIZE][COLSIZE+1];
+typedef char grid_array_t[ROWSIZE][COLSIZE+1];
 
 /**
  * 初始化网格
  */
-void init_grid(GridArray ga)
+void init_grid(grid_array_t ga)
 {
 	for(int i = 0; i < ROWSIZE; i++)
 	{
@@ -48,7 +48,7 @@ void init_grid(GridArray ga)
 /**
  * 打印网格（添加分数显示功能）
  */
-void show_grid(GridArray ga, struct Letter* pla, int n, int score)
+void show_grid(grid_array_t ga, struct letter_s *pla, int n, int score)
 {
 	if(NULL == pla)
 	{
@@ -90,7 +90,7 @@ void show_grid(GridArray ga, struct Letter* pla, int n, int score)
 /**
  * 产生随机字符
  */
-void rand_letter(struct Letter* pl)
+void rand_letter(struct letter_s *pl)
 {
 	if(NULL == pl)
 	{
@@ -113,7 +113,7 @@ void rand_letter(struct Letter* pl)
 /**
  * 产生随机字符
  */
-void rand_letters(struct Letter* pla, int n)
+void rand_letters(struct letter_s *pla, int n)
 {
 	if(NULL == pla)
 	{
@@ -140,9 +140,9 @@ void rand_letters(struct Letter* pla, int n)
 
 int main()
 {
-	GridArray ga;
+	grid_array_t ga;
 	char ch;
-	struct Letter letter_arr[LETSIZE] = { 0 };
+	struct letter_s letter_arr[LETSIZE] = { 0 };
 	int score = 0;  // 添加分数变量
 
 	rand_letters(letter_arr, LETSIZE);

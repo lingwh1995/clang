@@ -60,24 +60,24 @@ void typedef_test()
 /**
  * typedef和结构体结合使用方式一:
  */
-struct Student
+struct student_s
 {
     char id[32];
     char name[20];
     int age;
 };
-typedef struct Student Student;
-typedef struct Student *PStudent;
+typedef struct student_s student_t;
+typedef struct student_s *p_student_t;
 
 /**
  * typedef和结构体结合使用方式二:
  */
-typedef struct User
+typedef struct user_s
 {
     char id[32];
     char name[20];
     int age;
-} User, *PUser;
+} user_t, *p_user_t;
 
 
 /**
@@ -88,14 +88,14 @@ void typedef_with_struct_test()
     /**
      * 测试 typedef和结构体结合使用方式一:
      */
-    Student student;
-    PStudent pStudent = &student;
+    student_t student;
+    p_student_t p_student = &student;
 
     /**
      * 测试 typedef和结构体结合使用方式二:
      */
-    User user;
-    PUser pUser = &user;
+    user_t user;
+    p_user_t p_user = &user;
 }
 
 /**

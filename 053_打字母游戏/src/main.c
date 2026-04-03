@@ -23,19 +23,19 @@
 /**
  * 定义字母结构体
  */
-struct Letter
+struct letter_s
 {
 	char ch;
 	int row;
 	int col;
 };
 
-typedef char GridArray[ROWSIZE][COLSIZE+1];
+typedef char grid_array_t[ROWSIZE][COLSIZE+1];
 
 /**
  * 初始化网格
  */
-void init_grid(GridArray ga)
+void init_grid(grid_array_t ga)
 {
 	for(int i = 0; i < ROWSIZE; i++)
 	{
@@ -47,7 +47,7 @@ void init_grid(GridArray ga)
 /**
  * 打印网格
  */
-void show_grid(GridArray ga, struct Letter* pl, int n)
+void show_grid(grid_array_t ga, struct letter_s *pl, int n)
 {
 	if(NULL == pl)
 	{
@@ -85,9 +85,9 @@ void rand_letter(struct Letter* pl, int n)
 
 int main()
 {
-	GridArray ga;
+	grid_array_t ga;
 	char ch;
-	struct Letter letter[LETSIZE] = { 0 };
+	struct letter_s letter[LETSIZE] = { 0 };
 
 	rand_letter(letter, LETSIZE);
 

@@ -67,12 +67,12 @@ int my_strlen_2(const char *str)
     }
     // 或
     //assert(NULL != str);
-    char *cp = (char *)str;
-    while(*cp != '\0')
+    char *pc = (char *)str;
+    while(*pc != '\0')
     {
-        cp++;
+    	pc++;
     }
-    return (int)(cp - str);
+    return (int)(pc - str);
 }
 
 /**
@@ -377,8 +377,8 @@ char *my_strcat_1(char *dest, const char *src)
     {
         return NULL;
     }
-    char *cp = dest + strlen(dest);
-    strcpy(cp, src);
+    char *pc = dest + strlen(dest);
+    strcpy(pc, src);
     return dest;
 }
 
@@ -517,7 +517,7 @@ void memcpy_test_2()
 	printf("dest = %s\n", dest);
 }
 
-struct Student
+struct student_s
 {
     char stu_name[20];
     int age;
@@ -550,8 +550,8 @@ void memcpy_test_3()
     }
     printf("\n");
 
-    struct Student stus[3] = { { "zhangsan", 23 }, { "lisi", 24 }, { "wangwu", 25 } };
-    struct Student stus_cpy[3];
+    struct student_s stus[3] = { { "zhangsan", 23 }, { "lisi", 24 }, { "wangwu", 25 } };
+    struct student_s stus_cpy[3];
     memcpy(stus_cpy, stus, sizeof(stus));
     for(int i = 0; i < sizeof(stus) / sizeof(stus[0]); i++)
     {
@@ -607,8 +607,8 @@ void my_memcpy_test()
     }
     printf("\n");
 
-    struct Student stus[3] = { {"zhangsan",23}, {"lisi",24}, {"wangwu",25} };
-    struct Student stus_cpy[3];
+    struct student_s stus[3] = { {"zhangsan",23}, {"lisi",24}, {"wangwu",25} };
+    struct student_s stus_cpy[3];
     my_memcpy(stus_cpy, stus, sizeof(stus));
     for(int i = 0; i < sizeof(stus) / sizeof(stus[0]); i++)
     {
@@ -1578,16 +1578,16 @@ void memset_test()
  * @param ch 要设置的值，虽然它是一个int类型，但实际上它会被解释为unsigned char，即只会用到这个值的最低8位。
  * @param n  要设置的字节数
  */
-void my_memset(void *vp, unsigned char ch, size_t n)
+void my_memset(void *pv, unsigned char ch, size_t n)
 {
-    unsigned char *cp = (unsigned char *)vp;
+    unsigned char *pc = (unsigned char *)pv;
     for(int i = 0; i < n; i++)
     {
         /*
-        *cp = ch;
-        cp = cp + 1;
-         */
-        cp[i] = ch; // *(ch+i) = ch;
+        *pc = ch;
+        pc = pc + 1;
+        */
+    	pc[i] = ch; // *(ch+i) = ch;
     }
 }
 

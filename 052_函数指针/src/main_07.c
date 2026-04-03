@@ -10,7 +10,7 @@
 // 结构体 + typedef简化结构体定义 方式一
 /*
 // 定义一个结构体
-struct Student
+struct student_s
 {
 	int id,
 	char[] name,
@@ -18,7 +18,7 @@ struct Student
 };
 
 // 使用typedef简化结构体定义
-typedef struct Student Student;
+typedef struct student_s student_t;
 */
 
 
@@ -28,48 +28,48 @@ typedef struct
 	int id;
 	char name[20];
 	int age;
-} Student;
+} student_t;
 
 
 /**
  * 打印整型数组
  */ 
-void print_int_arr_4(const void *vp)
+void print_int_arr_4(const void *pv)
 {
-	printf("%d\t", *(int *)vp);
+	printf("%d\t", *(int *)pv);
 }
 
 /**
  * 打印float类型数组
  */ 
-void print_float_arr_4(const void *vp)
+void print_float_arr_4(const void *pv)
 {
-	printf("%.2f\t", *(float *)vp);
+	printf("%.2f\t", *(float *)pv);
 }
 
 /**
  * 打印double类型数组
  */ 
-void print_double_arr_4(const void *vp)
+void print_double_arr_4(const void *pv)
 {
-	printf("%.2f\t", *(double *)vp);
+	printf("%.2f\t", *(double *)pv);
 }
 
 /**
  * 打印字符数组
  */ 
-void print_char_arr_4(const void *vp)
+void print_char_arr_4(const void *pv)
 {
-	printf("%c\t", *(char *)vp);
+	printf("%c\t", *(char *)pv);
 }
 
 /**
  * 打印字符串数组
  * 特别注意： 这里的vp是一个二级指针
  */ 
-void print_str_arr_4(const void *vp)
+void print_str_arr_4(const void *pv)
 {
-    char **s = (char **)vp;  // 正确的类型转换
+    char **s = (char **)pv;  // 正确的类型转换
     printf("%s\t", *s);     // 打印字符串内容
 }
 
@@ -77,48 +77,48 @@ void print_str_arr_4(const void *vp)
 /**
  * 打印结构体数组
  */ 
-void print_struct_arr_4(const void *vp)
+void print_struct_arr_4(const void *pv)
 {
-	const Student *pStudent = (const Student *)vp;
-	printf("%d，%s，%d\t", pStudent -> id, pStudent -> name, pStudent -> age);
+	const student_t *p_student = (const student_t *)pv;
+	printf("%d，%s，%d\t", p_student -> id, p_student -> name, p_student -> age);
 }
 
 /**
  * 打印数组（泛型方法）
  */
-void print_arr_4(const void *vp, const int size, int element_size, void (*print)(const void *), char *element_type_name, int print_type)
+void print_arr_4(const void *pv, const int size, int element_size, void (*print)(const void *), char *element_type_name, int print_type)
 {
 	printf("%s类型数组冒泡排序%s => ", element_type_name, print_type == 0 ? "前" : "后");
-	if(NULL == vp || NULL == print || size < 1 || element_size < 1)
+	if(NULL == pv || NULL == print || size < 1 || element_size < 1)
 	{
 		return;
 	}
-	const char *cp = (const char *)vp;
+	const char *pc = (const char *)pv;
 	for(int i = 0; i < size; i++)
 	{
-		(*print)(cp);
-		cp += element_size;
+		(*print)(pc);
+		pc += element_size;
 	}
 	printf("\n");
 }
 
 // 交换函数
-void swap(void *ap, void *bp, int size)
+void swap(void *pa, void *pb, int size)
 {
     char temp[size];
-    memcpy(temp, ap, size);
-    memcpy(ap, bp, size);
-    memcpy(bp, temp, size);
+    memcpy(temp, pa, size);
+    memcpy(pa, pb, size);
+    memcpy(pb, temp, size);
 }
 
 /**
  * 比较两个int类型数据的大小
  */
-bool compare_int(const void *ap, const void *bp)
+bool compare_int(const void *pa, const void *pb)
 {
-	const int *iap = (const int *)ap;
-	const int *ibp = (const int *)bp;
-	if(*iap > *ibp)
+	const int *pia = (const int *)pa;
+	const int *pib = (const int *)pb;
+	if(*pia > *pib)
 	{
 		return true;
 	}
@@ -128,11 +128,11 @@ bool compare_int(const void *ap, const void *bp)
 /**
  * 比较两个float类型数据的大小
  */
-bool compare_float(const void *ap, const void *bp)
+bool compare_float(const void *pa, const void *pb)
 {
-	const float *fap = (const float *)ap;
-	const float *fbp = (const float *)bp;
-	if(*fap > *fbp)
+	const float *pfa = (const float *)pa;
+	const float *pfb = (const float *)pb;
+	if(*pfa > *pfb)
 	{
 		return true;
 	}
@@ -142,11 +142,11 @@ bool compare_float(const void *ap, const void *bp)
 /**
  * 比较两个double类型数据的大小
  */
-bool compare_double(const void *ap, const void *bp)
+bool compare_double(const void *pa, const void *pb)
 {
-	const double *dap = (const double *)ap;
-	const double *dbp = (const double *)bp;
-	if(*dap > *dbp)
+	const double *pda = (const double *)pa;
+	const double *pdb = (const double *)pb;
+	if(*pda > *pdb)
 	{
 		return true;
 	}
@@ -156,11 +156,11 @@ bool compare_double(const void *ap, const void *bp)
 /**
  * 比较两个char类型数据的大小
  */
-bool compare_char(const void *ap, const void *bp)
+bool compare_char(const void *pa, const void *pb)
 {
-	const char *cap = (const char *)ap;
-	const char *cbp = (const char *)bp;
-	if(*cap > *cbp)
+	const char *pca = (const char *)pa;
+	const char *pcb = (const char *)pb;
+	if(*pca > *pcb)
 	{
 		return true;
 	}
@@ -170,11 +170,11 @@ bool compare_char(const void *ap, const void *bp)
 /**
  * 比较两个字符串类型数据的大小
  */
-bool compare_str(const void *ap, const void *bp)
+bool compare_str(const void *pa, const void *pb)
 {
-	const char **sap = (const char **)ap;
-	const char **sbp = (const char **)bp;
-	if(strcmp(*sap, *sbp) > 0)
+	const char **psa = (const char **)pa;
+	const char **psb = (const char **)pb;
+	if(strcmp(*psa, *psb) > 0)
 	{
 		return true;
 	}
@@ -184,11 +184,11 @@ bool compare_str(const void *ap, const void *bp)
 /**
  * 比较两个结构体类型数据的大小（按id）
  */
-bool compare_struct_by_id(const void *ap, const void *bp)
+bool compare_struct_by_id(const void *pa, const void *pb)
 {
-	const Student *stu_ap = (const Student *)ap;
-	const Student *stu_bp = (const Student *)bp;
-	if(stu_ap->id > stu_bp->id)
+	const student_t *p_stu_a = (const student_t *)pa;
+	const student_t *p_stu_b = (const student_t *)pb;
+	if(p_stu_a->id > p_stu_b->id)
 	{
 		return true;
 	}
@@ -198,11 +198,11 @@ bool compare_struct_by_id(const void *ap, const void *bp)
 /**
  * 比较两个结构体类型数据的大小（按姓名）
  */
-bool compare_struct_by_name(const void *ap, const void *bp)
+bool compare_struct_by_name(const void *pa, const void *pb)
 {
-	const Student *stu_ap = (const Student *)ap;
-	const Student *stu_bp = (const Student *)bp;
-	if(strcmp(stu_ap->name, stu_bp->name) > 0)
+	const student_t *p_stu_a = (const student_t *)pa;
+	const student_t *p_stu_b = (const student_t *)pb;
+	if(strcmp(p_stu_a->name, p_stu_b->name) > 0)
 	{
 		return true;
 	}
@@ -212,15 +212,15 @@ bool compare_struct_by_name(const void *ap, const void *bp)
 /**
  * 泛型冒泡排序
  */
-void bubble_sort_3(const void *vp, int len, int element_size, bool (*compare)(const void *, const void *))
+void bubble_sort_3(const void *pv, int len, int element_size, bool (*compare)(const void *, const void *))
 {
-	char *cp = (char *)vp;
+	char *pc = (char *)pv;
 	for(int i = 0; i < len - 1; i++)
 	{
 		for(int j = 0; j < len - i -1; j++)
 		{
-            void *current = cp + j * element_size;
-            void *next = cp + (j + 1) * element_size;
+            void *current = pc + j * element_size;
+            void *next = pc + (j + 1) * element_size;
             if((*compare)(current, next))
             {
                 swap(current, next, element_size);

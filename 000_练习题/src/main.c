@@ -607,46 +607,46 @@ void question_024_get_earliest_input_date()
 		int year;
 		int month;
 		int day;
-	} Date;
-	Date inputVal = { 1,1,1 };
-	Date min = { INT_MAX,12,31 };
+	} date_t;
+	date_t input_val = { 1,1,1 };
+	date_t min = { INT_MAX,12,31 };
 	while(true)
 	{
 		bool flag = false;
 		printf("输入年月日，格式yyyy/mm/dd：\n");
-		scanf("%d/%d/%d", &inputVal.year, &inputVal.month, &inputVal.day);
+		scanf("%d/%d/%d", &input_val.year, &input_val.month, &input_val.day);
 		// 判断输入的年月日是否合法
-		if(inputVal.year <=0 || inputVal.month <=0 || inputVal.day <=0)
+		if(input_val.year <=0 || input_val.month <=0 || input_val.day <=0)
 		{
 			break;
 		}
 		// 判断输入的月是否合法
-		if(inputVal.month < 1 || inputVal.month > 12)
+		if(input_val.month < 1 || input_val.month > 12)
 		{
 			break;
 		}
 		// 判断输入的日是否合法
-		if(inputVal.day < 1 || inputVal.day > get_current_month_days(inputVal.year,inputVal.month))
+		if(input_val.day < 1 || input_val.day > get_current_month_days(input_val.year,input_val.month))
 		{
 			break;
 		}
-		if(inputVal.year < min.year)
+		if(input_val.year < min.year)
 		{
 			flag = true;
 		}
-		else if(inputVal.year == min.year || inputVal.month < min.month)
+		else if(input_val.year == min.year || input_val.month < min.month)
 		{
 			flag = true;
 		}
-		else if(inputVal.year == min.year || inputVal.month == min.month || inputVal.day < min.day)
+		else if(input_val.year == min.year || input_val.month == min.month || input_val.day < min.day)
 		{
 			flag = true;
 		}
 		if(flag)
 		{
-			min.year = inputVal.year;
-			min.month = inputVal.month;
-			min.day = inputVal.day;
+			min.year = input_val.year;
+			min.month = input_val.month;
+			min.day = input_val.day;
 		}
 	}
 	printf("最早的是日期是：%d/%d/%d\n", min.year, min.month, min.day);
