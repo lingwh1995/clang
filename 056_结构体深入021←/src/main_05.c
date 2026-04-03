@@ -5,6 +5,7 @@
  */
 
 /**
+ * 结构体 Node_1 的位域内存结构图：
  * -------------------------------------- 小端格式 --------------------------------------
  *              高地址										        低地址
  *           Byte2(0x08)               Byte1(0x11)               Byte0(0x17)
@@ -36,17 +37,16 @@
  *           └─ Padding(000)          └─ Padding(000)              └─ Padding(0000)
  * -------------------------------------- 小端格式 --------------------------------------
  */
-
-struct Node
+void print_struct_node_1()
 {
-	unsigned char a:3;
-	char b:2;
-	unsigned char c:5;
-	char d:4;
-};
+	struct Node
+	{
+		unsigned char a:3;
+		char b:2;
+		unsigned char c:5;
+		char d:4;
+	};
 
-int main()
-{
 	struct Node node = { 0 };
 	node.a = 7;  //    111 => 7
 	node.b = 6;  //    110 => -2
@@ -126,6 +126,10 @@ int main()
 	int x = 1;
 	printf("\n\n---- 大小端 ----\n");
 	printf("当前系统：%s\n", *(char*)&x == 1 ? "小端" : "大端");
+}
 
+int main()
+{
+	print_struct_node_1();
 	return 0;
 }
