@@ -3,7 +3,13 @@
 /**
  * 基于函数指针实现函数回调（即把函数作为参数传递）
  */
-
+/**
+ * int (*p_fun_t)(int, int);
+ * 相当于定义了一个变量 p_fun_t，类型是：函数指针。
+ *
+ * typedef int (*p_fun_t)(int, int);
+ * 相当于定义了一个了类型 p_fun_t，来代表函数指针这种类型。
+ */
 typedef int (*p_fun_t)(int, int);
 
 // 声明min()函数
