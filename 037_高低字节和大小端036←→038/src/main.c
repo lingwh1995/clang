@@ -4,18 +4,16 @@
 #include <string.h>
 
 /**
- * 判断大端和小端
- * 	小端：返回1，说明数据的低字节在内存的低地址存放，简记：小低低
- *	大端：返回0，说明数据的低字节在内存的高地址存放，简记：大低高
- * 特别注意：
- *   大小端逆转的是单位是字节，不是bit位
- * 速记速判：
- *   按「地址方向」记（最推荐）
- *     小低低(低地址放低字节)，大低高(低地址放高字节)
- *   按「左右书写」记（看图最直观）
- *     小低右(低字节放右边)，大低左(低字节放左边)
+ * 1. 判断大端和小端
+ * 	  小端：返回1，说明数据的低字节在内存的低地址存放，简记：小低低
+ *	  大端：返回0，说明数据的低字节在内存的高地址存放，简记：大低高
+ * 2. 注意事项
+ *    大小端逆转的是单位是字节，不是bit位
+ * 3. 速记速判
+ *    按地址方向记(十六进制和十进制一样，低位(低字节)在右边)
+ *    小低低(低地址放低字节)，大低高(低地址放高字节)
  *
- * x86架构的CPU（包括Intel和AMD的处理器）采用‌小端模式（Little-Endian）‌存储数据
+ * 4. x86架构的CPU（包括Intel和AMD的处理器）采用‌小端模式（Little-Endian）‌存储数据
  */
 void big_end_or_little_end_1()
 {
@@ -35,6 +33,7 @@ void big_end_or_little_end_1()
 	{
 		printf("LITTLE_END\n");
 	}
+    printf("-------------------------------------\n");
 }
 
 /**
@@ -56,7 +55,41 @@ void big_end_or_little_end_2()
 	{
 		printf("LITTLE_END\n");
 	}
+    printf("-------------------------------------\n");
+}
 
+void big_end_or_little_end_3()
+{
+	int i = 0x12345678;
+	// (char)i : 强转为 char 类型，实际就是取 i 在内存中第一个字节的数据
+	char c = (char)i;
+
+	if(c == 0x12)
+	{
+		printf("BIG_END\n");
+	}
+	if(c == 0x78)
+	{
+		printf("LITTLE_END\n");
+	}
+    printf("-------------------------------------\n");
+}
+
+void big_end_or_little_end_4()
+{
+	int i = 0x12345678;
+	// (char*)i : 强转为 char 类型，实际就是取 i 在内存中第一个字节的数据
+	char *pc = (char*) &i;
+
+	if(*pc == 0x12)
+	{
+		printf("BIG_END\n");
+	}
+	if(*pc == 0x78)
+	{
+		printf("LITTLE_END\n");
+	}
+    printf("-------------------------------------\n");
 }
 
 /**
@@ -69,6 +102,7 @@ void big_end_and_little_end_test()
 	printf("&b = %p\n", &b);
 	printf("&c = %p\n", &c);
 	printf("&d = %p\n", &d);
+    printf("-------------------------------------\n");
 }
 
 
@@ -106,6 +140,7 @@ void swap_endian_test()
     uint64_t val64_swap_endian;
     swap_endian(&val64_swap_endian, &val64, sizeof(val64));
     printf("原始64位数据: 0x%016llx, 转换大小端后64位数据: 0x%016llx\n", val64, val64_swap_endian);
+    printf("-------------------------------------\n");
 }
 
 
@@ -140,9 +175,11 @@ int main()
 	 * 	低地址 ------------------> 高地址
 	 * 	0x01  |  0x00  |  0x00  |  0x00
 	 */
-	//big_end_or_little_end_1();
-	//big_end_or_little_end_2();
-    //big_end_and_little_end_test();
+	big_end_or_little_end_1();
+	big_end_or_little_end_2();
+	big_end_or_little_end_3();
+	big_end_or_little_end_4();
+    big_end_and_little_end_test();
 
 	swap_endian_test();
 	return 0;

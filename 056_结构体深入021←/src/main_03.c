@@ -30,7 +30,8 @@
  *	  {
  *      char a;           // 1
  *
- *      struct {
+ *      struct
+ *      {
  *        int b;          // 4
  *        short c;        // 2
  *      } d;
@@ -52,11 +53,11 @@ void structure_alignment_1()
         char ca;
         int i;
         char cb;
-    } node_t;
+    } data_t;
 
-    node_t node = { 'a', 1, 'b' };
-    printf("sizeof (node) = %d\n", sizeof (node));
-    printf("&(node.ca) = %p, &(node.i) = %p, &(node.cb) = %p\n", &(node.ca), &(node.i), &(node.cb));
+    data_t data = { 'a', 1, 'b' };
+    printf("sizeof (data) = %d\n", sizeof (data));
+    printf("&(data.ca) = %p, &(data.i) = %p, &(data.cb) = %p\n", &(data.ca), &(data.i), &(data.cb));
     printf("-------------------------------------\n");
 }
 
@@ -142,16 +143,31 @@ void structure_alignment_4()
         char ca;
         int i;
         char cb;
-    } node_t;
+    } data_t;
 
-    node_t node = { 'a', 1, 'b' };
-    printf("sizeof (node) = %d\n", sizeof (node));
-    printf("&(node.ca) = %p, &(node.i) = %p, &(node.cb) = %p\n", &(node.ca), &(node.i), &(node.cb));
+    data_t data = { 'a', 1, 'b' };
+    printf("sizeof (data) = %d\n", sizeof (data));
+    printf("&(data.ca) = %p, &(data.i) = %p, &(data.cb) = %p\n", &(data.ca), &(data.i), &(data.cb));
     printf("-------------------------------------\n");
 }
 #pragma pack()
 
+void structure_alignment_5()
+{
+    typedef struct
+    {
+        int number;
+        char ch[2];
+    } data_t;
+
+    data_t data = { 0x12345678, {'a'} };
+    // 为什么结构体的大小是8，因为结构体大小必须是最大基本类型成员的整数倍
+    printf("sizeof (data) = %d\n", sizeof (data));
+    printf("-------------------------------------\n");
+}
+
 #if 0
+#endif
 int main()
 {
 	// 结构体对齐(本质是为了不浪费CPU的计算资源)
@@ -159,6 +175,7 @@ int main()
     structure_alignment_2();
     structure_alignment_3();
     structure_alignment_4();
+    structure_alignment_5();
     return 0;
 }
-#endif
+

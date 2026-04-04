@@ -455,7 +455,7 @@ void assignment_struct_4()
 	struct student_s student = {};
 
 	// 定义 结构体指针类型 变量
-	struct Student *p_student = &student;
+	struct student_s *p_student = &student;
 	// 使用指针解引用赋值
 	(*p_student).id = 1;
 	// 给字符串类型成员变量赋值
@@ -483,7 +483,7 @@ void assignment_struct_5()
 	struct student_s student = {};
 
 	// 定义 结构体指针类型 变量
-	struct Student *p_student = &student;
+	struct student_s *p_student = &student;
 	// 使用指针配合箭头函数(成员选择符)赋值
 	p_student->id = 1;
 	// 给字符串类型成员变量赋值

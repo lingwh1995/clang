@@ -5,31 +5,40 @@
  * 纯 C 实现：字节序转换函数(不依赖任何系统库)
  */
 // 判断系统字节序：1=小端（x86/ARM），0=大端
-static inline int is_little_endian(void) {
+static inline int is_little_endian(void)
+{
     uint16_t test = 0x0001;
     return *(uint8_t *)&test;
 }
 
 // 16位：主机字节序 -> 网络字节序（大端）
-uint16_t my_htons(uint16_t hostshort) {
-    if (is_little_endian()) {
+uint16_t my_htons(uint16_t hostshort)
+{
+    if (is_little_endian())
+    {
         // 小端：交换高低字节
         return (hostshort << 8) | (hostshort >> 8);
-    } else {
+    }
+    else
+    {
         // 大端：直接返回
         return hostshort;
     }
 }
 
 // 32位：主机字节序 -> 网络字节序（大端）
-uint32_t my_htonl(uint32_t hostlong) {
-    if (is_little_endian()) {
+uint32_t my_htonl(uint32_t hostlong)
+{
+    if (is_little_endian())
+    {
         // 小端：4字节倒序
         return ((hostlong & 0x000000FF) << 24) |
                ((hostlong & 0x0000FF00) << 8)  |
                ((hostlong & 0x00FF0000) >> 8)  |
                ((hostlong & 0xFF000000) >> 24);
-    } else {
+    }
+    else
+    {
         return hostlong;
     }
 }
@@ -39,7 +48,7 @@ uint32_t my_htonl(uint32_t hostlong) {
 #define my_ntohl my_htonl
 
 /**
- * 结构体 Node 的位域内存结构图：
+ * 结构体 data_s 的位域内存结构图：
  * -------------------------------------- 小端格式 --------------------------------------
  *              高地址										        低地址
  *           Byte2(0x08)               Byte1(0x11)               Byte0(0x17)
@@ -71,9 +80,9 @@ uint32_t my_htonl(uint32_t hostlong) {
  *           └─ Padding(000)          └─ Padding(000)              └─ Padding(0000)
  * -------------------------------------- 小端格式 --------------------------------------
  */
-void struct_bit_field_memory_test()
+void struct_bit_field_memory_test_1()
 {
-	struct node_s
+	struct data_s
 	{
 		unsigned char a:3;
 		char b:2;
@@ -81,25 +90,26 @@ void struct_bit_field_memory_test()
 		char d:4;
 	};
 
-	struct node_s node = { 0 };
-	node.a = 7;  //    111 => 7
-	node.b = 6;  //    110 => -2
-	node.c = 17; // 1 0001 => 17
-	node.d = 8;  //   1000 => 8
+	struct data_s data = { 0 };
+	data.a = 7;  //    111 => 7
+	data.b = 6;  //    110 => -2
+	data.c = 17; // 1 0001 => 17
+	data.d = 8;  //   1000 => 8
 
 	// 1. 打印位域成员
 	printf("---- 位域成员 ----\n");
-	printf("a = %u\n", node.a);
-	printf("b = %d\n", node.b);
-	printf("c = %u\n", node.c);
-	printf("d = %d\n", node.d);
+	printf("a = %u\n", data.a);
+	printf("b = %d\n", data.b);
+	printf("c = %u\n", data.c);
+	printf("d = %d\n", data.d);
 
 	// 2. 打印内存字节
 	printf("\n---- 内存布局 ----\n");
-	unsigned char *p = (unsigned char*)&node;
+	unsigned char *p = (unsigned char*)&data;
 	printf("十六进制：0x%02X 0x%02X 0x%02X\n", p[0], p[1], p[2]);
-	printf("二进制大端： ");
-	for(int i = 0; i < 3; i++)
+
+	printf("二进制小端： ");
+	for(int i = 2; i >= 0; i--)
 	{
 		for(int j = 7; j >= 0; j--)
 		{
@@ -127,8 +137,8 @@ void struct_bit_field_memory_test()
 		printf(" ");
 	}
 
-	printf("\n二进制小端： ");
-	for(int i = 2; i >= 0; i--)
+	printf("\n二进制大端： ");
+	for(int i = 0; i < 3; i++)
 	{
 		for(int j = 7; j >= 0; j--)
 		{
@@ -162,6 +172,135 @@ void struct_bit_field_memory_test()
 	printf("当前系统：%s\n", *(char*)&x == 1 ? "小端" : "大端");
 }
 
+
+/**
+ * 结构体 data_s 的位域内存结构图：
+ * -------------------------------------- 小端格式 --------------------------------------
+ *              高地址										         低地址
+ *           Byte2(0x08)               Byte1(0x70)                Byte0(0x07)
+ *        ┌─┬─┬─┬─┬─┬─┬─┬─┐         ┌─┬─┬─┬─┬─┬─┬─┬─┐          ┌─┬─┬─┬─┬─┬─┬─┬─┐
+ * Bit No |7|6|5|4|3|2|1|0|         |7|6|5|4|3|2|1|0|          |7|6|5|4|3|2|1|0|
+ *        ├─┼─┼─┼─┼─┼─┼─┼─┤         ├─┼─┼─┼─┼─┼─┼─┼─┤          ├─┼─┼─┼─┼─┼─┼─┼─┤
+ * Value  |0|0|0|0|1|0|0|0|         |0|1|0|0|0|1|1|0|          |0|0|0|0|0|1|1|1|
+ *        └───┬───┴───┬───┘         └┬┴────┬────┴─┬─┘          └────┬────┴──┬──┘
+ *            │       │              │     │      │                 │       │
+ *            │       └── d:4(1000)  │     │      └── b:2(10)       │       └── a:3(111)
+ *            │                      │     │                        │
+ *            └────── Padding(0000)  │     └── c:5(10001)           └──── Padding(00000)
+ *                                   │
+ *                                   └── Padding(0)
+ * -------------------------------------- 小端格式 --------------------------------------
+ *
+ * -------------------------------------- 大端格式 --------------------------------------
+ *               低地址                                                高地址
+ *           Byte0(0x07)                Byte1(0x70)                 Byte2(0x08)
+ *        ┌─┬─┬─┬─┬─┬─┬─┬─┐          ┌─┬─┬─┬─┬─┬─┬─┬─┐         ┌─┬─┬─┬─┬─┬─┬─┬─┐
+ * Bit No |7|6|5|4|3|2|1|0|          |7|6|5|4|3|2|1|0|         |7|6|5|4|3|2|1|0|
+ *        ├─┼─┼─┼─┼─┼─┼─┼─┤          ├─┼─┼─┼─┼─┼─┼─┼─┤         ├─┼─┼─┼─┼─┼─┼─┼─┤
+ * Value  |0|0|0|0|0|1|1|1|          |0|1|0|0|0|1|1|0|         |0|0|0|0|1|0|0|0|
+ *        └────┬────┴──┬──┘          └┬┴────┬────┴─┬─┘         └───┬───┴───┬───┘
+ *             │       │              │     │      │               │       │
+ *             │       └─ a:3(111)    │     │      └─ b:2(10)      │       └─ d:4(1000)
+ *             │                      │     │                      │
+ *             └──── Padding(00000)   │     └─ c:5(10001)          └──── Padding(0000)
+ *                                    │
+ *                                    └─ Padding(0)
+ * -------------------------------------- 大端格式 --------------------------------------
+ */
+
+void struct_bit_field_memory_test_2()
+{
+	struct data_s
+	{
+		unsigned char a:3;
+		unsigned char :0;
+		char b:2; // 零位域，位域强制换行符，代表当前字节剩余位作废，后面变量必须新开字节存储
+		unsigned char c:5;
+		char d:4;
+	};
+
+	struct data_s data = { 0 };
+	data.a = 7;  //    111 => 7
+	data.b = 6;  //    110 => -2
+	data.c = 17; // 1 0001 => 17
+	data.d = 8;  //   1000 => 8
+
+	// 1. 打印位域成员
+	printf("---- 位域成员 ----\n");
+	printf("a = %u\n", data.a);
+	printf("b = %d\n", data.b);
+	printf("c = %u\n", data.c);
+	printf("d = %d\n", data.d);
+
+	// 2. 打印内存字节
+	printf("\n---- 内存布局 ----\n");
+	unsigned char *p = (unsigned char*)&data;
+	printf("十六进制小端：0x%02X 0x%02X 0x%02X\n", p[2], p[1], p[0]);
+
+	printf("二进制的小端：");
+	for(int i = 2; i >= 0; i--)
+	{
+		for(int j = 7; j >= 0; j--)
+		{
+			/**
+			 * 代码 (p[i] >> j) & 1 解释
+			 * 1. p[i]
+			 * 	你结构体的第 i 个字节
+			 * 	比如：0x17 → 00010111
+			 *
+			 * 2. >> j
+			 * 	右移 j 位
+			 * 	把你想看的那一位移到最右边
+			 *
+			 * 3. & 1
+			 * 	只保留最后 1 位
+			 * 	最后一位是 0 → 输出 0
+			 * 	最后一位是 1 → 输出 1
+			 *
+			 * 4. %d
+			 * 	打印 0 或 1
+			 *
+			 */
+			printf("%d", (p[i] >> j) & 1);
+		}
+		printf(" ");
+	}
+
+	printf("\n十六进制大端：0x%02X 0x%02X 0x%02X\n", p[0], p[1], p[2]);
+	printf("二进制的大端：");
+	for(int i = 0; i < 3; i++)
+	{
+		for(int j = 7; j >= 0; j--)
+		{
+			/**
+			 * 代码 (p[i] >> j) & 1 解释
+			 * 1. p[i]
+			 * 	你结构体的第 i 个字节
+			 * 	比如：0x17 → 00010111
+			 *
+			 * 2. >> j
+			 * 	右移 j 位
+			 * 	把你想看的那一位移到最右边
+			 *
+			 * 3. & 1
+			 * 	只保留最后 1 位
+			 * 	最后一位是 0 → 输出 0
+			 * 	最后一位是 1 → 输出 1
+			 *
+			 * 4. %d
+			 * 	打印 0 或 1
+			 *
+			 */
+			printf("%d", (p[i] >> j) & 1);
+		}
+		printf(" ");
+	}
+
+	// 3. 打印大小端
+	int x = 1;
+	printf("\n\n---- 大小端 ----\n");
+	printf("当前系统：%s\n", *(char*)&x == 1 ? "小端" : "大端");
+}
 /**
  * 标准 TCP 头格式(20 字节固定头)
  *
@@ -251,8 +390,9 @@ void struct_bit_field_tcp_header_test()
 #if 0
 int main()
 {
-	//struct_bit_field_memory_test();
-	struct_bit_field_tcp_header_test();
+	//struct_bit_field_memory_test_1();
+	struct_bit_field_memory_test_2();
+	//struct_bit_field_tcp_header_test();
 	return 0;
 }
 #endif
