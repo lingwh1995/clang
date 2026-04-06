@@ -264,6 +264,7 @@ void union_test_8()
     // 注意：位域成员无法通过数组下标访问，手动打印如下
     printf("bit00 = %u, bit01 = %u, bit02 = %u, bit03 = %u\n",
     		int_bit_converter.bits.bit00, int_bit_converter.bits.bit01, int_bit_converter.bits.bit02, int_bit_converter.bits.bit03);
+    printf("-------------------------------------\n");
 }
 
 int main()
