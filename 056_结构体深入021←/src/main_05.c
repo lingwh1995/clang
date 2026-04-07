@@ -2,13 +2,17 @@
 #include <stdint.h>
 
 /**
- * 纯 C 实现：字节序转换函数(不依赖任何系统库)
+ * c 语言中的位域及其应用
  */
-// 判断系统字节序：1=小端（x86/ARM），0=大端
-static inline int is_little_endian(void)
+
+/**
+ * 字节序转换函数(不依赖任何系统库)
+ */
+// 判断系统字节序：1=小端(x86/ARM)，0=大端
+static inline int is_little_endian()
 {
-    uint16_t test = 0x0001;
-    return *(uint8_t *)&test;
+    uint16_t val = 0x0001;
+    return *(uint8_t *)&val;
 }
 
 // 16位：主机字节序 -> 网络字节序（大端）
@@ -43,7 +47,7 @@ uint32_t my_htonl(uint32_t hostlong)
     }
 }
 
-// 16位/32位：网络字节序 -> 主机字节序（和上面逻辑完全一样）
+// 16位/32位：网络字节序 -> 主机字节序(和上面逻辑完全一样)
 #define my_ntohs my_htons
 #define my_ntohl my_htonl
 
