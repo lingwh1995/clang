@@ -13,7 +13,8 @@ typedef node_t *linked_list;
 
 void print_linked_list(const node_t *head)
 {
-    if (head == NULL) {
+    if (head == NULL)
+    {
         printf("链表为空\n");
         return;
     }
@@ -23,7 +24,8 @@ void print_linked_list(const node_t *head)
      * 2. 遍历指针的类型，必须和链表头指针的类型完全一致！
      */
     const node_t *current = head;
-    while (current != NULL) {
+    while (current != NULL)
+    {
         printf("%d ", current->data);
         current = current->next;
     }
