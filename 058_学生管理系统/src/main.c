@@ -33,7 +33,7 @@ void init_student_man(student_man_t *p_student_man)
 	assert(p_student_man != NULL);
 	p_student_man->cur_size = 0;
 	p_student_man->max_size = STUDENT_SIZE;
-	memset(p_student_man->students, 0, sizeof(student_man_t) * p_student_man->max_size);
+	memset(p_student_man->students, 0, sizeof(student_t) * p_student_man->max_size);
 }
 
 int get_student_size(const student_man_t  *p_student_man)
@@ -56,39 +56,41 @@ bool is_empty(const student_man_t  *p_student_man)
 
 student_t input_student()
 {
-	student_t input_student;
+	student_t student;
+	// 清空脏数据
+	memset(&student, 0, sizeof(student));
 	printf("please input student id: \n");
-	scanf("%d", &input_student.id);
+	scanf("%d", &student.id);
 	printf("please input student name: \n");
-	scanf("%s", &input_student.name);
+	scanf("%s", &student.name);
 	printf("please input student sex: \n");
-	scanf("%s", &input_student.sex);
+	scanf("%s", &student.sex);
 	printf("please input student age: \n");
-	scanf("%d", &input_student.age);
+	scanf("%d", &student.age);
 	printf("please input student score: \n");
 	for(int i = 0; i < SCORE_SIZE; i++)
 	{
 		printf("please input score %d: \n", i);
-		scanf("%.2f", &input_student.score);
-		input_student.sum += input_student.sum + input_student.score[i];
+		scanf("%.2f", &student.score[i]);
+		student.sum += student.score[i];
 	}
-	input_student.avg = input_student.sum / SCORE_SIZE;
-	return input_student;
+	student.avg = student.sum / SCORE_SIZE;
+	return student;
 }
 
-bool add_student(const student_man_t  *p_student_man)
+bool add_student(student_man_t  *p_student_man)
 {
 	assert(p_student_man != NULL);
 	if(is_full(p_student_man))
 	{
 		return false;
 	}
-	student_t input_student = input_student();
-	p_student_man->students[p_student_man->cur_size] = input_student;
+	student_t student = input_student();
+	p_student_man->students[p_student_man->cur_size] = student;
 	p_student_man->cur_size += 1;
-	return false;
+	return true;
 }
-
+/*
 void show_student(const student_man_t  *p_student_man)
 {
 	assert(p_student_man != NULL);
@@ -102,6 +104,32 @@ void show_student(const student_man_t  *p_student_man)
 		{
 			printf("%.2f", p_student_man->students[i].score[j]);
 		}
+	}
+}*/
+void show_student(const student_man_t *p_student_man)
+{
+	assert(p_student_man != NULL);
+	if (is_empty(p_student_man))
+	{
+		printf("暂无学生信息！\n");
+		return;
+	}
+
+	for (int i = 0; i < p_student_man->cur_size; i++)
+	{
+		printf("\n========= 第 %d 个学生 =========\n", i + 1);
+		printf("学号：%d\n", p_student_man->students[i].id);
+		printf("姓名：%s\n", p_student_man->students[i].name);
+		printf("性别：%s\n", p_student_man->students[i].sex);
+		printf("年龄：%d\n", p_student_man->students[i].age);
+
+		printf("成绩：");
+		for (int j = 0; j < SCORE_SIZE; j++)
+		{
+			printf("%.2f ", p_student_man->students[i].score[j]);
+		}
+		printf("\n总分：%.2f\n", p_student_man->students[i].sum);
+		printf("平均分：%.2f\n", p_student_man->students[i].avg);
 	}
 }
 
