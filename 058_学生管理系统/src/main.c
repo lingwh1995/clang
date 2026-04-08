@@ -1,5 +1,7 @@
+#include <assert.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 #define STUDENT_SIZE 100
 #define SCORE_SIZE 3
