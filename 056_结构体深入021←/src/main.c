@@ -129,36 +129,36 @@ void pointer_input_and_print_structure_test()
 // -----------------------------------------------------------------------------------
 // 使用指针打印结构体数组 方式一
 /*
-void pointer_print_structure_arr(const Student *p_student_arr, int len)
+void pointer_print_structure_arr(const Student *p_students, int len)
 {
-	if(p_student_arr == NULL)
+	if(p_students == NULL)
 	{
 		return;
 	}
 	for(int i = 0; i < len; i++)
 	{
-		printf("id = %s ", p_student_arr[i].id);
-		printf("name = %s ", p_student_arr[i].name);
-		printf("sex = %s ", p_student_arr[i].sex);
-		printf("age = %d\n", p_student_arr[i].age);
+		printf("id = %s ", p_students[i].id);
+		printf("name = %s ", p_students[i].name);
+		printf("sex = %s ", p_students[i].sex);
+		printf("age = %d\n", p_students[i].age);
 	}
 }
 */
 
 // 使用指针打印结构体数组 方式二
-void pointer_print_structure_arr(const student_t *p_student_arr, int len)
+void pointer_print_structure_arr(const student_t *p_students, int len)
 {
-	if(p_student_arr == NULL)
+	if(p_students == NULL)
 	{
 		return;
 	}
 	for(int i = 0; i < len; i++)
 	{
-		printf("id = %s ", p_student_arr->id);
-		printf("name = %s ", p_student_arr->name);
-		printf("sex = %s ", p_student_arr->sex);
-		printf("age = %d\n", p_student_arr->age);
-		p_student_arr++;
+		printf("id = %s ", p_students->id);
+		printf("name = %s ", p_students->name);
+		printf("sex = %s ", p_students->sex);
+		printf("age = %d\n", p_students->age);
+		p_students++;
 	}
 }
 
@@ -168,20 +168,20 @@ void pointer_print_structure_arr(const student_t *p_student_arr, int len)
 void pointer_print_structure_arr_test()
 {
 	// 定义结构体数组
-	student_t student_arr[] = {
+	student_t students[] = {
 			{ "001", "张三", "男", 18 },
 			{ "002", "李四", "女", 20 },
 			{ "003", "王五", "男", 24 },
 			{ "006", "赵六", "女", 28 },
 	};
-	int len = sizeof(student_arr) / sizeof(student_arr[0]);
+	int len = sizeof(students) / sizeof(students[0]);
 	/**
 	 * 特别注意：
-	 * 	  PStudent p_student_arr = &student_arr; 错误写法  &student_arr代表的是整个数组的地址
-	 * 	  PStudent p_student_arr = student_arr;  正确写法  student_arr 代表的是数组首元素地址
+	 * 	  PStudent p_students = &students; 错误写法  &students代表的是整个数组的地址
+	 * 	  PStudent p_students = students;  正确写法  students 代表的是数组首元素地址
 	 */
-	p_student_t p_student_arr = student_arr;
-	pointer_print_structure_arr(p_student_arr, len);
+	p_student_t p_students = students;
+	pointer_print_structure_arr(p_students, len);
 	printf("-------------------------------------\n");
 }
 // -----------------------------------------------------------------------------------
@@ -191,21 +191,21 @@ void pointer_print_structure_arr_test()
 /**
  * 使用指针查找结构体测试
  */
-int pointer_find_structure(const student_t *p_student_arr, int len, char *name)
+int pointer_find_structure(const student_t *p_students, int len, char *name)
 {
 	int position = -1;
-	if(p_student_arr == NULL || name == NULL)
+	if(p_students == NULL || name == NULL)
 	{
 		return position;
 	}
 	for(int i = 0; i < len; i++)
 	{
-		if(strcmp(p_student_arr[i].name, name) == 0)
+		if(strcmp(p_students[i].name, name) == 0)
 		{
-			printf("id = %s ", p_student_arr[i].id);
-			printf("name = %s ", p_student_arr[i].name);
-			printf("sex = %s ", p_student_arr[i].sex);
-			printf("age = %d\n", p_student_arr[i].age);
+			printf("id = %s ", p_students[i].id);
+			printf("name = %s ", p_students[i].name);
+			printf("sex = %s ", p_students[i].sex);
+			printf("age = %d\n", p_students[i].age);
 			position = i;
 		}
 	}
@@ -215,21 +215,21 @@ int pointer_find_structure(const student_t *p_student_arr, int len, char *name)
 void pointer_find_structure_test()
 {
 	// 定义结构体数组
-	student_t student_arr[] = {
+	student_t students[] = {
 			{ "001", "张三", "男", 18 },
 			{ "002", "李四", "女", 20 },
 			{ "003", "王五", "男", 24 },
 			{ "006", "赵六", "女", 28 },
 	};
-	int len = sizeof(student_arr) / sizeof(student_arr[0]);
+	int len = sizeof(students) / sizeof(students[0]);
 	/**
 	 * 特别注意：
-	 * 	  p_student_t p_student_arr = &student_arr; 错误写法  &student_arr代表的是整个数组的地址
-	 * 	  p_student_t p_student_arr = student_arr;  正确写法  student_arr 代表的是数组首元素地址
+	 * 	  p_student_t p_students = &students; 错误写法  &students代表的是整个数组的地址
+	 * 	  p_student_t p_students = students;  正确写法  students 代表的是数组首元素地址
 	 */
-	const p_student_t p_student_arr = student_arr;
+	const p_student_t p_students = students;
 	char *name = "王五";
-	int position = pointer_find_structure(p_student_arr, len, name);
+	int position = pointer_find_structure(p_students, len, name);
 	printf("索引位置 = %d\n", position);
 	printf("-------------------------------------\n");
 }

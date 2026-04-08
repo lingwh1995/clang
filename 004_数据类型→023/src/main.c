@@ -238,15 +238,15 @@ void definition_struct_data_type()
     // 结构体(struct)
     struct student_s alice = { 1,"Alice",18 };
     struct student_s bob = { 2,"Bob",23 };
-    struct student_s student_arr[] = {
+    struct student_s students[] = {
     		alice,
     		bob,
     		{ 3, "Charile", 29 }
     };
-    int size = sizeof(student_arr)/sizeof(student_arr[0]);
-    for(int i = 0; i < size; i++)
+    int len = sizeof(students)/sizeof(students[0]);
+    for(int i = 0; i < len; i++)
     {
-    	printf("学生编号：%d,学生姓名：%s,学生年龄：%d\n", student_arr[i].id, student_arr[i].name, student_arr[i].age);
+    	printf("学生编号：%d,学生姓名：%s,学生年龄：%d\n", students[i].id, students[i].name, students[i].age);
     }
     printf("-------------------------------------\n");
 }

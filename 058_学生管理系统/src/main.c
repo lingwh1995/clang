@@ -3,7 +3,7 @@
 #define STUSIZE 100
 #define SCSIZE 3
 
-struct student_s
+typedef struct
 {
 	int id;
 	char name[10];
@@ -12,9 +12,9 @@ struct student_s
 	float score[SCSIZE];
 	float sum;
 	float ave;
-};
+} student_t;
 
-struct student_s data[STUSIZE];
+student_t students[STUSIZE];
 
 int main()
 {
