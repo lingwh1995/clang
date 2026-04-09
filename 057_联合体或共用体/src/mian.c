@@ -129,7 +129,7 @@ union
 	{
 		unsigned char seg_4, seg_3, seg_2, seg_1;
 	};
-} ip_u;
+} ip;
 
 /**
  * 整型 ip 转换为字符串型 ip
@@ -140,8 +140,8 @@ void int_ip_to_str_ip_1(unsigned int int_ip, char *str_ip)
 	{
 		return;
 	}
-	ip_u.addr = int_ip;
-	sprintf(str_ip, "%u.%u.%u.%u", ip_u.seg_1, ip_u.seg_2, ip_u.seg_3, ip_u.seg_4);
+	ip.addr = int_ip;
+	sprintf(str_ip, "%u.%u.%u.%u", ip.seg_1, ip.seg_2, ip.seg_3, ip.seg_4);
 }
 
 void union_test_6()
@@ -167,7 +167,7 @@ typedef union {
         uint8_t seg_2;
         uint8_t seg_1;
     } seg;
-} ip_t;
+} IP;
 
 /**
  * 整型 ip 转换为字符串型 ip
@@ -179,15 +179,15 @@ void int_ip_to_str_ip_2(uint32_t int_ip, char *str_ip, int len)
         return;
     }
 
-    ip_t ip_u;
-    ip_u.addr = int_ip;
+    IP ip;
+    ip.addr = int_ip;
 
     // 安全的格式化输出
     snprintf(str_ip, len, "%u.%u.%u.%u",
-             ip_u.seg.seg_1,
-             ip_u.seg.seg_2,
-             ip_u.seg.seg_3,
-             ip_u.seg.seg_4);
+             ip.seg.seg_1,
+             ip.seg.seg_2,
+             ip.seg.seg_3,
+             ip.seg.seg_4);
 }
 
 /**
@@ -201,18 +201,18 @@ uint32_t str_ip_to_int_ip(const char *str_ip)
     }
 
     uint32_t uint_seg_1, uint_seg_2, uint_seg_3, uint_seg_4;
-    ip_t ip_u;
+    IP ip;
 
     sscanf(str_ip, "%u.%u.%u.%u", &uint_seg_1, &uint_seg_2, &uint_seg_3, &uint_seg_4);
 
     // 用你的 union 装回去
-    ip_u.seg.seg_1 = (uint8_t)uint_seg_1;
-    ip_u.seg.seg_2 = (uint8_t)uint_seg_2;
-    ip_u.seg.seg_3 = (uint8_t)uint_seg_3;
-    ip_u.seg.seg_4 = (uint8_t)uint_seg_4;
+    ip.seg.seg_1 = (uint8_t)uint_seg_1;
+    ip.seg.seg_2 = (uint8_t)uint_seg_2;
+    ip.seg.seg_3 = (uint8_t)uint_seg_3;
+    ip.seg.seg_4 = (uint8_t)uint_seg_4;
 
     // 直接返回 32 位整数IP
-    return ip_u.addr;
+    return ip.addr;
 }
 
 void union_test_7()
@@ -247,23 +247,23 @@ void union_test_8()
 	        unsigned int bit20 : 1; unsigned int bit21 : 1; unsigned int bit22 : 1; unsigned int bit23 : 1;
 	        unsigned int bit24 : 1; unsigned int bit25 : 1; unsigned int bit26 : 1; unsigned int bit27 : 1;
 	        unsigned int bit28 : 1; unsigned int bit29 : 1; unsigned int bit30 : 1; unsigned int bit31 : 1;
-	    } bits;
-	} int_bit_converter_t;
+	    } BITS;
+	} IntBitConverter;
 
-	int_bit_converter_t int_bit_converter;
+	IntBitConverter int_bit_converter;
 	int_bit_converter.i = 0xAAAA5555; // 示例数据：二进制为 1010...0101
 
     printf("原始整数 (Hex): 0x%08X\n", int_bit_converter.i);
 
     // 打印其中几个位测试
-    printf("第 0 位: %u\n", int_bit_converter.bits.bit00);
-    printf("第 31 位: %u\n", int_bit_converter.bits.bit31);
+    printf("第 0 位: %u\n", int_bit_converter.BITS.bit00);
+    printf("第 31 位: %u\n", int_bit_converter.BITS.bit31);
 
     // 循环打印所有 32 位 (从高位到低位)
     printf("二进制完整排列: ");
     // 注意：位域成员无法通过数组下标访问，手动打印如下
     printf("bit00 = %u, bit01 = %u, bit02 = %u, bit03 = %u\n",
-    		int_bit_converter.bits.bit00, int_bit_converter.bits.bit01, int_bit_converter.bits.bit02, int_bit_converter.bits.bit03);
+    		int_bit_converter.BITS.bit00, int_bit_converter.BITS.bit01, int_bit_converter.BITS.bit02, int_bit_converter.BITS.bit03);
     printf("-------------------------------------\n");
 }
 

@@ -10,7 +10,7 @@
 // 结构体 + typedef简化结构体定义 方式一
 /*
 // 定义一个结构体
-struct student_s
+struct Student
 {
 	int id,
 	char[] name,
@@ -18,7 +18,7 @@ struct student_s
 };
 
 // 使用typedef简化结构体定义
-typedef struct student_s student_t;
+typedef struct Student Student;
 */
 
 
@@ -28,7 +28,7 @@ typedef struct
 	int id;
 	char name[20];
 	int age;
-} student_t;
+} Student;
 
 
 /**
@@ -79,7 +79,7 @@ void print_str_arr_4(const void *pv)
  */ 
 void print_struct_arr_4(const void *pv)
 {
-	const student_t *p_student = (const student_t *)pv;
+	const Student *p_student = (const Student *)pv;
 	printf("%d，%s，%d\t", p_student -> id, p_student -> name, p_student -> age);
 }
 
@@ -186,8 +186,8 @@ bool compare_str(const void *pa, const void *pb)
  */
 bool compare_struct_by_id(const void *pa, const void *pb)
 {
-	const student_t *p_stu_a = (const student_t *)pa;
-	const student_t *p_stu_b = (const student_t *)pb;
+	const Student *p_stu_a = (const Student *)pa;
+	const Student *p_stu_b = (const Student *)pb;
 	if(p_stu_a->id > p_stu_b->id)
 	{
 		return true;
@@ -200,8 +200,8 @@ bool compare_struct_by_id(const void *pa, const void *pb)
  */
 bool compare_struct_by_name(const void *pa, const void *pb)
 {
-	const student_t *p_stu_a = (const student_t *)pa;
-	const student_t *p_stu_b = (const student_t *)pb;
+	const Student *p_stu_a = (const Student *)pa;
+	const Student *p_stu_b = (const Student *)pb;
 	if(strcmp(p_stu_a->name, p_stu_b->name) > 0)
 	{
 		return true;

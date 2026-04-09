@@ -52,7 +52,7 @@ uint32_t my_htonl(uint32_t hostlong)
 #define my_ntohl my_htonl
 
 /**
- * 结构体 data_s 的位域内存结构图：
+ * 结构体 Data 的位域内存结构图：
  * -------------------------------------- 小端格式 --------------------------------------
  *              高地址										        低地址
  *           Byte2(0x08)               Byte1(0x11)               Byte0(0x17)
@@ -86,7 +86,7 @@ uint32_t my_htonl(uint32_t hostlong)
  */
 void struct_bit_field_memory_test_1()
 {
-	struct data_s
+	struct Data
 	{
 		unsigned char a:3;
 		char b:2;
@@ -94,7 +94,7 @@ void struct_bit_field_memory_test_1()
 		char d:4;
 	};
 
-	struct data_s data = { 0 };
+	struct Data data = { 0 };
 	data.a = 7;  //    111 => 7
 	data.b = 6;  //    110 => -2
 	data.c = 17; // 1 0001 => 17
@@ -178,7 +178,7 @@ void struct_bit_field_memory_test_1()
 
 
 /**
- * 结构体 data_s 的位域内存结构图：
+ * 结构体 Data 的位域内存结构图：
  * -------------------------------------- 小端格式 --------------------------------------
  *              高地址										         低地址
  *           Byte2(0x08)               Byte1(0x70)                Byte0(0x07)
@@ -214,7 +214,7 @@ void struct_bit_field_memory_test_1()
 
 void struct_bit_field_memory_test_2()
 {
-	struct data_s
+	struct Data
 	{
 		unsigned char a:3;
 		unsigned char :0;
@@ -223,7 +223,7 @@ void struct_bit_field_memory_test_2()
 		char d:4;
 	};
 
-	struct data_s data = { 0 };
+	struct Data data = { 0 };
 	data.a = 7;  //    111 => 7
 	data.b = 6;  //    110 => -2
 	data.c = 17; // 1 0001 => 17

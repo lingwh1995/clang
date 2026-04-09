@@ -18,7 +18,7 @@
 #define PTR_ERROR 2
 
 // 使用枚举替代宏定义
-enum status_e
+enum Status
 {
 	STATUS_OK,
 	STATUS_NETWORK_ERROR,
@@ -31,7 +31,7 @@ int main()
      * 枚举常量(枚举也是一种常量)
      *  注意:枚举常量的值只能是整形数据
      */
-    enum sex_e
+    enum Sex
     {
         SEX_MALE,   // 男性
 		SEX_FEMALE, // 女性
@@ -42,20 +42,20 @@ int main()
     printf("SECRET = %d\n", SEX_SECRET);
     printf("-------------------------------------\n");
 
-    enum week_e
+    enum Week
     {
         WEEK_MON = 1,
 		WEEK_TUE = 2,
 		WEEK_WED = 3
     };
-    enum week_e wk;
+    enum Week wk;
     wk = WEEK_MON;
     printf("wk = %d\n", wk);
     wk = WEEK_TUE;
     printf("wk = %d\n", wk);
     printf("-------------------------------------\n");
 
-    enum animal_e
+    enum Animal
     {
         ANIMAL_DOG = 5,
 		ANIMAL_CAT,

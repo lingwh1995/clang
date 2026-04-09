@@ -53,9 +53,9 @@ void structure_alignment_1()
         char ca;
         int i;
         char cb;
-    } data_t;
+    } Data;
 
-    data_t data = { 'a', 1, 'b' };
+    Data data = { 'a', 1, 'b' };
     printf("sizeof (data) = %d\n", sizeof (data));
     printf("&(data.ca) = %p, &(data.i) = %p, &(data.cb) = %p\n", &(data.ca), &(data.i), &(data.cb));
     printf("-------------------------------------\n");
@@ -71,7 +71,7 @@ void structure_alignment_2()
 	 * 结构体类型 名	struct student_s
 	 * 特别注意		最后的分号必须写，否则会报错
 	 */
-	struct student_s
+	struct Student
 	{
 		char id[20];	// 20字节
 		char name[20];	// 20字节
@@ -79,7 +79,7 @@ void structure_alignment_2()
 		int age;		// 4字节
 	};
 
-	struct student_s student = { "001", "张三", "男", 20 };
+	struct Student student = { "001", "张三", "男", 20 };
 	//printf("id = %s, name = %s, sex = %s, age = %d\n", student.id, student.name, student.sex, student.age);
 
 	/**
@@ -112,18 +112,18 @@ void structure_alignment_3()
         int rank;
         // 学科分数
         double scores;
-    } subject_t;
+    } Subject;
 
     typedef struct
     {
         int no;
         int age;
         char name[10];
-        subject_t subject;
-    } student_t;
+        Subject subject;
+    } Student;
 
-    subject_t subject = { 1, 1, 100 };
-    student_t student = { 1, 18, "张三", subject };
+    Subject subject = { 1, 1, 100 };
+    Student student = { 1, 18, "张三", subject };
     printf("sizeof(subject) = %d\n", sizeof(subject));
     printf("sizeof(student) = %d\n", sizeof(student));
     printf("&(student.no) = %p, &(student.age) = %p, &(student.name) = %p, &(student.subject) = %p\n",
@@ -143,9 +143,9 @@ void structure_alignment_4()
         char ca;
         int i;
         char cb;
-    } data_t;
+    } Data;
 
-    data_t data = { 'a', 1, 'b' };
+    Data data = { 'a', 1, 'b' };
     printf("sizeof (data) = %d\n", sizeof (data));
     printf("&(data.ca) = %p, &(data.i) = %p, &(data.cb) = %p\n", &(data.ca), &(data.i), &(data.cb));
     printf("-------------------------------------\n");
@@ -158,16 +158,15 @@ void structure_alignment_5()
     {
         int number;
         char ch[2];
-    } data_t;
+    } Data;
 
-    data_t data = { 0x12345678, {'a'} };
+    Data data = { 0x12345678, {'a'} };
     // 为什么结构体的大小是8，因为结构体大小必须是最大基本类型成员的整数倍
     printf("sizeof (data) = %d\n", sizeof (data));
     printf("-------------------------------------\n");
 }
 
 #if 0
-#endif
 int main()
 {
 	// 结构体对齐(本质是为了不浪费CPU的计算资源)
@@ -178,4 +177,4 @@ int main()
     structure_alignment_5();
     return 0;
 }
-
+#endif

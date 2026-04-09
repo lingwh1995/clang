@@ -607,9 +607,9 @@ void question_024_get_earliest_input_date()
 		int year;
 		int month;
 		int day;
-	} date_t;
-	date_t input_val = { 1,1,1 };
-	date_t min = { INT_MAX,12,31 };
+	} Date;
+	Date input_val = { 1,1,1 };
+	Date min = { INT_MAX,12,31 };
 	while(true)
 	{
 		bool flag = false;

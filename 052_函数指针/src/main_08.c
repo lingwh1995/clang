@@ -23,7 +23,7 @@ typedef struct
 	int id;
 	char name[20];
 	int age;
-} person_t;
+} Person;
 
 
 /**
@@ -116,8 +116,8 @@ int comp_str(const void *pa, const void *pb)
  */
 int compare_struct(const void *pa, const void *pb)
 {
-	const person_t *p_person_a = (const person_t*)pa;
-	const person_t *p_person_b = (const person_t*)pb;
+	const Person *p_person_a = (const Person*)pa;
+	const Person *p_person_b = (const Person*)pb;
 	if(p_person_a->id > p_person_b->id)
 	{
 		return 1;
@@ -187,7 +187,7 @@ void print_str_arr_5(const char *arr[], int len)
  */
 void print_struct_arr_5(const void *pv, int len)
 {
-    const person_t *p_person = (const person_t*)pv;
+    const Person *p_person = (const Person*)pv;
     for(int i = 0; i < len; i++)
     {
         printf("%d，%s，%d\t", p_person[i].id, p_person[i].name, p_person[i].age);
@@ -225,7 +225,7 @@ int main()
 	// 对结构体数组进行排序
 
 	//定义结构体数组
-	person_t persons[] = {
+	Person persons[] = {
 		{ 1, "zhangsan", 18 },
 		{ 3, "lisi", 20 },
 		{ 2, "wangwu", 22 }

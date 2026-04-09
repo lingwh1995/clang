@@ -52,7 +52,7 @@
 /**
  * 定义一个结构体Person
  */
-struct student_s
+struct Student
 {
 	// 学生id
 	int id;
@@ -66,7 +66,7 @@ struct student_s
 /**
  * 颜色枚举
  */
-enum color_e
+enum Color
 {
 	COLOR_RED,	//默认为 0
 	COLOR_GREEN,	//默认为 1
@@ -78,7 +78,7 @@ enum color_e
  * 打印颜色
  *   使用枚举约束了case后面的值
  */
-void print_color(enum color_e color)
+void print_color(enum Color color)
 {
     switch (color)
     {
@@ -146,7 +146,7 @@ void data_type_size()
 /**
  * 定义基本的数据类型
  */
-void definition_basic_data_type()
+void define_basic_data_type()
 {
     // short类型
     short s = -100;
@@ -216,7 +216,7 @@ void definition_basic_data_type()
 /**
  * 定义数组数据类型
  */
-void definition_array_data_type()
+void define_array_data_type()
 {
     // 数组(Array)
     int nums[] = { 10, 20, 30 };
@@ -233,12 +233,12 @@ void definition_array_data_type()
 /**
  * 定义结构体数据类型
  */
-void definition_struct_data_type()
+void define_struct_data_type()
 {
     // 结构体(struct)
-    struct student_s alice = { 1,"Alice",18 };
-    struct student_s bob = { 2,"Bob",23 };
-    struct student_s students[] = {
+    struct Student alice = { 1,"Alice",18 };
+    struct Student bob = { 2,"Bob",23 };
+    struct Student students[] = {
     		alice,
     		bob,
     		{ 3, "Charile", 29 }
@@ -254,10 +254,10 @@ void definition_struct_data_type()
 /**
  * 定义枚举数据类型
  */
-void definition_enum_data_type()
+void define_enum_data_type()
 {
     // 枚举(enum)
-    enum color_e color = COLOR_RED;
+    enum Color color = COLOR_RED;
     printf("%d\n", color);
     print_color(color);
     // 注意：枚举可以像整型数组一样使用
@@ -271,7 +271,7 @@ void definition_enum_data_type()
 /**
  * 定义指针数据类型
  */
-void definition_pointer_data_type()
+void define_pointer_data_type()
 {
     int a = 100;
     // 指针
@@ -875,7 +875,7 @@ typedef struct
     unsigned int mantissa : 23;  // 尾数部分
     unsigned int exponent : 8;   // 指数部分
     unsigned int sign : 1;       // 符号位
-} float_components_t;
+} FloatComponents;
 
 /**
  * 用结构体模拟浮点数表示
@@ -884,7 +884,7 @@ typedef struct
 void print_float_struct()
 {
     float f = -12.375f;
-    float_components_t* fc = (float_components_t*)&f;
+    FloatComponents* fc = (FloatComponents*)&f;
 
     printf("Float value: %f\n", f);
     printf("Sign: %u\n", fc -> sign);
@@ -898,11 +898,11 @@ void print_float_struct()
 int main()
 {
 	data_type_size();
-	definition_basic_data_type();
-	definition_array_data_type();
-	definition_struct_data_type();
-	definition_enum_data_type();
-	definition_pointer_data_type();
+	define_basic_data_type();
+	define_array_data_type();
+	define_struct_data_type();
+	define_enum_data_type();
+	define_pointer_data_type();
 	data_type_conversion_1();
 	data_type_conversion_2();
 	data_type_conversion_3();

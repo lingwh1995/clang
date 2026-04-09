@@ -55,12 +55,12 @@ typedef struct
 	char name[20];
 	char sex[8];
 	int age;
-} student_t, *p_student_t;
+} Student, *PStudent;
 
 /**
  * 使用指针打印结构体
  */
-void pointer_print_structure(const student_t *student)
+void pointer_print_structure(const Student *student)
 {
 	if(student == NULL)
 	{
@@ -78,7 +78,7 @@ void pointer_print_structure(const student_t *student)
 /**
  * 使用指针给结构体赋值
  */
-void pointer_input_structure(student_t *student)
+void pointer_input_structure(Student *student)
 {
 	if(student == NULL)
 	{
@@ -105,8 +105,8 @@ void pointer_input_structure(student_t *student)
 
 void pointer_print_structure_test()
 {
-	student_t student = { "002", "李四", "男", 20 };
-	p_student_t p_student = &student;
+	Student student = { "002", "李四", "男", 20 };
+	PStudent p_student = &student;
 	// 只有数组才名才能在不去地址的情况下直接当成指针用，其他类型数据不行，要取地址才能用
 	pointer_print_structure(p_student);
 	printf("-------------------------------------\n");
@@ -117,8 +117,8 @@ void pointer_print_structure_test()
  */
 void pointer_input_and_print_structure_test()
 {
-	student_t student = { 0 };
-	p_student_t p_student = &student;
+	Student student = { 0 };
+	PStudent p_student = &student;
 	pointer_input_structure(p_student);
 	pointer_print_structure(p_student);
 	printf("-------------------------------------\n");
@@ -146,7 +146,7 @@ void pointer_print_structure_arr(const Student *p_students, int len)
 */
 
 // 使用指针打印结构体数组 方式二
-void pointer_print_structure_arr(const student_t *p_students, int len)
+void pointer_print_structure_arr(const Student *p_students, int len)
 {
 	if(p_students == NULL)
 	{
@@ -168,7 +168,7 @@ void pointer_print_structure_arr(const student_t *p_students, int len)
 void pointer_print_structure_arr_test()
 {
 	// 定义结构体数组
-	student_t students[] = {
+	Student students[] = {
 			{ "001", "张三", "男", 18 },
 			{ "002", "李四", "女", 20 },
 			{ "003", "王五", "男", 24 },
@@ -180,7 +180,7 @@ void pointer_print_structure_arr_test()
 	 * 	  PStudent p_students = &students; 错误写法  &students代表的是整个数组的地址
 	 * 	  PStudent p_students = students;  正确写法  students 代表的是数组首元素地址
 	 */
-	p_student_t p_students = students;
+	PStudent p_students = students;
 	pointer_print_structure_arr(p_students, len);
 	printf("-------------------------------------\n");
 }
@@ -191,7 +191,7 @@ void pointer_print_structure_arr_test()
 /**
  * 使用指针查找结构体测试
  */
-int pointer_find_structure(const student_t *p_students, int len, char *name)
+int pointer_find_structure(const Student *p_students, int len, char *name)
 {
 	int position = -1;
 	if(p_students == NULL || name == NULL)
@@ -215,7 +215,7 @@ int pointer_find_structure(const student_t *p_students, int len, char *name)
 void pointer_find_structure_test()
 {
 	// 定义结构体数组
-	student_t students[] = {
+	Student students[] = {
 			{ "001", "张三", "男", 18 },
 			{ "002", "李四", "女", 20 },
 			{ "003", "王五", "男", 24 },
@@ -224,10 +224,10 @@ void pointer_find_structure_test()
 	int len = sizeof(students) / sizeof(students[0]);
 	/**
 	 * 特别注意：
-	 * 	  p_student_t p_students = &students; 错误写法  &students代表的是整个数组的地址
-	 * 	  p_student_t p_students = students;  正确写法  students 代表的是数组首元素地址
+	 * 	  PStudent p_students = &students; 错误写法  &students代表的是整个数组的地址
+	 * 	  PStudent p_students = students;  正确写法  students 代表的是数组首元素地址
 	 */
-	const p_student_t p_students = students;
+	const PStudent p_students = students;
 	char *name = "王五";
 	int position = pointer_find_structure(p_students, len, name);
 	printf("索引位置 = %d\n", position);
