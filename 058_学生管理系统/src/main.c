@@ -55,19 +55,19 @@ bool is_empty(const StudentManager  *p_student_manager)
 Student input_student()
 {
 	Student student = { 0 };
-	printf("please input student id: \n");
+	printf("请输入学生编号: \n");
 	scanf("%d", &student.id);
-	printf("please input student name: \n");
-	scanf("%s", &student.name);
-	printf("please input student gender: \n");
-	scanf("%s", &student.gender);
-	printf("please input student age: \n");
+	printf("请输入学生姓名: \n");
+	scanf("%s", student.name);
+	printf("请输入学生性别: \n");
+	scanf("%s", student.gender);
+	printf("请输入学生年龄: \n");
 	scanf("%d", &student.age);
-	printf("please input student score: \n");
+	printf("请输入学生分数: \n");
 	for(int i = 0; i < SCORE_SIZE; i++)
 	{
-		printf("please input score %d: \n", i);
-		scanf("%.2f", &student.scores[i]);
+		printf("请输入科目 %d 的分数: \n", i+1);
+		scanf("%f", &student.scores[i]);
 		student.total_score += student.scores[i];
 	}
 	student.avg_score = student.total_score / SCORE_SIZE;
@@ -81,7 +81,7 @@ bool add_student(StudentManager  *p_student_manager)
 	{
 		return false;
 	}
-	Student student = input_student();
+	const Student student = input_student();
 	p_student_manager->student_list[p_student_manager->current_count] = student;
 	p_student_manager->current_count += 1;
 	return true;
@@ -96,39 +96,169 @@ void show_student(const StudentManager *p_student_manager)
 		return;
 	}
 
+	printf("学号   姓名   性别   年龄   语文   数学   英语   总分   平均分\n");
 	for (int i = 0; i < p_student_manager->current_count; i++)
 	{
-		printf("\n========= 第 %d 个学生 =========\n", i + 1);
-		printf("学号：%d\n", p_student_manager->student_list[i].id);
-		printf("姓名：%s\n", p_student_manager->student_list[i].name);
-		printf("性别：%s\n", p_student_manager->student_list[i].gender);
-		printf("年龄：%d\n", p_student_manager->student_list[i].age);
-
-		printf("成绩：");
+		printf("%-8d %-8s %-8s %-8d", p_student_manager->student_list[i].id, p_student_manager->student_list[i].name,
+			p_student_manager->student_list[i].gender, p_student_manager->student_list[i].age);
 		for (int j = 0; j < SCORE_SIZE; j++)
 		{
-			printf("%.2f ", p_student_manager->student_list[i].scores[j]);
+			printf("%-8.2f", p_student_manager->student_list[i].scores[j]);
 		}
-		printf("\n总分：%.2f\n", p_student_manager->student_list[i].total_score);
-		printf("平均分：%.2f\n", p_student_manager->student_list[i].avg_score);
+		printf("%8.2f", p_student_manager->student_list[i].total_score);
+		printf("%8.2f", p_student_manager->student_list[i].avg_score);
 	}
+	printf("\n");
 }
 
-//init_student_man;
-//add_student;
-//show_student;
-//save_student;
-//load_student;
-//find_student_by_id;
-//find_student_by_name;
-//find_student;
-//del_student;
+void save_student(const StudentManager *p_student_manager)
+{
+	assert(p_student_manager != NULL);
+	// 二进制写文件
+	FILE* p_file = fopen("student.txt", "wb");
+	if (NULL == p_file)
+	{
+		printf("open file error\n");
+		return;
+	}
+	// 把数组中的元素个数写进去
+	fwrite(&p_student_manager->current_count, sizeof(int), 1, p_file);
+	// 把数组写入
+	fwrite(p_student_manager->student_list, sizeof(Student), p_student_manager->current_count, p_file);
+	fclose(p_file);
+	p_file = NULL;
+}
+
+void load_student(StudentManager *p_student_manager)
+{
+	assert(p_student_manager != NULL);
+	// 二进制读文件
+	FILE* p_file = fopen("student.txt", "rb");
+	if (NULL == p_file)
+	{
+		printf("open file error\n");
+		return;
+	}
+	fread(&p_student_manager->current_count, sizeof(int), 1, p_file);
+	fread(p_student_manager->student_list, sizeof(Student), p_student_manager->current_count, p_file);
+	fclose(p_file);
+	p_file = NULL;
+}
+
+int find_id(const StudentManager *p_student_manager, int id)
+{
+	assert(p_student_manager != NULL);
+	int pos = -1;
+	for (int i = 0; i < p_student_manager->current_count; i++)
+	{
+		if (p_student_manager->student_list[i].id == id)
+		{
+			pos = i;
+			break;
+		}
+	}
+	return pos;
+}
+
+int find_name(const StudentManager *p_student_manager, char *name)
+{
+	assert(p_student_manager != NULL);
+	int pos = -1;
+	for (int i = 0; i < p_student_manager->current_count; i++)
+	{
+		if (strcmp(p_student_manager->student_list[i].name, name) == 0)
+		{
+			pos = i;
+			break;
+		}
+	}
+	return pos;
+}
+
+int find_student(const StudentManager *p_student_manager)
+{
+	assert(p_student_manager != NULL);
+	int id;
+	char name[10];
+	int select = 0;
+	int pos = -1;
+	do
+	{
+		printf("**********\n");
+		printf("1. 按学号查询\n");
+		printf("2. 按姓名查询\n");
+		printf("0. 退出查询\n");
+		printf("请选择功能: \n");
+		printf("**********\n");
+		scanf("%d", &select);
+		switch (select)
+		{
+			case 0:
+				printf("退出查询\n");
+				break;
+			case 1:
+				scanf("%d", &id);
+				if ((pos = find_id(p_student_manager, id)) != -1)
+				{
+					show_student(p_student_manager);
+				}
+				else
+				{
+					printf("无该学生信息！");
+				}
+				break;
+			case 2:
+				scanf("%d", &name);
+				if ((pos = find_name(p_student_manager, name)) != -1)
+				{
+					show_student(p_student_manager);
+				}
+				else
+				{
+					printf("无该学生信息！");
+				}
+				break;
+		}
+	} while (select != 0);
+}
 
 int main()
 {
 	StudentManager student_manager;
 	init_student_manager(&student_manager);
+	load_student(&student_manager);
+	int select = 0;
+	do
+	{
+		printf("**********\n");
+		printf("1. 增加学生\n");
+		printf("2. 展示学生\n");
+		printf("3. 查询学生\n");
+		printf("0. 退出系统\n");
+		printf("请选择功能: \n");
+		printf("**********\n");
+		scanf("%d", &select);
+		switch (select)
+		{
+			case 0:
+				printf("退出管理系统\n");
+				break;
+			case 1:
+				add_student(&student_manager);
+				break;
+			case 2:
+				show_student(&student_manager);
+				break;
+			case 3:
+				show_student(&student_manager);
+				break;
+			default:
+				printf("不支持该选项！");
+				break;
+		}
+	} while (select != 0);
 	add_student(&student_manager);
 	show_student(&student_manager);
+	save_student(&student_manager);
 	return 0;
 }

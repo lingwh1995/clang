@@ -5,34 +5,32 @@
 #include <string.h>  // 用于 strcspn，去掉换行符
 
 /*
- * 标准输入:
- *
+ * 标准输入
  * 1. getchar()：输入单个字符，保存到字符变量中
  * 2. gets()：输入一行数据，保存到字符串变量中 => 已废弃不推荐
  * 3. scanf()：格式化输入函数，一次可以输入多个数据，保存到多个变量中
- *	  解决c4996 scanf警告：
- *	  1. 在.c文件第一行引入宏定义: #define _CRT_SECURE_NO_WARNINGS
- *	  2. 在.c文件第一行引入预编译指令:	#pragma warning(disable:4996)
- *		
- * gets()和scanf()区别
- *	  1. gets()接收的字符串中间可以有空格,scanf()接收的字符串中间不能有空格
- *	  2. get()会清空缓冲区的换行符,scanf()不会清空缓冲区的换行符
- * 4. gets_s()/fgets()：输入一行数据，保存到字符串变量中 => 推荐
- *    - gets_s() windows平台编译器
- *    - fgets()  linux平台编译器
- * 
- * 标准输出:
- *  1.putchar()：输出单个字符，返回值为输出的数值
- *  2.puts()：输出字符串，主要用于简单输出
- *  3.printf()：格式化输出函数，可输出常量、变量等,主要用于格式化输出
- * 
- * ASCII码形式输出和转义字符串输出：
- *	1.ASCII码形式输出: 将一个字符以ASCII码形式输出
- *  2.转义字符串输出: 输出转义后的字符
- * 
- * 
- * 关于double类型数据的特殊处理:
- *	输出double类型,使用%f即可: 而scanf读取double类型,必须使用%lf防止精度丢失
+ *    解决c4996 scanf警告：
+ *    1. 在.c文件第一行引入宏定义: #define _CRT_SECURE_NO_WARNINGS
+ *    2. 在.c文件第一行引入预编译指令: #pragma warning(disable:4996)
+ *
+ *    gets()和scanf()区别
+ *    1. gets()接收的字符串中间可以有空格,scanf()接收的字符串中间不能有空格
+ *    2. get()会清空缓冲区的换行符,scanf()不会清空缓冲区的换行符
+ * 4. gets_s() / fgets()：输入一行数据，保存到字符串变量中 => 推荐
+ *    gets_s() windows平台编译器
+ *    fgets()   linux平台编译器
+ *
+ * 标准输出
+ * 1. putchar()：输出单个字符，返回值为输出的数值
+ * 2. puts()：输出字符串，主要用于简单输出
+ * 3. printf()：格式化输出函数，可输出常量、变量等,主要用于格式化输出
+ *
+ * ASCII码形式输出和转义字符串输出
+ * 1. ASCII码形式输出: 将一个字符以ASCII码形式输出
+ * 2. 转义字符串输出: 输出转义后的字符
+ *
+ * 关于double类型数据的特殊处理
+ * 输出double类型，使用%f即可: 而scanf读取double类型，必须使用%lf防止精度丢失
  */
 
 /*
@@ -127,7 +125,8 @@ void scanf_test_2()
 	printf("请输入字符串: \n");
 	// 必须规定字符串的长度,否则会报异常
 	char str[30];
-	scanf("%s", &str);
+	// 特别注意：这里参数要填写 str 而不是 &str，数组名做字符串输入时，不能加 &，因为数组名本身就是地址
+	scanf("%s", str);
 	printf("str = %s\n", str);
 }
 
@@ -167,7 +166,7 @@ void gets_and_scanf_test_1()
 	printf("请输入字符串(使用空格隔开): \n");
 	// 必须规定字符串的长度,否则会报异常
 	char str_2[30];
-	scanf("%s", &str_2);
+	scanf("%s", str_2);
 	printf("str_2 = %s\n", str_2);
 }
 
