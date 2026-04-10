@@ -89,26 +89,55 @@ bool add_student(StudentManager  *p_student_manager)
 
 void show_student(const StudentManager *p_student_manager)
 {
-	assert(p_student_manager != NULL);
-	if (is_empty(p_student_manager))
-	{
-		printf("暂无学生信息！\n");
-		return;
-	}
+    assert(p_student_manager != NULL);
+    if (is_empty(p_student_manager))
+    {
+        printf("No student data found!\n");
+        return;
+    }
 
-	printf("学号   姓名   性别   年龄   语文   数学   英语   总分   平均分\n");
-	for (int i = 0; i < p_student_manager->current_count; i++)
-	{
-		printf("%-8d %-8s %-8s %-8d", p_student_manager->student_list[i].id, p_student_manager->student_list[i].name,
-			p_student_manager->student_list[i].gender, p_student_manager->student_list[i].age);
-		for (int j = 0; j < SCORE_SIZE; j++)
-		{
-			printf("%-8.2f", p_student_manager->student_list[i].scores[j]);
-		}
-		printf("%8.2f", p_student_manager->student_list[i].total_score);
-		printf("%8.2f", p_student_manager->student_list[i].avg_score);
-	}
-	printf("\n");
+    // 定义统一的列宽，方便一处修改全表生效
+    const int W_ID = 12;
+    const int W_NAME = 12;
+    const int W_OTHER = 12;
+    const int W_SCORE = 12;
+
+    printf("\n");
+    // 1. 打印英文表头
+    // 使用 %-*s 动态传入宽度，确保表头和数据完美垂直对齐
+    printf("%-*s %-*s %-*s %-*s %-*s %-*s %-*s %-*s %-*s\n",
+           W_ID, "ID", W_NAME, "Name", W_OTHER, "Gender", W_OTHER, "Age",
+           W_SCORE, "Chinese", W_SCORE, "Math", W_SCORE, "English",
+           W_SCORE, "Total", W_SCORE, "Average");
+
+    // 2. 打印分割线（长度约 110 个字符）
+    printf("---------------------------------------------------------------------------------------------------------------\n");
+
+    // 3. 循环打印学生信息
+    for (int i = 0; i < p_student_manager->current_count; i++)
+    {
+        const Student *s = &p_student_manager->student_list[i];
+
+        // 打印基础信息
+        printf("%-*d ", W_ID, s->id);
+
+        // 姓名列：如果姓名是英文，%-*s 完美对齐；如果是中文，依然会有微小偏移（因为中文字符宽度问题）
+        printf("%-*s ", W_NAME, s->name);
+
+        printf("%-*s ", W_OTHER, s->gender);
+        printf("%-*d ", W_OTHER, s->age);
+
+        // 打印各科分数
+        for (int j = 0; j < SCORE_SIZE; j++)
+        {
+            printf("%-*.2f ", W_SCORE, s->scores[j]);
+        }
+
+        // 打印总分和平均分
+        printf("%-*.2f ", W_SCORE, s->total_score);
+        printf("%-*.2f\n", W_SCORE, s->avg_score); // 注意这里加了 \n 换行
+    }
+    printf("\n");
 }
 
 void save_student(const StudentManager *p_student_manager)
@@ -250,7 +279,7 @@ int main()
 				show_student(&student_manager);
 				break;
 			case 3:
-				show_student(&student_manager);
+				find_student(&student_manager);
 				break;
 			default:
 				printf("不支持该选项！");
