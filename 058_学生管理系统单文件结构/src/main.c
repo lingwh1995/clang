@@ -268,7 +268,7 @@ int find_by_name(const StudentManager *p_student_manager, char *name)
 	return pos;
 }
 
-int find_student(const StudentManager *p_student_manager)
+void find_student(const StudentManager *p_student_manager)
 {
 	assert(p_student_manager != NULL);
 	int id;
@@ -331,7 +331,7 @@ void delete_student_by_pos(StudentManager *p_student_manager, int pos)
     show_student(p_student_manager);
 }
 
-int delete_student(StudentManager *p_student_manager)
+void delete_student(StudentManager *p_student_manager)
 {
     assert(p_student_manager != NULL);
     int id;
