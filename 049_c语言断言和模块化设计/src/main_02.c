@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "mylib_2.h"
+#include "../inc/mylib_2.h"
 #define ARSIZE 100
 
 /*

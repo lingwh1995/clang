@@ -1,7 +1,7 @@
 //使用多文件结构(模块化设计)编写计算器程序:函数实现部分
 #include <stdbool.h>
 #include <stdio.h>
-#include "calculator.h"
+#include "../inc/calculator.h"
 
 //声明本文件中的函数
 static int add_int(int a, int b);

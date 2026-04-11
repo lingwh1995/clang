@@ -1,4 +1,4 @@
-#include "mylib_2.h"
+#include "../inc/mylib_2.h"
 #include <time.h>
 #include <assert.h>
 
