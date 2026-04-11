@@ -1,7 +1,7 @@
 // 从系统中引入头文件
 #include <stdio.h>
 // 从当前的执行目录中引入头文件
-#include "a.h"
+#include "../inc/a.h"
 
 // 第二次引入的a.h的时候会报错，这是由于重复引入导致的
 //#include "a.h"

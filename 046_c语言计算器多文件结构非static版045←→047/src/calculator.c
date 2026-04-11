@@ -1,7 +1,7 @@
 //使用多文件结构(模块化设计)编写计算器程序:函数实现部分
 #include <stdbool.h>
 #include <stdio.h>
-#include "calculator.h"
+#include "../inc/calculator.h"
 
 /*
  * 进行计算的方法,不能使用static修饰,因为这是本程序唯一对外暴露的接口
