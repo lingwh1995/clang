@@ -495,6 +495,9 @@ void modify_student(StudentManager *p_student_manager) // 去掉const
 
 int main()
 {
+	// 解决eclipse无法使用scanf()从控制台接收参数的问题
+	setbuf(stdout, NULL);
+
 	StudentManager student_manager;
 	init_student_manager(&student_manager);
     load_student_from_file(&student_manager);
