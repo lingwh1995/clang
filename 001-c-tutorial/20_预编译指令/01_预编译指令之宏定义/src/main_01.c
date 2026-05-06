@@ -1,12 +1,18 @@
 #include <stdio.h>
 #define ONE 1
-#define TWO ONE + ONE
-#define THREE ONE + TWO
+#define TWO (ONE + ONE)
+#define THREE (ONE + TWO)
 
 /**
  * 预编译指令
  * 1. 每个预编译指令都能要以#开头
  * 2. 每个预编译指令都要独占一行
+ *
+ * 宏的特性
+ * c语言认为宏是一个字符串
+ *
+ * 宏定义经典应用场景
+ * 1. 定义数组的大小
  */
 
 #if 0

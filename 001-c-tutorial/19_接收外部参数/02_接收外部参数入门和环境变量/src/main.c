@@ -1,4 +1,4 @@
-# include <stdio.h>
+#include <stdio.h>
 
 /**
  * 在终端执行 .\main.exe 1 2

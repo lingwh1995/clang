@@ -1,4 +1,4 @@
-# include <stdio.h>
+#include <stdio.h>
 
 /*
  * 指针和数组的关系

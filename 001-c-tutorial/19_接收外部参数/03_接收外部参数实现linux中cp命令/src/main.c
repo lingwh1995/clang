@@ -1,5 +1,5 @@
-# include <stdio.h>
-# include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * 在终端执行测试复制文本文件 .\main.exe a.txt b.txt

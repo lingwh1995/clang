@@ -1,5 +1,5 @@
-# include <stdio.h>
-# include <stdbool.h>
+#include <stdio.h>
+#include <stdbool.h>
 
 /**
  * 2022年版

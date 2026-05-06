@@ -116,6 +116,7 @@ void end_flag_ascii_code()
     printf("end_flag = %d\n", end_flag);
 }
 
+#if 0
 int main()
 {
 	string_basic();
@@ -125,3 +126,4 @@ int main()
     end_flag_ascii_code();
 	return 0;
 }
+#endif
