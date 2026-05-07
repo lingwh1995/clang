@@ -1,8 +1,12 @@
 #include <stdio.h>
 #define ERROR_MSG "standard error on input!"
 
+/**
+ * 两种输出宏值的方法
+ * 1. 使用 %s 形式输出宏值
+ * 2. 直接输出宏值
+ */
 #if 0
-#endif
 int main()
 {
     // 拼接字符串和宏值错误写法：这种写法编译器无法正确解析
@@ -22,3 +26,4 @@ int main()
     printf(ERROR_MSG);
     return 0;
 }
+#endif
