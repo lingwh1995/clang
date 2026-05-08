@@ -48,7 +48,6 @@
  * 	    结果再赋值回 char c
  */
 
-
 /**
  * 定义一个结构体Person
  */
@@ -109,20 +108,19 @@ void print_color(enum Color color)
  *
  * 4. c语言设计时规定
  * 	  int  尽量接近机器字长(机器字长 = CPU一次能处理的二进制位数，可以理解为CPU的天生带宽)，方便运算
- * 	  	   16 位机器		int = 16位(2字节)
- * 	  	   32 位机器	    int = 32位(4字节)
- * 	  	   64 位机器     int = 32位(4字节，为了兼容旧程序)
+ * 	    16 位机器		int = 16位(2字节)
+ * 	    32 位机器	    int = 32位(4字节)
+ * 	    64 位机器     int = 32位(4字节，为了兼容旧程序)
  * 	  long 设计初衷是更长一些
- * 	  	   windows		4字节
- * 	  	   linux/unix	8字节
+ * 	  	 windows		4字节
+ * 	  	 linux/unix	8字节
  * 	  long doubole
- * 	  	   windows		8字节
- * 	  	   linux/unix	12或16字节
+ * 	  	 windows		8字节
+ * 	  	 linux/unix	12或16字节
  * 5. sizeof()返回的数据类型是size_t，输出时使用 %zu
  */
 void data_type_size()
 {
-
 	// short就是short int
     printf("short类型所占字节大小: %zu\n", sizeof(short));
     printf("int类型所占字节大小: %zu\n", sizeof(int));

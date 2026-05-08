@@ -2,9 +2,10 @@
 #include <string.h>
 
 /**
- * sizeof: 返回一个无符号的整型数据
- *   1.sizeof(pointer) 只反映指针自身的大小，不是它指向的数据的大小
- *   2.sizeof(数组名) 返回数组大小，在sizeof()函数中，数组名代表整个数组
+ * sizeof() 返回一个无符号的整型数据
+ *
+ * 1. sizeof(pointer) 只反映指针自身的大小，不是它指向的数据的大小
+ * 2. sizeof(数组名) 返回数组大小，在sizeof()函数中，数组名代表整个数组
  */
 
 int main()

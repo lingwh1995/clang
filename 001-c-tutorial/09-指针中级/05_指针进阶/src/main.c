@@ -13,13 +13,13 @@ void pointer_senior_test_1()
 	 * 常见的指针变量
 	 *
 	 * p可以指向int类型的数据，也可以指向类似 int arr[n] 数组元素的地址
-	 * int *p;
+	 *   int *p;
 	 * 二级指针，指向 int * 类型的数据
-	 * int **p;
+	 *   int **p;
 	 * p是数组，数组的元素是 int指针
-	 * int *p[n];
+	 *   int *p[n];
 	 * p为指向数组的指针，指向大小为n个整数的数组
-	 * int (*p)[n];
+	 *   int (*p)[n];
 	 */
 
     int a = 10, b =20;
@@ -27,12 +27,12 @@ void pointer_senior_test_1()
     *p = 100;
     printf("a = %d, %p => *p %d\n", a, p, *p);
 
-    //*&a = a; 	*&a和a代表同样的值，同样的含义
+    // *&a = a; 	*&a和a代表同样的值，同样的含义
     	// a 就等价于 *&a, *意思是对此地址解引用
     printf("*&a = %d, a = %d\n", *&a, a);
     //*&p = p; 	*&p和p代表同样的值，同样的含义
     printf("*&p = %p, p = %p\n", *&p, p);
-    // &*p = p; 等式不成立，原因是 指针是一个常量，不能给常量赋值
+    //&*p = p; 等式不成立，原因是 指针是一个常量，不能给常量赋值
     printf("&*p = %p, p = %p\n", &*p, p);
 
     int *s = NULL;

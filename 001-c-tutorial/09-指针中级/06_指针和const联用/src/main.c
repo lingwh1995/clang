@@ -50,15 +50,15 @@ void pointer_and_const_test_3()
     int a = 10, b = 20;
     const int *const p = &a;
 
-    //这种写法等价于上面一行
+    // 这种写法等价于上面一行
     //int const *const p = &a;
 
     int c = *p;
     printf("c = %d\n", c);
 
-    //无法修改指针p的值,这是不合法的
+    // 无法修改指针p的值,这是不合法的
     //p = &b;
-    //无法解引用*pa的值,这是不合法的
+    // 无法解引用*pa的值,这是不合法的
     //*p = 100;
 }
 
@@ -77,7 +77,7 @@ void pointer_and_const_test_4()
 
     const int *pb = &b;
     printf("b = %d\n", *pb);
-    //不能改变指针指向的值，这对指针指向的值起到保护作用
+    // 不能改变指针指向的值，这对指针指向的值起到保护作用
     //*pb = 200;
 
     //指针修改常量的值

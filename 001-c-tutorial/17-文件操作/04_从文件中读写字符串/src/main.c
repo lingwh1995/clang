@@ -22,9 +22,9 @@ void delay_ms(long ms)
 /**
  * fgetc() 用法测试： 每次读取一个字符
  *
- * fgetc() 返回值：
- *   - 成功：返回读取字符的 ASCII 值（int 类型）
- *   - 失败或到达文件末尾：返回 EOF（-1）
+ * fgetc() 返回值
+ * - 成功：返回读取字符的 ASCII 值（int 类型）
+ * - 失败或到达文件末尾：返回 EOF（-1）
  */
 void fgetc_test()
 {

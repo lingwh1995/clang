@@ -90,6 +90,7 @@ void dynamic_memory_manage_malloc_2()
 
 	/**
 	 * free()之后还被使用的指针，称为野指针/空悬指针(dangling pointer)，使用这种指针会出现三种恐怖后果
+	 *
 	 * 1. 悄悄覆盖别的程序数据
 	 * 2. 程序突然崩溃
 	 * 3. 有时候正常，有时候炸

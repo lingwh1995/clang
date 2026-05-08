@@ -2,8 +2,8 @@
 #include <assert.h>
 
 /**
- * assert.h
- * 经典应用场景
+ * assert.h 经典应用场景
+ *
  * 1. 指针判空
  * 2. 判断参数是否合法
  */

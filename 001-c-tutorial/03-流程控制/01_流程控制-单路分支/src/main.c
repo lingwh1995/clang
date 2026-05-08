@@ -2,9 +2,11 @@
 #include <stdio.h>
 
 /*
- * 单分支
- *	if else
- *  三元表达式
+ * 流程控制
+ *
+ * 1. 单分支 if else
+ * 2. 多分支 if elseif else
+ * 3. 三元表达式
  */
 
 /*

@@ -7,9 +7,9 @@
  */
 void init_arr_2(int *arr, int len)
 {
-	//使用传统if else 判断参数是否合法
+	// 使用传统if else 判断参数是否合法
 	//if (arr == NULL || len < 1) return;
-	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
+	// 使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(arr != NULL && len >= 1);
 	srand((unsigned)time(NULL));
 	for (int i = 0; i < len; i++)
@@ -25,9 +25,9 @@ void init_arr_2(int *arr, int len)
  */
 void swap_number_2(int *pa, int *pb)
 {
-	//使用传统if else 判断参数是否合法
+	// 使用传统if else 判断参数是否合法
 	//if (pa == NULL || pa == NULL) return;
-	//使用断言判断参数是否合法,表达式为真，继续向下执行，表达式为假，弹出窗提示
+	// 使用断言判断参数是否合法,表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(pa != NULL && pb != NULL);
 	int temp = *pa;
 	*pa = *pb;
@@ -41,9 +41,9 @@ void swap_number_2(int *pa, int *pb)
  */
 void bubble_sort_2(int *arr, int len)
 {
-	//使用传统if else 判断参数是否合法
+	// 使用传统if else 判断参数是否合法
 	//if (arr == NULL || len < 1) return;
-	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
+	// 使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(arr != NULL && len >= 1);
 	for (int i = 0; i < len - 1; i++)
 	{
@@ -64,9 +64,9 @@ void bubble_sort_2(int *arr, int len)
  */
 void print_arr_2(const int *arr, const int len)
 {
-	//使用传统if else 判断参数是否合法
+	// 使用传统if else 判断参数是否合法
 	//if (arr == NULL || len < 1) return;
-	//使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
+	// 使用断言判断参数是否合法，表达式为真，继续向下执行，表达式为假，弹出窗提示
 	assert(arr != NULL && len >= 1);
 	for (int i = 0; i < len; i++)
 	{
