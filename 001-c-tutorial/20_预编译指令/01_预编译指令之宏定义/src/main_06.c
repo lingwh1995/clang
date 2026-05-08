@@ -66,6 +66,12 @@
  *      #define UINT unsigned int
  *      #define TRUE 1
  *      #define FALSE 0
+ *
+ * 8. 模拟bool和true, false
+ *      // 使用宏定义模拟bool类型
+ *      #define bool int
+ *      #define true 1
+ *      #define false 0
  */
 
 /**

@@ -1,10 +1,12 @@
 #include <stdio.h>
-typedef char bool;
+#define bool int
 #define false 0
 #define true 1
 
 /*
- * 使用 宏定义+typedef 实现自定义bool
+ * 使用 宏定义 实现自定义bool
+ *
+ * 推荐指数 1颗星
  */
 #if 0
 int main()
