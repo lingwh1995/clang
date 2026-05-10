@@ -4,6 +4,7 @@
 // 使用 宏定义 + calloc 实现 简化calloc
 #define CALLOC(num,type) ((type*)calloc((num),sizeof(type)))
 
+#if 0
 int main()
 {
     int* ip_calloc = (int*)calloc(10, sizeof(int));
@@ -13,3 +14,4 @@ int main()
     char* cp_CALLOC = CALLOC(10, char);
     return 0;
 }
+#endif
