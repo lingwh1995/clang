@@ -18,7 +18,6 @@ void swap_double(double *pa, double *pb)
 #define SWAP(a, b, type)  { type tmp = a; a = b; b = tmp; }
 
 #if 0
-#endif
 int main()
 {
     int a = 10, b = 20;
@@ -33,3 +32,4 @@ int main()
     printf("x = %d, y = %d\n", x, y);
     return 0;
 }
+#endif
