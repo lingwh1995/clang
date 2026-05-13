@@ -7,6 +7,7 @@
  * 演示正确的宏定义（宏的本质是展开，这个没有宏定义时没有加括号，展开就会报错）
  */
 #if 0
+#endif
 int main()
 {
     printf("宏 ONE = %d\n", ONE);
@@ -24,4 +25,3 @@ int main()
     printf("c = %d\n", c);
     return 0;
 }
-#endif

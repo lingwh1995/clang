@@ -4,7 +4,9 @@
 #define CALLOC(num,type) ((type*)calloc((num),sizeof(type)))
 #define malloc void // 如果要禁用系统库函数，只使用宏定义
 #undef malloc   // 如果要再次使用系统库函数，则需要释放掉宏定义
+
 #if 0
+#endif
 int main()
 {
     int *ip_calloc = (int*)calloc(10, sizeof(int));
@@ -18,4 +20,3 @@ int main()
     char *cp_CALLOC = CALLOC(10, char);
     return 0;
 }
-#endif

@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
+/**
+ * c语言中的续行符
+ */
+
 #if 0
-#endif
 int main()
 {
     // 使用续行符把多行拼接在一起
@@ -19,3 +22,4 @@ int main()
     printf("strlen(strb) = %llu \n", strlen(strb));
     return 0;
 }
+#endif

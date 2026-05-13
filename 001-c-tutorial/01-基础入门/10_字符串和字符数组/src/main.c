@@ -62,6 +62,12 @@ void string_basic()
     printf("s5 = %s\n", s5);
     printf("s6 = %s\n", s6);
     printf("s7 = %s\n", s7);
+
+    // c语言不使用 %s 直接直接输出字符串
+    char s8[100] = "演示c语言不使用 %s 直接直接输出字符串\n";
+    char *s9 = "演示c语言不使用 %s 直接直接输出字符串\n";
+    printf(s8);
+    printf(s9);
 }
 
 /*
@@ -120,13 +126,13 @@ void end_flag_ascii_code()
 }
 
 #if 0
+#endif
 int main()
 {
 	string_basic();
 	//string_and_char_array();
 	//foreach_string_1();
 	//foreach_string_2();
-    end_flag_ascii_code();
+    //end_flag_ascii_code();
 	return 0;
 }
-#endif

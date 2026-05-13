@@ -16,6 +16,7 @@ int abs(int a)
  * 4. 不关心参数的类型，优先考虑宏函数
  */
 #if 0
+#endif
 int main()
 {
     int a = -10;
@@ -23,4 +24,3 @@ int main()
     printf("abs(a) = %d, abs(-a) = %d\n", abs(a), abs(-a));
     return 0;
 }
-#endif

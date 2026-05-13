@@ -5,6 +5,7 @@
 #include <iostream>
 using namespace std;
 
+#if 0
 int main()
 {
     // 整数交换
@@ -19,3 +20,4 @@ int main()
 
     return 0;
 }
+#endif

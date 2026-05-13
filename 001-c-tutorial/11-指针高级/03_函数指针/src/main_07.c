@@ -101,7 +101,7 @@ void print_arr_4(const void *pv, const int size, int element_size, void (*print)
 	printf("\n");
 }
 
-// 交换函数
+// 泛型交换函数 - 静态内存版
 void swap(void *pa, void *pb, int size)
 {
     char temp[size];

@@ -109,6 +109,7 @@ void swap_double(double *pa, double *pb)
 #endif
 
 #if 0
+#endif
 int main()
 {
     int a = 10, b = 20;
@@ -139,4 +140,3 @@ int main()
     printf("x = %.2f, y = %.2f\n", x, y);
     return 0;
 }
-#endif

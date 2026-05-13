@@ -244,6 +244,7 @@ void dynamic_memory_manage_realloc_1()
 	ip = NULL;
 }
 
+#if 0
 int main()
 {
 	//dangling_pointer();
@@ -257,3 +258,4 @@ int main()
 	dynamic_memory_manage_realloc_1();
 	return 0;
 }
+#endif
