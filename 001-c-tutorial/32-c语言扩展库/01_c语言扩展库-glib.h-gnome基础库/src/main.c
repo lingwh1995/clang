@@ -9,11 +9,12 @@
  *    数据结构、实用函数、事件循环、线程等
  * 3. 安装
  *    windows(打开 MSYS2 UCRT64 的终端，执行以下命令)
- *      pacman - Syu
- *      pacman - Sy mingw - w64 - x86_64 - glib2
+ *      pacman -Syu                             # 更新系统
+ *      pacman -S mingw-w64-ucrt-x86_64-glib2   # 安装glib2
+ *      pacman -Qs glib2                        # 检查是否安装成功
  *    linux
- *      sudo apt - get update
- *      sudo apt - get install libglib2.0 - dev
+ *      sudo apt-get update
+ *      sudo apt-get install libglib2.0-dev
  */
 int main()
 {
