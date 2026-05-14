@@ -37,9 +37,9 @@
  * 7. 环境搭建
  *    MinGw https://sourceforge.net/projects/mingw-w64/
  * 8. c语言参考网站
- *    - https://zh.cppreference.com/w/
+ *    - https://zh.cppreference.com/w/		推荐 ⭐⭐⭐⭐⭐
  *    - https://cplusplus.com/
- *    - https://wangdoc.com/clang/			推荐
+ *    - https://wangdoc.com/clang/			推荐 ⭐⭐⭐
  *    - https://www.dotcpp.com/course/
  * 9. c语言运行过程可视化
  *     https://www.tutorialspoint.com/compilers/online-c-compiler.htm

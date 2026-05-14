@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include <assert.h>
 #include <ctype.h>
 
@@ -242,11 +241,51 @@ void str2i_test()
     }
 }
 
+void cleanup(void) {
+	printf("cleanup function called......\n");
+}
+
+/**
+ * stdlib.h 中提供的终止程序的方式
+ *
+ * exit(0);       // 正常终止，执行清理
+ * abort();       // 异常终止，不清理
+ * return 0;      // 在 main 中等同于 exit(0)
+ * _Exit(0);      // C99，直接终止，类似 abort 但可指定退出码
+ * quick_exit(0); // C11，快速终止，只调用 at_quick_exit 注册的函数
+ */
+void exit_and_abort_test()
+{
+	atexit(cleanup);
+	printf("Program starting...\n");
+
+	// 使用 exit() - 会调用 cleanup
+	exit(0);
+
+	// 使用 abort() - 不会调用 cleanup
+	//abort();
+
+	printf("Program ended normally\n");
+}
+
+/**
+ * stdlib.h 中提供的宏测试
+ */
+void micro_test()
+{
+	// 程序成功退出，值为 0
+	printf("EXIT_SUCCESS = %d\n", EXIT_SUCCESS);
+	// 程序失败退出，值通常为 1（非零）
+	printf("EXIT_FAILURE = %d\n", EXIT_FAILURE);
+}
+
 int main()
 {
 	//atoi_test();
 	//my_atoi_test();
 	//strtol_test();
 	//str2i_test();
+	//exit_and_abort_test();
+	micro_test();
 	return 0;
 }

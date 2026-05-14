@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 /**
+ *  编译器中会提供一些预定义宏，以便于获取一些信息
  *
  *  __FILE__      // 展开成当前文件名，为字符串常量，可用 #line 指令更改
  *  __LINE__      // 展开成源文件行号，为整数常量，可用 #line 指令更改
@@ -21,6 +22,7 @@
 // 可以修改 __FILE__ 和 __LINE__ 输出的内容
 #line 100 "tulun.c"
 
+#if 0
 int main()
 {
     // 当前文件名
@@ -35,3 +37,4 @@ int main()
     printf("%d \n", __STDC__);
     return 0;
 }
+#endif
