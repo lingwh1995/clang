@@ -7,14 +7,20 @@
  *    https://developer.gnome.org/glib/
  * 2. 功能
  *    数据结构、实用函数、事件循环、线程等
- * 3. 安装
- *    windows(打开 MSYS2 UCRT64 的终端，执行以下命令)
- *      pacman -Syu                             # 更新系统
- *      pacman -S mingw-w64-ucrt-x86_64-glib2   # 安装glib2
- *      pacman -Qs glib2                        # 检查是否安装成功
- *    linux
- *      sudo apt-get update
- *      sudo apt-get install libglib2.0-dev
+ * 3. 普通方式安装
+ *    - windows(打开 MSYS2 UCRT64 的终端，执行以下命令)
+ *       pacman -Syu                             # 更新系统
+ *       pacman -S mingw-w64-ucrt-x86_64-glib2   # 安装glib2
+ *       pacman -Qs glib2                        # 检查是否安装成功
+ *    - linux
+ *       sudo apt-get update
+ *       sudo apt-get install libglib2.0-dev
+ * 4. conan方式安装
+ *    - 编写 conanfile.txt 和 CMakeLists.txt
+ *    - pip install conan                                     # 安装conan
+ *    - conan remote add conancenter https://center.conan.io  # 设置仓库
+ *    - conan install . --output-folder=cmake-build-debug --build=missing # 安装依赖（在conanfile.txt同级别目录下执行）
+
  */
 int main()
 {
